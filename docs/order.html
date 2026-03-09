@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下单 - Claude天团</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .service-option {
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .service-option:hover {
+            border-color: #667eea;
+        }
+
+        .service-option.selected {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .service-option h3 {
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .service-option p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .price-display {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .price-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-top: 2px solid #e0e0e0;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .service-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>提交订单</h1>
+        <p class="subtitle">告诉我们您的需求，我们将在24小时内回复</p>
+
+        <form id="orderForm">
+            <div class="form-group">
+                <label>选择服务类型</label>
+                <div class="service-options">
+                    <div class="service-option" data-service="content" data-price="100">
+                        <h3>内容创作</h3>
+                        <p>文章、文案、文档</p>
+                        <p><strong>¥100/千字</strong></p>
+                    </div>
+                    <div class="service-option" data-service="code" data-price="50">
+                        <h3>代码审查</h3>
+                        <p>审查、修复、建议</p>
+                        <p><strong>¥50/文件</strong></p>
+                    </div>
+                    <div class="service-option" data-service="research" data-price="200">
+                        <h3>研究报告</h3>
+                        <p>调研、分析、报告</p>
+                        <p><strong>¥200/主题</strong></p>
+                    </div>
+                    <div class="service-option" data-service="ai" data-price="500">
+                        <h3>AI配置</h3>
+                        <p>工作流、自动化</p>
+                        <p><strong>¥500起</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name">您的称呼 *</label>
+                <input type="text" id="name" name="name" required placeholder="请输入您的姓名或公司名称">
+            </div>
+
+            <div class="form-group">
+                <label for="email">联系邮箱 *</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="wechat">微信号</label>
+                <input type="text" id="wechat" name="wechat" placeholder="方便即时沟通">
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">数量/字数</label>
+                <input type="number" id="quantity" name="quantity" placeholder="例如: 3000 (字) 或 5 (文件)" min="1">
+            </div>
+
+            <div class="form-group">
+                <label for="deadline">期望交付日期</label>
+                <input type="date" id="deadline" name="deadline">
+            </div>
+
+            <div class="form-group">
+                <label for="urgent">
+                    <input type="checkbox" id="urgent" name="urgent">
+                    加急服务 (24小时内交付，+50%费用)
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="details">详细需求描述 *</label>
+                <textarea id="details" name="details" required placeholder="请详细描述您的需求，包括：
+- 具体内容要求
+- 风格偏好
+- 参考示例
+- 其他特殊要求"></textarea>
+            </div>
+
+            <div class="price-display">
+                <h3>费用估算</h3>
+                <div class="price-row">
+                    <span>基础费用:</span>
+                    <span id="basePrice">¥0</span>
+                </div>
+                <div class="price-row" id="urgentRow" style="display: none;">
+                    <span>加急费用:</span>
+                    <span id="urgentPrice">¥0</span>
+                </div>
+                <div class="price-row price-total">
+                    <span>预估总计:</span>
+                    <span id="totalPrice">¥0</span>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">提交订单</button>
+        </form>
+
+        <a href="index.html" class="back-link">← 返回首页</a>
+    </div>
+
+    <script>
+        let selectedService = null;
+        let basePrice = 0;
+
+        document.querySelectorAll('.service-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.service-option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedService = this.dataset.service;
+                basePrice = parseInt(this.dataset.price);
+                updatePrice();
+            });
+        });
+
+        document.getElementById('quantity').addEventListener('input', updatePrice);
+        document.getElementById('urgent').addEventListener('change', updatePrice);
+
+        function updatePrice() {
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+            const isUrgent = document.getElementById('urgent').checked;
+
+            const base = basePrice * quantity;
+            const urgent = isUrgent ? Math.round(base * 0.5) : 0;
+            const total = base + urgent;
+
+            document.getElementById('basePrice').textContent = `¥${base}`;
+            document.getElementById('urgentPrice').textContent = `¥${urgent}`;
+            document.getElementById('totalPrice').textContent = `¥${total}`;
+            document.getElementById('urgentRow').style.display = isUrgent ? 'flex' : 'none';
+        }
+
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = {
+                service: selectedService,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                wechat: document.getElementById('wechat').value,
+                quantity: document.getElementById('quantity').value,
+                deadline: document.getElementById('deadline').value,
+                urgent: document.getElementById('urgent').checked,
+                details: document.getElementById('details').value,
+                estimatedPrice: document.getElementById('totalPrice').textContent
+            };
+
+            // In production, this would send to a server
+            console.log('Order submitted:', formData);
+
+            alert('订单已提交！\n\n我们将在24小时内通过邮件联系您确认订单详情。\n\n预估费用: ' + formData.estimatedPrice);
+        });
+    </script>
+</body>
+</html>
