@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Claude天团常见问题解答 - 关于我们的AI服务、定价、交付流程等常见问题的详细解答。">
+    <meta name="keywords" content="AI服务FAQ,内容创作问答,代码审查问答,研究报告问答,AI代理问答">
+    <title>常见问题 - Claude天团 | AI智能服务</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .faq-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .faq-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea20;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .faq-question::before {
+            content: "Q";
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .faq-answer {
+            color: #666;
+            padding-left: 34px;
+        }
+
+        .faq-answer strong {
+            color: #667eea;
+        }
+
+        .highlight-answer {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-box p {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .cta-box a {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 5px;
+        }
+
+        .cta-box a.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+            .faq-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>常见问题</h1>
+        <p>关于Claude天团AI服务的常见疑问解答</p>
+    </header>
+
+    <nav>
+        <a href="index.html">首页</a>
+        <a href="services.html">服务</a>
+        <a href="faq.html">常见问题</a>
+        <a href="order.html">下单</a>
+    </nav>
+
+    <div class="container">
+        <!-- 关于服务 -->
+        <div class="faq-section">
+            <h2>关于服务</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">你们提供哪些服务？</div>
+                <div class="faq-answer">
+                    我们提供4项核心服务：
+                    <ul style="margin-top: 10px;">
+                        <li><strong>内容创作</strong> - 文章、文案、报告等内容撰写（¥100/千字）</li>
+                        <li><strong>代码审查</strong> - 代码质量审核和优化建议（¥50/文件）</li>
+                        <li><strong>研究报告</strong> - 行业研究、市场分析报告（¥200/主题）</li>
+                        <li><strong>AI配置</strong> - AI工作流、提示词工程定制（¥500起）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">你们是AI还是真人？</div>
+                <div class="faq-answer">
+                    我们是<strong>AI驱动的服务团队</strong>。AI负责执行工作，人类负责质量把控。这样既保证了效率，又确保了质量。每个交付物都经过人工审核。
+                    <div class="highlight-answer">
+                        <strong>优势：</strong>AI的速度 + 人的判断 = 高质量、高效率的服务
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">如何保证服务质量？</div>
+                <div class="faq-answer">
+                    我们采用<strong>多代理协作架构</strong>，每个项目都经过：
+                    <ol style="margin-top: 10px;">
+                        <li>专业代理执行任务</li>
+                        <li>独立代理质量审核</li>
+                        <li>人工最终把关</li>
+                    </ol>
+                    <p style="margin-top: 10px;">如果不满意，我们提供<strong>免费修改</strong>服务，直到您满意为止。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 关于定价 -->
+        <div class="faq-section">
+            <h2>关于定价</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">价格是如何计算的？</div>
+                <div class="faq-answer">
+                    我们采用透明计价方式：
+                    <ul style="margin-top: 10px;">
+                        <li><strong>内容创作</strong> - 按字数计费，¥100/千字</li>
+                        <li><strong>代码审查</strong> - 按文件计费，¥50/文件</li>
+                        <li><strong>研究报告</strong> - 按主题计费，¥200/主题</li>
+                        <li><strong>AI配置</strong> - 项目制，¥500起</li>
+                    </ul>
+                    <p style="margin-top: 10px;">下单前我们会给出准确报价，无隐藏费用。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">价格会不会太贵？</div>
+                <div class="faq-answer">
+                    我们的定价基于<strong>专业AI团队协作</strong>，每个交付物都经过多重审核。相比个人使用AI：
+                    <ul style="margin-top: 10px;">
+                        <li>✓ 更稳定的质量（多轮审核）</li>
+                        <li>✓ 更快的交付（并行处理）</li>
+                        <li>✓ 更省心（全流程服务）</li>
+                    </ul>
+                    <div class="highlight-answer">
+                        <strong>首次合作优惠：</strong>首单享8折，让你低成本体验我们的服务质量。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">支持哪些支付方式？</div>
+                <div class="faq-answer">
+                    目前支持：
+                    <ul style="margin-top: 10px;">
+                        <li>微信支付</li>
+                        <li>支付宝</li>
+                    </ul>
+                    <p style="margin-top: 10px;">下单后我们会发送收款二维码，确认付款后开始服务。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 关于交付 -->
+        <div class="faq-section">
+            <h2>关于交付</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">交付时间需要多久？</div>
+                <div class="faq-answer">
+                    标准交付时间：
+                    <ul style="margin-top: 10px;">
+                        <li><strong>内容创作</strong> - 24-48小时</li>
+                        <li><strong>代码审查</strong> - 24-72小时</li>
+                        <li><strong>研究报告</strong> - 48-72小时</li>
+                        <li><strong>AI配置</strong> - 3-7天</li>
+                    </ul>
+                    <div class="highlight-answer">
+                        <strong>加急服务：</strong>可选择24小时交付（加收50%费用）
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">交付后不满意怎么办？</div>
+                <div class="faq-answer">
+                    我们提供<strong>免费修改</strong>服务：
+                    <ol style="margin-top: 10px;">
+                        <li>交付后7天内可申请修改</li>
+                        <li>说明具体修改需求</li>
+                        <li>我们免费修改直到满意</li>
+                    </ol>
+                    <p style="margin-top: 10px;">如果确实无法满足需求，可申请<strong>退款</strong>。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">交付物是什么格式？</div>
+                <div class="faq-answer">
+                    根据服务类型提供：
+                    <ul style="margin-top: 10px;">
+                        <li><strong>内容创作</strong> - Markdown/Word/纯文本</li>
+                        <li><strong>代码审查</strong> - PDF报告 + 标注代码</li>
+                        <li><strong>研究报告</strong> - PDF报告 + 数据源</li>
+                        <li><strong>AI配置</strong> - 配置文件 + 使用文档</li>
+                    </ul>
+                    <p style="margin-top: 10px;">如有特殊格式需求，可提前告知。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 关于下单 -->
+        <div class="faq-section">
+            <h2>关于下单</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">如何下单？</div>
+                <div class="faq-answer">
+                    下单流程很简单：
+                    <ol style="margin-top: 10px;">
+                        <li>填写<a href="order.html">订单表单</a></li>
+                        <li>下载订单文件</li>
+                        <li>发送到 contact@claudetianduan.com</li>
+                        <li>我们确认后发送报价</li>
+                        <li>付款后开始服务</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">下单后可以取消吗？</div>
+                <div class="faq-answer">
+                    <ul style="margin-top: 10px;">
+                        <li><strong>付款前</strong> - 可随时取消</li>
+                        <li><strong>付款后未开始</strong> - 全额退款</li>
+                        <li><strong>已开始执行</strong> - 按进度比例退款</li>
+                        <li><strong>已交付</strong> - 不支持退款，但可免费修改</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">可以修改订单需求吗？</div>
+                <div class="faq-answer">
+                    <ul style="margin-top: 10px;">
+                        <li><strong>未开始执行</strong> - 可自由修改</li>
+                        <li><strong>执行中</strong> - 可修改，可能影响交付时间和价格</li>
+                        <li><strong>已交付</strong> - 可申请修改（7天内免费）</li>
+                    </ul>
+                    <p style="margin-top: 10px;">如有重大需求变更，我们会重新评估报价。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 其他问题 -->
+        <div class="faq-section">
+            <h2>其他问题</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">我的数据安全吗？</div>
+                <div class="faq-answer">
+                    <ul style="margin-top: 10px;">
+                        <li>我们<strong>不会存储</strong>您的敏感数据</li>
+                        <li>项目完成后，相关数据可应要求删除</li>
+                        <li>未经同意，我们<strong>不会公开</strong>您的项目信息</li>
+                        <li>可签署保密协议（NDA）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">可以长期合作吗？</div>
+                <div class="faq-answer">
+                    当然可以！我们欢迎长期合作：
+                    <ul style="margin-top: 10px;">
+                        <li><strong>包月服务</strong> - 固定月费，不限次数咨询</li>
+                        <li><strong>项目合作</strong> - 按项目签约，享受优惠价格</li>
+                        <li><strong>推荐奖励</strong> - 推荐新客户可获得服务抵扣券</li>
+                    </ul>
+                    <p style="margin-top: 10px;">联系我们了解详情。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">还有其他问题？</div>
+                <div class="faq-answer">
+                    欢迎联系我们：
+                    <ul style="margin-top: 10px;">
+                        <li>邮箱：contact@claudetianduan.com</li>
+                        <li>微信：添加客服微信（见首页）</li>
+                    </ul>
+                    <p style="margin-top: 10px;">我们会在24小时内回复。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <h3>准备好开始了吗？</h3>
+            <p>立即下单，体验专业AI服务</p>
+            <a href="order.html">立即下单</a>
+            <a href="services.html" class="secondary">了解服务</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Claude天团. All rights reserved.</p>
+        <p><a href="index.html" style="color: #667eea;">返回首页</a></p>
+    </footer>
+</body>
+</html>
