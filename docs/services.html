@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Claude天团服务详情 - 内容创作、代码审查、研究报告、AI配置四大核心服务，价格透明，交付快速，质量保证。">
+    <meta name="keywords" content="AI服务,内容创作服务,代码审查服务,研究报告服务,AI代理配置,价格透明">
+    <meta property="og:title" content="服务详情 - Claude天团">
+    <meta property="og:description" content="四大核心AI服务，价格透明，交付快速，质量保证。">
+    <title>服务详情 - Claude天团 | 专业AI智能服务</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-right: 20px;
+        }
+
+        .service-title h2 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .service-title .price {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .service-desc {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .service-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .detail-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .detail-item h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .detail-item ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .detail-item li {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .detail-item li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .pricing-table th, .pricing-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-table th {
+            background: #f8f9fa;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .pricing-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .order-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .comparison-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+        }
+
+        .comparison-section h2 {
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .comparison-table .highlight {
+            background: #f0fff4;
+            font-weight: 600;
+        }
+
+        .faq-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+        }
+
+        .faq-section h2 {
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-item h3 {
+            color: #667eea;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            color: #666;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin: 40px 0;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .cta-section .order-btn {
+            background: white;
+            color: #667eea;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .service-details {
+                grid-template-columns: 1fr;
+            }
+            .service-card {
+                padding: 25px;
+            }
+            .comparison-table {
+                font-size: 0.85rem;
+            }
+            .comparison-table th, .comparison-table td {
+                padding: 10px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>服务详情</h1>
+        <p>四大核心AI服务 · 价格透明 · 质量保证</p>
+    </header>
+
+    <nav>
+        <a href="index.html">首页</a>
+        <a href="services.html">服务</a>
+        <a href="order.html">下单</a>
+        <a href="blog/index.html">博客</a>
+    </nav>
+
+    <div class="container">
+        <!-- 内容创作服务 -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon">✍️</div>
+                <div class="service-title">
+                    <h2>内容创作服务</h2>
+                    <span class="price">¥100起 / 千字</span>
+                </div>
+            </div>
+            <p class="service-desc">专业的AI内容创作服务，涵盖文章撰写、营销文案、技术文档等多种类型。每个作品都经过人工审核，确保质量。</p>
+
+            <div class="service-details">
+                <div class="detail-item">
+                    <h4>服务类型</h4>
+                    <ul>
+                        <li>公众号文章</li>
+                        <li>营销文案</li>
+                        <li>技术文档</li>
+                        <li>SEO优化文章</li>
+                    </ul>
+                </div>
+                <div class="detail-item">
+                    <h4>交付标准</h4>
+                    <ul>
+                        <li>24-48小时交付</li>
+                        <li>免费修改3次</li>
+                        <li>原创保证</li>
+                        <li>格式规范</li>
+                    </ul>
+                </div>
+            </div>
+
+            <table class="pricing-table">
+                <tr>
+                    <th>字数范围</th>
+                    <th>基础价格</th>
+                    <th>技术文档</th>
+                    <th>营销文案</th>
+                </tr>
+                <tr>
+                    <td>500字以下</td>
+                    <td>¥50</td>
+                    <td>¥60</td>
+                    <td>¥65</td>
+                </tr>
+                <tr>
+                    <td>500-1000字</td>
+                    <td>¥100</td>
+                    <td>¥120</td>
+                    <td>¥130</td>
+                </tr>
+                <tr>
+                    <td>1000-2000字</td>
+                    <td>¥180</td>
+                    <td>¥216</td>
+                    <td>¥234</td>
+                </tr>
+                <tr>
+                    <td>2000-3000字</td>
+                    <td>¥260</td>
+                    <td>¥312</td>
+                    <td>¥338</td>
+                </tr>
+            </table>
+
+            <a href="order.html" class="order-btn">立即下单</a>
+        </div>
+
+        <!-- 代码审查服务 -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon">🔍</div>
+                <div class="service-title">
+                    <h2>代码审查服务</h2>
+                    <span class="price">¥50起 / 文件</span>
+                </div>
+            </div>
+            <p class="service-desc">专业的代码审查服务，从代码质量、性能优化、安全隐患、最佳实践等多个维度进行全面审查，提供详细的改进建议。</p>
+
+            <div class="service-details">
+                <div class="detail-item">
+                    <h4>审查维度</h4>
+                    <ul>
+                        <li>代码质量</li>
+                        <li>性能优化</li>
+                        <li>安全隐患</li>
+                        <li>最佳实践</li>
+                    </ul>
+                </div>
+                <div class="detail-item">
+                    <h4>交付内容</h4>
+                    <ul>
+                        <li>详细审查报告</li>
+                        <li>问题分级标注</li>
+                        <li>改进建议</li>
+                        <li>代码示例</li>
+                    </ul>
+                </div>
+            </div>
+
+            <table class="pricing-table">
+                <tr>
+                    <th>复杂度</th>
+                    <th>单文件价格</th>
+                    <th>说明</th>
+                </tr>
+                <tr>
+                    <td>简单</td>
+                    <td>¥50</td>
+                    <td>单文件<100行</td>
+                </tr>
+                <tr>
+                    <td>中等</td>
+                    <td>¥65</td>
+                    <td>单文件100-300行</td>
+                </tr>
+                <tr>
+                    <td>复杂</td>
+                    <td>¥80</td>
+                    <td>单文件>300行</td>
+                </tr>
+                <tr>
+                    <td>项目审查</td>
+                    <td>¥500起</td>
+                    <td>10+文件，享折扣</td>
+                </tr>
+            </table>
+
+            <a href="order.html" class="order-btn">立即下单</a>
+        </div>
+
+        <!-- 研究报告服务 -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon">📊</div>
+                <div class="service-title">
+                    <h2>研究报告服务</h2>
+                    <span class="price">¥200起 / 主题</span>
+                </div>
+            </div>
+            <p class="service-desc">深度研究报告服务，涵盖市场调研、竞品分析、技术调研等多个领域。提供有数据、有洞察、有建议的专业报告。</p>
+
+            <div class="service-details">
+                <div class="detail-item">
+                    <h4>报告类型</h4>
+                    <ul>
+                        <li>市场调研</li>
+                        <li>竞品分析</li>
+                        <li>技术调研</li>
+                        <li>行业分析</li>
+                    </ul>
+                </div>
+                <div class="detail-item">
+                    <h4>报告结构</h4>
+                    <ul>
+                        <li>研究背景</li>
+                        <li>数据收集</li>
+                        <li>深度分析</li>
+                        <li>行动建议</li>
+                    </ul>
+                </div>
+            </div>
+
+            <table class="pricing-table">
+                <tr>
+                    <th>报告类型</th>
+                    <th>价格范围</th>
+                    <th>交付时间</th>
+                </tr>
+                <tr>
+                    <td>简要调研</td>
+                    <td>¥100-200</td>
+                    <td>24小时</td>
+                </tr>
+                <tr>
+                    <td>标准报告</td>
+                    <td>¥200-400</td>
+                    <td>48小时</td>
+                </tr>
+                <tr>
+                    <td>深度研究</td>
+                    <td>¥400-800</td>
+                    <td>72小时</td>
+                </tr>
+                <tr>
+                    <td>综合分析</td>
+                    <td>¥800-1500</td>
+                    <td>5-7天</td>
+                </tr>
+            </table>
+
+            <a href="order.html" class="order-btn">立即下单</a>
+        </div>
+
+        <!-- AI配置服务 -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon">🤖</div>
+                <div class="service-title">
+                    <h2>AI配置服务</h2>
+                    <span class="price">¥500起</span>
+                </div>
+            </div>
+            <p class="service-desc">专业的AI代理配置服务，帮助您搭建高效的AI工作流程。从提示词优化到完整Agent配置，让AI真正为您所用。</p>
+
+            <div class="service-details">
+                <div class="detail-item">
+                    <h4>配置类型</h4>
+                    <ul>
+                        <li>提示词优化</li>
+                        <li>多场景配置</li>
+                        <li>Agent配置</li>
+                        <li>企业级定制</li>
+                    </ul>
+                </div>
+                <div class="detail-item">
+                    <h4>附加服务</h4>
+                    <ul>
+                        <li>使用培训</li>
+                        <li>持续优化</li>
+                        <li>紧急支持</li>
+                        <li>文档编写</li>
+                    </ul>
+                </div>
+            </div>
+
+            <table class="pricing-table">
+                <tr>
+                    <th>配置类型</th>
+                    <th>价格</th>
+                    <th>包含内容</th>
+                </tr>
+                <tr>
+                    <td>基础提示词优化</td>
+                    <td>¥200起</td>
+                    <td>单一场景优化</td>
+                </tr>
+                <tr>
+                    <td>多场景配置</td>
+                    <td>¥500起</td>
+                    <td>3-5个场景</td>
+                </tr>
+                <tr>
+                    <td>完整Agent配置</td>
+                    <td>¥1000起</td>
+                    <td>含工具调用</td>
+                </tr>
+                <tr>
+                    <td>企业级定制</td>
+                    <td>¥2000起</td>
+                    <td>定制开发+支持</td>
+                </tr>
+            </table>
+
+            <a href="order.html" class="order-btn">立即下单</a>
+        </div>
+
+        <!-- 服务对比 -->
+        <div class="comparison-section">
+            <h2>为什么选择我们？</h2>
+            <table class="comparison-table">
+                <tr>
+                    <th>对比项</th>
+                    <th>自己用AI</th>
+                    <th>传统服务商</th>
+                    <th class="highlight">Claude天团</th>
+                </tr>
+                <tr>
+                    <td>价格</td>
+                    <td>低（但需学习成本）</td>
+                    <td>高（¥5000+）</td>
+                    <td class="highlight">适中（¥100起）</td>
+                </tr>
+                <tr>
+                    <td>质量</td>
+                    <td>不稳定</td>
+                    <td>专业</td>
+                    <td class="highlight">专业+AI加持</td>
+                </tr>
+                <tr>
+                    <td>速度</td>
+                    <td>看个人能力</td>
+                    <td>慢（3-7天）</td>
+                    <td class="highlight">快（24-72h）</td>
+                </tr>
+                <tr>
+                    <td>修改</td>
+                    <td>自己搞定</td>
+                    <td>可能额外收费</td>
+                    <td class="highlight">免费修改</td>
+                </tr>
+                <tr>
+                    <td>服务</td>
+                    <td>无</td>
+                    <td>专人对接</td>
+                    <td class="highlight">专人+AI协作</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 常见问题 -->
+        <div class="faq-section">
+            <h2>常见问题</h2>
+
+            <div class="faq-item">
+                <h3>Q: 如何下单？</h3>
+                <p>A: 点击"立即下单"按钮，填写订单表单，下载订单文件发送至我们的邮箱即可。我们会在24小时内确认订单。</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Q: 如何付款？</h3>
+                <p>A: 目前支持微信和支付宝付款。订单确认后，我们会发送收款二维码，您扫码付款即可。</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Q: 不满意怎么办？</h3>
+                <p>A: 我们提供免费修改服务，直到您满意为止。如果确实无法满足需求，可申请退款。</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Q: 可以加急吗？</h3>
+                <p>A: 可以。加急服务（12-24小时）加收50%，特急服务（12小时内）加收100%。</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Q: 首单有优惠吗？</h3>
+                <p>A: 有的！新客户首单享受8折优惠（限¥500以下订单），或9折优惠（无金额限制）。</p>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>准备好开始了吗？</h2>
+            <p>立即下单，体验专业的AI服务</p>
+            <a href="order.html" class="order-btn">立即下单</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Claude天团. All rights reserved.</p>
+        <p><a href="index.html" style="color: #667eea;">返回首页</a></p>
+    </footer>
+</body>
+</html>
