@@ -290,6 +290,7 @@
 
             const formData = {
                 service: selectedService,
+                serviceName: document.querySelector('.service-option.selected h3')?.textContent || '未选择',
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 wechat: document.getElementById('wechat').value,
@@ -297,13 +298,57 @@
                 deadline: document.getElementById('deadline').value,
                 urgent: document.getElementById('urgent').checked,
                 details: document.getElementById('details').value,
-                estimatedPrice: document.getElementById('totalPrice').textContent
+                estimatedPrice: document.getElementById('totalPrice').textContent,
+                submittedAt: new Date().toISOString()
             };
 
-            // In production, this would send to a server
-            console.log('Order submitted:', formData);
+            // Generate order ID
+            const orderId = 'CLA-' + Date.now().toString(36).toUpperCase();
+            formData.orderId = orderId;
 
-            alert('订单已提交！\n\n我们将在24小时内通过邮件联系您确认订单详情。\n\n预估费用: ' + formData.estimatedPrice);
+            // Create downloadable order file
+            const orderContent = `# 订单确认 - ${orderId}
+
+## 订单信息
+
+| 字段 | 值 |
+|------|-----|
+| 订单编号 | ${orderId} |
+| 服务类型 | ${formData.serviceName} |
+| 客户姓名 | ${formData.name} |
+| 联系邮箱 | ${formData.email} |
+| 微信号 | ${formData.wechat || '未提供'} |
+| 数量 | ${formData.quantity || '待确认'} |
+| 期望交付 | ${formData.deadline || '待确认'} |
+| 加急服务 | ${formData.urgent ? '是 (+50%)' : '否'} |
+| 预估费用 | ${formData.estimatedPrice} |
+| 提交时间 | ${new Date().toLocaleString('zh-CN')} |
+
+## 需求详情
+
+${formData.details}
+
+---
+
+## 下一步
+
+请将此订单文件发送至邮箱: contact@claudetianduan.com
+
+我们将在24小时内回复确认。
+`;
+
+            const blob = new Blob([orderContent], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `order-${orderId}.md`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            // Show confirmation
+            alert(`订单已生成！\n\n订单编号: ${orderId}\n预估费用: ${formData.estimatedPrice}\n\n订单文件已下载，请发送至 contact@claudetianduan.com\n\n我们将在24小时内回复确认。`);
+
+            console.log('Order generated:', formData);
         });
     </script>
 </body>
