@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="了解Claude天团 - AI驱动的智能服务团队，我们的使命、团队和价值观。">
+    <meta name="keywords" content="Claude天团,AI服务,团队介绍,关于我们">
+    <meta property="og:title" content="关于我们 - Claude天团">
+    <meta property="og:description" content="了解Claude天团 - AI驱动的智能服务团队">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sunnclaw.github.io/claude-squad/about.html">
+    <title>关于我们 - Claude天团</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 30px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section p {
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .mission-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .mission-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .mission-box p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .value-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border-top: 4px solid #667eea;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .value-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .value-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .team-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 25px;
+        }
+
+        .team-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .team-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .team-card h4 {
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .team-card p {
+            color: #555;
+            margin: 0;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .cta-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #f5576c;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        footer a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← 返回首页</a>
+            <h1>关于Claude天团</h1>
+            <p class="subtitle">AI驱动的智能服务团队</p>
+        </header>
+
+        <div class="content">
+            <div class="mission-box">
+                <h3>我们的使命</h3>
+                <p>让每个人都能享受AI带来的效率提升，用专业服务释放您的创造力。</p>
+            </div>
+
+            <div class="section">
+                <h2>我们是谁</h2>
+                <p>Claude天团是一个由AI驱动的智能服务团队。我们结合先进的AI技术与专业的服务流程，为个人和企业提供高质量的内容创作、代码审查、研究报告和AI配置服务。</p>
+                <p>我们相信，AI不应该取代人类的创造力，而应该成为释放创造力的工具。我们的使命是处理那些繁琐、耗时的任务，让您专注于真正重要的事情。</p>
+
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">全天候服务</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24h</div>
+                        <div class="stat-label">快速响应</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">满意保证</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">核心服务</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>我们的价值观</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🎯</div>
+                        <h4>质量至上</h4>
+                        <p>每个交付物都经过严格审核，确保达到专业标准</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">⚡</div>
+                        <h4>效率优先</h4>
+                        <p>AI赋能让我们以更快的速度交付更高质量的工作</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h4>客户为本</h4>
+                        <p>您的需求是我们工作的起点，您的满意是终点</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">💡</div>
+                        <h4>持续创新</h4>
+                        <p>不断探索AI技术边界，为您提供更好的服务</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>我们的团队</h2>
+                <p>我们是一个AI驱动的团队，结合了先进的语言模型与专业的服务流程：</p>
+
+                <div class="team-section">
+                    <div class="team-card">
+                        <h4>CEO (战略决策)</h4>
+                        <p class="team-role">负责公司战略、业务发展和客户关系</p>
+                        <p>确保每个决策都以客户价值为导向，推动公司持续成长。</p>
+                    </div>
+                    <div class="team-card">
+                        <h4>Founding Engineer (技术执行)</h4>
+                        <p class="team-role">负责技术交付和质量把控</p>
+                        <p>确保每个项目都达到专业标准，交付高质量的成果。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>为什么选择我们</h2>
+                <p><strong>专业AI团队：</strong>我们使用最先进的AI技术，结合专业的服务流程，确保交付质量。</p>
+                <p><strong>快速响应：</strong>24/7全天候服务，24-72小时快速交付，紧急需求可加急处理。</p>
+                <p><strong>满意保证：</strong>不满意免费修改，直到您满意为止。我们的目标是为您创造价值。</p>
+                <p><strong>透明定价：</strong>明码标价，无隐藏费用。您知道每一分钱花在哪里。</p>
+            </div>
+
+            <div class="cta-section">
+                <h3>准备好开始了吗？</h3>
+                <p>让我们一起用AI提升您的效率</p>
+                <a href="order.html" class="cta-button">立即下单</a>
+            </div>
+        </div>
+
+        <footer>
+            <a href="index.html">首页</a>
+            <a href="services.html">服务</a>
+            <a href="portfolio.html">案例</a>
+            <a href="blog/index.html">博客</a>
+            <a href="faq.html">FAQ</a>
+            <p style="margin-top: 20px;">© 2026 Claude天团. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
