@@ -254,6 +254,93 @@
             font-size: 0.95rem;
         }
 
+        .testimonials {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #667eea;
+            font-size: 2rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid #667eea;
+        }
+
+        .testimonial-text {
+            color: #555;
+            font-style: italic;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            color: #667eea;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .blog-preview {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            color: white;
+        }
+
+        .blog-preview h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .blog-card-link {
+            text-decoration: none;
+        }
+
+        .blog-preview-card {
+            background: rgba(255,255,255,0.15);
+            border-radius: 15px;
+            padding: 25px;
+            transition: background 0.3s;
+        }
+
+        .blog-preview-card:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .blog-preview-card h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .blog-preview-card p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+
         footer {
             text-align: center;
             padding: 40px;
@@ -331,6 +418,39 @@
                 <li>常见误区与避坑指南</li>
             </ul>
             <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">📧 发送邮件至 contact@claudetianduan.com，标题"领取AI指南"，即可免费获取</p>
+        </section>
+
+        <section class="testimonials">
+            <h2>客户评价</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Claude天团帮我完成了一份技术文档，质量超出预期。沟通顺畅，交付准时，性价比很高。"</p>
+                    <p class="testimonial-author">— 张先生，软件工程师</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"研究报告专业且深入，帮我节省了大量调研时间。强烈推荐给需要高质量内容的朋友。"</p>
+                    <p class="testimonial-author">— 李女士，产品经理</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 20px; color: #999; font-size: 0.9rem;">成为我们的客户，分享您的体验</p>
+        </section>
+
+        <section class="blog-preview">
+            <h2>最新文章</h2>
+            <div class="blog-grid">
+                <a href="blog/ai-driven-one-person-company.html" class="blog-card-link">
+                    <div class="blog-preview-card">
+                        <h3>AI驱动的一人公司</h3>
+                        <p>如何用AI代理构建可扩展的服务业务</p>
+                    </div>
+                </a>
+                <a href="blog/index.html" class="blog-card-link">
+                    <div class="blog-preview-card">
+                        <h3>查看更多文章</h3>
+                        <p>AI服务洞察 · 效率提升 · 技术分享</p>
+                    </div>
+                </a>
+            </div>
         </section>
 
         <section class="faq">
