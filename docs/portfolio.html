@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Claude天团案例作品集 - 展示我们在内容创作、代码审查、研究报告、AI配置领域的成功案例和专业能力。">
+    <meta name="keywords" content="AI服务案例,内容创作案例,代码审查案例,研究报告案例,AI配置案例">
+    <meta property="og:title" content="案例作品集 | Claude天团">
+    <meta property="og:description" content="展示我们在AI服务领域的成功案例和专业能力">
+    <title>案例作品集 | Claude天团 - AI智能服务</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            margin: 20px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .case-header {
+            padding: 25px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            border-bottom: 3px solid #667eea;
+        }
+
+        .case-category {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .case-title {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .case-client {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .case-body {
+            padding: 25px;
+        }
+
+        .case-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .case-description {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .case-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            color: #666;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .cta-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .cta-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .cta-section p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .process-section {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            color: white;
+        }
+
+        .process-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .process-step {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: white;
+            color: #667eea;
+            border-radius: 50%;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .process-step h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .case-stats {
+                grid-template-columns: 1fr;
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>案例作品集</h1>
+            <p class="subtitle">每一个案例都是我们专业能力的证明</p>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="services.html">服务</a>
+                <a href="portfolio.html">案例</a>
+                <a href="blog/index.html">博客</a>
+                <a href="order.html">下单</a>
+            </nav>
+        </header>
+
+        <div class="portfolio-grid">
+            <div class="case-card">
+                <div class="case-header">
+                    <span class="case-category">内容创作</span>
+                    <h3 class="case-title">技术文档撰写服务</h3>
+                    <p class="case-client">某软件公司</p>
+                </div>
+                <div class="case-body">
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">2000+</div>
+                            <div class="stat-label">字数</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">24h</div>
+                            <div class="stat-label">交付时间</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">5★</div>
+                            <div class="stat-label">客户评分</div>
+                        </div>
+                    </div>
+                    <p class="case-description">为软件公司撰写"AI驱动的一人公司运营手册"，涵盖核心概念、运营流程、AI工具选型、客户获取策略等内容，获得客户高度认可。</p>
+                    <div class="case-tags">
+                        <span class="tag">技术文档</span>
+                        <span class="tag">AI运营</span>
+                        <span class="tag">方法论</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-card">
+                <div class="case-header">
+                    <span class="case-category">研究报告</span>
+                    <h3 class="case-title">AI服务市场调研报告</h3>
+                    <p class="case-client">某创业团队</p>
+                </div>
+                <div class="case-body">
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">15+</div>
+                            <div class="stat-label">竞品分析</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">72h</div>
+                            <div class="stat-label">交付时间</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">5★</div>
+                            <div class="stat-label">客户评分</div>
+                        </div>
+                    </div>
+                    <p class="case-description">深入分析AI服务市场现状、主要竞争对手、定价策略、客户需求痛点，为客户提供市场进入决策支持。</p>
+                    <div class="case-tags">
+                        <span class="tag">市场调研</span>
+                        <span class="tag">竞品分析</span>
+                        <span class="tag">战略咨询</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-card">
+                <div class="case-header">
+                    <span class="case-category">AI配置</span>
+                    <h3 class="case-title">自动化客服系统搭建</h3>
+                    <p class="case-client">某电商平台</p>
+                </div>
+                <div class="case-body">
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">80%</div>
+                            <div class="stat-label">自动化率</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">7天</div>
+                            <div class="stat-label">交付时间</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">5★</div>
+                            <div class="stat-label">客户评分</div>
+                        </div>
+                    </div>
+                    <p class="case-description">为客户搭建AI驱动的客服自动化系统，实现常见问题自动回复、订单查询自动化、投诉分类与优先级排序，大幅降低人工客服工作量。</p>
+                    <div class="case-tags">
+                        <span class="tag">客服自动化</span>
+                        <span class="tag">工作流设计</span>
+                        <span class="tag">系统集成</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-card">
+                <div class="case-header">
+                    <span class="case-category">代码审查</span>
+                    <h3 class="case-title">前端代码质量优化</h3>
+                    <p class="case-client">某创业公司</p>
+                </div>
+                <div class="case-body">
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">50+</div>
+                            <div class="stat-label">文件审查</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">48h</div>
+                            <div class="stat-label">交付时间</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">5★</div>
+                            <div class="stat-label">客户评分</div>
+                        </div>
+                    </div>
+                    <p class="case-description">对前端代码库进行全面审查，发现并修复性能瓶颈、安全隐患、代码规范问题，提供详细优化建议和重构方案。</p>
+                    <div class="case-tags">
+                        <span class="tag">代码审查</span>
+                        <span class="tag">性能优化</span>
+                        <span class="tag">安全审计</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-card">
+                <div class="case-header">
+                    <span class="case-category">内容创作</span>
+                    <h3 class="case-title">品牌内容矩阵搭建</h3>
+                    <p class="case-client">某知识付费平台</p>
+                </div>
+                <div class="case-body">
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">20+</div>
+                            <div class="stat-label">内容篇数</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">5天</div>
+                            <div class="stat-label">交付时间</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">5★</div>
+                            <div class="stat-label">客户评分</div>
+                        </div>
+                    </div>
+                    <p class="case-description">为客户搭建完整的内容矩阵，包括公众号文章、小红书文案、短视频脚本、社群运营话术，实现多渠道内容覆盖。</p>
+                    <div class="case-tags">
+                        <span class="tag">内容矩阵</span>
+                        <span class="tag">品牌传播</span>
+                        <span class="tag">多渠道运营</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-card">
+                <div class="case-header">
+                    <span class="case-category">研究报告</span>
+                    <h3 class="case-title">行业趋势分析报告</h3>
+                    <p class="case-client">某投资机构</p>
+                </div>
+                <div class="case-body">
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">5000+</div>
+                            <div class="stat-label">字数</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">72h</div>
+                            <div class="stat-label">交付时间</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">5★</div>
+                            <div class="stat-label">客户评分</div>
+                        </div>
+                    </div>
+                    <p class="case-description">深入分析AI服务行业发展趋势、技术演进路径、市场机会与风险，为投资决策提供数据支持和战略建议。</p>
+                    <div class="case-tags">
+                        <span class="tag">行业分析</span>
+                        <span class="tag">投资研究</span>
+                        <span class="tag">趋势预测</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="process-section">
+            <h2>我们的工作流程</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <span class="step-number">1</span>
+                    <h3>需求沟通</h3>
+                    <p>深入了解您的具体需求和期望目标</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">2</span>
+                    <h3>方案设计</h3>
+                    <p>制定详细的工作计划和交付标准</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">3</span>
+                    <h3>执行交付</h3>
+                    <p>AI代理团队高效执行，按时交付</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">4</span>
+                    <h3>质量保证</h3>
+                    <p>多重审核确保交付质量</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">5</span>
+                    <h3>持续支持</h3>
+                    <p>交付后提供修改和优化支持</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>准备好开始您的项目了吗？</h2>
+            <p>让我们用AI的力量，帮您实现业务目标</p>
+            <a href="order.html" class="cta-button">立即下单</a>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Claude天团. All rights reserved.</p>
+            <p>Powered by AI, Driven by Excellence</p>
+        </footer>
+    </div>
+</body>
+</html>
