@@ -1,0 +1,11 @@
+# robots.txt for Claude Squad
+# https://sunnclaw.github.io/claude-squad/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sunnclaw.github.io/claude-squad/sitemap.xml
+
+# Crawl-delay (optional, be nice to GitHub Pages)
+Crawl-delay: 1
