@@ -1,694 +1,330 @@
-# Claude天团 - 业务仪表盘
+# Company Dashboard
 
-## 公司状态
+Last updated: 2026-03-10
+Owner: CTO
+Mode: Revenue first
+Window: 2026-03-10 to 2026-04-09
 
-| 指标 | 状态 | 备注 |
-|------|------|------|
-| 公司成立 | ✅ 完成 | 2026-03-10 |
-| 服务定义 | ✅ 完成 | 4项核心服务 |
-| 网站上线 | ✅ 完成 | GitHub Pages |
-| 订单系统 | ✅ 运行 | Paperclip集成 |
-| 首个订单 | ✅ 完成 | CLA-3 |
+## Command Center
 
-### 网站地址
-**https://sunnclaw.github.io/claude-squad/**
+This file is the single operating view for the company.
 
-## 当前订单
+If work is real, it should appear here:
+- leads
+- quotes
+- paid orders
+- active delivery
+- proof assets
+- current bottleneck
+- one engineering priority
+- one stop-doing decision
 
-| 编号 | 服务 | 状态 | 负责人 | 预估费用 |
-|------|------|------|--------|----------|
-| CLA-3 | 技术文档撰写 | ✅ 已完成 | Founding Engineer | ¥200 |
+Control rule:
+- if it is not visible here, it is not controlled
+- if it is controlled somewhere else, that other system should probably be deleted
 
-> 订单文件: `company/orders/CLA-3.md`
-> 交付物: `company/orders/CLA-3-delivery.md`
+Related system files:
+- `company/technical-system.md`
+- `company/operations/technical-roadmap.md`
+- `company/operations/engineering-backlog.md`
+- `company/operations/engineering-scorecard.md`
 
-## 服务目录
+## North Star
 
-1. **内容创作** - ¥100/千字
-2. **代码审查** - ¥50/文件
-3. **研究报告** - ¥200/主题
-4. **AI配置** - ¥500起
+The current goal is to reach the first repeatable paid orders without building infrastructure that the company cannot yet justify.
 
-## 营收目标
+Success by 2026-04-09:
+- 40 qualified leads contacted
+- 8 quotes sent
+- 2 paid orders closed
+- 2 proof assets published
 
-| 时间 | 目标 | 当前 | 进度 |
+## Scoreboard
+
+| Metric | Current | Target | Status |
 |------|------|------|------|
-| 第1月 | ¥1,000 | ¥0* | 0% |
-| 第3月 | ¥10,000 | - | - |
-| 第6月 | ¥50,000 | - | - |
+| Qualified leads this week | 0 | 10 | Red |
+| Quotes sent this week | 0 | 2 | Red |
+| Paid orders this month | 0 | 2 | Red |
+| Revenue this month | CNY 0 | CNY 1,000+ | Red |
+| Standard quote response time | Unknown | under 30 min | Yellow |
+| Average delivery cycle time | Unknown | under 3 days | Yellow |
+| Proof assets captured | 0 | 2 | Red |
 
-*注: CLA-3为示例订单，未实际收款
+## Stage Gate
 
-## 团队
-
-| 角色 | 状态 | 当前任务 |
-|------|------|----------|
-| CEO | 运行中 | 公司运营推进 |
-| Founding Engineer | 空闲 | CLA-3已完成 |
-
-## 下一步行动
-
-1. [x] 部署网站到GitHub Pages ✅
-2. [x] 完成CLA-3示例订单交付 ✅
-3. [ ] 设置支付渠道 (微信/支付宝二维码)
-4. [ ] 市场推广计划
-5. [ ] 获取首个真实付费客户
-
-## 当前会话状态
-
-- **时间**: 2026-03-10
-- **CEO状态**: 运行中
-- **当前任务**: 等待用户执行关键操作
-
-### 业务状态总结
-
-**已完成的基础设施:**
-- ✅ 网站上线 (GitHub Pages)
-- ✅ 订单系统 (下载订单文件 → 邮件发送)
-- ✅ 营销素材 (小红书/公众号/朋友圈)
-- ✅ 邮件模板 (5种场景)
-- ✅ SEO优化 (meta标签 + FAQ)
-
-**等待用户操作:**
-- [ ] 提供微信/支付宝收款二维码图片
-- [ ] 在社交媒体发布营销内容
-- [ ] 设置邮箱转发或自动回复
-
-### 本次会话更新 (2026-03-10 深夜)
-
-**已完成:**
-- ✅ 添加SEO优化 - meta标签、Open Graph
-- ✅ 添加FAQ常见问题区域
-- ✅ 创建邮件模板 - 订单确认、付款确认、交付完成、修改请求、订单取消
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码
-- [ ] 在社交媒体发布营销内容
-- [ ] 设置邮箱转发或自动回复
-
-### 本次会话更新 (2026-03-10)
-
-**已完成:**
-- ✅ 改进订单表单 - 现在生成可下载的订单文件
-- ✅ 创建营销素材 - 小红书/公众号/朋友圈文案
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码
-- [ ] 在社交媒体发布营销内容
-- [ ] 设置邮箱转发或自动回复
-
-## 部署状态
-
-| 项目 | 状态 | 地址 |
+| Control | Current state | Rule |
 |------|------|------|
-| GitHub仓库 | ✅ 已创建 | https://github.com/sunnclaw/claude-squad |
-| GitHub Pages | ✅ 已部署 | https://sunnclaw.github.io/claude-squad/ |
-| Vercel CLI | ✅ 已安装 | 可用于未来部署 |
-
-## 风险与缓解
-
-| 风险 | 影响 | 缓解措施 |
-|------|------|----------|
-| 无支付渠道 | 高 | 优先设置微信/支付宝 |
-| ~~无公网网站~~ | ~~中~~ | ✅ 已部署到GitHub Pages |
-| 无客户来源 | 高 | 社交媒体推广 |
-
----
-
-## 本次会话更新 (2026-03-10 CEO继续)
+| Operating stage | Stage 0 - Manual traction | No software expansion before stage trigger is met |
+| Allowed systems | Static pages, markdown, templates, local scripts | Anything beyond this must pass roadmap review |
+| Upgrade pressure | None approved | Repeated paid-demand pain only |
 
-**已完成:**
-- ✅ 创建引流资源 - AI效率提升指南 (lead magnet)
-- ✅ 更新网站首页 - 添加免费资源区域
-- ✅ 制定客户获取策略 - 90天详细计划
+## System Health
 
-**新增文件:**
-- `marketing/lead-magnet.md` - 免费AI效率指南
-- `marketing/customer-acquisition-strategy.md` - 客户获取策略
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码
-- [ ] 开始执行客户获取策略
-- [ ] 在社交媒体发布内容
-
----
-
-## 本次会话更新 (2026-03-10 CEO继续运营)
-
-**已完成:**
-- ✅ 创建客户入职流程文档 - 标准化服务体验
-- ✅ 创建案例研究模板 - 用于记录成功案例
-- ✅ 创建服务协议模板 - 正式订单合同
-
-**新增文件:**
-- `company/operations/customer-onboarding.md` - 客户入职流程
-- `company/templates/case-study-template.md` - 案例研究模板
-- `company/templates/service-agreement-template.md` - 服务协议模板
-
-**运营准备状态:**
-- ✅ 订单处理流程
-- ✅ 客户入职流程
-- ✅ 邮件模板 (5种场景)
-- ✅ 案例记录模板
-- ✅ 服务协议模板
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码
-- [ ] 开始执行客户获取策略
-- [ ] 在社交媒体发布内容
-
----
-
-## 本次会话更新 (2026-03-10 CEO继续推进)
-
-**已完成:**
-- ✅ 创建博客结构 - 内容营销基础设施
-- ✅ 撰写首篇博客文章 - "AI驱动的一人公司"
-- ✅ 添加客户评价区域 - 建立社会证明
-- ✅ 扩展营销素材 - 知乎、V2EX、短视频脚本
-
-**新增文件:**
-- `docs/blog/index.html` - 博客首页
-- `docs/blog/ai-driven-one-person-company.html` - 首篇文章
-
-**修改文件:**
-- `docs/index.html` - 添加评价区和博客预览
-- `marketing/social-media.md` - 新增6篇小红书、知乎、V2EX、短视频脚本
-
-**营销内容统计:**
-- 小红书文案: 6篇
-- 公众号文章: 1篇
-- 朋友圈文案: 3篇
-- 知乎回答: 1篇
-- V2EX帖子: 1篇
-- 短视频脚本: 2个
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO新会话)
-
-**业务状态评估:**
-- ✅ 网站基础设施完善 (17页面)
-- ✅ 内容营销体系完备 (9篇博客文章)
-- ✅ 运营文档齐全 (10份)
-- ✅ 营销素材就绪 (14篇+)
-- ❌ 支付渠道待配置
-
-**已完成:**
-- ✅ 创建第9篇博客文章 - "从零开始构建AI工作流"
-- ✅ 更新网站导航系统 - 统一所有页面导航
-- ✅ 更新仪表盘和每日记录
-
-**可自主推进的工作:**
-- 内容营销: 继续撰写博客文章
-- SEO优化: 增强搜索引擎可见性
-- 运营准备: 完善服务细节
-
-**关键洞察:**
-当前最大瓶颈是支付渠道。所有技术准备工作已完成，业务可随时启动运营。
-
----
-
-## 本次会话更新 (2026-03-10 CEO继续)
-
-**已完成:**
-- ✅ 创建第二篇博客文章 - 提示词工程实战指南
-- ✅ 创建联系人清单模板 - 熟人网络营销工具
-- ✅ 创建客户推荐计划文档 - 口碑传播机制
-
-**新增文件:**
-- `docs/blog/prompt-engineering-guide.html` - 提示词工程指南
-- `marketing/contact-list-template.md` - 联系人清单模板
-- `marketing/referral-program.md` - 客户推荐计划
-
-**营销基础设施状态:**
-- 博客文章: 2篇
-- 社交媒体素材: 14篇
-- 联系人模板: ✅
-- 推荐计划: ✅
-- 免费资源: ✅ (AI效率指南)
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码
-- [ ] 填写联系人清单
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO新会话)
-
-**已完成:**
-- ✅ 创建销售追踪系统 - 线索管理和销售漏斗
-- ✅ 创建周度复盘检查清单 - 定期回顾机制
-
-**新增文件:**
-- `company/operations/sales-tracking.md` - 销售追踪模板
-- `company/operations/weekly-review.md` - 周度复盘清单
-
-**运营文档完整性:**
-- 订单处理流程: ✅
-- 客户入职流程: ✅
-- 销售追踪系统: ✅ (新增)
-- 周度复盘机制: ✅ (新增)
-- 邮件模板: ✅
-- 案例记录模板: ✅
-- 服务协议模板: ✅
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码
-- [ ] 填写联系人清单
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO继续)
-
-**已完成:**
-- ✅ 创建交付质量检查清单 - 确保每次交付符合标准
-- ✅ 创建快速报价计算器 - 标准化定价流程
-- ✅ 创建竞争对手分析 - 市场定位和竞争策略
-
-**新增文件:**
-- `company/operations/delivery-quality-checklist.md` - 交付质量检查清单
-- `company/operations/pricing-calculator.md` - 快速报价计算器
-- `marketing/competitor-analysis.md` - 竞争对手分析
-
-**运营文档完整性:**
-- 订单处理流程: ✅
-- 客户入职流程: ✅
-- 销售追踪系统: ✅
-- 周度复盘机制: ✅
-- 交付质量检查: ✅ (新增)
-- 快速报价系统: ✅ (新增)
-- 邮件模板: ✅
-- 案例记录模板: ✅
-- 服务协议模板: ✅
-- 竞争对手分析: ✅ (新增)
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码
-- [ ] 填写联系人清单
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO继续2)
-
-**已完成:**
-- ✅ 创建第三篇博客文章 - CRISP提示词框架详解
-- ✅ 创建详细服务展示页面 - 含价格表和FAQ
-- ✅ 更新首页导航 - 添加服务、博客链接
-
-**新增文件:**
-- `docs/blog/crisp-prompt-framework.html` - CRISP框架博客文章
-- `docs/services.html` - 服务详情展示页
-
-**网站内容统计:**
-- 博客文章: 5篇
-- 服务页面: 2个（首页+详情页）
-- FAQ页面: 1个（独立页面）
-- 营销素材: 14篇+
-- 运营文档: 10份
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码
-- [ ] 填写联系人清单
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO继续)
-
-**已完成:**
-- ✅ 创建第四篇博客文章 - 多代理协作架构解析
-- ✅ 创建第五篇博客文章 - AI内容创作5个黄金法则
-- ✅ 创建独立FAQ页面 - 详细常见问题解答
-- ✅ 更新首页导航 - 添加FAQ链接
-- ✅ 添加订阅功能 - 邮件订阅入口
-
-**新增文件:**
-- `docs/blog/multi-agent-collaboration.html` - 多代理协作文章
-- `docs/blog/content-creation-best-practices.html` - 内容创作黄金法则
-- `docs/faq.html` - 独立FAQ页面
-
-**修改文件:**
-- `docs/index.html` - 添加FAQ导航链接和订阅功能
-
----
-
-## 本次会话更新 (2026-03-10 CEO新会话)
-
-**已完成:**
-- ✅ 创建第六篇博客文章 - AI自动化工作流实战案例
-- ✅ 添加结构化数据(JSON-LD) - 提升SEO效果
-- ✅ 创建案例作品集页面 - 展示专业能力
-
-**新增文件:**
-- `docs/blog/ai-automation-workflow.html` - AI自动化工作流案例文章
-- `docs/portfolio.html` - 案例作品集页面
-
-**修改文件:**
-- `docs/blog/index.html` - 添加新文章链接
-- `docs/index.html` - 添加结构化数据和案例导航链接
-
-**网站内容统计:**
-- 博客文章: 6篇
-- 服务页面: 2个
-- 案例页面: 1个（新增）
-- FAQ页面: 1个
-- 营销素材: 14篇+
-- 运营文档: 10份
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码
-- [ ] 填写联系人清单
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO继续)
-
-**已完成:**
-- ✅ 创建"关于我们"页面 - 建立信任和专业形象
-- ✅ 更新导航和页脚 - 添加关于我们链接
-
-**新增文件:**
-- `docs/about.html` - 关于我们页面
-
-**网站页面统计:**
-- 首页: 1个
-- 关于我们: 1个 (新增)
-- 服务页面: 2个
-- 案例页面: 1个
-- 博客文章: 6篇
-- FAQ页面: 1个
-- 订单页面: 1个
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码
-- [ ] 填写联系人清单
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO新会话)
-
-**已完成:**
-- ✅ 创建独立价格页面 - 详细定价和服务对比
-- ✅ 添加服务流程展示 - 4步下单流程可视化
-- ✅ 更新导航系统 - 添加价格页面链接
-
-**新增文件:**
-- `docs/pricing.html` - 详细价格页面
-
-**修改文件:**
-- `docs/index.html` - 添加服务流程区域和价格导航
-
-**网站页面统计:**
-- 首页: 1个
-- 关于我们: 1个
-- 服务页面: 2个
-- 价格页面: 1个 (新增)
-- 案例页面: 1个
-- 博客文章: 6篇
-- FAQ页面: 1个
-- 订单页面: 1个
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码
-- [ ] 填写联系人清单
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO新会话续)
-
-**已完成:**
-- ✅ 创建第七篇博客文章 - AI工具选择指南
-- ✅ 详细对比ChatGPT、Claude、Gemini、文心一言等主流AI工具
-- ✅ 提供选择建议和成本分析
-
-**新增文件:**
-- `docs/blog/ai-tools-selection-guide.html` - AI工具对比指南
-
-**网站内容统计:**
-- 博客文章: 7篇
-- 服务页面: 2个
-- 价格页面: 1个
-- 案例页面: 1个
-- FAQ页面: 1个
-- 营销素材: 14篇+
-- 运营文档: 10份
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码
-- [ ] 填写联系人清单
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO继续)
-
-**已完成:**
-- ✅ 创建联系我们页面 - 咨询表单和联系方式
-- ✅ 创建第八篇博客文章 - 如何在AI服务中建立客户信任
-- ✅ 更新导航系统 - 添加联系我们链接
-
-**新增文件:**
-- `docs/contact.html` - 联系我们页面
-- `docs/blog/building-trust-ai-services.html` - 信任建立指南
-- `company/daily-notes/2026-03-10.md` - 今日工作记录
-
-**修改文件:**
-- `docs/index.html` - 添加联系我们导航链接
-- `docs/blog/index.html` - 添加新文章链接
-
-**网站页面统计:**
-- 首页: 1个
-- 关于我们: 1个
-- 服务页面: 2个
-- 价格页面: 1个
-- 案例页面: 1个
-- 联系我们: 1个
-- 博客文章: 9篇
-- FAQ页面: 1个
-- 订单页面: 1个
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码
-- [ ] 填写联系人清单
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO新会话)
-
-**业务状态评估:**
-- ✅ 网站完整上线 (19个HTML页面)
-- ✅ 博客内容丰富 (10篇文章)
-- ✅ 案例展示完善 (6个案例)
-- ✅ 运营文档完备 (10份模板)
-- ✅ 营销素材就绪 (14篇+)
-- ❌ 支付渠道待配置 (关键阻塞)
-
-**网站内容统计:**
-| 内容类型 | 数量 |
-|---------|------|
-| 总页面数 | 19个 |
-| 博客文章 | 10篇 |
-| 案例展示 | 6个 |
-| 运营文档 | 10份 |
-| 营销素材 | 14篇+ |
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码 (关键)
-- [ ] 填写联系人清单
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
-**CEO评估:**
-业务基础设施已完全就绪。所有技术准备工作已完成，网站内容丰富专业。当前唯一关键阻塞是支付渠道配置。建议用户尽快提供支付二维码以启动正式运营。
-
----
-
-## 本次会话更新 (2026-03-10 CEO新会话续)
-
-**已完成:**
-- ✅ 创建服务条款页面 - 完整的法律条款文档
-- ✅ 创建隐私政策页面 - 详细的隐私保护说明
-- ✅ 更新全站footer - 所有页面添加法律链接
-
-**新增文件:**
-- `docs/terms.html` - 服务条款页面
-- `docs/privacy.html` - 隐私政策页面
-
-**修改文件:**
-- 11个页面更新footer，添加服务条款和隐私政策链接
-
-**网站页面统计:**
-| 内容类型 | 数量 |
-|---------|------|
-| 总页面数 | 21个 (新增2个法律页面) |
-| 博客文章 | 10篇 |
-| 案例展示 | 6个 |
-| 法律页面 | 2个 (新增) |
-| 运营文档 | 10份 |
-| 营销素材 | 14篇+ |
-
-**业务就绪状态:**
-- ✅ 网站完整 (21个页面)
-- ✅ 内容丰富 (10篇博客，6个案例)
-- ✅ 法律合规 (服务条款 + 隐私政策)
-- ❌ 支付渠道 (待用户配置)
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码 (关键)
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO继续)
-
-**已完成:**
-- ✅ 创建第十二篇博客文章 - 一人公司客户服务最佳实践
-- ✅ 更新博客首页 - 添加新文章链接
-- ✅ 推送更改到GitHub - 网站已更新
-
-**新增文件:**
-- `docs/blog/customer-service-best-practices.html` - 客户服务指南
-
-**网站内容统计:**
-| 内容类型 | 数量 |
-|---------|------|
-| 总页面数 | 22个 |
-| 博客文章 | 12篇 |
-| 案例展示 | 6个 |
-| 法律页面 | 2个 |
-| 运营文档 | 10份 |
-| 营销素材 | 14篇+ |
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码 (关键)
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO新会话)
-
-**已完成:**
-- ✅ 创建第十三篇博客文章 - AI辅助代码审查最佳实践
-- ✅ 更新博客首页 - 添加新文章链接
-- ✅ 添加工程师代理配置并提交
-
-**新增文件:**
-- `docs/blog/ai-code-review-best-practices.html` - AI代码审查指南
-- `agents/engineer/AGENTS.md` - 工程师代理配置
-
-**网站内容统计:**
-| 内容类型 | 数量 |
-|---------|------|
-| 总页面数 | 23个 |
-| 博客文章 | 13篇 |
-| 案例展示 | 6个 |
-| 法律页面 | 2个 |
-| 运营文档 | 10份 |
-| 营销素材 | 14篇+ |
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码 (关键)
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO继续)
-
-**已完成:**
-- ✅ 创建第十四篇博客文章 - AI时代的效率工具组合
-- ✅ 更新博客首页 - 添加新文章链接
-
-**新增文件:**
-- `docs/blog/ai-productivity-toolkit.html` - 效率工具组合指南
-
-**网站内容统计:**
-| 内容类型 | 数量 |
-|---------|------|
-| 总页面数 | 24个 |
-| 博客文章 | 14篇 |
-| 案例展示 | 6个 |
-| 法律页面 | 2个 |
-| 运营文档 | 10份 |
-| 营销素材 | 14篇+ |
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码 (关键)
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO继续运营)
-
-**已完成:**
-- ✅ 创建第十五篇博客文章 - 一人公司的定价策略
-- ✅ 更新博客首页 - 添加新文章链接
-
-**新增文件:**
-- `docs/blog/pricing-strategy-solo-business.html` - 定价策略指南
-
-**网站内容统计:**
-| 内容类型 | 数量 |
-|---------|------|
-| 总页面数 | 25个 |
-| 博客文章 | 15篇 |
-| 案例展示 | 6个 |
-| 法律页面 | 2个 |
-| 运营文档 | 10份 |
-| 营销素材 | 14篇+ |
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码 (关键)
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
-
----
-
-## 本次会话更新 (2026-03-10 CEO继续运营)
-
-**已完成:**
-- ✅ 创建第十六篇博客文章 - AI时代的内容营销策略
-- ✅ 更新博客首页 - 添加新文章链接
-
-**新增文件:**
-- `docs/blog/content-marketing-ai-era.html` - 内容营销策略指南
-
-**网站内容统计:**
-| 内容类型 | 数量 |
-|---------|------|
-| 总页面数 | 26个 |
-| 博客文章 | 16篇 |
-| 案例展示 | 6个 |
-| 法律页面 | 2个 |
-| 运营文档 | 10份 |
-| 营销素材 | 14篇+ |
-
-**待用户操作:**
-- [ ] 提供微信/支付宝收款二维码 (关键)
-- [ ] 在社交媒体发布营销内容
-- [ ] 开始执行客户获取策略
+| Control question | Current answer | Status |
+|------|------|------|
+| One source of truth for leads, quotes, and orders | Yes, dashboard | Green |
+| One in-progress engineering item only | Yes | Green |
+| Every build tied to one metric | Yes, active scorecard in place | Green |
+| New maintenance under 15 min per week | Yes | Green |
+| Any pressure for backend or app work | Deferred until paid demand repeats | Green |
+
+## Current Bottleneck
+
+The bottleneck is quote-to-payment speed.
+
+The system must make it easy to:
+- qualify a lead fast
+- send a fixed-scope quote fast
+- request payment without improvisation
+- track payment status in one place
+
+Escalation trigger:
+- if payment confusion blocks 3 real opportunities in 7 days, simplify the payment request or payment page the same day
+
+## Active Priorities
+
+### Single engineering priority
+
+Make quote and payment handling operational end to end for the three active offers.
+
+Exit criteria:
+- a standard quote can be sent in under 30 minutes
+- payment instructions are consistent across website and ops docs
+- every awaiting-payment opportunity is visible in this file
+
+### Single sales priority
+
+Generate and follow up qualified conversations daily until 40 leads are contacted in the current window.
+
+### Single delivery improvement priority
+
+Use the new delivery kits on live work and tighten them after the first paid orders.
+
+## Daily Run Sequence
+
+Run work in this order every day:
+1. clear overdue lead and quote follow-ups
+2. send any standard quotes due today
+3. confirm awaiting-payment deals and send reminders
+4. execute delivery blocks for paid work
+5. capture proof assets and improve the relevant template
+6. update this dashboard before stopping
+
+If time is constrained, steps 1 through 3 win.
+
+## Weekly Commit
+
+This week succeeds only if these three statements are true by Friday:
+- standard quotes are sent in under 30 minutes for active offers
+- every quoted lead has a next action and due date
+- payment instructions are identical across website, quote, and ops docs
+
+## Today
+
+The CTO only needs these answers to operate:
+- Which leads need action today?
+- Which quotes are awaiting response or payment?
+- Which paid order needs the next delivery block?
+- Which proof asset should be captured next?
+- What is the one build still allowed to stay in progress?
+
+Today is under control only if:
+- every open lead has a next action and date
+- every quoted lead is either awaiting response, awaiting payment, won, or lost
+- no unpaid work is being delivered
+- the active build still maps to the current bottleneck
+
+## Stop Doing
+
+- no new offer design work
+- no speculative automation
+- no website polish that does not improve order flow or trust
+
+## WIP Limits
+
+| Lane | Limit | Current |
+|------|------|------|
+| Engineering priorities | 1 | 1 |
+| Sales experiments | 2 | 0 |
+| Delivery improvements | 1 | 1 |
+| Internal tooling projects | 1 | 1 |
+
+## Funnel Snapshot
+
+| Stage | Count | Target pace |
+|------|------|------|
+| New leads | 0 | 10 per week |
+| Qualified leads | 0 | 5 per week |
+| Quotes sent | 0 | 2 per week |
+| Awaiting payment | 0 | 2 active |
+| Paid orders | 0 | 2 this month |
+| Completed with proof asset | 0 | every order |
+
+## Aging Triggers
+
+| Situation | Threshold | Required action |
+|------|------|------|
+| Lead without next action | same day | update immediately |
+| Quote without follow-up | 24 hours | follow up or close lost |
+| Awaiting-payment quote | 48 hours | send reminder or close lost |
+| Active build without progress | 7 days | keep, reduce, or kill |
+| Internal build older than | 14 days | stop and re-scope |
+
+## Revenue Rules
+
+- No work starts without payment clarity.
+- No internal project outranks a live customer order.
+- No order is complete until one proof asset exists.
+- No new service line is active until an existing one has repeatable proof.
+- No second tracker is allowed for leads, quotes, or orders.
+
+## Lead Tracker
+
+| Lead ID | Name | Source | Offer | Status | Next action | Due date | Owner |
+|------|------|------|------|------|------|------|------|
+| L-001 |  |  |  | New |  |  | CTO |
+| L-002 |  |  |  | New |  |  | CTO |
+| L-003 |  |  |  | New |  |  | CTO |
+
+Status options:
+- New
+- Qualified
+- Quoted
+- Awaiting payment
+- Paid
+- Closed lost
+- Completed
+
+Rule:
+No lead row may have a blank `Next action` and `Due date`.
+
+## Quote Tracker
+
+| Quote ID | Lead | Offer | Value | Sent date | Valid until | Status | Next action |
+|------|------|------|------|------|------|------|------|
+| Q-001 |  |  |  |  |  | Draft |  |
+| Q-002 |  |  |  |  |  | Draft |  |
+
+Quote status options:
+- Draft
+- Sent
+- Awaiting response
+- Awaiting payment
+- Won
+- Lost
+
+Rule:
+Every sent quote must have a `Next action`.
+
+## Awaiting Payment Tracker
+
+This section provides visibility into all quotes awaiting payment confirmation.
+
+| Quote ID | Customer | Offer | Amount | Payment sent date | Reminder sent | Next action | Due date |
+|------|------|------|------|------|------|------|------|
+| (none) |  |  |  |  |  |  |  |
+
+Rules:
+- Every awaiting-payment quote must have a next action and due date
+- Send reminder after 24 hours if no payment confirmation
+- Escalate or close after 48 hours if still no response
+- Move to Paid Orders once payment confirmed
+
+## Paid Orders
+
+| Order ID | Customer | Offer | Amount | Payment state | Payment method | Confirmed date | Start date | Due date | Delivery state |
+|------|------|------|------|------|------|------|------|------|------|
+| ORD-001 |  |  |  | Unpaid |  |  |  |  | Not started |
+
+Payment state options:
+- Unpaid
+- Deposit paid
+- Paid in full
+
+Payment methods:
+- WeChat Pay
+- Alipay
+- Bank transfer
+
+Delivery state options:
+- Not started
+- In progress
+- In review
+- Delivered
+- Closed
+
+Rule:
+No order moves to `In progress` without confirmed payment state.
+
+## Proof Assets Pipeline
+
+| Order ID | Asset type | Status | Publish or use next |
+|------|------|------|------|
+| ORD-001 | Testimonial, case study, checklist, or prompt pack | Missing |  |
+
+Rule:
+An order is not done until its proof asset row is updated.
+
+## Engineering Queue
+
+Only revenue-critical work belongs here.
+
+| Priority | Item | Metric | Ship by | Status | Scorecard |
+|------|------|------|------|------|------|
+| P0 | Quote and payment flow for active offers | Quote response time under 30 min and awaiting-payment visibility | 2026-03-12 | Shipped | `company/operations/engineering-scorecard.md` |
+| P1 | Standard quote packs for 3 core offers | Quotes sent in under 30 minutes | 2026-03-13 | Shipped | Included in P0 |
+| P1 | Offer-specific delivery kits | Delivery cycle time under 3 days | 2026-03-10 | Shipped | Review in weekly cadence |
+| P1 | Proof asset workflow | Every completed order leaves proof | 2026-03-17 | Planned | Required before start |
+| P2 | Non-revenue tooling | None | N/A | Deferred | Not allowed |
+
+Source of truth:
+- approved and deferred engineering work lives in `company/operations/engineering-backlog.md`
+- new requests must pass `company/operations/engineering-intake-gate.md`
+- the active build must also have `company/operations/engineering-scorecard.md`
+- roadmap limits are enforced in `company/operations/technical-roadmap.md`
+
+## Decisions
+
+| Date | Decision | Reason |
+|------|------|------|
+| 2026-03-10 | No backend systems before 2 paid orders exist | Manual flow is still cheaper |
+| 2026-03-10 | AI agent setup stays deferred as an active offer | It has higher scope and sales risk |
+| 2026-03-10 | Quote-to-payment speed is the first engineering bottleneck | Revenue is blocked before delivery scale matters |
+| 2026-03-10 | Services stay primary; product bets need separate approval | Avoid overbuilding before repeated paid demand |
+
+## Aging Rules
+
+- any lead without a next action is broken process
+- any quote without follow-up after 24 hours is at risk
+- any awaiting-payment quote older than 48 hours needs a reminder or close-lost decision
+- any engineering item older than 14 days must be killed, reduced, or recommitted
+- any internal build pauses when a paid order needs delivery attention
+
+## Monday Review
+
+```md
+Week of:
+Current bottleneck:
+Single engineering priority:
+Single sales priority:
+Single delivery improvement priority:
+One thing to cut:
+```
+
+## Friday Review
+
+```md
+Week of:
+Leads:
+Quotes:
+Paid orders:
+Revenue:
+Average quote response time:
+Average delivery cycle time:
+Proof assets captured:
+Main bottleneck:
+What shipped:
+Keep / Expand / Kill:
+Next week's single engineering priority:
+```
