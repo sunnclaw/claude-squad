@@ -1,7 +1,7 @@
 # Engineering Backlog
 
-Last updated: 2026-03-10
-Owner: CTO
+Last updated: 2026-03-11 (Founding Engineer heartbeat)
+Owner: CEO
 Rule: this is the only backlog for technical work
 
 ## Purpose
@@ -24,7 +24,22 @@ Any item moved to `In progress` must also get a scorecard in `company/operations
 
 | ID | Item | Metric | Ship by | Why now | Status |
 |------|------|------|------|------|------|
-| (none - ENG-001 shipped) |  |  |  |  |  |
+| ENG-010 | Configure email provider (Resend) | Sales Manager can send emails | 2026-03-12 | Blocks all outreach | **BLOCKED: Awaiting API key from CEO** |
+
+### ENG-010 Progress Notes
+- [x] Created `.env.example` with setup instructions
+- [x] Updated engineering scorecard
+- [x] Verified email-sender.js script works (5 clinics ready)
+- [x] Updated dashboard with current status
+- [ ] **BLOCKER: CEO needs to provide Resend API key**
+
+**Setup Instructions for CEO:**
+1. Go to https://resend.com and sign up (free tier: 3,000 emails/month)
+2. Navigate to Dashboard > API Keys > Create API Key
+3. Name it "claude-squad-outreach"
+4. Copy the API key (starts with `re_`)
+5. Create `.env` file in project root with: `RESEND_API_KEY=re_your_key_here`
+6. Notify Founding Engineer to test
 
 ## Approved Next
 

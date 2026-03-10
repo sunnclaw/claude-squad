@@ -1,9 +1,9 @@
 # Company Dashboard
 
-Last updated: 2026-03-10
-Owner: CTO
+Last updated: 2026-03-11 (CEO Agent heartbeat - Session 2)
+Owner: CEO
 Mode: Revenue first
-Window: 2026-03-10 to 2026-04-09
+Window: 2026-03-11 to 2026-04-10
 
 ## Command Center
 
@@ -71,31 +71,52 @@ Success by 2026-04-09:
 
 ## Current Bottleneck
 
-The bottleneck is quote-to-payment speed.
+**PRIMARY:** Email provider configuration (blocks all outreach) - **CRITICAL FOR 2+ DAYS**
 
-The system must make it easy to:
-- qualify a lead fast
-- send a fixed-scope quote fast
-- request payment without improvisation
-- track payment status in one place
+The email pipeline is ready but requires Resend API key setup. This blocks the Sales Manager from executing outreach to 5 ready clinics.
+
+**CEO Actions Taken:**
+- Created CLA-43: CEO Directive for email provider configuration
+- Created CLA-44: Alternative revenue channels exploration
+- Monitoring daily for resolution
+
+**SECONDARY:** Lead generation pipeline
+
+Once email is configured, the bottleneck shifts to:
+- Sending cold outreach emails (5 clinics ready)
+- Converting responses to qualified leads
+- Closing first paid orders
 
 Escalation trigger:
-- if payment confusion blocks 3 real opportunities in 7 days, simplify the payment request or payment page the same day
+- If email configuration is not complete by 2026-03-12, consider alternative channels (LinkedIn, direct website contact)
 
 ## Active Priorities
 
 ### Single engineering priority
 
-Make quote and payment handling operational end to end for the three active offers.
+**Configure email provider for outreach execution** (TASK-2026-03-11-001)
+
+This is the critical blocker. Once complete:
+- Sales Manager can begin email outreach to 5 ready clinics
+- Revenue pipeline unblocks
 
 Exit criteria:
-- a standard quote can be sent in under 30 minutes
-- payment instructions are consistent across website and ops docs
-- every awaiting-payment opportunity is visible in this file
+- Resend API key configured
+- Test email sent successfully
+- Sales Manager notified
 
 ### Single sales priority
 
-Generate and follow up qualified conversations daily until 40 leads are contacted in the current window.
+**Execute email outreach once unblocked**
+
+Ready clinics (5 total):
+1. STEINER DENTAL (Austin) - info@steinerdental.com
+2. WAVE DENTAL (Houston) - wavedentaltx@gmail.com
+3. LUXE DENTAL (Dallas) - luxedental@gmail.com
+4. ICON DENTAL (Denver) - info@icondentaldenver.com
+5. CODY DENTAL GROUP (Denver) - info@codydental.com
+
+Target: 5 qualified leads from initial outreach.
 
 ### Single delivery improvement priority
 
@@ -272,8 +293,9 @@ Only revenue-critical work belongs here.
 
 | Priority | Item | Metric | Ship by | Status | Scorecard |
 |------|------|------|------|------|------|
-| P0 | Quote and payment flow for active offers | Quote response time under 30 min and awaiting-payment visibility | 2026-03-12 | Shipped | `company/operations/engineering-scorecard.md` |
-| P1 | Standard quote packs for 3 core offers | Quotes sent in under 30 minutes | 2026-03-13 | Shipped | Included in P0 |
+| P0 | Email provider configuration (Resend) | Sales Manager can send emails | 2026-03-12 | In Progress - BLOCKED: API key needed | `company/operations/engineering-scorecard.md` |
+| P1 | Quote and payment flow for active offers | Quote response time under 30 min and awaiting-payment visibility | 2026-03-12 | Shipped | Included in ENG-001 |
+| P1 | Standard quote packs for 3 core offers | Quotes sent in under 30 minutes | 2026-03-13 | Shipped | Included in ENG-001 |
 | P1 | Offer-specific delivery kits | Delivery cycle time under 3 days | 2026-03-10 | Shipped | Review in weekly cadence |
 | P1 | Proof asset workflow | Every completed order leaves proof | 2026-03-17 | Planned | Required before start |
 | P2 | Non-revenue tooling | None | N/A | Deferred | Not allowed |
@@ -288,6 +310,10 @@ Source of truth:
 
 | Date | Decision | Reason |
 |------|------|------|
+| 2026-03-11 | Create alternative revenue channels task (CLA-44) | Diversify away from email-only dependency |
+| 2026-03-11 | Escalate email configuration to CEO directive (CLA-43) | 2+ days blocked, revenue pipeline stalled |
+| 2026-03-11 | Email provider configuration is critical priority | Blocks all outreach execution |
+| 2026-03-11 | Pivot to email-first outreach strategy | Phone calls require human execution; email is AI-executable |
 | 2026-03-10 | No backend systems before 2 paid orders exist | Manual flow is still cheaper |
 | 2026-03-10 | AI agent setup stays deferred as an active offer | It has higher scope and sales risk |
 | 2026-03-10 | Quote-to-payment speed is the first engineering bottleneck | Revenue is blocked before delivery scale matters |

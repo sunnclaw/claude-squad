@@ -72,6 +72,60 @@ Next action:
 ```md
 # Engineering Scorecard
 
+ID: ENG-010
+Date opened: 2026-03-11
+Owner: Founding Engineer
+
+Build:
+Configure email provider (Resend) for sales outreach
+
+Current bottleneck:
+Email outreach is completely blocked - Sales Manager cannot contact 5 ready clinics
+
+Revenue metric:
+Sales Manager can send emails to qualified leads
+
+Baseline:
+- leads: 0 this week
+- quotes: 0 this week
+- awaiting payment: 0 visible
+- paid orders: 0 this month
+- delivery cycle time: unknown
+- proof assets: 0
+
+Problem evidence:
+- times observed in last 7 days: 2+ days blocked
+- customer or revenue impact: 5 clinics ready but cannot be contacted
+- current manual workaround: None - requires human action to get API key
+
+Smallest shippable version:
+1. Create .env.example file with setup instructions
+2. Document setup process clearly
+3. Test email pipeline once API key is provided
+
+Ship deadline:
+2026-03-12
+
+Maintenance budget:
+- expected weekly maintenance minutes: 5
+
+Deliverables:
+- `.env.example` - Template file with setup instructions
+
+Blocker:
+HUMAN ACTION REQUIRED: Sign up for Resend and add API key to .env file
+
+Next action:
+Wait for CEO to provide API key, then test email sending
+```
+
+## Shipped Scorecards
+
+### ENG-001 (Shipped 2026-03-10)
+
+```md
+# Engineering Scorecard
+
 ID: ENG-001
 Date opened: 2026-03-10
 Date shipped: 2026-03-10
