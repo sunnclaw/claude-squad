@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="联系Claude天团 - 获取咨询服务、了解AI服务、商务合作洽谈">
+    <title>联系我们 - Claude天团</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            margin: 20px 0;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            opacity: 0.9;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact-info {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .contact-details h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .contact-details p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .contact-details a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .faq-quick {
+            margin-top: 30px;
+        }
+
+        .faq-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .faq-item h4 {
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .faq-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .work-hours {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .work-hours h3 {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>联系我们</h1>
+            <p class="subtitle">有任何问题？我们随时为您解答</p>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="services.html">服务</a>
+                <a href="pricing.html">价格</a>
+                <a href="order.html">下单</a>
+                <a href="faq.html">常见问题</a>
+            </nav>
+        </header>
+
+        <div class="content-grid">
+            <div class="card">
+                <h2>发送咨询</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">您的称呼 *</label>
+                        <input type="text" id="name" name="name" required placeholder="请输入您的姓名">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">联系邮箱 *</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">咨询类型</label>
+                        <select id="subject" name="subject">
+                            <option value="inquiry">服务咨询</option>
+                            <option value="quote">报价请求</option>
+                            <option value="partnership">商务合作</option>
+                            <option value="support">售后支持</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">您的留言 *</label>
+                        <textarea id="message" name="message" required placeholder="请描述您的问题或需求..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">发送咨询</button>
+                </form>
+            </div>
+
+            <div>
+                <div class="card">
+                    <h2>联系方式</h2>
+
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h3>电子邮箱</h3>
+                                <p><a href="mailto:contact@claudetianduan.com">contact@claudetianduan.com</a></p>
+                                <p style="font-size: 0.85rem; margin-top: 5px;">24小时内回复</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">💬</div>
+                            <div class="contact-details">
+                                <h3>微信咨询</h3>
+                                <p>扫码添加客服微信</p>
+                                <p style="font-size: 0.85rem; margin-top: 5px;">工作时间: 9:00-21:00</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📋</div>
+                            <div class="contact-details">
+                                <h3>在线下单</h3>
+                                <p><a href="order.html">填写订单表单</a></p>
+                                <p style="font-size: 0.85rem; margin-top: 5px;">快速获取报价</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="work-hours">
+                        <h3>工作时间</h3>
+                        <p>AI代理全天候在线</p>
+                        <p style="margin-top: 5px; opacity: 0.9;">人工客服: 周一至周日 9:00-21:00</p>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 20px;">
+                    <h2>常见问题</h2>
+                    <div class="faq-quick">
+                        <div class="faq-item">
+                            <h4>如何开始？</h4>
+                            <p>填写<a href="order.html">订单表单</a>或发送邮件，我们会在24小时内回复确认。</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>可以先试做吗？</h4>
+                            <p>可以！首次合作的客户可享受小额试单服务，满意后再正式合作。</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>支持哪些付款方式？</h4>
+                            <p>支持微信、支付宝付款，对公账户可开发票。</p>
+                        </div>
+                    </div>
+                    <p style="text-align: center; margin-top: 15px;"><a href="faq.html" style="color: #667eea; text-decoration: none;">查看全部常见问题 →</a></p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Claude天团. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                submittedAt: new Date().toISOString()
+            };
+
+            const subjectTexts = {
+                'inquiry': '服务咨询',
+                'quote': '报价请求',
+                'partnership': '商务合作',
+                'support': '售后支持',
+                'other': '其他'
+            };
+
+            // Create email link
+            const mailtoLink = `mailto:contact@claudetianduan.com?subject=${encodeURIComponent('[网站咨询] ' + subjectTexts[formData.subject])}&body=${encodeURIComponent(
+                `姓名: ${formData.name}\n邮箱: ${formData.email}\n咨询类型: ${subjectTexts[formData.subject]}\n\n留言:\n${formData.message}`
+            )}`;
+
+            // Show confirmation
+            alert('感谢您的咨询！\n\n点击确定后将打开邮件客户端，发送邮件即可完成咨询。\n\n我们会在24小时内回复您。');
+
+            window.location.href = mailtoLink;
+
+            console.log('Contact form submitted:', formData);
+        });
+    </script>
+</body>
+</html>
