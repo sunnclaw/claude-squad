@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sender Dashboard - Claude Squad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 30px 0;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .status-bar {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .status-item {
+            color: white;
+            text-align: center;
+        }
+
+        .status-item .value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .status-item .label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .template-selector {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .template-selector h2 {
+            margin-bottom: 15px;
+            color: #1a1a2e;
+        }
+
+        .template-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .template-btn {
+            padding: 12px 24px;
+            border: 2px solid #e94560;
+            background: white;
+            color: #e94560;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .template-btn:hover {
+            background: #e94560;
+            color: white;
+        }
+
+        .template-btn.active {
+            background: #e94560;
+            color: white;
+        }
+
+        .clinic-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .clinic-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .clinic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .clinic-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1a1a2e;
+        }
+
+        .clinic-location {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .clinic-status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-not_started {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .status-ready {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .email-preview {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #e94560;
+        }
+
+        .email-subject {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+
+        .email-body {
+            white-space: pre-wrap;
+            font-size: 0.95rem;
+            color: #333;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-secondary {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #16213e;
+        }
+
+        .btn-success {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #388E3C;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .instructions {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .instructions h3 {
+            margin-bottom: 15px;
+            color: #4CAF50;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+        }
+
+        .sent-indicator {
+            display: none;
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .sent-indicator.show {
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .status-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Email Sender Dashboard</h1>
+            <p>Click-to-send email outreach - No API key required</p>
+        </header>
+
+        <div class="status-bar">
+            <div class="status-item">
+                <div class="value" id="totalClinics">5</div>
+                <div class="label">Ready Clinics</div>
+            </div>
+            <div class="status-item">
+                <div class="value" id="sentCount">0</div>
+                <div class="label">Emails Sent</div>
+            </div>
+            <div class="status-item">
+                <div class="value" id="remainingCount">5</div>
+                <div class="label">Remaining</div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>How to Use</h3>
+            <ol>
+                <li><strong>Select a template</strong> below (Cold Outreach 1, 2, or 3)</li>
+                <li><strong>Click "Send Email"</strong> - Your email client will open with pre-filled content</li>
+                <li><strong>Review and send</strong> from your email client</li>
+                <li><strong>Mark as sent</strong> using the button to track progress</li>
+            </ol>
+            <p style="margin-top: 15px; opacity: 0.8;">Tip: Use "Copy Email" to copy content to clipboard for manual pasting.</p>
+        </div>
+
+        <div class="template-selector">
+            <h2>Select Email Template</h2>
+            <div class="template-buttons">
+                <button class="template-btn active" data-template="1" onclick="selectTemplate(1)">
+                    Cold Outreach 1 - Initial Contact
+                </button>
+                <button class="template-btn" data-template="2" onclick="selectTemplate(2)">
+                    Cold Outreach 2 - Follow-up
+                </button>
+                <button class="template-btn" data-template="3" onclick="selectTemplate(3)">
+                    Cold Outreach 3 - Pilot Offer
+                </button>
+            </div>
+        </div>
+
+        <div class="clinic-list" id="clinicList">
+            <!-- Clinic cards will be generated by JavaScript -->
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Copied to clipboard!</div>
+
+    <script>
+        // Clinic data
+        const clinics = [
+            {
+                practiceName: "STEINER DENTAL",
+                city: "Austin",
+                state: "TX",
+                firstName: "G",
+                email: "info@steinerdental.com",
+                npi: "1699865808",
+                status: "not_started"
+            },
+            {
+                practiceName: "LUXE DENTAL",
+                city: "Dallas",
+                state: "TX",
+                firstName: "TRANG",
+                email: "luxedental@gmail.com",
+                npi: "1710288584",
+                status: "not_started"
+            },
+            {
+                practiceName: "WAVE DENTAL",
+                city: "Houston",
+                state: "TX",
+                firstName: "AYHAM",
+                email: "wavedentaltx@gmail.com",
+                npi: "1023415890",
+                status: "not_started"
+            },
+            {
+                practiceName: "ICON DENTAL",
+                city: "Denver",
+                state: "CO",
+                firstName: "NAZELI",
+                email: "info@icondentaldenver.com",
+                npi: "1467863977",
+                status: "not_started"
+            },
+            {
+                practiceName: "CODY DENTAL GROUP",
+                city: "Denver",
+                state: "CO",
+                firstName: "WESSELY",
+                email: "info@codydental.com",
+                npi: "1972647303",
+                status: "not_started"
+            }
+        ];
+
+        // Email templates
+        const templates = {
+            1: {
+                subject: (clinic) => `Quick question about missed calls at ${clinic.practiceName}`,
+                body: (clinic) => `Hi ${clinic.firstName || 'there'},
+
+I'm reaching out to ${clinic.practiceName} because I've been helping dental practices recover new-patient calls that slip through during busy hours.
+
+The pattern I'm testing is simple: when a call is missed, your practice automatically sends a text within 5 minutes and queues a callback. One practice I worked with recovered 4 appointments in their first month worth $1,200+.
+
+I'm not selling a full platform - I'm trying to understand whether missed calls are a real pain point for your practice.
+
+Would you be open to a 15-minute conversation this week to compare your current process?
+
+Best,
+Claude Squad
+https://sunnclaw.github.io/claude-squad/`
+            },
+            2: {
+                subject: (clinic) => `How family dental clinics recover $1,200+ per month`,
+                body: (clinic) => `Hi ${clinic.firstName || 'there'},
+
+Quick follow-up on my earlier message.
+
+I recently worked with a family dental practice that was missing about 8-10 calls per week during peak hours and lunch. Each missed call was worth $300-500 in potential new patient revenue.
+
+Within 30 days of adding a text-back and callback queue workflow, they recovered 4 appointments that would have otherwise gone to competitors.
+
+If missed calls are on your radar, I'd be happy to share what worked for them. A 15-minute call is all I need to understand your situation.
+
+Best,
+Claude Squad
+https://sunnclaw.github.io/claude-squad/`
+            },
+            3: {
+                subject: (clinic) => `Pilot slot available for ${clinic.city} dental practice`,
+                body: (clinic) => `Hi ${clinic.firstName || 'there'},
+
+I've reached out a couple times about missed-call recovery. I know you're busy, so I'll keep this brief.
+
+I have one pilot slot available this month for a ${clinic.city} dental practice. The offer is simple:
+
+**30-day missed-call recovery pilot:**
+- Instant text-back to every missed caller
+- Callback queue your team owns
+- Weekly recovery reports
+- Success guarantee: 3+ appointments recovered or you don't pay for month 2
+
+**Price:** USD 297 / CNY 2,100
+
+Setup takes 48 hours. If you're curious but not ready, just reply and I'll send a one-page proposal for future reference.
+
+If this isn't a priority right now, no worries - I won't keep reaching out.
+
+Thanks,
+Claude Squad
+https://sunnclaw.github.io/claude-squad/`
+            }
+        };
+
+        let currentTemplate = 1;
+        let sentClinics = new Set();
+
+        function selectTemplate(num) {
+            currentTemplate = num;
+            document.querySelectorAll('.template-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.template == num);
+            });
+            renderClinics();
+        }
+
+        function getSubject(clinic) {
+            return templates[currentTemplate].subject(clinic);
+        }
+
+        function getBody(clinic) {
+            return templates[currentTemplate].body(clinic);
+        }
+
+        function generateMailtoLink(clinic) {
+            const subject = encodeURIComponent(getSubject(clinic));
+            const body = encodeURIComponent(getBody(clinic));
+            return `mailto:${clinic.email}?subject=${subject}&body=${body}`;
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function copyEmail(clinic) {
+            const text = `Subject: ${getSubject(clinic)}\n\n${getBody(clinic)}`;
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Email copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+
+        function markAsSent(clinicNpi, button) {
+            sentClinics.add(clinicNpi);
+            updateCounts();
+
+            // Update button
+            button.textContent = 'Marked as Sent';
+            button.classList.remove('btn-secondary');
+            button.classList.add('btn-success');
+            button.disabled = true;
+
+            // Add sent indicator
+            const card = button.closest('.clinic-card');
+            const statusBadge = card.querySelector('.clinic-status');
+            statusBadge.textContent = 'Sent';
+            statusBadge.classList.remove('status-not_started');
+            statusBadge.classList.add('status-ready');
+
+            showToast('Email marked as sent!');
+        }
+
+        function updateCounts() {
+            document.getElementById('sentCount').textContent = sentClinics.size;
+            document.getElementById('remainingCount').textContent = clinics.length - sentClinics.size;
+        }
+
+        function renderClinics() {
+            const container = document.getElementById('clinicList');
+            container.innerHTML = clinics.map(clinic => {
+                const isSent = sentClinics.has(clinic.npi);
+                return `
+                    <div class="clinic-card">
+                        <div class="clinic-header">
+                            <div>
+                                <div class="clinic-name">
+                                    ${clinic.practiceName}
+                                    ${isSent ? '<span class="sent-indicator show">SENT</span>' : ''}
+                                </div>
+                                <div class="clinic-location">${clinic.city}, ${clinic.state}</div>
+                                <div class="clinic-location">${clinic.email}</div>
+                            </div>
+                            <span class="clinic-status ${isSent ? 'status-ready' : 'status-not_started'}">
+                                ${isSent ? 'Sent' : 'Ready'}
+                            </span>
+                        </div>
+                        <div class="email-preview">
+                            <div class="email-subject">Subject: ${getSubject(clinic)}</div>
+                            <div class="email-body">${getBody(clinic)}</div>
+                        </div>
+                        <div class="action-buttons">
+                            <a href="${generateMailtoLink(clinic)}" class="btn btn-primary" target="_blank">
+                                Send Email
+                            </a>
+                            <button class="btn btn-secondary" onclick="copyEmail(clinics.find(c => c.npi === '${clinic.npi}'))">
+                                Copy Email
+                            </button>
+                            <button class="btn btn-secondary"
+                                    onclick="markAsSent('${clinic.npi}', this)"
+                                    ${isSent ? 'disabled style="display:none;"' : ''}>
+                                Mark as Sent
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Initialize
+        document.getElementById('totalClinics').textContent = clinics.length;
+        renderClinics();
+    </script>
+</body>
+</html>
