@@ -16,6 +16,18 @@
 
 ---
 
+## NEW: Click-to-Send Email Dashboard (No API Key Required!)
+
+**Open this file in your browser:** `marketing/email-sender-dashboard.html`
+
+**Features:**
+- Pre-filled email templates (3 variations)
+- Click "Send Email" - opens your email client with content ready
+- Track which emails you've sent
+- 5 clinics ready to contact immediately
+
+---
+
 ## CRITICAL: ALL AI-EXECUTABLE REVENUE PREP COMPLETE
 
 **The AI team has completed every possible task. Revenue now requires human action.**
