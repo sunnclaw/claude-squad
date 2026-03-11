@@ -136,16 +136,23 @@
 
 ## DETAILED OUTREACH ACTIONS
 
-### Email Action: Send All 5 Emails at Once (10 min)
+### Email Action: Click-to-Send Dashboard (2 min per email)
 
-**NEW:** Complete email guide at `marketing/HUMAN-ACTION-OUTREACH-READY.md`
+**NEW: NO API KEY NEEDED!** Open `docs/email-sender-dashboard.html` in browser.
 
-All 5 emails are ready to copy/paste:
+**Features:**
+- Click "Send Email" to open your email client with message pre-filled
+- Copy button for mobile users
+- Tracks which emails you've sent
+
+All 7 emails ready to send:
 1. STEINER DENTAL (Austin) - info@steinerdental.com
 2. LUXE DENTAL (Dallas) - luxedental@gmail.com
 3. WAVE DENTAL (Houston) - wavedentaltx@gmail.com
 4. ICON DENTAL (Denver) - info@icondentaldenver.com
 5. CODY DENTAL (Denver) - info@codydental.com
+6. Open Dental Partnership
+7. Curve Dental Partnership
 
 **Expected outcome:** 1-2 responses, $97-$194 potential
 
