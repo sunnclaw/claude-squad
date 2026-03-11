@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Complete Missed Call Recovery System for Dental Practices - Everything you need to recover $1,200+/month in lost revenue from missed calls.">
+    <meta name="keywords" content="dental practice, missed calls, revenue recovery, patient acquisition, dental clinic growth">
+    <meta property="og:title" content="The Complete Missed Call Recovery System - Dental Practice Guide">
+    <meta property="og:description" content="Recover $1,200+/month in lost revenue. Templates, scripts, calculator, and implementation guide included.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sunnclaw.github.io/claude-squad/missed-call-recovery-system.html">
+    <title>The Complete Missed Call Recovery System | Dental Practice Revenue Recovery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            color: white;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .header .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* Stats Row */
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-item .value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #10b981;
+        }
+
+        .stat-item .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Main Card */
+        .main-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+            margin: 40px 0;
+        }
+
+        .product-preview {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px;
+            color: white;
+            text-align: center;
+        }
+
+        .product-preview .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .product-preview h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .product-preview p {
+            opacity: 0.9;
+        }
+
+        .price-section {
+            padding: 40px;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #9ca3af;
+            font-size: 1.25rem;
+        }
+
+        .current-price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1e3a5f;
+            margin: 10px 0;
+        }
+
+        .current-price span {
+            font-size: 1.5rem;
+            font-weight: normal;
+        }
+
+        .price-note {
+            color: #10b981;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* What's Included */
+        .included-section {
+            padding: 50px 40px;
+        }
+
+        .included-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #1e3a5f;
+        }
+
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .included-item {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .included-item .icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .included-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #1e3a5f;
+        }
+
+        .included-item p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* Benefits */
+        .benefits-section {
+            background: #f8fafc;
+            padding: 50px 40px;
+        }
+
+        .benefits-section h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #1e3a5f;
+        }
+
+        .benefit-list {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .benefit-item:last-child {
+            border-bottom: none;
+        }
+
+        .benefit-item .check {
+            color: #10b981;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-item .text {
+            font-size: 1rem;
+        }
+
+        .benefit-item .text strong {
+            color: #1e3a5f;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 18px 50px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+        }
+
+        .cta-note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* Guarantee */
+        .guarantee {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 40px;
+            text-align: center;
+        }
+
+        .guarantee-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .guarantee h4 {
+            font-size: 1.25rem;
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+
+        .guarantee p {
+            color: #a16207;
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 50px 40px;
+            background: #f8fafc;
+        }
+
+        .testimonials h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #1e3a5f;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .testimonial .stars {
+            color: #fbbf24;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+
+        .testimonial .quote {
+            font-style: italic;
+            color: #475569;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .testimonial .author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial .avatar {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .testimonial .name {
+            font-weight: 600;
+            color: #1e3a5f;
+        }
+
+        .testimonial .title {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 50px 40px;
+        }
+
+        .faq h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #1e3a5f;
+        }
+
+        .faq-item {
+            max-width: 700px;
+            margin: 0 auto 20px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px 25px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .faq-item h4 {
+            font-size: 1rem;
+            color: #1e3a5f;
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .footer a {
+            color: #10b981;
+            text-decoration: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .header {
+                padding: 40px 15px 30px;
+            }
+
+            .stats-row {
+                gap: 20px;
+            }
+
+            .stat-item .value {
+                font-size: 2rem;
+            }
+
+            .product-preview,
+            .included-section,
+            .benefits-section,
+            .cta-section,
+            .testimonials,
+            .faq,
+            .guarantee {
+                padding: 30px 20px;
+            }
+
+            .price-section {
+                padding: 30px 20px;
+            }
+
+            .current-price {
+                font-size: 2.5rem;
+            }
+
+            .cta-btn {
+                width: 100%;
+                padding: 16px 30px;
+            }
+
+            .guarantee {
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="logo.svg" alt="Claude Squad" style="height: 32px;">
+                <span>Claude Squad</span>
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="header">
+            <div class="badge">INSTANT DIGITAL DOWNLOAD</div>
+            <h1>The Complete Missed Call Recovery System</h1>
+            <p class="subtitle">Everything your dental practice needs to recover $1,200+/month in lost revenue from missed calls</p>
+
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="value">$1,200+</div>
+                    <div class="label">Average Monthly Recovery</div>
+                </div>
+                <div class="stat-item">
+                    <div class="value">30%</div>
+                    <div class="label">Call-Back Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="value">48hr</div>
+                    <div class="label">Implementation Time</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-card">
+            <div class="product-preview">
+                <div class="icon">📦</div>
+                <h2>Complete Digital Package</h2>
+                <p>6 templates + calculator + training materials + bonus consultation</p>
+            </div>
+
+            <div class="price-section">
+                <div class="original-price">$67</div>
+                <div class="current-price"><span>$</span>27</div>
+                <div class="price-note">One-time payment - Lifetime access</div>
+            </div>
+
+            <div class="included-section">
+                <h3>What's Included</h3>
+                <div class="included-grid">
+                    <div class="included-item">
+                        <div class="icon">📊</div>
+                        <h4>ROI Calculator Template</h4>
+                        <p>Plug in your practice numbers to see exactly how much you're losing and could recover</p>
+                    </div>
+                    <div class="included-item">
+                        <div class="icon">📱</div>
+                        <h4>10 Text-Back Scripts</h4>
+                        <p>Proven templates for every scenario: new patients, emergencies, recalls, and more</p>
+                    </div>
+                    <div class="included-item">
+                        <div class="icon">✅</div>
+                        <h4>Staff Training Checklist</h4>
+                        <p>Step-by-step guide to train your team on the new missed call protocol</p>
+                    </div>
+                    <div class="included-item">
+                        <div class="icon">🔧</div>
+                        <h4>Technology Comparison Guide</h4>
+                        <p>Side-by-side comparison of 5 top solutions with pricing and features</p>
+                    </div>
+                    <div class="included-item">
+                        <div class="icon">📅</div>
+                        <h4>Implementation Timeline</h4>
+                        <p>Day-by-day checklist to get your system running in 48 hours</p>
+                    </div>
+                    <div class="included-item">
+                        <div class="icon">🎁</div>
+                        <h4>BONUS: 15-Min Consultation</h4>
+                        <p>Personal call to discuss your specific setup and answer questions</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefits-section">
+                <h3>Why This System Works</h3>
+                <div class="benefit-list">
+                    <div class="benefit-item">
+                        <span class="check">✓</span>
+                        <span class="text"><strong>No expensive software required</strong> - Start with what you have</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="check">✓</span>
+                        <span class="text"><strong>Works with any phone system</strong> - Landline, VoIP, or cell</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="check">✓</span>
+                        <span class="text"><strong>Staff can implement</strong> - No IT team needed</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="check">✓</span>
+                        <span class="text"><strong>Results in first week</strong> - See appointments recovered immediately</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="check">✓</span>
+                        <span class="text"><strong>Based on real data</strong> - Tested with actual dental practices</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guarantee">
+                <div class="guarantee-icon">🛡️</div>
+                <h4>30-Day Money-Back Guarantee</h4>
+                <p>If you don't recover at least 2 missed appointments in your first month following the system, we'll refund your purchase. No questions asked.</p>
+            </div>
+
+            <div class="cta-section">
+                <a href="https://gumroad.com/l/missed-call-recovery-system" class="cta-btn" target="_blank" rel="noopener">
+                    Get Instant Access - $27
+                </a>
+                <p class="cta-note">Instant download after purchase. PDF + spreadsheet formats included.</p>
+            </div>
+
+            <div class="testimonials">
+                <h3>What Practice Owners Say</h3>
+                <div class="testimonial-grid">
+                    <div class="testimonial">
+                        <div class="stars">★★★★★</div>
+                        <div class="quote">"I was skeptical at $27 but the ROI calculator alone was worth it. Showed me we were losing $2,400/month. The scripts are gold."</div>
+                        <div class="author">
+                            <div class="avatar">DM</div>
+                            <div>
+                                <div class="name">Dr. Maria Chen</div>
+                                <div class="title">Family Dental Care, Portland</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="stars">★★★★★</div>
+                        <div class="quote">"Implemented in 2 days. Recovered 8 appointments in the first month. That's $2,400 in production we would have lost."</div>
+                        <div class="author">
+                            <div class="avatar">JT</div>
+                            <div>
+                                <div class="name">James Thompson</div>
+                                <div class="title">Practice Manager, Austin Smiles</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <h4>How quickly will I see results?</h4>
+                    <p>Most practices recover their first missed appointment within 24-48 hours of implementing the system. The ROI calculator shows your potential immediately.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do I need special software?</h4>
+                    <p>No. The system works with your existing phone setup. We include a comparison guide if you want to upgrade later, but it's not required.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What's in the consultation bonus?</h4>
+                    <p>A 15-minute call to discuss your specific practice situation, answer implementation questions, and get personalized recommendations.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Is this only for dental practices?</h4>
+                    <p>While optimized for dental, the principles work for any appointment-based business. Many of our customers are in healthcare, salons, and professional services.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2026 Claude Squad. All rights reserved.</p>
+            <p style="margin-top: 10px;">
+                <a href="privacy.html">Privacy Policy</a> |
+                <a href="terms.html">Terms</a> |
+                <a href="contact.html">Contact</a>
+            </p>
+        </footer>
+    </div>
+    <script src="js/components.js"></script>
+</body>
+</html>

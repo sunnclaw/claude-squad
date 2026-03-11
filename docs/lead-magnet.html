@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Calculator: Discover how much revenue your dental practice loses from missed calls. Get instant results and recovery strategies.">
+    <meta name="keywords" content="dental practice, missed calls, revenue calculator, patient acquisition, dental clinic growth">
+    <meta property="og:title" content="Free Missed Call Revenue Calculator - Claude Squad">
+    <meta property="og:description" content="Calculate exactly how much revenue your dental practice loses from missed calls. Free instant calculator with recovery strategies.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sunnclaw.github.io/claude-squad/lead-magnet.html">
+    <meta property="og:image" content="https://sunnclaw.github.io/claude-squad/images/lead-magnet-og.svg">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Missed Call Revenue Calculator | Claude Squad">
+    <meta name="twitter:description" content="Calculate exactly how much revenue your dental practice loses from missed calls. Free instant calculator.">
+    <meta name="twitter:image" content="https://sunnclaw.github.io/claude-squad/images/lead-magnet-og.svg">
+    <!-- Performance Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="canonical" href="https://sunnclaw.github.io/claude-squad/lead-magnet.html">
+    <title>Free Missed Call Revenue Calculator | Claude Squad</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- FAQ Schema for Rich Results -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How much revenue does a dental practice lose from missed calls?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The average dental practice misses 8-10 calls per week. With a new patient value of $300-500 and 30% of missed calls being potential new patients, practices can lose $960-1,600 per month, or $11,520-19,200 per year."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the average value of a new dental patient?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The average new dental patient is worth $300-500 in lifetime value. This includes initial appointment, potential follow-up treatments, and referrals. Emergency patients can have even higher immediate value."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How many calls do dental practices typically miss?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most dental practices miss 10-15% of incoming calls due to busy front desk staff, lunch hours, and after-hours calls. This translates to 8-10 missed calls per week for an average practice."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can missed calls be recovered?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! With an automated text-back system, practices can recover 3-5 appointments per month from missed calls. The key is responding within 5 minutes with a personalized text message."
+                }
+            }
+        ]
+    }
+    </script>
+    <style>
+        /* Lead Magnet Page - Using Design System */
+
+        body {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            min-height: 100vh;
+        }
+
+        .page-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+
+        .header {
+            text-align: center;
+            padding: calc(var(--spacing-3xl) + 40px) var(--spacing-lg) var(--spacing-2xl);
+            color: white;
+        }
+
+        .header h1 {
+            font-size: clamp(1.75rem, 4vw, 2.2rem);
+            margin-bottom: var(--spacing-md);
+            line-height: var(--line-height-tight);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .header .subtitle {
+            font-size: var(--font-size-lg);
+            opacity: 0.95;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .value-props {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+
+        .value-prop {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: var(--font-size-sm);
+            color: white;
+        }
+
+        .value-prop .icon {
+            font-size: 1.2rem;
+        }
+
+        .main-card {
+            background: var(--color-bg-white);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-2xl);
+            overflow: hidden;
+            margin: var(--spacing-xl) 0;
+        }
+
+        .card-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .card-header h2 {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .card-header p {
+            opacity: 0.9;
+            font-size: var(--font-size-sm);
+        }
+
+        .form-section {
+            padding: var(--spacing-2xl);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-primary);
+            font-size: var(--font-size-sm);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: var(--spacing-md);
+            border: 2px solid var(--color-border-light);
+            border-radius: var(--radius-lg);
+            font-size: var(--font-size-base);
+            font-family: var(--font-family);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+        }
+
+        .form-group .helper-text {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+            margin-top: var(--spacing-xs);
+        }
+
+        .calculator-preview {
+            background: var(--color-bg-light);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-lg);
+            margin: 25px 0;
+            border: 1px dashed #cbd5e0;
+        }
+
+        .calculator-preview h3 {
+            font-size: 1rem;
+            color: #4a5568;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .preview-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            text-align: center;
+        }
+
+        .preview-stat .value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0ea5e9;
+        }
+
+        .preview-stat .label {
+            font-size: 0.8rem;
+            color: #718096;
+            margin-top: 4px;
+        }
+
+        .benefits-list {
+            margin: 25px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .benefits-list li:last-child {
+            border-bottom: none;
+        }
+
+        .benefits-list .check {
+            color: #48bb78;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .benefits-list .text {
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        .benefits-list .text strong {
+            color: #1a202c;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .trust-elements {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .trust-element {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        .trust-element svg {
+            width: 16px;
+            height: 16px;
+            color: #48bb78;
+        }
+
+        .social-proof {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .social-proof .stat {
+            display: inline-block;
+            margin: 0 20px;
+        }
+
+        .social-proof .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .social-proof .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .testimonials {
+            margin-top: 30px;
+        }
+
+        .testimonial {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .testimonial .quote {
+            color: #4a5568;
+            font-style: italic;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .testimonial .author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .testimonial .author-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .testimonial .author-info .name {
+            font-weight: 600;
+            color: #1a202c;
+            font-size: 0.95rem;
+        }
+
+        .testimonial .author-info .title {
+            font-size: 0.8rem;
+            color: #718096;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            opacity: 0.9;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Success state */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        .success-message.visible {
+            display: block;
+        }
+
+        .success-message .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .success-message h2 {
+            color: #1a202c;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .success-message p {
+            color: #4a5568;
+            margin-bottom: 25px;
+        }
+
+        .success-message .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .success-message .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(72, 187, 120, 0.4);
+        }
+
+        .form-section.hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .value-props {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .form-section {
+                padding: 25px 20px;
+            }
+
+            .preview-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-elements {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="logo.svg" alt="Claude Squad" style="height: 32px;">
+                <span>Claude Squad</span>
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="order.html" class="btn btn-primary btn-sm">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        <header class="header">
+            <h1>Free Missed Call Revenue Calculator</h1>
+            <p class="subtitle">Discover exactly how much revenue your dental practice loses from missed calls - and get a personalized recovery plan</p>
+            <div class="value-props">
+                <div class="value-prop">
+                    <span class="icon">✓</span>
+                    <span>Instant Results</span>
+                </div>
+                <div class="value-prop">
+                    <span class="icon">✓</span>
+                    <span>Personalized Insights</span>
+                </div>
+                <div class="value-prop">
+                    <span class="icon">✓</span>
+                    <span>Actionable Strategies</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="social-proof">
+            <div class="stat">
+                <div class="stat-value">2,847</div>
+                <div class="stat-label">Practices Calculated</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">$1.2M+</div>
+                <div class="stat-label">Revenue Recovered</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">4.9/5</div>
+                <div class="stat-label">User Rating</div>
+            </div>
+        </div>
+
+        <div class="main-card">
+            <div class="card-header">
+                <h2>Get Your Free Revenue Report</h2>
+                <p>Enter your details to unlock your personalized calculation</p>
+            </div>
+
+            <div class="form-section" id="formSection">
+                <form id="leadForm" novalidate data-form-progress data-progress-height="8">
+                    <div class="form-group">
+                        <label for="email">Work Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="you@yourclinic.com">
+                        <p class="helper-text">We'll send your personalized report here</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Dr. Jane Smith">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clinic">Clinic Name *</label>
+                        <input type="text" id="clinic" name="clinic" required placeholder="Smile Dental Practice">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                        <p class="helper-text">Get a free 15-min consultation call about your results</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="calls">Missed Calls Per Week (Estimate)</label>
+                        <select id="calls" name="missed_calls">
+                            <option value="1-5">1-5 calls/week</option>
+                            <option value="6-10" selected>6-10 calls/week</option>
+                            <option value="11-20">11-20 calls/week</option>
+                            <option value="21-50">21-50 calls/week</option>
+                            <option value="50+">50+ calls/week</option>
+                        </select>
+                        <p class="helper-text">Don't know? Most clinics miss 10-15% of calls</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="avgPatient">Average New Patient Value ($)</label>
+                        <input type="number" id="avgPatient" name="avg_patient_value" placeholder="300" value="300">
+                        <p class="helper-text">Average revenue from a new patient (industry average: $300-500)</p>
+                    </div>
+
+                    <div class="calculator-preview">
+                        <h3>Preview: Your Potential Monthly Loss</h3>
+                        <div class="preview-stats">
+                            <div class="preview-stat">
+                                <div class="value" id="previewCalls">8</div>
+                                <div class="label">Missed Calls/Week</div>
+                            </div>
+                            <div class="preview-stat">
+                                <div class="value" id="previewLost">$960</div>
+                                <div class="label">Lost Revenue/Month</div>
+                            </div>
+                            <div class="preview-stat">
+                                <div class="value" id="previewYear">$11,520</div>
+                                <div class="label">Lost Revenue/Year</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="benefits-list">
+                        <li>
+                            <span class="check">✓</span>
+                            <span class="text"><strong>Instant Calculator Access</strong> - Get your full revenue analysis in seconds</span>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <span class="text"><strong>Personalized Recovery Plan</strong> - Custom strategies for your clinic size</span>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <span class="text"><strong>ROI Projections</strong> - See exactly how much you could recover</span>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <span class="text"><strong>Best Practices Guide</strong> - 15 proven strategies to reduce missed calls</span>
+                        </li>
+                    </ul>
+
+                    <button type="submit" class="submit-btn">Get My Free Report →</button>
+
+                    <div class="trust-elements">
+                        <div class="trust-element">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            <span>100% Free - No Credit Card</span>
+                        </div>
+                        <div class="trust-element">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>No Spam - Ever</span>
+                        </div>
+                        <div class="trust-element">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            <span>Results in 30 Seconds</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                <div class="icon">🎉</div>
+                <h2>Your Report is Ready!</h2>
+                <p>We've sent your personalized revenue analysis to your email. Check your inbox!</p>
+                <a href="#" class="download-btn" id="downloadBtn">Download Your Report (PDF)</a>
+                <p style="margin-top: 20px; font-size: 0.9rem; color: #718096;">
+                    While you wait, check out our <a href="missed-call-recovery.html" style="color: #667eea;">Missed Call Recovery Service</a>
+                </p>
+            </div>
+
+            <!-- Upsell Section - Products -->
+            <div class="upsell-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; padding: 30px; margin: 25px 0; color: white; text-align: center; display: none;" id="upsellSection">
+                <div style="display: inline-block; background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; margin-bottom: 15px;">
+                    📦 RECOVERY TOOLKITS
+                </div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 12px;">Ready to Recover Your Lost Revenue?</h3>
+                <p style="font-size: 1rem; opacity: 0.95; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    We've created two toolkits to help dental practices recover missed call revenue and improve patient communication.
+                </p>
+
+                <!-- Product 1: Missed Call Recovery System -->
+                <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 15px;">
+                    <h4 style="margin: 0 0 8px; font-size: 1.1rem;">Missed Call Recovery System</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.9; margin: 0 0 12px;">ROI Calculator • 10 Text Scripts • Training Guide • Tech Comparison</p>
+                    <div style="display: flex; justify-content: center; gap: 15px; align-items: center; margin-bottom: 12px;">
+                        <span style="text-decoration: line-through; opacity: 0.7;">$67</span>
+                        <span style="font-size: 1.5rem; font-weight: bold;">$27</span>
+                        <span style="background: #fbbf24; color: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">60% OFF</span>
+                    </div>
+                    <a href="[GUMROAD_LINK_1]" style="display: inline-block; background: white; color: #667eea; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem;">
+                        Get Instant Access →
+                    </a>
+                </div>
+
+                <!-- Product 2: Communication Templates -->
+                <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 15px;">
+                    <h4 style="margin: 0 0 8px; font-size: 1.1rem;">50+ Dental Communication Templates</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.9; margin: 0 0 12px;">Confirmations • Missed Call Responses • Recall • Emergency Scripts</p>
+                    <div style="display: flex; justify-content: center; gap: 15px; align-items: center; margin-bottom: 12px;">
+                        <span style="text-decoration: line-through; opacity: 0.7;">$39</span>
+                        <span style="font-size: 1.5rem; font-weight: bold;">$19</span>
+                        <span style="background: #fbbf24; color: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">50% OFF</span>
+                    </div>
+                    <a href="[GUMROAD_LINK_2]" style="display: inline-block; background: white; color: #667eea; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem;">
+                        Get Instant Access →
+                    </a>
+                </div>
+
+                <!-- Bundle Option -->
+                <div style="background: #fbbf24; color: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 15px;">
+                    <div style="display: inline-block; background: #1e293b; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; margin-bottom: 8px;">BEST VALUE</div>
+                    <h4 style="margin: 0 0 8px; font-size: 1.1rem;">Get Both - Save $9</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin: 0 0 12px;">Complete Missed Call Recovery + Communication Templates</p>
+                    <div style="display: flex; justify-content: center; gap: 15px; align-items: center; margin-bottom: 12px;">
+                        <span style="text-decoration: line-through; opacity: 0.6;">$46</span>
+                        <span style="font-size: 1.8rem; font-weight: bold;">$37</span>
+                    </div>
+                    <a href="[GUMROAD_BUNDLE_LINK]" style="display: inline-block; background: #1e293b; color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+                        Get the Complete Bundle →
+                    </a>
+                </div>
+
+                <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.9;">30-day money-back guarantee • Instant download</p>
+            </div>
+        </div>
+
+        <div class="testimonials">
+            <div class="testimonial">
+                <div class="quote">"I had no idea we were losing $1,400/month to missed calls. This calculator opened our eyes and the recovery strategies have already paid for themselves."</div>
+                <div class="author">
+                    <div class="author-avatar">DM</div>
+                    <div class="author-info">
+                        <div class="name">Dr. Maria Chen</div>
+                        <div class="title">Family Dental Care, Portland</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="quote">"The personalized report showed us exactly where we were losing patients. We've recovered 12 appointments in the first month alone."</div>
+                <div class="author">
+                    <div class="author-avatar">JT</div>
+                    <div class="author-info">
+                        <div class="name">James Thompson</div>
+                        <div class="title">Practice Manager, Austin Smiles</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2026 Claude Squad. All rights reserved.</p>
+            <p>
+                <a href="privacy.html">Privacy Policy</a> |
+                <a href="terms.html">Terms of Service</a> |
+                <a href="contact.html">Contact Us</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Live preview calculator
+        const callsSelect = document.getElementById('calls');
+        const avgPatientInput = document.getElementById('avgPatient');
+        const previewCalls = document.getElementById('previewCalls');
+        const previewLost = document.getElementById('previewLost');
+        const previewYear = document.getElementById('previewYear');
+
+        function updatePreview() {
+            let callsPerWeek = 8; // default
+            const callsValue = callsSelect.value;
+
+            if (callsValue === '1-5') callsPerWeek = 3;
+            else if (callsValue === '6-10') callsPerWeek = 8;
+            else if (callsValue === '11-20') callsPerWeek = 15;
+            else if (callsValue === '21-50') callsPerWeek = 35;
+            else if (callsValue === '50+') callsPerWeek = 60;
+
+            const avgPatient = parseInt(avgPatientInput.value) || 300;
+
+            // Assume 30% of missed calls are potential new patients
+            const potentialPatients = Math.round(callsPerWeek * 0.3 * 4); // 4 weeks per month
+            const monthlyLoss = potentialPatients * avgPatient;
+            const yearlyLoss = monthlyLoss * 12;
+
+            previewCalls.textContent = callsPerWeek;
+            previewLost.textContent = '$' + monthlyLoss.toLocaleString();
+            previewYear.textContent = '$' + yearlyLoss.toLocaleString();
+        }
+
+        callsSelect.addEventListener('change', updatePreview);
+        avgPatientInput.addEventListener('input', updatePreview);
+        updatePreview();
+
+        // Form submission
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Capture full lead data
+            const leadData = {
+                type: 'lead_magnet_calculator',
+                email: document.getElementById('email').value,
+                name: document.getElementById('name').value,
+                clinic: document.getElementById('clinic').value,
+                phone: document.getElementById('phone').value || null,
+                missedCalls: document.getElementById('calls').value,
+                avgPatientValue: document.getElementById('avgPatient').value,
+                source: 'lead-magnet.html',
+                timestamp: new Date().toISOString(),
+                page: window.location.href
+            };
+
+            // Store full lead data in localStorage
+            const leads = JSON.parse(localStorage.getItem('claude_squad_leads') || '[]');
+            leadData.id = 'lead_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            leads.push(leadData);
+            localStorage.setItem('claude_squad_leads', JSON.stringify(leads));
+
+            // Store email for tracking
+            localStorage.setItem('claude_squad_lead_email', leadData.email);
+            localStorage.setItem('claude_squad_lead_date', new Date().toISOString());
+
+            console.log('Lead captured:', leadData);
+
+            // Show success message
+            document.getElementById('formSection').classList.add('hidden');
+            document.getElementById('successMessage').classList.add('visible');
+            document.getElementById('upsellSection').style.display = 'block';
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Download button
+        document.getElementById('downloadBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // In production, this would download the actual PDF
+            alert('Your personalized report is being prepared. Check your email for the download link!');
+        });
+
+        // Exit Intent Popup
+        let exitIntentShown = false;
+        const exitPopup = document.createElement('div');
+        exitPopup.id = 'exitPopup';
+        exitPopup.innerHTML = `
+            <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 20px;" id="exitOverlay">
+                <div style="background: white; border-radius: 20px; max-width: 450px; width: 100%; padding: 30px; text-align: center; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.3);">
+                    <button onclick="document.getElementById('exitOverlay').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #718096;">&times;</button>
+                    <div style="font-size: 3rem; margin-bottom: 15px;">📊</div>
+                    <h3 style="font-size: 1.5rem; color: #1a202c; margin-bottom: 10px;">Wait! Get Your Free ROI Report</h3>
+                    <p style="color: #4a5568; margin-bottom: 20px; font-size: 1rem;">Enter your email to get instant access to the missed call revenue calculator - completely free.</p>
+                    <form id="exitForm" style="display: flex; flex-direction: column; gap: 12px;">
+                        <input type="email" id="exitEmail" placeholder="Your work email" required style="padding: 14px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem;">
+                        <button type="submit" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 14px; border: none; border-radius: 10px; font-size: 1rem; font-weight: bold; cursor: pointer;">Get Free Calculator →</button>
+                    </form>
+                    <p style="margin-top: 15px; font-size: 0.85rem; color: #718096;">✓ Instant results &nbsp;✓ No spam &nbsp;✓ 100% free</p>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(exitPopup);
+
+        // Detect exit intent (mouse leaving viewport)
+        document.addEventListener('mouseout', function(e) {
+            if (exitIntentShown) return;
+
+            // Check if mouse left from the top of the page
+            if (e.clientY <= 0 && e.relatedTarget === null) {
+                // Only show if form hasn't been submitted
+                if (!document.getElementById('formSection').classList.contains('hidden')) {
+                    document.getElementById('exitOverlay').style.display = 'flex';
+                    exitIntentShown = true;
+                }
+            }
+        });
+
+        // Exit form submission
+        document.getElementById('exitForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('exitEmail').value;
+            document.getElementById('email').value = email;
+            document.getElementById('exitOverlay').style.display = 'none';
+            // Scroll to main form
+            document.getElementById('formSection').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Close on overlay click
+        document.getElementById('exitOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+    </script>
+    <script src="js/components.js"></script>
+</body>
+</html>

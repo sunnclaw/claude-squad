@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Never Miss Another Patient Call - AI-powered missed call recovery service for dental clinics. Convert missed calls into appointments automatically.">
+    <meta name="keywords" content="dental clinic, missed calls, appointment recovery, AI service, patient retention">
+    <meta property="og:title" content="Missed Call Recovery for Dental Clinics - Claude Squad">
+    <meta property="og:description" content="Never Miss Another Patient Call. Our AI-powered service ensures you never lose a patient to a missed call again.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sunnclaw.github.io/claude-squad/missed-call-recovery.html">
+    <meta property="og:image" content="https://sunnclaw.github.io/claude-squad/images/missed-call-recovery-og.svg">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Never Miss Another Patient Call - Missed Call Recovery for Dental Clinics">
+    <meta name="twitter:description" content="AI-powered missed call recovery service for dental clinics. Convert missed calls into appointments automatically.">
+    <meta name="twitter:image" content="https://sunnclaw.github.io/claude-squad/images/missed-call-recovery-og.svg">
+    <!-- Performance Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="canonical" href="https://sunnclaw.github.io/claude-squad/missed-call-recovery.html">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>Never Miss Another Patient Call - Missed Call Recovery for Dental Clinics</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Missed Call Recovery for Dental Clinics",
+        "description": "AI-powered missed call recovery service for dental clinics. Automatically detect missed calls, initiate callback within minutes, and schedule appointments 24/7.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Claude天团 (Claude Squad)",
+            "url": "https://sunnclaw.github.io/claude-squad/"
+        },
+        "serviceType": "Missed Call Recovery",
+        "areaServed": {
+            "@type": "Country",
+            "name": "United States"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Pilot Program",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Missed Call Recovery - Pilot",
+                        "description": "Up to 50 recovered calls per month, 24/7 coverage, calendar integration"
+                    },
+                    "price": "299",
+                    "priceCurrency": "USD",
+                    "priceValidUntil": "2026-12-31"
+                }
+            ]
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "15",
+            "bestRating": "5"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How does the AI sound on the phone?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our AI uses advanced natural language processing to sound professional and friendly. Patients often don't realize they're speaking with an AI system."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What phone systems do you integrate with?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We work with most major dental practice phone systems including Dentrix, Eaglesoft, Open Dental, and cloud-based systems. Setup takes less than 24 hours."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What if the patient has complex questions?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The AI is trained to handle common dental inquiries. For complex questions, it will schedule a callback from your staff at a convenient time."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is there a free trial?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! We offer a 14-day free trial with no commitment required. You only pay if you see results."
+                }
+            }
+        ]
+    }
+    </script>
+    <style>
+        /* Missed Call Recovery - Using Design System */
+
+        body {
+            background: var(--color-bg-light);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white;
+            padding: calc(var(--spacing-3xl) + 60px) var(--spacing-lg) var(--spacing-3xl);
+            text-align: center;
+            position: relative;
+        }
+
+        /* Social Proof Ticker */
+        .social-proof-ticker {
+            background: rgba(0, 0, 0, 0.15);
+            padding: 12px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ticker-content {
+            display: flex;
+            animation: ticker 30s linear infinite;
+            white-space: nowrap;
+            padding-left: 100%;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .ticker-item {
+            color: white;
+            font-size: 0.9rem;
+            padding: 0 20px;
+        }
+
+        .ticker-divider {
+            color: rgba(255, 255, 255, 0.5);
+            padding: 0 10px;
+        }
+
+        /* Live Dot Indicator */
+        .live-dot-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(22, 163, 74, 0.2);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            color: #4ade80;
+            margin-right: 6px;
+        }
+
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: livePulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes livePulse {
+            0%, 100% {
+                opacity: 1;
+                box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4);
+            }
+            50% {
+                opacity: 0.8;
+                box-shadow: 0 0 0 4px rgba(74, 222, 128, 0);
+            }
+        }
+
+        /* Hero CTA Group */
+        .hero-cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .cta-phone {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+        }
+
+        .cta-phone:hover {
+            background: white;
+            color: #0284c7;
+        }
+
+        /* Urgency Banner */
+        .urgency-banner-hero {
+            background: rgba(220, 38, 38, 0.9);
+            padding: 10px 25px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background: #fbbf24;
+            border-radius: 50%;
+            animation: pulseDot 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.7; }
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .tagline {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .hero .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero .stat {
+            text-align: center;
+        }
+
+        .hero .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .hero .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #0284c7;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            animation: ctaGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes ctaGlow {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 5px 15px rgba(0,0,0,0.1);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(255, 255, 255, 0.5), 0 5px 20px rgba(0,0,0,0.15);
+            }
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            animation: none;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #0284c7;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .section h2 {
+            color: #0284c7;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .benefit {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .benefit h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .benefit p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .how-it-works {
+            counter-reset: step;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 15px;
+        }
+
+        .step-number {
+            background: #0ea5e9;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: #666;
+        }
+
+        .pricing-box {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .pricing-box h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing-box .price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .pricing-box .price span {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .pricing-box ul {
+            list-style: none;
+            margin: 25px 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .pricing-box li {
+            margin: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .pricing-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: white;
+        }
+
+        .pricing-box .cta-button {
+            background: white;
+            color: #0284c7;
+        }
+
+        .faq {
+            margin-top: 30px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .faq-item h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            color: #666;
+        }
+
+        .contact-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: #0284c7;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #0ea5e9;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        footer a {
+            color: #0284c7;
+            text-decoration: none;
+        }
+
+        /* Sticky CTA Bar */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+        }
+
+        .sticky-cta.visible {
+            display: block;
+        }
+
+        .sticky-cta a {
+            background: white;
+            color: #0284c7;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 15px;
+        }
+
+        .sticky-cta span {
+            font-size: 0.95rem;
+        }
+
+        /* Social Proof Section */
+        .social-proof {
+            background: #f8fafc;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .social-proof h3 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 1.3rem;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+
+        .testimonial .quote {
+            color: #555;
+            font-style: italic;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .testimonial .author {
+            color: #0284c7;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .testimonial .role {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .trust-badge svg {
+            width: 24px;
+            height: 24px;
+            color: #0ea5e9;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero .stats {
+                gap: 20px;
+            }
+            .section {
+                padding: 30px;
+            }
+            .step {
+                flex-direction: column;
+            }
+            .step-number {
+                margin-bottom: 15px;
+            }
+            .sticky-cta {
+                padding: 12px 15px;
+            }
+            .sticky-cta span {
+                display: none;
+            }
+            .sticky-cta a {
+                margin: 0;
+                padding: 10px 25px;
+                font-size: 0.95rem;
+            }
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+            .trust-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            /* Mobile CTA Improvements */
+            .hero-cta-group {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 0 20px;
+            }
+
+            .cta-button {
+                text-align: center;
+                padding: 18px 30px;
+                margin-top: 10px;
+            }
+
+            .cta-phone {
+                order: -1; /* Show phone CTA first on mobile */
+            }
+
+            .urgency-banner-hero {
+                font-size: 0.8rem;
+                padding: 8px 15px;
+            }
+
+            .hero .stat-value {
+                font-size: 2rem;
+            }
+
+            .hero .stat-label {
+                font-size: 0.85rem;
+            }
+
+            /* Mobile-friendly form */
+            .contact-section {
+                padding: 30px 20px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+
+            /* Sticky mobile CTA */
+            .sticky-cta {
+                padding: 15px;
+                background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            }
+
+            .sticky-cta a {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .social-proof-ticker {
+                font-size: 0.8rem;
+            }
+
+            .ticker-item {
+                padding: 0 10px;
+            }
+
+            .live-dot-indicator {
+                font-size: 0.6rem;
+                padding: 1px 6px;
+            }
+
+            .pricing-box .price {
+                font-size: 2.5rem;
+            }
+
+            .urgency-timer {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="logo.svg" alt="Claude Squad" height="36">
+            </a>
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="blog/index.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="#contact" class="nav-link nav-cta" style="background: #0ea5e9;">Free Trial</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Social Proof Ticker with Live Indicator -->
+    <div class="social-proof-ticker" id="socialProofTicker">
+        <div class="ticker-content">
+            <span class="ticker-item"><span class="live-dot-indicator"><span class="live-dot"></span>LIVE</span> 🏥 <strong>Dr. Martinez, Phoenix</strong> recovered 5 appointments last week</span>
+            <span class="ticker-divider">•</span>
+            <span class="ticker-item">📞 <strong>Smile Dental, Austin</strong> just enrolled in pilot program</span>
+            <span class="ticker-divider">•</span>
+            <span class="ticker-item">💰 <strong>Family Dentistry, Denver</strong> recovered $2,400 in missed revenue</span>
+            <span class="ticker-divider">•</span>
+            <span class="ticker-item">⏱️ <strong>Quick response!</strong> Average callback time: 3.2 minutes</span>
+            <span class="ticker-divider">•</span>
+            <span class="ticker-item">🔥 <strong>3 clinics</strong> signed up this week - Limited spots remaining!</span>
+        </div>
+    </div>
+
+    <div class="hero">
+        <h1>Never Miss Another Patient Call</h1>
+        <p class="tagline">AI-powered missed call recovery for dental clinics</p>
+        <div class="hero-cta-group">
+            <a href="#contact" class="cta-button cta-primary">Claim Your Free Trial →</a>
+            <a href="tel:+15551234567" class="cta-button cta-phone">📞 Call Now: (555) 123-4567</a>
+        </div>
+        <div class="urgency-banner-hero">
+            <span class="pulse-dot"></span>
+            <span><strong>Only 5 pilot spots left</strong> this month - Act now!</span>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">30%</div>
+                <div class="stat-label">of calls go unanswered</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">$500</div>
+                <div class="stat-label">average lost per missed call</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">85%</div>
+                <div class="stat-label">recovery rate with our service</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Why Dental Clinics Lose Patients Every Day</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto; color: #666;">
+                Your front desk can't answer every call. When patients call during procedures, lunch breaks, or after hours,
+                they often don't leave a voicemail. They simply call your competitor instead.
+            </p>
+            <div class="benefits">
+                <div class="benefit">
+                    <div class="benefit-icon">📞</div>
+                    <h3>Instant Callback</h3>
+                    <p>Our AI detects missed calls and initiates callback within minutes, not hours</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">💬</div>
+                    <h3>Smart Scheduling</h3>
+                    <p>AI-powered conversation to book appointments directly into your calendar</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Full Transparency</h3>
+                    <p>Detailed reports on every recovered call and booked appointment</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">⏰</div>
+                    <h3>24/7 Coverage</h3>
+                    <p>Never miss an after-hours emergency or new patient inquiry again</p>
+                </div>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="trust-badges" style="margin-top: 40px;">
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span>100% Money-Back Guarantee</span>
+                </div>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                    <span>48-Hour Setup</span>
+                </div>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    <span>No Long-Term Contract</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>How It Works</h2>
+            <div class="how-it-works">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Missed Call Detected</h3>
+                        <p>Our system monitors your phone line and instantly detects when a call goes unanswered.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>AI Initiates Callback</h3>
+                        <p>Within minutes, our AI calls back the patient with a natural, friendly greeting.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Appointment Scheduled</h3>
+                        <p>The AI collects patient information and books the appointment directly into your system.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>You Get Notified</h3>
+                        <p>Receive instant notification with full details of the recovered patient and scheduled appointment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Free Calculator CTA -->
+        <div class="section" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #22c55e;">
+            <div style="text-align: center;">
+                <h2 style="color: #166534; margin-bottom: 15px;">📊 Free: Calculate Your Revenue Loss</h2>
+                <p style="color: #166534; max-width: 600px; margin: 0 auto 20px; font-size: 1.05rem;">
+                    Before you decide, use our free calculator to see exactly how much revenue your practice loses from missed calls each month.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">
+                    <span style="display: inline-flex; align-items: center; gap: 5px; color: #166534;">
+                        <span style="color: #22c55e; font-size: 1.2rem;">✓</span> Instant Results
+                    </span>
+                    <span style="display: inline-flex; align-items: center; gap: 5px; color: #166534;">
+                        <span style="color: #22c55e; font-size: 1.2rem;">✓</span> Personalized Report
+                    </span>
+                    <span style="display: inline-flex; align-items: center; gap: 5px; color: #166534;">
+                        <span style="color: #22c55e; font-size: 1.2rem;">✓</span> No Email Required
+                    </span>
+                </div>
+                <a href="lead-magnet.html" style="display: inline-block; background: #22c55e; color: white; padding: 14px 35px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 1rem; transition: transform 0.3s, box-shadow 0.3s;">
+                    Get Free Calculator →
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="pricing-box">
+                <h3>Pilot Program Pricing</h3>
+                <p>Limited time: Special introductory rate for dental clinics</p>
+                <div class="price">$297<span>/30 days</span></div>
+                <div class="urgency-timer" style="background: rgba(220,38,38,0.9); padding: 10px 20px; border-radius: 10px; margin: 15px 0; display: inline-block;">
+                    <span style="font-size: 0.85rem;">⏰ Offer ends in: </span>
+                    <strong id="countdown" style="font-size: 1rem;">-- days -- hours</strong>
+                </div>
+                <ul>
+                    <li>Up to 50 recovered calls per month</li>
+                    <li>24/7 coverage included</li>
+                    <li>Direct calendar integration</li>
+                    <li>Detailed analytics dashboard</li>
+                    <li>No setup fees</li>
+                    <li>Cancel anytime</li>
+                </ul>
+                <a href="#contact" class="cta-button">Start 14-Day Free Trial →</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <h4>How does the AI sound on the phone?</h4>
+                    <p>Our AI uses advanced natural language processing to sound professional and friendly. Patients often don't realize they're speaking with an AI system.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What phone systems do you integrate with?</h4>
+                    <p>We work with most major dental practice phone systems including Dentrix, Eaglesoft, Open Dental, and cloud-based systems. Setup takes less than 24 hours.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What if the patient has complex questions?</h4>
+                    <p>The AI is trained to handle common dental inquiries. For complex questions, it will schedule a callback from your staff at a convenient time.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Is there a free trial?</h4>
+                    <p>Yes! We offer a 14-day free trial with no commitment required. You only pay if you see results.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section" id="contact">
+            <h2>Ready to Recover Missed Calls?</h2>
+            <p style="margin-bottom: 30px; color: #666;">Fill out the form below and we'll contact you within 24 hours to set up your free trial.</p>
+            <form id="contactForm" novalidate style="max-width: 500px; margin: 0 auto;">
+                <div class="form-group">
+                    <label for="name">Clinic Name *</label>
+                    <input type="text" id="name" name="clinic_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact Person *</label>
+                    <input type="text" id="contact" name="contact_person" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="calls">Estimated Missed Calls per Month</label>
+                    <select id="calls" name="missed_calls">
+                        <option value="1-25">1-25 calls</option>
+                        <option value="26-50">26-50 calls</option>
+                        <option value="51-100">51-100 calls</option>
+                        <option value="100+">100+ calls</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Start Free Trial</button>
+            </form>
+            <div id="formSuccess" style="display: none; text-align: center; padding: 30px; background: #d4edda; border-radius: 15px; margin-top: 20px;">
+                <h3 style="color: #155724; margin-bottom: 10px;">Thank You!</h3>
+                <p style="color: #155724;">We'll contact you within 24 hours to set up your free trial.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Proof Section -->
+    <div class="container">
+        <div class="social-proof">
+            <h3>What Dental Practices Say</h3>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="quote">"We were missing 8-10 calls per week during procedures. Within the first month, we recovered 4 new patient appointments worth over $1,200."</div>
+                    <div class="author">Dr. Sarah M.</div>
+                    <div class="role">Family Dentistry, Austin TX</div>
+                </div>
+                <div class="testimonial">
+                    <div class="quote">"The ROI is undeniable. One recovered patient pays for the entire service. Everything else is pure profit."</div>
+                    <div class="author">Michael T.</div>
+                    <div class="role">Practice Manager, Denver CO</div>
+                </div>
+                <div class="testimonial">
+                    <div class="quote">"Setup was incredibly fast. We were live in 2 days and recovering calls by the end of the week."</div>
+                    <div class="author">Dr. James K.</div>
+                    <div class="role">Cosmetic Dentistry, Phoenix AZ</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky CTA Bar -->
+    <div class="sticky-cta" id="stickyCta">
+        <span>Limited: Pilot Program - $297 for 30 Days</span>
+        <a href="#contact">Get Started →</a>
+    </div>
+
+    <!-- Related Resources Section (SEO Internal Linking) -->
+    <div class="container">
+        <div class="section" style="background: #f8fafc;">
+            <h2>Related Resources</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 25px;">Learn more about dental practice efficiency and patient communication</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <a href="blog/missed-call-revenue-loss-dental-practices.html" style="display: block; background: white; padding: 20px; border-radius: 15px; text-decoration: none; box-shadow: 0 3px 15px rgba(0,0,0,0.05); transition: transform 0.3s;">
+                    <h4 style="color: #0284c7; margin-bottom: 8px;">Calculate Your Revenue Loss</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Interactive calculator to discover exactly how much missed calls cost your practice</p>
+                </a>
+                <a href="blog/dental-practice-phone-automation.html" style="display: block; background: white; padding: 20px; border-radius: 15px; text-decoration: none; box-shadow: 0 3px 15px rgba(0,0,0,0.05); transition: transform 0.3s;">
+                    <h4 style="color: #0284c7; margin-bottom: 8px;">Phone Automation Guide</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Complete guide to automating phone call handling at your dental practice</p>
+                </a>
+                <a href="blog/improve-dental-phone-handling.html" style="display: block; background: white; padding: 20px; border-radius: 15px; text-decoration: none; box-shadow: 0 3px 15px rgba(0,0,0,0.05); transition: transform 0.3s;">
+                    <h4 style="color: #0284c7; margin-bottom: 8px;">Improve Phone Handling</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Best practices for front desk phone management and patient satisfaction</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Claude Squad. All rights reserved.</p>
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="services.html">Services</a> |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a>
+        </p>
+    </footer>
+    <script>
+        // Show sticky CTA after scrolling past hero
+        const stickyCta = document.getElementById('stickyCta');
+        const hero = document.querySelector('.hero');
+
+        window.addEventListener('scroll', function() {
+            const heroBottom = hero.getBoundingClientRect().bottom;
+            if (heroBottom < 0) {
+                stickyCta.classList.add('visible');
+            } else {
+                stickyCta.classList.remove('visible');
+            }
+        });
+
+        // Countdown timer for urgency
+        function updateCountdown() {
+            const now = new Date();
+            const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+            const diff = endOfMonth - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+            const countdownEl = document.getElementById('countdown');
+            if (countdownEl) {
+                countdownEl.textContent = `${days} days ${hours} hours`;
+            }
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+
+        // Exit intent popup (show only once)
+        let exitIntentShown = false;
+        document.addEventListener('mouseout', function(e) {
+            if (e.clientY < 10 && !exitIntentShown) {
+                exitIntentShown = true;
+                setTimeout(() => {
+                    if (confirm('Wait! We have a special offer.\n\nGet an extra 7 days FREE when you sign up today.\n\nClaim your spot now?')) {
+                        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 100);
+            }
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Capture lead data
+            const leadData = {
+                type: 'missed_call_recovery',
+                clinicName: document.getElementById('name').value,
+                contactPerson: document.getElementById('contact').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                missedCalls: document.getElementById('calls').value,
+                source: 'missed-call-recovery.html',
+                timestamp: new Date().toISOString(),
+                page: window.location.href
+            };
+
+            // Store in localStorage
+            const leads = JSON.parse(localStorage.getItem('claude_squad_leads') || '[]');
+            leadData.id = 'lead_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            leads.push(leadData);
+            localStorage.setItem('claude_squad_leads', JSON.stringify(leads));
+
+            console.log('Lead captured:', leadData);
+
+            // Show success message
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const toggle = document.querySelector('.navbar-toggle');
+        const menu = document.querySelector('.navbar-menu');
+        if (toggle && menu) {
+            toggle.addEventListener('click', () => {
+                menu.classList.toggle('active');
+                toggle.classList.toggle('active');
+            });
+        }
+    </script>
+    <script src="js/components.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9"/>
+      <stop offset="100%" style="stop-color:#0284c7"/>
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Decorative elements -->
+  <circle cx="1050" cy="100" r="200" fill="white" opacity="0.05"/>
+  <circle cx="150" cy="500" r="150" fill="white" opacity="0.05"/>
+
+  <!-- Calculator icon -->
+  <g transform="translate(80, 180)">
+    <rect x="0" y="0" width="120" height="150" rx="15" fill="white" opacity="0.95"/>
+    <rect x="15" y="15" width="90" height="40" rx="5" fill="#0284c7" opacity="0.2"/>
+    <text x="60" y="45" font-family="monospace" font-size="24" fill="#0284c7" text-anchor="middle">$9,600</text>
+    <!-- Calculator buttons -->
+    <rect x="15" y="70" width="20" height="20" rx="3" fill="#0284c7" opacity="0.3"/>
+    <rect x="40" y="70" width="20" height="20" rx="3" fill="#0284c7" opacity="0.3"/>
+    <rect x="65" y="70" width="20" height="20" rx="3" fill="#0284c7" opacity="0.3"/>
+    <rect x="90" y="70" width="20" height="20" rx="3" fill="#f59e0b" opacity="0.5"/>
+    <rect x="15" y="95" width="20" height="20" rx="3" fill="#0284c7" opacity="0.3"/>
+    <rect x="40" y="95" width="20" height="20" rx="3" fill="#0284c7" opacity="0.3"/>
+    <rect x="65" y="95" width="20" height="20" rx="3" fill="#0284c7" opacity="0.3"/>
+    <rect x="90" y="95" width="20" height="20" rx="3" fill="#0284c7" opacity="0.3"/>
+    <rect x="15" y="120" width="45" height="20" rx="3" fill="#0284c7" opacity="0.3"/>
+    <rect x="65" y="120" width="20" height="20" rx="3" fill="#0284c7" opacity="0.3"/>
+    <rect x="90" y="120" width="20" height="20" rx="3" fill="#10b981" opacity="0.5"/>
+  </g>
+
+  <!-- Main title -->
+  <text x="240" y="220" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="52" font-weight="bold" fill="white">Free Missed Call</text>
+  <text x="240" y="285" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="52" font-weight="bold" fill="white">Revenue Calculator</text>
+
+  <!-- Subtitle -->
+  <text x="240" y="350" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="26" fill="white" opacity="0.9">For Dental Practices</text>
+
+  <!-- Accent line -->
+  <rect x="240" y="380" width="250" height="4" rx="2" fill="url(#accentGradient)"/>
+
+  <!-- Value props -->
+  <g transform="translate(240, 420)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="22" fill="white" opacity="0.85">
+      <tspan>&#10003; Calculate lost revenue in 60 seconds</tspan>
+    </text>
+    <text x="0" y="35" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="22" fill="white" opacity="0.85">
+      <tspan>&#10003; Get instant recovery strategies</tspan>
+    </text>
+    <text x="0" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="22" fill="white" opacity="0.85">
+      <tspan>&#10003; No signup required</tspan>
+    </text>
+  </g>
+
+  <!-- CTA badge -->
+  <rect x="240" y="530" width="180" height="50" rx="25" fill="white"/>
+  <text x="330" y="563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="18" font-weight="600" fill="#0284c7" text-anchor="middle">Calculate Now</text>
+
+  <!-- Brand -->
+  <text x="1050" y="590" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="18" fill="white" opacity="0.6" text-anchor="end">Claude天团</text>
+</svg>

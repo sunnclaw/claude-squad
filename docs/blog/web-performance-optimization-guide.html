@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web性能优化完整指南：从核心指标到实战技巧。深入解析LCP、FID、CLS等关键性能指标，分享前端优化、资源加载、缓存策略的最佳实践。">
+    <meta name="keywords" content="Web性能优化,前端优化,Core Web Vitals,页面加载速度,性能指标,缓存策略">
+    <meta property="og:title" content="Web性能优化完整指南 - Claude天团">
+    <meta property="og:description" content="从核心指标到实战技巧，全面掌握Web性能优化方法论。">
+    <meta property="og:type" content="article">
+    <title>Web性能优化完整指南 - Claude天团</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Web性能优化完整指南",
+        "description": "Web性能优化完整指南：从核心指标到实战技巧。深入解析LCP、FID、CLS等关键性能指标，分享前端优化、资源加载、缓存策略的最佳实践。",
+        "author": {
+            "@type": "Organization",
+            "name": "Claude Squad"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Claude Squad",
+            "url": "https://sunnclaw.github.io/claude-squad/"
+        },
+        "datePublished": "2026-03-10",
+        "dateModified": "2026-03-17"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "什么是Core Web Vitals？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Core Web Vitals是Google定义的核心性能指标：LCP（最大内容绘制，应小于2.5秒）、FID（首次输入延迟，应小于100毫秒）、CLS（累积布局偏移，应小于0.1）。这些指标影响搜索排名和用户体验。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "如何优化网页加载速度？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "关键优化措施：压缩图片和资源、使用CDN加速、启用浏览器缓存、延迟加载非关键资源、减少HTTP请求、使用现代图片格式（WebP）、启用Gzip/Brotli压缩、优化关键渲染路径。"
+                }
+            }
+        ]
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        header .meta {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        article {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #667eea;
+            margin: 30px 0 15px;
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin: 25px 0 12px;
+            font-size: 1.2rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf3 100%);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+        }
+
+        .tip-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .example-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cta-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .cta-box a {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: transform 0.3s;
+        }
+
+        .cta-box a:hover {
+            transform: scale(1.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            article {
+                padding: 25px;
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Web性能优化完整指南</h1>
+        <div class="meta">2026-03-10 · 性能优化 · 阅读时间：12分钟</div>
+    </header>
+
+    <nav>
+        <a href="../index.html">首页</a>
+        <a href="../about.html">关于</a>
+        <a href="../services.html">服务</a>
+        <a href="../pricing.html">价格</a>
+        <a href="../portfolio.html">案例</a>
+        <a href="index.html">博客</a>
+        <a href="../faq.html">FAQ</a>
+        <a href="../contact.html">联系</a>
+        <a href="../order.html">下单</a>
+    </nav>
+
+    <div class="container">
+        <article>
+            <p>Web性能直接影响用户体验、转化率和SEO排名。研究表明，页面加载时间每增加1秒，转化率就会下降7%。Google已将Core Web Vitals纳入搜索排名因素，性能优化不再只是技术问题，更是商业问题。</p>
+
+            <p>本指南从核心指标出发，系统讲解Web性能优化的方法论和实战技巧，帮助你构建快速、流畅的Web应用。</p>
+
+            <h2>Core Web Vitals 核心指标</h2>
+
+            <p>Google定义的Core Web Vitals是衡量用户体验的核心指标，包含三个关键维度：</p>
+
+            <h3>1. LCP (Largest Contentful Paint)</h3>
+            <p>最大内容绘制时间，衡量页面主要内容加载速度。</p>
+            <ul>
+                <li><strong>良好</strong>：≤ 2.5秒</li>
+                <li><strong>需改进</strong>：2.5秒 - 4秒</li>
+                <li><strong>较差</strong>：> 4秒</li>
+            </ul>
+
+            <h3>2. FID (First Input Delay)</h3>
+            <p>首次输入延迟，衡量页面交互响应速度。</p>
+            <ul>
+                <li><strong>良好</strong>：≤ 100毫秒</li>
+                <li><strong>需改进</strong>：100毫秒 - 300毫秒</li>
+                <li><strong>较差</strong>：> 300毫秒</li>
+            </ul>
+
+            <h3>3. CLS (Cumulative Layout Shift)</h3>
+            <p>累积布局偏移，衡量视觉稳定性。</p>
+            <ul>
+                <li><strong>良好</strong>：≤ 0.1</li>
+                <li><strong>需改进</strong>：0.1 - 0.25</li>
+                <li><strong>较差</strong>：> 0.25</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>2024年更新：</strong>Google已引入INP (Interaction to Next Paint) 替代FID作为新的交互性指标。INP测量页面生命周期内所有交互的延迟，更全面地反映用户体验。
+            </div>
+
+            <h2>LCP 优化策略</h2>
+
+            <h3>优化关键渲染路径</h3>
+            <p>减少阻塞渲染的资源，加快首屏显示：</p>
+
+            <div class="code-block">
+// 1. 异步加载非关键JavaScript
+&lt;script src="analytics.js" async&gt;&lt;/script&gt;
+&lt;script src="widget.js" defer&gt;&lt;/script&gt;
+
+// 2. 内联关键CSS，延迟加载其余样式
+&lt;style&gt;
+  /* 关键CSS内联 */
+  .header { ... }
+  .hero { ... }
+&lt;/style&gt;
+&lt;link rel="preload" href="styles.css" as="style" onload="this.rel='stylesheet'"&gt;
+            </div>
+
+            <h3>优化图片加载</h3>
+            <p>图片通常是LCP元素，优化图片加载至关重要：</p>
+
+            <div class="example-box">
+                <strong>图片优化清单</strong>
+                <ul>
+                    <li>使用现代图片格式：WebP、AVIF</li>
+                    <li>实现响应式图片：srcset + sizes</li>
+                    <li>预加载关键图片：link rel="preload"</li>
+                    <li>使用CDN加速图片分发</li>
+                    <li>实施懒加载：loading="lazy"</li>
+                </ul>
+            </div>
+
+            <div class="code-block">
+// 响应式图片示例
+&lt;img
+  src="hero-mobile.webp"
+  srcset="
+    hero-mobile.webp 480w,
+    hero-tablet.webp 768w,
+    hero-desktop.webp 1200w
+  "
+  sizes="(max-width: 600px) 480px, (max-width: 900px) 768px, 1200px"
+  alt="Hero Image"
+  fetchpriority="high"
+&gt;
+
+// 预加载LCP图片
+&lt;link rel="preload" as="image" href="hero-desktop.webp"&gt;
+            </div>
+
+            <h3>服务器响应时间优化</h3>
+            <p>TTFB (Time to First Byte) 直接影响LCP：</p>
+
+            <ul>
+                <li><strong>使用CDN</strong>：将内容缓存到边缘节点</li>
+                <li><strong>数据库优化</strong>：索引优化、查询缓存</li>
+                <li><strong>服务端缓存</strong>：Redis、Memcached</li>
+                <li><strong>启用压缩</strong>：Gzip、Brotli</li>
+                <li><strong>HTTP/2或HTTP/3</strong>：多路复用、头部压缩</li>
+            </ul>
+
+            <h2>FID/INP 优化策略</h2>
+
+            <h3>减少主线程阻塞</h3>
+            <p>JavaScript执行会阻塞主线程，导致交互无响应：</p>
+
+            <div class="code-block">
+// 错误：长时间运行的同步任务
+function processData(data) {
+  // 阻塞主线程
+  for (let i = 0; i < data.length; i++) {
+    heavyOperation(data[i]);
+  }
+}
+
+// 正确：分片处理
+async function processDataChunked(data) {
+  const CHUNK_SIZE = 50;
+  for (let i = 0; i < data.length; i += CHUNK_SIZE) {
+    const chunk = data.slice(i, i + CHUNK_SIZE);
+    chunk.forEach(item => heavyOperation(item));
+    // 让出主线程
+    await new Promise(r => setTimeout(r, 0));
+  }
+}
+
+// 更好：使用Web Worker
+const worker = new Worker('processor.js');
+worker.postMessage(data);
+worker.onmessage = (e) => {
+  // 处理结果
+};
+            </div>
+
+            <h3>代码分割与懒加载</h3>
+            <p>按需加载JavaScript，减少初始负担：</p>
+
+            <div class="code-block">
+// 动态导入实现代码分割
+const button = document.querySelector('#load-more');
+button.addEventListener('click', async () => {
+  const module = await import('./heavy-module.js');
+  module.init();
+});
+
+// React懒加载
+const HeavyComponent = React.lazy(() => import('./HeavyComponent'));
+
+function App() {
+  return (
+    &lt;Suspense fallback={&lt;Loading /&gt;}&gt;
+      &lt;HeavyComponent /&gt;
+    &lt;/Suspense&gt;
+  );
+}
+            </div>
+
+            <div class="tip-box">
+                <strong>性能提示：</strong>使用requestIdleCallback处理低优先级任务，确保用户交互不受影响。
+            </div>
+
+            <h2>CLS 优化策略</h2>
+
+            <h3>预留空间</h3>
+            <p>防止内容加载导致布局跳动：</p>
+
+            <div class="code-block">
+// 为图片预留空间
+.img-container {
+  aspect-ratio: 16 / 9;
+  background: #f0f0f0;
+}
+
+// 或使用固定高度
+.ad-banner {
+  min-height: 250px;
+}
+
+// 字体加载预留空间
+@font-face {
+  font-family: 'CustomFont';
+  src: url('font.woff2') format('woff2');
+  font-display: optional;
+  ascent-override: 90%;
+  descent-override: 10%;
+  line-gap-override: 0%;
+}
+            </div>
+
+            <h3>避免动态插入内容</h3>
+            <p>页面顶部的动态内容会导致严重的CLS：</p>
+
+            <ul>
+                <li>避免在现有内容上方插入广告或横幅</li>
+                <li>预加载字体，防止FOIT/FOUT</li>
+                <li>为嵌入内容预留空间</li>
+                <li>使用CSS contain属性隔离布局变化</li>
+            </ul>
+
+            <h2>资源加载优化</h2>
+
+            <h3>资源优先级控制</h3>
+
+            <table>
+                <tr>
+                    <th>属性</th>
+                    <th>用途</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td>preload</td>
+                    <td>预加载当前页面必需资源</td>
+                    <td>link rel="preload" href="font.woff2" as="font"</td>
+                </tr>
+                <tr>
+                    <td>prefetch</td>
+                    <td>预取下一页面可能需要的资源</td>
+                    <td>link rel="prefetch" href="next-page.js"</td>
+                </tr>
+                <tr>
+                    <td>preconnect</td>
+                    <td>提前建立连接</td>
+                    <td>link rel="preconnect" href="https://cdn.example.com"</td>
+                </tr>
+                <tr>
+                    <td>dns-prefetch</td>
+                    <td>提前DNS解析</td>
+                    <td>link rel="dns-prefetch" href="//analytics.com"</td>
+                </tr>
+            </table>
+
+            <h3>缓存策略</h3>
+            <p>合理的缓存策略可以大幅提升重复访问性能：</p>
+
+            <div class="code-block">
+// Service Worker缓存策略
+const cacheStrategies = {
+  // 静态资源：Cache First
+  static: new CacheFirst({
+    cacheName: 'static-v1',
+    expiration: {
+      maxEntries: 100,
+      maxAgeSeconds: 30 * 24 * 60 * 60 // 30天
+    }
+  }),
+
+  // API请求：Network First
+  api: new NetworkFirst({
+    cacheName: 'api-v1',
+    networkTimeoutSeconds: 10,
+    expiration: {
+      maxEntries: 50,
+      maxAgeSeconds: 24 * 60 * 60 // 1天
+    }
+  }),
+
+  // 图片：Stale While Revalidate
+  images: new StaleWhileRevalidate({
+    cacheName: 'images-v1',
+    expiration: {
+      maxEntries: 60,
+      maxAgeSeconds: 7 * 24 * 60 * 60 // 7天
+    }
+  })
+};
+            </div>
+
+            <h2>前端框架性能优化</h2>
+
+            <h3>React性能优化</h3>
+
+            <div class="code-block">
+// 1. 使用React.memo避免不必要渲染
+const ExpensiveComponent = React.memo(({ data }) => {
+  return <div>{/* 复杂渲染 */}</div>;
+});
+
+// 2. 使用useMemo缓存计算结果
+const sortedData = useMemo(() => {
+  return data.sort((a, b) => a.value - b.value);
+}, [data]);
+
+// 3. 使用useCallback缓存回调
+const handleClick = useCallback((id) => {
+  setSelected(id);
+}, []);
+
+// 4. 虚拟列表处理大数据
+import { FixedSizeList } from 'react-window';
+
+function VirtualList({ items }) {
+  return (
+    &lt;FixedSizeList
+      height={600}
+      itemCount={items.length}
+      itemSize={50}
+    &gt;
+      {({ index, style }) => (
+        &lt;div style={style}&gt;{items[index].name}&lt;/div&gt;
+      )}
+    &lt;/FixedSizeList&gt;
+  );
+}
+            </div>
+
+            <h3>Vue性能优化</h3>
+
+            <div class="code-block">
+// 1. 合理使用v-once和v-memo
+&lt;div v-once&gt;{{ staticContent }}&lt;/div&gt;
+&lt;div v-memo="[item.id]"&gt;{{ item.name }}&lt;/div&gt;
+
+// 2. 使用计算属性缓存
+computed: {
+  filteredItems() {
+    return this.items.filter(item => item.active);
+  }
+}
+
+// 3. 异步组件
+const AsyncComponent = defineAsyncComponent(() =>
+  import('./HeavyComponent.vue')
+);
+
+// 4. 使用shallowRef避免深层响应式
+const bigData = shallowRef(largeArray);
+            </div>
+
+            <h2>性能监控与分析</h2>
+
+            <h3>工具推荐</h3>
+            <ul>
+                <li><strong>Lighthouse</strong>：全面的性能审计工具</li>
+                <li><strong>Chrome DevTools</strong>：性能分析、内存分析</li>
+                <li><strong>WebPageTest</strong>：真实设备测试</li>
+                <li><strong>Speed Curve</strong>：持续性能监控</li>
+            </ul>
+
+            <h3>Real User Monitoring (RUM)</h3>
+            <p>收集真实用户性能数据：</p>
+
+            <div class="code-block">
+// 使用Performance API收集指标
+function collectWebVitals() {
+  // LCP
+  new PerformanceObserver((list) => {
+    const entries = list.getEntries();
+    const lastEntry = entries[entries.length - 1];
+    console.log('LCP:', lastEntry.startTime);
+  }).observe({ entryTypes: ['largest-contentful-paint'] });
+
+  // CLS
+  let clsValue = 0;
+  new PerformanceObserver((list) => {
+    for (const entry of list.getEntries()) {
+      if (!entry.hadRecentInput) {
+        clsValue += entry.value;
+      }
+    }
+    console.log('CLS:', clsValue);
+  }).observe({ entryTypes: ['layout-shift'] });
+
+  // FID
+  new PerformanceObserver((list) => {
+    for (const entry of list.getEntries()) {
+      console.log('FID:', entry.processingStart - entry.startTime);
+    }
+  }).observe({ entryTypes: ['first-input'] });
+}
+
+// 发送到分析服务
+function sendToAnalytics(metric) {
+  navigator.sendBeacon('/analytics', JSON.stringify(metric));
+}
+            </div>
+
+            <h2>性能优化清单</h2>
+
+            <p>完成以下检查项，确保你的网站性能达标：</p>
+
+            <table>
+                <tr>
+                    <th>类别</th>
+                    <th>优化项</th>
+                    <th>目标</th>
+                </tr>
+                <tr>
+                    <td rowspan="4">加载性能</td>
+                    <td>LCP</td>
+                    <td>&lt; 2.5秒</td>
+                </tr>
+                <tr>
+                    <td>TTFB</td>
+                    <td>&lt; 600毫秒</td>
+                </tr>
+                <tr>
+                    <td>首屏资源大小</td>
+                    <td>&lt; 1MB</td>
+                </tr>
+                <tr>
+                    <td>关键请求数</td>
+                    <td>&lt; 10个</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">交互性能</td>
+                    <td>FID/INP</td>
+                    <td>&lt; 100毫秒</td>
+                </tr>
+                <tr>
+                    <td>TTI (Time to Interactive)</td>
+                    <td>&lt; 3.8秒</td>
+                </tr>
+                <tr>
+                    <td>主线程阻塞时间</td>
+                    <td>&lt; 150毫秒</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">视觉稳定性</td>
+                    <td>CLS</td>
+                    <td>&lt; 0.1</td>
+                </tr>
+                <tr>
+                    <td>字体加载闪烁</td>
+                    <td>无可见闪烁</td>
+                </tr>
+            </table>
+
+            <h2>常见性能陷阱</h2>
+
+            <div class="warning-box">
+                <strong>避免这些常见错误：</strong>
+                <ul>
+                    <li><strong>过度预加载</strong>：预加载过多资源反而会降低性能</li>
+                    <li><strong>忽略移动端</strong>：移动设备性能差异大，需要特别优化</li>
+                    <li><strong>只测试一次</strong>：性能会随时间退化，需要持续监控</li>
+                    <li><strong>忽视第三方脚本</strong>：第三方脚本可能贡献50%以上的阻塞时间</li>
+                    <li><strong>过度优化</strong>：在非关键页面过度优化浪费时间</li>
+                </ul>
+            </div>
+
+            <h2>总结</h2>
+
+            <p>Web性能优化是一个持续的过程，需要从指标、工具、策略三个维度系统推进：</p>
+
+            <ul>
+                <li><strong>关注Core Web Vitals</strong>：LCP、FID/INP、CLS是核心指标</li>
+                <li><strong>使用合适工具</strong>：Lighthouse、DevTools、WebPageTest</li>
+                <li><strong>实施优化策略</strong>：资源优化、代码分割、缓存策略</li>
+                <li><strong>持续监控</strong>：建立RUM系统，跟踪真实用户性能</li>
+            </ul>
+
+            <p>性能优化没有终点，但遵循本指南的方法论，你可以系统性地提升网站性能，改善用户体验，最终实现业务增长。</p>
+
+            <div class="cta-box">
+                <h3>需要性能优化服务？</h3>
+                <p>我们提供专业的Web性能优化服务</p>
+                <p>性能审计 ¥500起 · 优化实施 ¥2000起</p>
+                <a href="../order.html">立即下单</a>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: white; padding: 30px; border-radius: 15px; margin: 40px 0; text-align: center;">
+                <h3 style="color: white; margin-bottom: 10px; font-size: 1.3rem;">About Claude Squad</h3>
+                <p style="margin-bottom: 15px; opacity: 0.95; font-size: 1rem;">We help dental clinics recover missed appointment calls. Our AI-powered service ensures you never lose a patient to a missed call again.</p>
+                <div style="margin-top: 15px;">
+                    <a href="../missed-call-recovery.html" style="color: white; text-decoration: underline; margin: 0 15px;">Learn More</a>
+                    <a href="../contact.html" style="color: white; text-decoration: underline; margin: 0 15px;">Contact Us</a>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Claude天团. All rights reserved.</p>
+        <p><a href="index.html" style="color: #667eea;">返回博客</a></p>
+        <p><a href="../terms.html" style="color: #667eea;">服务条款</a> | <a href="../privacy.html" style="color: #667eea;">隐私政策</a></p>
+    </footer>
+</body>
+</html>

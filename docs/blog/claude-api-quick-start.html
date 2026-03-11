@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Claude API快速入门指南：从零开始学习如何使用Claude API构建AI应用。涵盖认证、请求格式、流式响应、错误处理等核心概念。">
+    <meta name="keywords" content="Claude API,Anthropic API,AI开发,API集成,LLM应用,AI编程">
+    <meta property="og:title" content="Claude API快速入门指南 - Claude天团">
+    <meta property="og:description" content="手把手教你使用Claude API构建智能应用，从基础概念到实战代码示例。">
+    <meta property="og:type" content="article">
+    <title>Claude API快速入门指南 - Claude天团</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Claude API快速入门指南",
+        "description": "Claude API快速入门指南：从零开始学习如何使用Claude API构建AI应用。涵盖认证、请求格式、流式响应、错误处理等核心概念。",
+        "author": {
+            "@type": "Organization",
+            "name": "Claude Squad"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Claude Squad",
+            "url": "https://sunnclaw.github.io/claude-squad/"
+        },
+        "datePublished": "2026-03-10",
+        "dateModified": "2026-03-17"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "如何获取Claude API密钥？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "访问console.anthropic.com注册账号，在API Keys页面创建新密钥。注意API密钥只显示一次，需妥善保存。Anthropic提供$5免费额度供测试使用。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Claude API如何计费？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Claude API按输入和输出token分别计费。Claude 3.5 Sonnet输入约$3/百万token，输出约$15/百万token。建议使用streaming流式响应来降低延迟体验。"
+                }
+            }
+        ]
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        header .meta {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        article {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #667eea;
+            margin: 30px 0 15px;
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin: 25px 0 12px;
+            font-size: 1.2rem;
+        }
+
+        h4 {
+            color: #555;
+            margin: 20px 0 10px;
+            font-size: 1.1rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf3 100%);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .code-block pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .tip-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .example-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cta-box h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .cta-box a {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+
+        .cta-box a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.4rem;
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+            article {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Claude API快速入门指南</h1>
+        <div class="meta">2026-03-10 · AI开发 · 阅读时间约15分钟</div>
+    </header>
+
+    <nav>
+        <a href="../index.html">首页</a>
+        <a href="../about.html">关于</a>
+        <a href="../services.html">服务</a>
+        <a href="../pricing.html">价格</a>
+        <a href="../portfolio.html">案例</a>
+        <a href="index.html">博客</a>
+        <a href="../faq.html">FAQ</a>
+        <a href="../contact.html">联系</a>
+    </nav>
+
+    <div class="container">
+        <article>
+            <p>Anthropic的Claude API是构建AI应用的重要工具。本文将带你从零开始，掌握Claude API的核心用法，包括认证、请求构建、流式响应、错误处理等关键技能。</p>
+
+            <div class="highlight-box">
+                <strong>前置要求：</strong>
+                <ul>
+                    <li>基本的编程知识（Python或JavaScript）</li>
+                    <li>Anthropic API密钥（从console.anthropic.com获取）</li>
+                    <li>了解REST API的基本概念</li>
+                </ul>
+            </div>
+
+            <h2>一、快速开始</h2>
+
+            <h3>1.1 获取API密钥</h3>
+            <p>首先，你需要在Anthropic控制台创建API密钥：</p>
+            <ol>
+                <li>访问 <code>console.anthropic.com</code></li>
+                <li>登录或注册账户</li>
+                <li>进入API Keys页面</li>
+                <li>点击"Create Key"生成新密钥</li>
+            </ol>
+
+            <div class="warning-box">
+                <strong>安全提示：</strong>API密钥相当于账户密码，切勿泄露或提交到代码仓库。建议使用环境变量存储。
+            </div>
+
+            <h3>1.2 安装SDK</h3>
+            <p>Anthropic提供官方SDK，支持Python和TypeScript：</p>
+
+            <p><strong>Python:</strong></p>
+            <div class="code-block">
+<pre>pip install anthropic</pre>
+            </div>
+
+            <p><strong>TypeScript/JavaScript:</strong></p>
+            <div class="code-block">
+<pre>npm install @anthropic-ai/sdk</pre>
+            </div>
+
+            <h3>1.3 第一个API调用</h3>
+            <p>让我们发送第一个请求给Claude：</p>
+
+            <p><strong>Python示例：</strong></p>
+            <div class="code-block">
+<pre>import anthropic
+
+client = anthropic.Anthropic(
+    api_key="your-api-key-here"
+)
+
+message = client.messages.create(
+    model="claude-sonnet-4-6-20250514",
+    max_tokens=1024,
+    messages=[
+        {"role": "user", "content": "你好，请介绍一下你自己"}
+    ]
+)
+
+print(message.content)</pre>
+            </div>
+
+            <p><strong>TypeScript示例：</strong></p>
+            <div class="code-block">
+<pre>import Anthropic from '@anthropic-ai/sdk';
+
+const client = new Anthropic({
+  apiKey: 'your-api-key-here',
+});
+
+const message = await client.messages.create({
+  model: 'claude-sonnet-4-6-20250514',
+  max_tokens: 1024,
+  messages: [
+    { role: 'user', content: '你好，请介绍一下你自己' }
+  ]
+});
+
+console.log(message.content);</pre>
+            </div>
+
+            <h2>二、核心概念</h2>
+
+            <h3>2.1 模型选择</h3>
+            <p>Anthropic提供多个Claude模型，适用于不同场景：</p>
+
+            <table>
+                <tr>
+                    <th>模型</th>
+                    <th>特点</th>
+                    <th>适用场景</th>
+                </tr>
+                <tr>
+                    <td>Claude Opus 4.6</td>
+                    <td>最强推理能力</td>
+                    <td>复杂分析、研究任务</td>
+                </tr>
+                <tr>
+                    <td>Claude Sonnet 4.6</td>
+                    <td>平衡性能与成本</td>
+                    <td>日常开发、对话应用</td>
+                </tr>
+                <tr>
+                    <td>Claude Haiku 4.5</td>
+                    <td>快速响应</td>
+                    <td>实时对话、批量处理</td>
+                </tr>
+            </table>
+
+            <h3>2.2 消息格式</h3>
+            <p>Claude API使用消息列表格式，支持多轮对话：</p>
+
+            <div class="code-block">
+<pre>messages = [
+    {"role": "user", "content": "什么是机器学习？"},
+    {"role": "assistant", "content": "机器学习是人工智能的一个分支..."},
+    {"role": "user", "content": "能举个例子吗？"}
+]</pre>
+            </div>
+
+            <h3>2.3 System提示</h3>
+            <p>System提示用于定义Claude的角色和行为边界：</p>
+
+            <div class="code-block">
+<pre>message = client.messages.create(
+    model="claude-sonnet-4-6-20250514",
+    max_tokens=1024,
+    system="你是一位专业的Python开发教练，用简洁易懂的方式回答问题。",
+    messages=[
+        {"role": "user", "content": "如何学习Python？"}
+    ]
+)</pre>
+            </div>
+
+            <div class="tip-box">
+                <strong>最佳实践：</strong>System提示应该清晰、具体，避免模糊的指令。好的System提示能显著提升输出质量。
+            </div>
+
+            <h2>三、进阶功能</h2>
+
+            <h3>3.1 流式响应</h3>
+            <p>对于长文本生成，流式响应可以提供更好的用户体验：</p>
+
+            <div class="code-block">
+<pre>with client.messages.stream(
+    model="claude-sonnet-4-6-20250514",
+    max_tokens=1024,
+    messages=[
+        {"role": "user", "content": "写一篇关于AI的短文"}
+    ]
+) as stream:
+    for text in stream.text_stream:
+        print(text, end="", flush=True)</pre>
+            </div>
+
+            <h3>3.2 多模态输入</h3>
+            <p>Claude支持图像输入，可以分析图片内容：</p>
+
+            <div class="code-block">
+<pre>import base64
+
+# 读取图片
+with open("image.png", "rb") as f:
+    image_data = base64.standard_b64encode(f.read()).decode("utf-8")
+
+message = client.messages.create(
+    model="claude-sonnet-4-6-20250514",
+    max_tokens=1024,
+    messages=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "image",
+                    "source": {
+                        "type": "base64",
+                        "media_type": "image/png",
+                        "data": image_data
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "请描述这张图片的内容"
+                }
+            ]
+        }
+    ]
+)</pre>
+            </div>
+
+            <h3>3.3 工具使用（Function Calling）</h3>
+            <p>让Claude能够调用外部工具和API：</p>
+
+            <div class="code-block">
+<pre>tools = [
+    {
+        "name": "get_weather",
+        "description": "获取指定城市的天气信息",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "city": {
+                    "type": "string",
+                    "description": "城市名称"
+                }
+            },
+            "required": ["city"]
+        }
+    }
+]
+
+message = client.messages.create(
+    model="claude-sonnet-4-6-20250514",
+    max_tokens=1024,
+    tools=tools,
+    messages=[
+        {"role": "user", "content": "北京今天天气怎么样？"}
+    ]
+)
+
+# Claude可能会返回tool_use块
+if message.stop_reason == "tool_use":
+    for block in message.content:
+        if block.type == "tool_use":
+            print(f"工具: {block.name}")
+            print(f"参数: {block.input}")</pre>
+            </div>
+
+            <h2>四、错误处理</h2>
+
+            <h3>4.1 常见错误类型</h3>
+            <table>
+                <tr>
+                    <th>错误代码</th>
+                    <th>含义</th>
+                    <th>解决方案</th>
+                </tr>
+                <tr>
+                    <td>401</td>
+                    <td>认证失败</td>
+                    <td>检查API密钥是否正确</td>
+                </tr>
+                <tr>
+                    <td>429</td>
+                    <td>请求过于频繁</td>
+                    <td>实现重试机制，使用指数退避</td>
+                </tr>
+                <tr>
+                    <td>500</td>
+                    <td>服务器错误</td>
+                    <td>稍后重试</td>
+                </tr>
+                <tr>
+                    <td>prompt_too_long</td>
+                    <td>输入超过限制</td>
+                    <td>减少输入长度或切换模型</td>
+                </tr>
+            </table>
+
+            <h3>4.2 实现重试机制</h3>
+            <div class="code-block">
+<pre>import time
+from anthropic import APIError, RateLimitError
+
+def call_with_retry(client, messages, max_retries=3):
+    for attempt in range(max_retries):
+        try:
+            return client.messages.create(
+                model="claude-sonnet-4-6-20250514",
+                max_tokens=1024,
+                messages=messages
+            )
+        except RateLimitError:
+            wait_time = (2 ** attempt) + 1
+            print(f"遇到限流，等待{wait_time}秒后重试...")
+            time.sleep(wait_time)
+        except APIError as e:
+            if attempt == max_retries - 1:
+                raise
+            time.sleep(1)
+    return None</pre>
+            </div>
+
+            <h2>五、最佳实践</h2>
+
+            <h3>5.1 Prompt设计原则</h3>
+            <ul>
+                <li><strong>清晰具体：</strong>明确告诉Claude你想要什么</li>
+                <li><strong>提供上下文：</strong>给出必要的背景信息</li>
+                <li><strong>示例驱动：</strong>复杂任务提供输出示例</li>
+                <li><strong>分步骤：</strong>复杂任务拆解为多步</li>
+            </ul>
+
+            <h3>5.2 成本优化</h3>
+            <div class="example-box">
+                <strong>节省API成本的技巧：</strong>
+                <ul>
+                    <li>选择合适的模型：简单任务用Haiku</li>
+                    <li>控制max_tokens：避免不必要的长输出</li>
+                    <li>缓存常用上下文：减少重复发送</li>
+                    <li>批量处理：合并相似请求</li>
+                </ul>
+            </div>
+
+            <h3>5.3 安全考虑</h3>
+            <div class="warning-box">
+                <ul>
+                    <li>不要在客户端暴露API密钥</li>
+                    <li>验证和清理用户输入</li>
+                    <li>设置合理的速率限制</li>
+                    <li>记录和监控API使用情况</li>
+                </ul>
+            </div>
+
+            <h2>六、完整示例：构建简单的AI助手</h2>
+
+            <div class="code-block">
+<pre>import anthropic
+import os
+
+class ClaudeAssistant:
+    def __init__(self):
+        self.client = anthropic.Anthropic(
+            api_key=os.environ.get("ANTHROPIC_API_KEY")
+        )
+        self.conversation_history = []
+
+    def chat(self, user_input: str) -> str:
+        # 添加用户消息
+        self.conversation_history.append({
+            "role": "user",
+            "content": user_input
+        })
+
+        # 调用API
+        response = self.client.messages.create(
+            model="claude-sonnet-4-6-20250514",
+            max_tokens=1024,
+            system="你是一个友好、有帮助的AI助手。",
+            messages=self.conversation_history
+        )
+
+        # 提取回复
+        assistant_message = response.content[0].text
+
+        # 添加到历史
+        self.conversation_history.append({
+            "role": "assistant",
+            "content": assistant_message
+        })
+
+        return assistant_message
+
+    def clear_history(self):
+        self.conversation_history = []
+
+# 使用示例
+if __name__ == "__main__":
+    assistant = ClaudeAssistant()
+
+    while True:
+        user_input = input("你: ")
+        if user_input.lower() in ["退出", "quit", "exit"]:
+            break
+
+        response = assistant.chat(user_input)
+        print(f"Claude: {response}")</pre>
+            </div>
+
+            <h2>总结</h2>
+            <p>Claude API是构建AI应用的强大工具。通过本文，你已经掌握了：</p>
+            <ul>
+                <li>API认证和基本调用方法</li>
+                <li>消息格式和System提示的使用</li>
+                <li>流式响应和多模态输入</li>
+                <li>工具调用（Function Calling）</li>
+                <li>错误处理和最佳实践</li>
+            </ul>
+
+            <p>下一步，建议你：</p>
+            <ol>
+                <li>阅读官方文档了解更多细节</li>
+                <li>尝试构建一个小项目实践所学</li>
+                <li>探索Agent SDK构建更复杂的AI代理</li>
+            </ol>
+
+            <div class="cta-box">
+                <h3>需要AI开发服务？</h3>
+                <p>Claude天团提供专业的AI应用开发咨询和实施服务</p>
+                <a href="../contact.html">联系我们</a>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: white; padding: 30px; border-radius: 15px; margin: 40px 0; text-align: center;">
+                <h3 style="color: white; margin-bottom: 10px; font-size: 1.3rem;">About Claude Squad</h3>
+                <p style="margin-bottom: 15px; opacity: 0.95; font-size: 1rem;">We help dental clinics recover missed appointment calls. Our AI-powered service ensures you never lose a patient to a missed call again.</p>
+                <div style="margin-top: 15px;">
+                    <a href="../missed-call-recovery.html" style="color: white; text-decoration: underline; margin: 0 15px;">Learn More</a>
+                    <a href="../contact.html" style="color: white; text-decoration: underline; margin: 0 15px;">Contact Us</a>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Claude天团 · 专注AI智能服务</p>
+        <p>
+            <a href="../index.html">首页</a> ·
+            <a href="../services.html">服务</a> ·
+            <a href="../pricing.html">价格</a> ·
+            <a href="index.html">博客</a>
+        </p>
+    </footer>
+</body>
+</html>

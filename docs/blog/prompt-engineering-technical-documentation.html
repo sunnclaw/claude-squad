@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prompt Engineering for Technical Documentation: A comprehensive guide to writing effective prompts for generating high-quality technical documentation. Learn the CRISP framework, code-driven documentation, and iterative optimization strategies.">
+    <meta name="keywords" content="prompt engineering,technical documentation,AI writing,documentation automation,CRISP framework,API documentation">
+    <meta property="og:title" content="Prompt Engineering for Technical Documentation - Claude天团">
+    <meta property="og:description" content="Master the art of using AI to generate professional technical documentation with structured prompt engineering techniques.">
+    <meta property="og:type" content="article">
+    <title>Prompt Engineering for Technical Documentation - Claude天团</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Prompt Engineering for Technical Documentation",
+        "description": "Prompt Engineering for Technical Documentation: A comprehensive guide to writing effective prompts for generating high-quality technical documentation. Learn the CRISP framework, code-driven documentation, and iterative optimization strategies.",
+        "author": {
+            "@type": "Organization",
+            "name": "Claude Squad"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Claude Squad",
+            "url": "https://sunnclaw.github.io/claude-squad/"
+        },
+        "datePublished": "2026-03-10",
+        "dateModified": "2026-03-17"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How to use AI for technical documentation?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Best practices: provide code samples as context, specify documentation format (API docs, tutorials, guides), include target audience details, ask for examples and code snippets, iterate and refine based on output quality."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the CRISP framework for prompts?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CRISP stands for Context, Role, Instruction, Specifics, Parameters. It provides a structured approach to writing prompts that consistently produce high-quality AI outputs for technical documentation and other tasks."
+                }
+            }
+        ]
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        header .meta {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        article {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #667eea;
+            margin: 30px 0 15px;
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin: 25px 0 12px;
+            font-size: 1.2rem;
+        }
+
+        h4 {
+            color: #555;
+            margin: 20px 0 10px;
+            font-size: 1.1rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf3 100%);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+        }
+
+        .tip-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .example-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cta-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .cta-box a {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: transform 0.3s;
+        }
+
+        .cta-box a:hover {
+            transform: scale(1.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            article {
+                padding: 25px;
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Prompt Engineering for Technical Documentation</h1>
+        <div class="meta">2026-03-10 · Technical Writing · Reading time: 15 minutes</div>
+    </header>
+
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../services.html">Services</a>
+        <a href="../pricing.html">Pricing</a>
+        <a href="../portfolio.html">Portfolio</a>
+        <a href="index.html">Blog</a>
+        <a href="../faq.html">FAQ</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../order.html">Order</a>
+    </nav>
+
+    <div class="container">
+        <article>
+            <p>Technical documentation is the backbone of successful software projects. Yet, it's often the most neglected aspect of development. With the rise of AI-powered writing tools, we now have the opportunity to produce high-quality documentation efficiently—but only if we master the art of prompt engineering.</p>
+
+            <p>This guide distills hundreds of hours of practical experience into actionable strategies for writing prompts that generate professional, accurate, and maintainable technical documentation.</p>
+
+            <h2>The Challenge of AI-Generated Documentation</h2>
+
+            <p>Before diving into techniques, let's understand why documentation is uniquely challenging for AI:</p>
+
+            <ul>
+                <li><strong>Accuracy requirement</strong>: Technical documentation must be 100% correct; approximations cause real problems</li>
+                <li><strong>Context depth</strong>: AI needs deep understanding of codebases, APIs, and business logic</li>
+                <li><strong>Consistency</strong>: Long documents must maintain consistent terminology and style</li>
+                <li><strong>Structure</strong>: Documentation requires specific formats (API specs, user guides, tutorials)</li>
+                <li><strong>Up-to-dateness</strong>: Documentation must reflect current implementation, not outdated patterns</li>
+            </ul>
+
+            <div class="warning-box">
+                <strong>Common Pitfall:</strong> Asking AI to "write API documentation" without context produces generic, often inaccurate content. The output may look professional but contain subtle errors that mislead developers.
+            </div>
+
+            <h2>The CRISP Framework for Documentation Prompts</h2>
+
+            <p>We've adapted the CRISP framework specifically for technical documentation:</p>
+
+            <table>
+                <tr>
+                    <th>Element</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><strong>C</strong>ontext</td>
+                    <td>Project background and technology stack</td>
+                    <td>"E-commerce API built with Node.js, Express, and MongoDB"</td>
+                </tr>
+                <tr>
+                    <td><strong>R</strong>ole</td>
+                    <td>Target audience expertise level</td>
+                    <td>"Experienced frontend developers integrating our API"</td>
+                </tr>
+                <tr>
+                    <td><strong>I</strong>nput</td>
+                    <td>Source materials (code, specs, examples)</td>
+                    <td>Include actual function signatures, request/response examples</td>
+                </tr>
+                <tr>
+                    <td><strong>S</strong>tructure</td>
+                    <td>Required output format</td>
+                    <td>"OpenAPI 3.0 spec format with examples in curl and JavaScript"</td>
+                </tr>
+                <tr>
+                    <td><strong>P</strong>arameters</td>
+                    <td>Specific requirements and constraints</td>
+                    <td>"Include error codes, rate limits, and authentication details"</td>
+                </tr>
+            </table>
+
+            <h3>Complete Prompt Template</h3>
+
+            <div class="code-block">## Task
+Generate comprehensive API documentation for the [module name] endpoint.
+
+## Context
+- Project: [Brief description]
+- Tech Stack: [Languages, frameworks, databases]
+- API Version: [Version number]
+- Base URL: [API base URL]
+
+## Target Audience
+[Describe who will read this documentation and their technical level]
+
+## Source Code
+```
+[Paste the relevant code: function signatures, interfaces, types]
+```
+
+## Output Requirements
+
+### Format
+- [ ] Markdown with proper heading hierarchy
+- [ ] Code examples in [language]
+- [ ] Include request/response examples
+- [ ] Error response documentation
+
+### Sections Required
+1. **Overview**: Brief description of endpoint purpose
+2. **Authentication**: Required credentials/permissions
+3. **Request**: HTTP method, URL, headers, parameters
+4. **Response**: Status codes, body structure, examples
+5. **Errors**: Complete error code table with descriptions
+6. **Examples**: Working curl commands and code samples
+
+### Style Guidelines
+- Use active voice
+- Be concise but complete
+- Include practical examples
+- Note any rate limits or constraints</div>
+
+            <h2>Document Type-Specific Strategies</h2>
+
+            <h3>1. API Reference Documentation</h3>
+
+            <p>API documentation is the most common and critical type. Success depends on feeding AI accurate code:</p>
+
+            <div class="example-box">
+                <strong>Effective Prompt for API Docs</strong>
+                <p>Instead of: "Document the user API"</p>
+                <p>Use this structure:</p>
+                <div class="code-block">// Input: Actual code
+interface UserAPI {
+  /**
+   * Creates a new user account
+   * @param email - Valid email address
+   * @param password - Min 8 chars, must include uppercase, lowercase, number
+   * @returns User object with id, email, createdAt
+   * @throws ValidationError if email invalid or password weak
+   * @throws ConflictError if email already exists
+   */
+  createUser(email: string, password: string): Promise&lt;User&gt;;
+}</div>
+                <p>The prompt then asks AI to expand this into full documentation with examples, error handling, and edge cases.</p>
+            </div>
+
+            <h3>2. User Guides and Tutorials</h3>
+
+            <p>For user-facing documentation, focus on task completion:</p>
+
+            <div class="highlight-box">
+                <strong>Prompt Structure for User Guides</strong>
+                <pre>
+## Task
+Write a step-by-step tutorial for [specific user task]
+
+## User Persona
+- Role: [Job title/role]
+- Technical Level: [Beginner/Intermediate/Advanced]
+- Goal: [What they want to achieve]
+- Pain Points: [Common frustrations]
+
+## Prerequisites
+- [What they need before starting]
+
+## Success Criteria
+- [How they know they've succeeded]
+
+## Steps Required
+[If known, list the high-level steps]
+
+## Output Format
+- Numbered steps with clear actions
+- Screenshots placeholders: [Screenshot: description]
+- Expected results after each step
+- Troubleshooting tips for common issues
+                </pre>
+            </div>
+
+            <h3>3. Architecture Decision Records (ADRs)</h3>
+
+            <p>ADRs require capturing context, decisions, and consequences:</p>
+
+            <div class="code-block">## Task
+Generate an Architecture Decision Record for [decision topic]
+
+## Context
+[Describe the situation that required a decision]
+
+## Decision Drivers
+- [Driver 1: e.g., Performance requirements]
+- [Driver 2: e.g., Team expertise]
+- [Driver 3: e.g., Budget constraints]
+
+## Options Considered
+1. [Option A with pros/cons]
+2. [Option B with pros/cons]
+3. [Option C with pros/cons]
+
+## Decision
+[State the chosen option]
+
+## Consequences
+- Positive: [Benefits]
+- Negative: [Trade-offs]
+- Risks: [What could go wrong]
+
+## Output Format
+Follow the ADR template with title, status, date, and all above sections.</div>
+
+            <h2>The Iterative Refinement Process</h2>
+
+            <p>No prompt produces perfect documentation on the first try. Plan for 3-5 refinement cycles:</p>
+
+            <h3>Round 1: Structure Generation</h3>
+            <div class="code-block">Generate only the outline/structure for the documentation.
+Do not fill in content yet.
+Show me the hierarchy of sections and subsections.</div>
+
+            <p>Review and adjust structure before proceeding.</p>
+
+            <h3>Round 2: Content Drafting</h3>
+            <div class="code-block">Now fill in the content for sections [X, Y, Z].
+Use the provided code as the source of truth.
+Include practical examples for each section.</div>
+
+            <h3>Round 3: Accuracy Verification</h3>
+            <div class="code-block">Review this documentation against the actual code:
+[Re-paste relevant code sections]
+
+Flag any discrepancies between documentation and code.
+Highlight any claims that need verification.</div>
+
+            <h3>Round 4: Consistency Check</h3>
+            <div class="code-block">Check this document for:
+1. Terminology consistency (same terms used throughout)
+2. Style consistency (voice, tense, formality)
+3. Formatting consistency (code blocks, headers, lists)
+
+List any inconsistencies found.</div>
+
+            <h3>Round 5: Completeness Review</h3>
+            <div class="code-block">Identify any gaps in this documentation:
+- Missing endpoints
+- Undocumented parameters
+- Absent error codes
+- Incomplete examples
+
+Provide a checklist of items to add.</div>
+
+            <div class="tip-box">
+                <strong>Efficiency Tip:</strong> Save each refinement prompt as a template. Build a library of prompts for different documentation types. This reduces prompt creation time by 80%.
+            </div>
+
+            <h2>Code-Driven Documentation Generation</h2>
+
+            <p>The most accurate documentation comes from code. Here's the workflow:</p>
+
+            <h3>Step 1: Extract Code Annotations</h3>
+
+            <div class="code-block"># Prompt for extracting documentation from code
+
+## Task
+Analyze this code and extract all documentation-relevant information.
+
+## Code
+```typescript
+// [Paste your TypeScript/JavaScript code]
+```
+
+## Extract
+1. Function/method signatures
+2. Parameter types and constraints
+3. Return types
+4. Exception/error cases
+5. Usage patterns from examples in comments
+6. Dependencies and side effects
+
+## Output Format
+Create a structured summary in JSON format:
+{
+  "functions": [...],
+  "types": [...],
+  "errors": [...],
+  "dependencies": [...]
+}</div>
+
+            <h3>Step 2: Generate Documentation from Extraction</h3>
+
+            <div class="code-block">## Task
+Generate API documentation using the extracted information below.
+
+## Extracted Data
+[Paste JSON from Step 1]
+
+## Requirements
+- OpenAPI 3.0 format
+- Include all parameters with types
+- Document all error responses
+- Provide curl and JavaScript examples
+
+## Additional Context
+- Authentication: Bearer token in header
+- Rate Limit: 100 requests/minute
+- Base URL: https://api.example.com/v1</div>
+
+            <h2>Handling Large Codebases</h2>
+
+            <p>When documentation spans multiple files or modules:</p>
+
+            <h3>Modular Prompting Strategy</h3>
+
+            <ol>
+                <li><strong>Map the architecture</strong>: Have AI create a module dependency diagram first</li>
+                <li><strong>Document interfaces</strong>: Focus on public APIs before implementation details</li>
+                <li><strong>Generate per-module</strong>: One prompt per module, then assemble</li>
+                <li><strong>Cross-reference check</strong>: Verify links between modules are accurate</li>
+            </ol>
+
+            <div class="example-box">
+                <strong>Multi-File Documentation Prompt</strong>
+                <div class="code-block">## Task
+Create a documentation index for a multi-module API
+
+## Modules
+1. Authentication (auth.ts)
+2. Users (users.ts)
+3. Products (products.ts)
+4. Orders (orders.ts)
+
+## Requirements
+1. First, generate an overview page listing all modules
+2. Then, generate detailed docs for each module
+3. Finally, create a cross-reference index showing:
+   - Which modules call which
+   - Shared types/interfaces
+   - Common error handling
+
+## Output
+- index.md: Overview and navigation
+- auth.md, users.md, products.md, orders.md: Detailed docs
+- cross-reference.md: Dependency map</div>
+            </div>
+
+            <h2>Quality Assurance Checklist</h2>
+
+            <p>Use this checklist to verify AI-generated documentation:</p>
+
+            <table>
+                <tr>
+                    <th>Category</th>
+                    <th>Check</th>
+                    <th>Verification Method</th>
+                </tr>
+                <tr>
+                    <td rowspan="3">Accuracy</td>
+                    <td>Function signatures match code</td>
+                    <td>Compare with source files</td>
+                </tr>
+                <tr>
+                    <td>Parameter types are correct</td>
+                    <td>Run type checks</td>
+                </tr>
+                <tr>
+                    <td>Error codes are complete</td>
+                    <td>Cross-reference with error definitions</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Completeness</td>
+                    <td>All public APIs documented</td>
+                    <td>Compare with exported functions</td>
+                </tr>
+                <tr>
+                    <td>Examples are provided</td>
+                    <td>Manual review</td>
+                </tr>
+                <tr>
+                    <td>Edge cases covered</td>
+                    <td>Review against test cases</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Usability</td>
+                    <td>Examples are copy-pasteable</td>
+                    <td>Test examples manually</td>
+                </tr>
+                <tr>
+                    <td>Error messages are helpful</td>
+                    <td>User feedback</td>
+                </tr>
+            </table>
+
+            <h2>Advanced Techniques</h2>
+
+            <h3>Few-Shot Learning with Examples</h3>
+
+            <p>Provide examples of the style you want:</p>
+
+            <div class="code-block">## Task
+Generate API documentation following this style example:
+
+## Style Reference
+### GET /users/{id}
+
+Retrieves a user by their unique identifier.
+
+**Authentication Required**: Bearer token
+
+**Parameters**
+| Name | Type | Location | Required | Description |
+|------|------|----------|----------|-------------|
+| id | string | path | Yes | User's unique identifier |
+
+**Response**
+```json
+{
+  "id": "usr_abc123",
+  "email": "user@example.com",
+  "createdAt": "2024-01-15T10:30:00Z"
+}
+```
+
+**Errors**
+| Code | Description |
+|------|-------------|
+| 401 | Authentication required |
+| 404 | User not found |
+
+---
+
+## Now Document This Endpoint
+[Provide endpoint details]
+
+Follow the exact format and style of the reference example.</div>
+
+            <h3>Chain-of-Thought Prompting</h3>
+
+            <div class="code-block">## Task
+Document the password reset flow. Think through this step by step.
+
+## Step 1
+First, list all the endpoints involved in password reset.
+
+## Step 2
+For each endpoint, identify the request parameters and response format.
+
+## Step 3
+Map the flow between endpoints (what triggers what).
+
+## Step 4
+Document security considerations for each step.
+
+## Step 5
+Write the complete documentation with all above information integrated.</div>
+
+            <h2>Maintenance and Updates</h2>
+
+            <p>Documentation must evolve with code. Establish a maintenance workflow:</p>
+
+            <div class="highlight-box">
+                <h4>Documentation Update Checklist</h4>
+                <ol>
+                    <li><strong>On every PR</strong>: Check if code changes affect documentation</li>
+                    <li><strong>Weekly audit</strong>: Run automated checks comparing docs to code</li>
+                    <li><strong>Monthly review</strong>: User feedback analysis and gap identification</li>
+                    <li><strong>Quarterly deep-dive</strong>: Comprehensive accuracy audit</li>
+                </ol>
+
+                <h4>Prompt for Change Detection</h4>
+                <div class="code-block">## Task
+Compare the current documentation with the updated code.
+List all discrepancies that need to be fixed.
+
+## Current Documentation
+[Paste doc section]
+
+## Updated Code
+[Paste new code]
+
+## Output
+1. List specific documentation changes needed
+2. Highlight any breaking changes
+3. Note any new features missing from docs</div>
+            </div>
+
+            <h2>Measuring Documentation Quality</h2>
+
+            <p>Define metrics to track documentation effectiveness:</p>
+
+            <ul>
+                <li><strong>Coverage rate</strong>: Percentage of public APIs documented</li>
+                <li><strong>Freshness</strong>: Time since last update vs. code changes</li>
+                <li><strong>User success rate</strong>: Task completion without support</li>
+                <li><strong>Support ticket reduction</strong>: Decrease in docs-related questions</li>
+                <li><strong>Example run rate</strong>: Percentage of examples that work correctly</li>
+            </ul>
+
+            <h2>Conclusion</h2>
+
+            <p>Effective prompt engineering for technical documentation is not about asking AI to "write docs"—it's about providing structured context, code-truth, and iterative refinement.</p>
+
+            <p>Key takeaways:</p>
+
+            <ul>
+                <li>Use the CRISP framework to structure your prompts</li>
+                <li>Always provide actual code as the source of truth</li>
+                <li>Plan for 3-5 refinement cycles</li>
+                <li>Establish quality checks and maintenance workflows</li>
+                <li>Measure documentation quality with concrete metrics</li>
+            </ul>
+
+            <p>The best documentation comes from collaboration: AI handles the heavy lifting of structure and drafting, while humans ensure accuracy, completeness, and usability.</p>
+
+            <div class="cta-box">
+                <h3>Need Professional Technical Documentation?</h3>
+                <p>We specialize in AI-assisted technical documentation that's accurate, complete, and maintainable.</p>
+                <p>API Documentation from ¥100/endpoint · User Guides from ¥200/page</p>
+                <a href="../order.html">Start Your Project</a>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: white; padding: 30px; border-radius: 15px; margin: 40px 0; text-align: center;">
+                <h3 style="color: white; margin-bottom: 10px; font-size: 1.3rem;">About Claude Squad</h3>
+                <p style="margin-bottom: 15px; opacity: 0.95; font-size: 1rem;">We help dental clinics recover missed appointment calls. Our AI-powered service ensures you never lose a patient to a missed call again.</p>
+                <div style="margin-top: 15px;">
+                    <a href="../missed-call-recovery.html" style="color: white; text-decoration: underline; margin: 0 15px;">Learn More</a>
+                    <a href="../contact.html" style="color: white; text-decoration: underline; margin: 0 15px;">Contact Us</a>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Claude天团. All rights reserved.</p>
+        <p><a href="index.html" style="color: #667eea;">Back to Blog</a></p>
+        <p><a href="../terms.html" style="color: #667eea;">Terms</a> | <a href="../privacy.html" style="color: #667eea;">Privacy</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GraphQL API设计最佳实践：Schema设计原则、查询优化、错误处理、安全性、性能调优的完整指南。帮助开发者构建优雅高效的GraphQL服务。">
+    <meta name="keywords" content="GraphQL,API设计,Schema设计,查询优化,N+1问题,数据加载,错误处理">
+    <meta property="og:title" content="GraphQL API设计最佳实践 - Claude天团">
+    <meta property="og:description" content="全面解析GraphQL API设计的核心原则与最佳实践，从Schema设计到性能优化。">
+    <meta property="og:type" content="article">
+    <title>GraphQL API设计最佳实践 - Claude天团</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "GraphQL API设计最佳实践",
+        "description": "GraphQL API设计最佳实践：Schema设计原则、查询优化、错误处理、安全性、性能调优的完整指南。帮助开发者构建优雅高效的GraphQL服务。",
+        "author": {
+            "@type": "Organization",
+            "name": "Claude Squad"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Claude Squad",
+            "url": "https://sunnclaw.github.io/claude-squad/"
+        },
+        "datePublished": "2026-03-10",
+        "dateModified": "2026-03-17"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "GraphQL相比REST有什么优势？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GraphQL优势：客户端可精确指定所需字段，避免过度获取；单次请求获取多资源；强类型Schema提供自文档化；不需要版本控制。适合复杂数据需求和前端驱动开发。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "如何解决GraphQL N+1问题？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "解决N+1问题：使用DataLoader批量加载和缓存、实现高效的resolver、避免嵌套查询过深、添加查询复杂度限制、使用持久化查询。监控和分析查询性能很重要。"
+                }
+            }
+        ]
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #e100ff 0%, #7f00ff 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        header .meta {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #7f00ff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        article {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #7f00ff;
+            margin: 30px 0 15px;
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            color: #e100ff;
+            margin: 25px 0 12px;
+            font-size: 1.2rem;
+        }
+
+        h4 {
+            color: #555;
+            margin: 20px 0 10px;
+            font-size: 1.1rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf3 100%);
+            border-left: 4px solid #7f00ff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+        }
+
+        .tip-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .example-box {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .comparison-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #e100ff 0%, #7f00ff 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cta-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .cta-box a {
+            display: inline-block;
+            background: white;
+            color: #7f00ff;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: transform 0.3s;
+        }
+
+        .cta-box a:hover {
+            transform: scale(1.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .inline-code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            color: #7f00ff;
+        }
+
+        @media (max-width: 768px) {
+            article {
+                padding: 25px;
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GraphQL API设计最佳实践</h1>
+        <div class="meta">2026-03-10 · API设计 · 阅读时间：12分钟</div>
+    </header>
+
+    <nav>
+        <a href="../index.html">首页</a>
+        <a href="../about.html">关于</a>
+        <a href="../services.html">服务</a>
+        <a href="../pricing.html">价格</a>
+        <a href="../portfolio.html">案例</a>
+        <a href="index.html">博客</a>
+        <a href="../faq.html">FAQ</a>
+        <a href="../contact.html">联系</a>
+        <a href="../order.html">下单</a>
+    </nav>
+
+    <div class="container">
+        <article>
+            <p>GraphQL已经成为现代API设计的重要选择。相比REST，它提供了更灵活的数据查询能力，让客户端可以精确获取所需数据。然而，GraphQL的灵活性也带来了新的设计挑战。</p>
+
+            <p>本文将深入解析GraphQL API设计的核心原则和最佳实践，帮助你构建高效、安全、可维护的GraphQL服务。</p>
+
+            <h2>GraphQL vs REST：选择的艺术</h2>
+
+            <p>在深入设计细节之前，先明确GraphQL的适用场景：</p>
+
+            <table>
+                <tr>
+                    <th>维度</th>
+                    <th>GraphQL</th>
+                    <th>REST</th>
+                </tr>
+                <tr>
+                    <td>数据获取</td>
+                    <td>客户端精确控制</td>
+                    <td>服务端预定义</td>
+                </tr>
+                <tr>
+                    <td>请求次数</td>
+                    <td>一次请求多资源</td>
+                    <td>可能需要多次请求</td>
+                </tr>
+                <tr>
+                    <td>缓存</td>
+                    <td>需要额外配置</td>
+                    <td>HTTP原生支持</td>
+                </tr>
+                <tr>
+                    <td>学习曲线</td>
+                    <td>较陡峭</td>
+                    <td>相对简单</td>
+                </tr>
+                <tr>
+                    <td>工具生态</td>
+                    <td>快速发展中</td>
+                    <td>成熟完善</td>
+                </tr>
+            </table>
+
+            <div class="tip-box">
+                <strong>选择建议：</strong>当你的API有复杂的数据关系、多样的客户端需求、或者需要减少网络请求时，GraphQL是更好的选择。对于简单的CRUD API或者需要重度依赖HTTP缓存的场景，REST可能更合适。
+            </div>
+
+            <h2>Schema设计原则</h2>
+
+            <p>Schema是GraphQL API的核心，好的Schema设计直接影响API的可用性和性能。</p>
+
+            <h3>1. 以业务领域为中心</h3>
+
+            <p>Schema应该反映业务领域模型，而不是数据库结构：</p>
+
+            <div class="code-block">
+# 推荐：以业务领域为中心
+type Product {
+  id: ID!
+  name: String!
+  description: String
+  price: Money!        # 使用自定义标量类型
+  inventory: Int!
+  category: Category!
+  reviews(first: Int, after: String): ReviewConnection!
+  createdAt: DateTime!
+}
+
+# Money类型表示货币金额
+scalar Money
+
+# 不推荐：暴露数据库细节
+type Product {
+  id: Int!            # 暴露了自增ID
+  name: String!
+  priceCents: Int!    # 暴露了存储格式
+  categoryId: Int!    # 应该返回Category对象
+  created_at: String! # 应该使用DateTime类型
+}
+            </div>
+
+            <h3>2. 命名规范</h3>
+
+            <ul>
+                <li><strong>类型名</strong>：PascalCase，如 <span class="inline-code">User</span>、<span class="inline-code">ProductCategory</span></li>
+                <li><strong>字段名</strong>：camelCase，如 <span class="inline-code">firstName</span>、<span class="inline-code">createdAt</span></li>
+                <li><strong>枚举值</strong>：SCREAMING_SNAKE_CASE，如 <span class="inline-code">USER_STATUS_ACTIVE</span></li>
+                <li><strong>Mutation</strong>：动词开头，如 <span class="inline-code">createUser</span>、<span class="inline-code">updateProduct</span></li>
+            </ul>
+
+            <h3>3. 非空字段的使用</h3>
+
+            <p>谨慎使用非空修饰符 <span class="inline-code">!</span>：</p>
+
+            <div class="code-block">
+type User {
+  id: ID!              # 必定存在，使用非空
+  email: String!       # 必填字段，使用非空
+  phone: String        # 可选字段，不使用非空
+  profile: Profile     # 可能为空的关系，不使用非空
+  posts: [Post!]!      # 列表本身非空，元素非空
+  tags: [String]       # 列表可为空，元素也可为空
+}
+            </div>
+
+            <div class="warning-box">
+                <strong>重要提示：</strong>一旦将字段标记为非空，未来就无法将其改为可空，这会破坏现有客户端。对于不确定的字段，宁可让它可空。
+            </div>
+
+            <h3>4. 连接与分页</h3>
+
+            <p>对于列表数据，使用Relay风格的连接模式：</p>
+
+            <div class="code-block">
+type Query {
+  products(
+    first: Int
+    after: String
+    last: Int
+    before: String
+    filter: ProductFilter
+    orderBy: ProductOrderBy
+  ): ProductConnection!
+}
+
+type ProductConnection {
+  edges: [ProductEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+
+type ProductEdge {
+  node: Product!
+  cursor: String!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+            </div>
+
+            <h2>查询优化策略</h2>
+
+            <h3>N+1问题</h3>
+
+            <p>GraphQL的灵活性可能导致N+1查询问题。解决方案是使用DataLoader进行批量加载：</p>
+
+            <div class="code-block">
+// DataLoader示例
+const userLoader = new DataLoader(async (userIds) => {
+  // 一次性批量查询所有用户
+  const users = await User.findByIds(userIds);
+
+  // 按原始顺序返回结果
+  const userMap = new Map(users.map(u => [u.id, u]));
+  return userIds.map(id => userMap.get(id));
+});
+
+// 在Resolver中使用
+const resolvers = {
+  Post: {
+    author: (post, args, { loaders }) => {
+      return loaders.user.load(post.authorId);
+    }
+  }
+};
+            </div>
+
+            <h3>查询复杂度控制</h3>
+
+            <p>限制查询深度和复杂度，防止恶意查询：</p>
+
+            <div class="code-block">
+// 使用graphql-cost-analysis
+import { createComplexityLimitRule } from 'graphql-validation-complexity';
+
+const complexityLimit = createComplexityLimitRule(1000, {
+  onCost: (cost) => console.log('query cost:', cost),
+  formatErrorMessage: (cost) =>
+    `Query with cost ${cost} exceeds maximum allowed complexity.`
+});
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  validationRules: [complexityLimit]
+});
+            </div>
+
+            <h3>持久化查询</h3>
+
+            <p>对于生产环境，使用持久化查询提高性能：</p>
+
+            <div class="example-box">
+                <strong>持久化查询的优势：</strong>
+                <ul>
+                    <li>减少网络传输（只需发送查询ID）</li>
+                    <li>服务端可以预编译查询</li>
+                    <li>防止恶意查询（只允许预定义的查询）</li>
+                </ul>
+            </div>
+
+            <h2>Mutation设计</h2>
+
+            <h3>输入类型设计</h3>
+
+            <p>为Mutation创建专用的输入类型：</p>
+
+            <div class="code-block">
+input CreateProductInput {
+  name: String!
+  description: String
+  price: MoneyInput!
+  categoryId: ID!
+  tags: [String!]
+}
+
+input UpdateProductInput {
+  id: ID!
+  name: String
+  description: String
+  price: MoneyInput
+  categoryId: ID
+  tags: [String!]
+}
+
+type Mutation {
+  createProduct(input: CreateProductInput!): ProductPayload!
+  updateProduct(input: UpdateProductInput!): ProductPayload!
+  deleteProduct(id: ID!): DeletePayload!
+}
+
+type ProductPayload {
+  product: Product
+  errors: [Error!]
+}
+
+type Error {
+  field: String!
+  message: String!
+  code: String!
+}
+            </div>
+
+            <h3>Mutation命名规范</h3>
+
+            <table>
+                <tr>
+                    <th>操作</th>
+                    <th>命名</th>
+                    <th>说明</th>
+                </tr>
+                <tr>
+                    <td>创建</td>
+                    <td>createXxx</td>
+                    <td>创建新资源</td>
+                </tr>
+                <tr>
+                    <td>更新</td>
+                    <td>updateXxx</td>
+                    <td>更新现有资源</td>
+                </tr>
+                <tr>
+                    <td>删除</td>
+                    <td>deleteXxx</td>
+                    <td>删除资源</td>
+                </tr>
+                <tr>
+                    <td>添加关系</td>
+                    <td>addXxxToYyy</td>
+                    <td>添加资源间关系</td>
+                </tr>
+                <tr>
+                    <td>移除关系</td>
+                    <td>removeXxxFromYyy</td>
+                    <td>移除资源间关系</td>
+                </tr>
+            </table>
+
+            <h2>错误处理</h2>
+
+            <h3>结构化错误</h3>
+
+            <p>返回结构化的错误信息，而不是依赖HTTP状态码：</p>
+
+            <div class="code-block">
+type ProductPayload {
+  product: Product
+  userErrors: [UserError!]!
+  success: Boolean!
+}
+
+type UserError {
+  message: String!      # 用户友好的错误信息
+  code: ErrorCode!      # 错误代码枚举
+  field: String         # 相关字段
+  path: [String!]       # 错误路径
+}
+
+enum ErrorCode {
+  VALIDATION_ERROR
+  NOT_FOUND
+  UNAUTHORIZED
+  FORBIDDEN
+  INTERNAL_ERROR
+}
+
+// Resolver实现示例
+const resolvers = {
+  Mutation: {
+    updateProduct: async (_, { input }, context) => {
+      try {
+        const product = await Product.findById(input.id);
+        if (!product) {
+          return {
+            product: null,
+            userErrors: [{
+              message: 'Product not found',
+              code: 'NOT_FOUND',
+              field: 'id'
+            }],
+            success: false
+          };
+        }
+
+        // 更新逻辑...
+        return { product, userErrors: [], success: true };
+      } catch (error) {
+        return {
+          product: null,
+          userErrors: [{
+            message: 'Internal server error',
+            code: 'INTERNAL_ERROR'
+          }],
+          success: false
+        };
+      }
+    }
+  }
+};
+            </div>
+
+            <h2>安全性最佳实践</h2>
+
+            <h3>1. 认证与授权</h3>
+
+            <p>在Resolver层实现权限控制：</p>
+
+            <div class="code-block">
+// 使用指令(Directive)进行权限控制
+const typeDefs = `
+  directive @auth(requires: Role!) on FIELD_DEFINITION
+
+  enum Role {
+    ADMIN
+    USER
+    GUEST
+  }
+
+  type Query {
+    users: [User!]! @auth(requires: ADMIN)
+    me: User @auth(requires: USER)
+  }
+`;
+
+// 指令实现
+const authDirective = (schema) => {
+  return mapSchema(schema, {
+    [MapperKind.OBJECT_FIELD]: (fieldConfig, fieldName) => {
+      const { auth } = fieldConfig;
+      if (auth) {
+        const { resolve } = fieldConfig;
+        fieldConfig.resolve = (root, args, context, info) => {
+          if (!context.user || context.user.role < auth.requires) {
+            throw new Error('Unauthorized');
+          }
+          return resolve(root, args, context, info);
+        };
+      }
+      return fieldConfig;
+    }
+  });
+};
+            </div>
+
+            <h3>2. 查询深度限制</h3>
+
+            <div class="code-block">
+import { depthLimit } from 'graphql-depth-limit';
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  validationRules: [depthLimit(5)]  // 限制最大深度为5层
+});
+            </div>
+
+            <h3>3. 敏感字段保护</h3>
+
+            <div class="warning-box">
+                <strong>安全提醒：</strong>永远不要在Schema中暴露敏感字段，如密码哈希、API密钥等。即使字段被标记为deprecated，也可能被查询到。
+            </div>
+
+            <h2>性能优化清单</h2>
+
+            <table>
+                <tr>
+                    <th>优化项</th>
+                    <th>方法</th>
+                    <th>效果</th>
+                </tr>
+                <tr>
+                    <td>N+1查询</td>
+                    <td>DataLoader批量加载</td>
+                    <td>查询次数从N+1降到2</td>
+                </tr>
+                <tr>
+                    <td>查询复杂度</td>
+                    <td>复杂度分析和限制</td>
+                    <td>防止资源耗尽</td>
+                </tr>
+                <tr>
+                    <td>响应大小</td>
+                    <td>持久化查询</td>
+                    <td>减少网络传输</td>
+                </tr>
+                <tr>
+                    <td>缓存</td>
+                    <td>响应缓存 + DataLoader缓存</td>
+                    <td>减少数据库查询</td>
+                </tr>
+                <tr>
+                    <td>解析性能</td>
+                    <td>查询预编译</td>
+                    <td>减少解析开销</td>
+                </tr>
+            </table>
+
+            <h2>文档与工具</h2>
+
+            <h3>Schema文档</h3>
+
+            <p>使用描述字符串为Schema添加文档：</p>
+
+            <div class="code-block">
+"""
+产品信息，包含基本信息、价格和库存。
+价格以分为单位存储，避免浮点精度问题。
+"""
+type Product {
+  """产品唯一标识符"""
+  id: ID!
+
+  """产品名称，最大长度200字符"""
+  name: String!
+
+  """
+  产品描述，支持Markdown格式。
+  可以为空表示暂无描述。
+  """
+  description: String
+
+  """产品价格，包含币种信息"""
+  price: Money!
+
+  """
+  当前库存数量。
+  如果产品不支持库存管理，返回null。
+  """
+  inventory: Int
+}
+            </div>
+
+            <h3>开发工具推荐</h3>
+
+            <ul>
+                <li><strong>Apollo Server</strong>：功能完善的GraphQL服务器</li>
+                <li><strong>GraphQL Playground</strong>：交互式查询工具</li>
+                <li><strong>GraphQL Code Generator</strong>：自动生成TypeScript类型</li>
+                <li><strong>Apollo Studio</strong>：监控和分析平台</li>
+            </ul>
+
+            <h2>版本演进策略</h2>
+
+            <p>GraphQL推荐使用无版本演进，通过以下方式保持兼容性：</p>
+
+            <ul>
+                <li><strong>添加字段</strong>：新字段不影响现有查询</li>
+                <li><strong>Deprecated标记</strong>：标记废弃字段，引导迁移</li>
+                <li><strong>@deprecated指令</strong>：提供迁移理由</li>
+            </ul>
+
+            <div class="code-block">
+type User {
+  id: ID!
+  name: String!
+  firstName: String @deprecated(reason: "Use 'name' field instead")
+  lastName: String @deprecated(reason: "Use 'name' field instead")
+  fullName: String @deprecated(reason: "Use 'name' field instead")
+}
+            </div>
+
+            <h2>总结</h2>
+
+            <p>GraphQL API设计需要在灵活性、性能和安全性之间找到平衡。关键原则：</p>
+
+            <ul>
+                <li>Schema以业务领域为中心，不暴露实现细节</li>
+                <li>使用DataLoader解决N+1查询问题</li>
+                <li>实施查询复杂度限制防止滥用</li>
+                <li>返回结构化的错误信息</li>
+                <li>在Resolver层实现权限控制</li>
+                <li>使用deprecated指令实现平滑演进</li>
+            </ul>
+
+            <p>GraphQL不是银弹，它适合数据关系复杂、客户端多样的场景。选择技术方案时，始终从业务需求出发，而不是技术热点。</p>
+
+            <div class="cta-box">
+                <h3>需要GraphQL API开发服务？</h3>
+                <p>我们提供专业的GraphQL API设计与开发服务</p>
+                <p>Schema设计 ¥2000起 · 完整API开发 ¥5000起</p>
+                <a href="../order.html">立即下单</a>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: white; padding: 30px; border-radius: 15px; margin: 40px 0; text-align: center;">
+                <h3 style="color: white; margin-bottom: 10px; font-size: 1.3rem;">About Claude Squad</h3>
+                <p style="margin-bottom: 15px; opacity: 0.95; font-size: 1rem;">We help dental clinics recover missed appointment calls. Our AI-powered service ensures you never lose a patient to a missed call again.</p>
+                <div style="margin-top: 15px;">
+                    <a href="../missed-call-recovery.html" style="color: white; text-decoration: underline; margin: 0 15px;">Learn More</a>
+                    <a href="../contact.html" style="color: white; text-decoration: underline; margin: 0 15px;">Contact Us</a>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Claude天团. All rights reserved.</p>
+        <p><a href="index.html" style="color: #7f00ff;">返回博客</a></p>
+        <p><a href="../terms.html" style="color: #7f00ff;">服务条款</a> | <a href="../privacy.html" style="color: #7f00ff;">隐私政策</a></p>
+    </footer>
+</body>
+</html>

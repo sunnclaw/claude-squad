@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="API版本控制最佳实践：如何设计和管理API版本，确保向后兼容性，平滑升级策略。涵盖URL版本控制、Header版本控制、语义化版本等方案对比。">
+    <meta name="keywords" content="API版本控制,API设计,向后兼容,版本管理,RESTful API,API升级策略">
+    <meta property="og:title" content="API版本控制最佳实践：设计与管理指南 - Claude天团">
+    <meta property="og:description" content="深入讲解API版本控制的核心策略、最佳实践和实战经验，帮助团队构建可持续演进的API架构。">
+    <meta property="og:type" content="article">
+    <title>API版本控制最佳实践：设计与管理指南 - Claude天团</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "API版本控制最佳实践：设计与管理指南",
+        "description": "API版本控制最佳实践：如何设计和管理API版本，确保向后兼容性，平滑升级策略。涵盖URL版本控制、Header版本控制、语义化版本等方案对比。",
+        "author": {
+            "@type": "Organization",
+            "name": "Claude Squad"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Claude Squad",
+            "url": "https://sunnclaw.github.io/claude-squad/"
+        },
+        "datePublished": "2026-03-10",
+        "dateModified": "2026-03-17"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "API版本控制有哪些常用方法？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "常用方法：URL路径版本（/api/v1/resource）、请求头版本（Accept: application/vnd.api.v1+json）、查询参数版本（?version=1）。推荐URL路径版本，便于调试和CDN缓存。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "如何保持API向后兼容性？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "保持兼容性原则：新增字段使用可选参数、避免修改现有字段名称和类型、使用默认值处理新参数、提供迁移指南和废弃时间表、维护多版本并存期。"
+                }
+            }
+        ]
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        header .meta {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        article {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #667eea;
+            margin: 30px 0 15px;
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin: 25px 0 12px;
+            font-size: 1.2rem;
+        }
+
+        h4 {
+            color: #555;
+            margin: 20px 0 10px;
+            font-size: 1.1rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf3 100%);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+        }
+
+        .tip-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .example-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cta-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .cta-box a {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: transform 0.3s;
+        }
+
+        .cta-box a:hover {
+            transform: scale(1.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            article {
+                padding: 25px;
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>API版本控制最佳实践：设计与管理指南</h1>
+        <div class="meta">2026-03-10 · API设计 · 阅读时间：12分钟</div>
+    </header>
+
+    <nav>
+        <a href="../index.html">首页</a>
+        <a href="../about.html">关于</a>
+        <a href="../services.html">服务</a>
+        <a href="../pricing.html">价格</a>
+        <a href="../portfolio.html">案例</a>
+        <a href="index.html">博客</a>
+        <a href="../faq.html">FAQ</a>
+        <a href="../contact.html">联系</a>
+        <a href="../order.html">下单</a>
+    </nav>
+
+    <div class="container">
+        <article>
+            <p>API版本控制是现代软件开发中最容易被忽视却又至关重要的环节。一个设计良好的版本控制策略，能让你的API平稳演进，同时保护现有用户不受破坏性变更的影响。</p>
+
+            <p>本指南将深入讲解API版本控制的核心策略、最佳实践和实战经验，帮助你构建可持续演进的API架构。</p>
+
+            <h2>为什么需要API版本控制？</h2>
+
+            <p>在深入策略之前，先理解版本控制的核心价值：</p>
+
+            <h3>保护现有用户</h3>
+            <p>当你需要修改API行为时，现有用户不应该受到影响。版本控制让你能够引入变更，同时给用户足够的时间迁移。</p>
+
+            <h3>平滑演进</h3>
+            <p>软件需求不断变化，API也需要随之演进。版本控制提供了一条安全的演进路径，让你能够尝试新设计而不破坏现有功能。</p>
+
+            <h3>问题追溯</h3>
+            <p>当用户报告问题时，知道他们使用的是哪个版本，能大大简化调试过程。</p>
+
+            <div class="warning-box">
+                <strong>没有版本控制的代价：</strong>
+                <p>Twitter在2012年推出API 1.1时，强制所有开发者在短时间内迁移，导致大量应用崩溃。这个教训告诉我们：版本控制不是可选项，而是必需品。</p>
+            </div>
+
+            <h2>版本控制策略对比</h2>
+
+            <h3>策略1：URL路径版本控制</h3>
+            <p>最常见的方式，将版本号放入URL路径中：</p>
+
+            <div class="code-block">
+GET /api/v1/users
+GET /api/v2/users
+GET /api/v3/users
+            </div>
+
+            <p><strong>优点：</strong></p>
+            <ul>
+                <li>直观明了，易于理解和调试</li>
+                <li>易于在浏览器中测试</li>
+                <li>便于缓存（不同版本URL不同）</li>
+                <li>支持多个版本同时运行</li>
+            </ul>
+
+            <p><strong>缺点：</strong></p>
+            <ul>
+                <li>URL中包含实现细节</li>
+                <li>需要维护多套路由</li>
+                <li>可能导致代码重复</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>最佳实践：</strong>在URL中使用主版本号（v1, v2），不要包含次版本号或补丁号。语义化版本的主版本号变更意味着不兼容的API修改。
+            </div>
+
+            <h3>策略2：请求头版本控制</h3>
+            <p>使用HTTP头来指定版本：</p>
+
+            <div class="code-block">
+GET /api/users
+Accept: application/vnd.company.api+json;version=1
+
+GET /api/users
+Accept: application/vnd.company.api+json;version=2
+            </div>
+
+            <p><strong>优点：</strong></p>
+            <ul>
+                <li>URL保持简洁稳定</li>
+                <li>更符合REST原则</li>
+                <li>可以针对同一URL返回不同表示</li>
+            </ul>
+
+            <p><strong>缺点：</strong></p>
+            <ul>
+                <li>不如URL直观，难以调试</li>
+                <li>浏览器测试不便</li>
+                <li>缓存策略更复杂</li>
+            </ul>
+
+            <h3>策略3：查询参数版本控制</h3>
+
+            <div class="code-block">
+GET /api/users?version=1
+GET /api/users?version=2
+            </div>
+
+            <p><strong>优点：</strong>简单易实现</p>
+            <p><strong>缺点：</strong>与URL版本控制类似的问题，且更容易被忽略</p>
+
+            <h3>策略对比表</h3>
+
+            <table>
+                <tr>
+                    <th>策略</th>
+                    <th>可见性</th>
+                    <th>RESTful</th>
+                    <th>缓存友好</th>
+                    <th>实现难度</th>
+                </tr>
+                <tr>
+                    <td>URL路径</td>
+                    <td>高</td>
+                    <td>中</td>
+                    <td>高</td>
+                    <td>低</td>
+                </tr>
+                <tr>
+                    <td>请求头</td>
+                    <td>低</td>
+                    <td>高</td>
+                    <td>中</td>
+                    <td>中</td>
+                </tr>
+                <tr>
+                    <td>查询参数</td>
+                    <td>中</td>
+                    <td>低</td>
+                    <td>中</td>
+                    <td>低</td>
+                </tr>
+            </table>
+
+            <div class="highlight-box">
+                <strong>推荐选择：</strong>
+                <p>对于公开API，推荐URL路径版本控制——直观、易于采用、便于文档化。</p>
+                <p>对于内部API，可以考虑请求头版本控制——更灵活、更符合REST原则。</p>
+            </div>
+
+            <h2>语义化版本在API中的应用</h2>
+
+            <p>语义化版本（Semantic Versioning）使用三段式版本号：MAJOR.MINOR.PATCH</p>
+
+            <h3>版本号规则</h3>
+            <ul>
+                <li><strong>MAJOR（主版本）</strong>：不兼容的API变更</li>
+                <li><strong>MINOR（次版本）</strong>：向后兼容的功能新增</li>
+                <li><strong>PATCH（补丁）</strong>：向后兼容的问题修复</li>
+            </ul>
+
+            <h3>什么变更需要升级主版本？</h3>
+
+            <div class="example-box">
+                <strong>需要升级主版本的变更：</strong>
+                <ul>
+                    <li>删除或重命名端点</li>
+                    <li>修改必填参数</li>
+                    <li>修改响应数据结构</li>
+                    <li>修改认证方式</li>
+                    <li>修改错误码含义</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <strong>可以保持兼容的变更：</strong>
+                <ul>
+                    <li>新增可选参数</li>
+                    <li>新增端点</li>
+                    <li>响应中新增字段</li>
+                    <li>性能优化</li>
+                </ul>
+            </div>
+
+            <h2>多版本并存策略</h2>
+
+            <h3>架构设计</h3>
+            <p>支持多版本并存，有几种常见架构：</p>
+
+            <h4>方案A：代码分支</h4>
+            <div class="code-block">
+/api/v1/  → 代码分支 v1
+/api/v2/  → 代码分支 v2
+            </div>
+            <p>优点：版本完全隔离<br>缺点：维护成本高，bug修复需要多次提交</p>
+
+            <h4>方案B：适配器模式</h4>
+            <div class="code-block">
+/api/v1/users  → 适配器 → 核心服务
+/api/v2/users  → 适配器 → 核心服务
+            </div>
+            <p>优点：核心逻辑共享，适配层处理差异<br>缺点：适配层可能变得复杂</p>
+
+            <h4>方案C：功能开关</h4>
+            <div class="code-block">
+if (version >= 2) {
+    return enhancedResponse();
+} else {
+    return legacyResponse();
+}
+            </div>
+            <p>优点：实现简单<br>缺点：代码复杂度增加，测试负担重</p>
+
+            <div class="tip-box">
+                <strong>推荐方案：</strong>适配器模式是最平衡的选择。核心业务逻辑保持单一实现，适配层负责版本间的数据转换和行为差异。
+            </div>
+
+            <h2>版本生命周期管理</h2>
+
+            <h3>发布新版本的流程</h3>
+            <ol>
+                <li><strong>发布公告</strong>：提前至少3个月通知用户</li>
+                <li><strong>文档更新</strong>：提供详细的迁移指南</li>
+                <li><strong>过渡期</strong>：新旧版本同时运行</li>
+                <li><strong>弃用警告</strong>：在响应头中添加弃用提示</li>
+                <li><strong>下线旧版本</strong>：逐步减少服务</li>
+            </ol>
+
+            <h3>弃用响应头示例</h3>
+            <div class="code-block">
+HTTP/1.1 200 OK
+Deprecation: true
+Sunset: Sat, 31 Dec 2026 23:59:59 GMT
+Link: &lt;/api/v2/users&gt;; rel="successor-version"
+            </div>
+
+            <h3>版本生命周期时间线</h3>
+            <table>
+                <tr>
+                    <th>阶段</th>
+                    <th>时长</th>
+                    <th>行动</th>
+                </tr>
+                <tr>
+                    <td>活跃期</td>
+                    <td>12-24个月</td>
+                    <td>完全支持，接受新功能</td>
+                </tr>
+                <tr>
+                    <td>维护期</td>
+                    <td>6-12个月</td>
+                    <td>仅修复安全漏洞和严重bug</td>
+                </tr>
+                <tr>
+                    <td>弃用期</td>
+                    <td>3-6个月</td>
+                    <td>返回弃用警告，停止支持</td>
+                </tr>
+                <tr>
+                    <td>下线</td>
+                    <td>-</td>
+                    <td>返回410 Gone</td>
+                </tr>
+            </table>
+
+            <h2>向后兼容的设计原则</h2>
+
+            <h3>原则1：添加而非修改</h3>
+            <p>新功能应该通过添加实现，而非修改现有行为。</p>
+
+            <div class="example-box">
+                <strong>正确做法：</strong>
+                <div class="code-block">
+// v1
+GET /api/v1/users
+Response: { "id": 1, "name": "张三" }
+
+// v2 - 添加新字段
+GET /api/v2/users
+Response: { "id": 1, "name": "张三", "email": "zhang@example.com" }
+                </div>
+            </div>
+
+            <h3>原则2：可选而非必选</h3>
+            <p>新参数应该是可选的，提供合理的默认值。</p>
+
+            <div class="code-block">
+// 向后兼容
+GET /api/users?include_details=true  // 新参数，可选
+
+// 向后兼容
+POST /api/users
+{
+    "name": "张三",
+    "send_welcome_email": true  // 新参数，可选，默认false
+}
+            </div>
+
+            <h3>原则3：宽容读取，严格输出</h3>
+            <p>对输入要宽容（忽略未知字段），对输出要严格（保证格式稳定）。</p>
+
+            <div class="warning-box">
+                <strong>常见错误：</strong>在反序列化时因为未知字段报错。这会导致客户端升级困难。应该忽略未知字段，只处理已知的。
+            </div>
+
+            <h2>实战案例：用户API版本升级</h2>
+
+            <p>假设我们需要对用户API进行重大升级：</p>
+
+            <h3>需求变更</h3>
+            <ul>
+                <li>用户名改为邮箱</li>
+                <li>新增用户角色</li>
+                <li>响应格式重构</li>
+            </ul>
+
+            <h3>V1版本（原有）</h3>
+            <div class="code-block">
+// Request
+GET /api/v1/users/123
+
+// Response
+{
+    "id": 123,
+    "username": "zhangsan",
+    "created_at": "2025-01-01T00:00:00Z"
+}
+            </div>
+
+            <h3>V2版本（新版）</h3>
+            <div class="code-block">
+// Request
+GET /api/v2/users/123
+
+// Response
+{
+    "id": "usr_123",           // ID格式变更
+    "email": "zhang@example.com", // 用邮箱替代用户名
+    "username": "zhangsan",    // 保留用户名作为显示名
+    "role": "member",          // 新增角色
+    "created_at": "2025-01-01T00:00:00Z",
+    "_links": {                // HATEOAS支持
+        "self": "/api/v2/users/123",
+        "posts": "/api/v2/users/123/posts"
+    }
+}
+            </div>
+
+            <h3>迁移适配器</h3>
+            <div class="code-block">
+class UserV1Adapter {
+    public function toV1Response(UserV2 $user): array
+    {
+        return [
+            'id' => (int) str_replace('usr_', '', $user->id),
+            'username' => $user->username,
+            'created_at' => $user->created_at,
+        ];
+    }
+}
+            </div>
+
+            <h3>迁移指南文档</h3>
+            <div class="highlight-box">
+                <strong>V1 → V2 迁移指南要点：</strong>
+                <ul>
+                    <li>ID格式从整数变为字符串（usr_前缀）</li>
+                    <li>username字段含义变更，现表示显示名称</li>
+                    <li>使用email进行登录验证</li>
+                    <li>新增role字段，支持member/admin/guest</li>
+                    <li>响应包含_links，支持HATEOAS导航</li>
+                </ul>
+            </div>
+
+            <h2>测试策略</h2>
+
+            <h3>版本兼容性测试</h3>
+            <ul>
+                <li>每个版本都有独立的测试套件</li>
+                <li>集成测试覆盖版本间交互</li>
+                <li>契约测试确保版本承诺</li>
+            </ul>
+
+            <h3>回归测试</h3>
+            <div class="code-block">
+// 测试V1响应格式不变
+public function testV1UserResponse()
+{
+    $response = $this->get('/api/v1/users/123');
+    $response->assertJson([
+        'id' => 123,
+        'username' => 'testuser',
+    ]);
+}
+
+// 测试V2返回新格式
+public function testV2UserResponse()
+{
+    $response = $this->get('/api/v2/users/123');
+    $response->assertJsonStructure([
+        'id', 'email', 'username', 'role', 'created_at', '_links'
+    ]);
+}
+            </div>
+
+            <h2>文档与沟通</h2>
+
+            <h3>版本变更日志</h3>
+            <p>维护详细的变更日志，记录每个版本的变更：</p>
+
+            <div class="code-block">
+## v2.0.0 (2026-03-01)
+
+### Breaking Changes
+- 用户ID格式变更：整数 → 字符串（usr_前缀）
+- 登录验证字段变更：username → email
+
+### New Features
+- 新增用户角色系统
+- 支持HATEOAS链接
+
+### Bug Fixes
+- 修复分页参数验证问题
+
+### Migration Guide
+详见：/docs/migration/v1-to-v2.md
+            </div>
+
+            <h3>版本公告渠道</h3>
+            <ul>
+                <li>开发者邮件列表</li>
+                <li>API文档首页横幅</li>
+                <li>响应头中的弃用警告</li>
+                <li>开发者博客</li>
+            </ul>
+
+            <h2>常见问题与解决方案</h2>
+
+            <h3>Q1: 应该同时支持多少个版本？</h3>
+            <p><strong>A:</strong> 通常建议同时支持2-3个主版本。超过这个数量会显著增加维护成本。制定清晰的版本淘汰计划，给用户足够的迁移时间。</p>
+
+            <h3>Q2: 如何处理版本间的数据一致性？</h3>
+            <p><strong>A:</strong> 使用单一数据源，适配器负责转换。避免为每个版本维护独立数据库，这会导致数据同步噩梦。</p>
+
+            <h3>Q3: 小团队如何管理版本控制？</h3>
+            <p><strong>A:</strong> 专注于向后兼容。大部分变更可以通过添加新字段、新端点来实现，不一定需要升级主版本。只有在真正需要破坏性变更时才升级主版本。</p>
+
+            <h3>Q4: 如何处理客户端缓存问题？</h3>
+            <p><strong>A:</strong> 在响应头中明确版本信息，使用ETag和Last-Modified，设置合理的Cache-Control策略。</p>
+
+            <h2>总结</h2>
+
+            <p>API版本控制是一项需要长期投入的工作，关键要点：</p>
+
+            <ul>
+                <li><strong>选择合适的策略</strong>：公开API推荐URL版本控制，内部API可考虑请求头</li>
+                <li><strong>遵循语义化版本</strong>：主版本表示不兼容变更，次版本表示兼容新增</li>
+                <li><strong>保持向后兼容</strong>：添加而非修改，可选而非必选</li>
+                <li><strong>管理版本生命周期</strong>：提供足够的迁移时间和清晰的迁移指南</li>
+                <li><strong>充分文档化</strong>：变更日志、迁移指南、弃用公告缺一不可</li>
+            </ul>
+
+            <p>好的版本控制策略是API成功的关键。它让你能够持续改进API，同时保护用户投资。记住：每一次破坏性变更都是在消耗用户的信任。</p>
+
+            <p>如果你需要专业的API设计和文档服务，我们提供从架构设计到文档撰写的全流程支持。联系我们，为你的API构建可持续演进的版本控制策略。</p>
+
+            <div class="cta-box">
+                <h3>需要API设计或文档服务？</h3>
+                <p>我们提供专业的API设计咨询和技术文档服务</p>
+                <p>API文档 ¥100/接口起 · API设计咨询 ¥500起</p>
+                <a href="../order.html">立即下单</a>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: white; padding: 30px; border-radius: 15px; margin: 40px 0; text-align: center;">
+                <h3 style="color: white; margin-bottom: 10px; font-size: 1.3rem;">About Claude Squad</h3>
+                <p style="margin-bottom: 15px; opacity: 0.95; font-size: 1rem;">We help dental clinics recover missed appointment calls. Our AI-powered service ensures you never lose a patient to a missed call again.</p>
+                <div style="margin-top: 15px;">
+                    <a href="../missed-call-recovery.html" style="color: white; text-decoration: underline; margin: 0 15px;">Learn More</a>
+                    <a href="../contact.html" style="color: white; text-decoration: underline; margin: 0 15px;">Contact Us</a>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Claude天团. All rights reserved.</p>
+        <p><a href="index.html" style="color: #667eea;">返回博客</a></p>
+        <p><a href="../terms.html" style="color: #667eea;">服务条款</a> | <a href="../privacy.html" style="color: #667eea;">隐私政策</a></p>
+    </footer>
+</body>
+</html>

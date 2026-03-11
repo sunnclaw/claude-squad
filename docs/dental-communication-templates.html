@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="50+ Ready-to-Use Dental Patient Communication Templates - Save hours with proven scripts for appointments, recalls, emergencies, and more.">
+    <meta name="keywords" content="dental templates, patient communication, dental scripts, appointment templates, dental practice management">
+    <meta property="og:title" content="Dental Patient Communication Templates - 50+ Ready-to-Use Scripts">
+    <meta property="og:description" content="Save hours with proven communication templates for every patient touchpoint. Copy, paste, customize.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sunnclaw.github.io/claude-squad/dental-communication-templates.html">
+    <title>Dental Patient Communication Templates | 50+ Ready-to-Use Scripts</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            color: white;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .header .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* Stats Row */
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-item .value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #818cf8;
+        }
+
+        .stat-item .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Main Card */
+        .main-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+            margin: 40px 0;
+        }
+
+        .product-preview {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            padding: 40px;
+            color: white;
+            text-align: center;
+        }
+
+        .product-preview .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .product-preview h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .product-preview p {
+            opacity: 0.9;
+        }
+
+        .price-section {
+            padding: 40px;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #9ca3af;
+            font-size: 1.25rem;
+        }
+
+        .current-price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1e3a5f;
+            margin: 10px 0;
+        }
+
+        .current-price span {
+            font-size: 1.5rem;
+            font-weight: normal;
+        }
+
+        .price-note {
+            color: #6366f1;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Categories */
+        .categories-section {
+            padding: 50px 40px;
+        }
+
+        .categories-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #1e3a5f;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .category-item {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+        }
+
+        .category-item .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .category-item h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #1e3a5f;
+        }
+
+        .category-item .count {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* Sample Templates */
+        .sample-section {
+            background: #f8fafc;
+            padding: 50px 40px;
+        }
+
+        .sample-section h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #1e3a5f;
+        }
+
+        .sample-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .sample-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .sample-card h4 {
+            font-size: 1rem;
+            color: #6366f1;
+            margin-bottom: 15px;
+        }
+
+        .sample-card .template-text {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.7;
+            font-family: 'Courier New', monospace;
+        }
+
+        .sample-card .brackets {
+            color: #6366f1;
+            font-weight: 600;
+        }
+
+        /* Benefits */
+        .benefits-section {
+            padding: 50px 40px;
+        }
+
+        .benefits-section h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #1e3a5f;
+        }
+
+        .benefit-list {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .benefit-item:last-child {
+            border-bottom: none;
+        }
+
+        .benefit-item .check {
+            color: #10b981;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-item .text {
+            font-size: 1rem;
+        }
+
+        .benefit-item .text strong {
+            color: #1e3a5f;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 18px 50px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .cta-note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* Guarantee */
+        .guarantee {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 40px;
+            text-align: center;
+        }
+
+        .guarantee-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .guarantee h4 {
+            font-size: 1.25rem;
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+
+        .guarantee p {
+            color: #a16207;
+            font-size: 0.95rem;
+        }
+
+        /* Who Section */
+        .who-section {
+            background: #f8fafc;
+            padding: 50px 40px;
+        }
+
+        .who-section h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #1e3a5f;
+        }
+
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .who-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .who-item .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .who-item p {
+            font-size: 0.95rem;
+            color: #475569;
+            margin: 0;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 50px 40px;
+        }
+
+        .faq h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #1e3a5f;
+        }
+
+        .faq-item {
+            max-width: 700px;
+            margin: 0 auto 20px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px 25px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .faq-item h4 {
+            font-size: 1rem;
+            color: #1e3a5f;
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .footer a {
+            color: #818cf8;
+            text-decoration: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .header {
+                padding: 40px 15px 30px;
+            }
+
+            .stats-row {
+                gap: 20px;
+            }
+
+            .stat-item .value {
+                font-size: 2rem;
+            }
+
+            .product-preview,
+            .categories-section,
+            .sample-section,
+            .benefits-section,
+            .cta-section,
+            .who-section,
+            .faq,
+            .guarantee {
+                padding: 30px 20px;
+            }
+
+            .price-section {
+                padding: 30px 20px;
+            }
+
+            .current-price {
+                font-size: 2.5rem;
+            }
+
+            .cta-btn {
+                width: 100%;
+                padding: 16px 30px;
+            }
+
+            .guarantee {
+                margin: 20px;
+            }
+
+            .sample-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="logo.svg" alt="Claude Squad" style="height: 32px;">
+                <span>Claude Squad</span>
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="header">
+            <div class="badge">INSTANT DIGITAL DOWNLOAD</div>
+            <h1>Dental Patient Communication Templates</h1>
+            <p class="subtitle">50+ ready-to-use scripts for every patient touchpoint. Copy, paste, customize in seconds.</p>
+
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="value">50+</div>
+                    <div class="label">Templates</div>
+                </div>
+                <div class="stat-item">
+                    <div class="value">7</div>
+                    <div class="label">Categories</div>
+                </div>
+                <div class="stat-item">
+                    <div class="value">2hr</div>
+                    <div class="label">Saved Per Week</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-card">
+            <div class="product-preview">
+                <div class="icon">📝</div>
+                <h2>Complete Template Collection</h2>
+                <p>Appointments, recalls, emergencies, payments, and more</p>
+            </div>
+
+            <div class="price-section">
+                <div class="original-price">$29</div>
+                <div class="current-price"><span>$</span>19</div>
+                <div class="price-note">One-time payment - Lifetime access</div>
+            </div>
+
+            <div class="categories-section">
+                <h3>7 Complete Categories</h3>
+                <div class="categories-grid">
+                    <div class="category-item">
+                        <div class="icon">📅</div>
+                        <h4>Appointments</h4>
+                        <p class="count">12 templates</p>
+                    </div>
+                    <div class="category-item">
+                        <div class="icon">🔔</div>
+                        <h4>Reminders</h4>
+                        <p class="count">8 templates</p>
+                    </div>
+                    <div class="category-item">
+                        <div class="icon">📞</div>
+                        <h4>Missed Calls</h4>
+                        <p class="count">10 templates</p>
+                    </div>
+                    <div class="category-item">
+                        <div class="icon">🔄</div>
+                        <h4>Recalls</h4>
+                        <p class="count">8 templates</p>
+                    </div>
+                    <div class="category-item">
+                        <div class="icon">🦷</div>
+                        <h4>Treatment</h4>
+                        <p class="count">6 templates</p>
+                    </div>
+                    <div class="category-item">
+                        <div class="icon">💳</div>
+                        <h4>Payment</h4>
+                        <p class="count">6 templates</p>
+                    </div>
+                    <div class="category-item">
+                        <div class="icon">🚨</div>
+                        <h4>Emergency</h4>
+                        <p class="count">8 templates</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sample-section">
+                <h3>Sample Templates</h3>
+                <div class="sample-grid">
+                    <div class="sample-card">
+                        <h4>Missed Call - New Patient</h4>
+                        <div class="template-text">
+                            Hi, this is <span class="brackets">[PRACTICE NAME]</span>. We noticed we missed your call today!<br><br>
+                            We'd love to help you with your dental needs. Would you like us to call you back, or would you prefer to book online at <span class="brackets">[BOOKING LINK]</span>?<br><br>
+                            Reply with your preferred time, or call us back at <span class="brackets">[PHONE]</span>. We're here <span class="brackets">[HOURS]</span>.<br><br>
+                            Thanks!
+                        </div>
+                    </div>
+                    <div class="sample-card">
+                        <h4>Post-Appointment Follow-Up</h4>
+                        <div class="template-text">
+                            Hi <span class="brackets">[PATIENT NAME]</span>,<br><br>
+                            Thank you for visiting <span class="brackets">[PRACTICE NAME]</span> today!<br><br>
+                            Your next appointment is scheduled for <span class="brackets">[DATE]</span> at <span class="brackets">[TIME]</span>.<br><br>
+                            If you have any questions about your treatment today, or need to reschedule, just reply to this message or call us at <span class="brackets">[PHONE]</span>.<br><br>
+                            Take care,<br>
+                            The <span class="brackets">[PRACTICE NAME]</span> Team
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefits-section">
+                <h3>Why These Templates Work</h3>
+                <div class="benefit-list">
+                    <div class="benefit-item">
+                        <span class="check">✓</span>
+                        <span class="text"><strong>Tested language</strong> - Based on what actually converts</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="check">✓</span>
+                        <span class="text"><strong>Tone-appropriate</strong> - Professional yet approachable</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="check">✓</span>
+                        <span class="text"><strong>Action-oriented</strong> - Clear next steps for patients</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="check">✓</span>
+                        <span class="text"><strong>Compliance-ready</strong> - HIPAA-conscious communication patterns</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="check">✓</span>
+                        <span class="text"><strong>Time-saving</strong> - Stop writing from scratch every time</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="who-section">
+                <h3>Who This Is For</h3>
+                <div class="who-grid">
+                    <div class="who-item">
+                        <div class="icon">👩‍💼</div>
+                        <p>Practice Managers</p>
+                    </div>
+                    <div class="who-item">
+                        <div class="icon">👨‍⚕️</div>
+                        <p>Practice Owners</p>
+                    </div>
+                    <div class="who-item">
+                        <div class="icon">👩‍💻</div>
+                        <p>Front Office Staff</p>
+                    </div>
+                    <div class="who-item">
+                        <div class="icon">📊</div>
+                        <p>Dental Consultants</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guarantee">
+                <div class="guarantee-icon">🛡️</div>
+                <h4>30-Day Money-Back Guarantee</h4>
+                <p>If these templates don't save you at least 2 hours in your first month, we'll refund your purchase. No questions asked.</p>
+            </div>
+
+            <div class="cta-section">
+                <a href="https://gumroad.com/l/dental-communication-templates" class="cta-btn" target="_blank" rel="noopener">
+                    Get Instant Access - $19
+                </a>
+                <p class="cta-note">Instant download after purchase. Text format ready to copy/paste.</p>
+            </div>
+
+            <div class="faq">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <h4>What format are the templates in?</h4>
+                    <p>All templates are provided in plain text format with customizable fields marked in [BRACKETS]. Easy to copy into any SMS, email, or chat system.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I customize these for my practice?</h4>
+                    <p>Absolutely! Every template has [BRACKETED] fields for practice name, phone, hours, and other details. Just replace with your information.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do these work for non-dental practices?</h4>
+                    <p>While optimized for dental, many templates work for any healthcare or appointment-based business. The principles of good patient communication are universal.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How do I access after purchase?</h4>
+                    <p>You'll receive immediate download access after completing your purchase on Gumroad. The files are yours to keep forever.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2026 Claude Squad. All rights reserved.</p>
+            <p style="margin-top: 10px;">
+                <a href="privacy.html">Privacy Policy</a> |
+                <a href="terms.html">Terms</a> |
+                <a href="contact.html">Contact</a>
+            </p>
+        </footer>
+    </div>
+    <script src="js/components.js"></script>
+</body>
+</html>

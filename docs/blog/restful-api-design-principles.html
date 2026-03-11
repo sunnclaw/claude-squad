@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RESTful API设计原则完整指南：资源命名、HTTP方法、状态码、版本控制、分页过滤。掌握构建优雅REST API的核心原则。">
+    <meta name="keywords" content="RESTful API,API设计,REST原则,HTTP方法,状态码,API版本控制">
+    <meta property="og:title" content="RESTful API设计原则完整指南 - Claude天团">
+    <meta property="og:description" content="深入解析RESTful API设计原则，从资源命名到错误处理，全面覆盖API设计的最佳实践。">
+    <meta property="og:type" content="article">
+    <title>RESTful API设计原则完整指南 - Claude天团</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "RESTful API设计原则完整指南",
+        "description": "RESTful API设计原则完整指南：资源命名、HTTP方法、状态码、版本控制、分页过滤。掌握构建优雅REST API的核心原则。",
+        "author": {
+            "@type": "Organization",
+            "name": "Claude Squad"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Claude Squad",
+            "url": "https://sunnclaw.github.io/claude-squad/"
+        },
+        "datePublished": "2026-03-10",
+        "dateModified": "2026-03-17"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "RESTful API如何命名资源？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "资源命名原则：使用名词而非动词（/users而非/getUsers）、使用复数形式（/users）、使用小写和连字符（/user-profiles）、避免嵌套超过两级（/users/123/orders）。保持简洁一致。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "RESTful API应该返回哪些状态码？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "常用状态码：200成功、201创建成功、204无内容、400请求错误、401未认证、403禁止访问、404未找到、422验证错误、500服务器错误。正确使用状态码让API更易用。"
+                }
+            }
+        ]
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        header .meta {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        article {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #667eea;
+            margin: 30px 0 15px;
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin: 25px 0 12px;
+            font-size: 1.2rem;
+        }
+
+        h4 {
+            color: #555;
+            margin: 20px 0 10px;
+            font-size: 1.1rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf3 100%);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+        }
+
+        .tip-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .example-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .bad-example {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cta-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .cta-box a {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: transform 0.3s;
+        }
+
+        .cta-box a:hover {
+            transform: scale(1.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            article {
+                padding: 25px;
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>RESTful API设计原则完整指南</h1>
+        <div class="meta">2026-03-10 · API设计 · 阅读时间：12分钟</div>
+    </header>
+
+    <nav>
+        <a href="../index.html">首页</a>
+        <a href="../about.html">关于</a>
+        <a href="../services.html">服务</a>
+        <a href="../pricing.html">价格</a>
+        <a href="../portfolio.html">案例</a>
+        <a href="index.html">博客</a>
+        <a href="../faq.html">FAQ</a>
+        <a href="../contact.html">联系</a>
+        <a href="../order.html">下单</a>
+    </nav>
+
+    <div class="container">
+        <article>
+            <p>RESTful API已成为现代Web服务的标准接口设计风格。一个设计良好的REST API不仅易于理解和使用，还能显著降低客户端与服务器之间的耦合度。本文将系统性地介绍RESTful API的核心设计原则，帮助你构建优雅、一致的API。</p>
+
+            <h2>什么是REST？</h2>
+
+            <p>REST（Representational State Transfer）是一种软件架构风格，由Roy Fielding在2000年的博士论文中提出。RESTful API是指遵循REST原则设计的Web API，具有以下核心特征：</p>
+
+            <ul>
+                <li><strong>客户端-服务器分离</strong>：关注点分离，客户端负责用户界面，服务器负责数据存储和业务逻辑</li>
+                <li><strong>无状态</strong>：每个请求包含所有必要信息，服务器不保存客户端上下文</li>
+                <li><strong>可缓存</strong>：响应数据可以被缓存以提高性能</li>
+                <li><strong>统一接口</strong>：使用标准化的方法操作资源</li>
+                <li><strong>分层系统</strong>：客户端无需知道它连接的是最终服务器还是中间代理</li>
+            </ul>
+
+            <h2>资源命名规范</h2>
+
+            <p>REST API的核心是资源。资源命名直接决定了API的清晰程度和专业性。</p>
+
+            <h3>使用名词而非动词</h3>
+
+            <p>URI应该表示资源，而不是动作。动作由HTTP方法表达。</p>
+
+            <div class="example-box">
+                <strong>正确示例：</strong>
+                <pre style="background:#f5f5f5;padding:10px;border-radius:5px;margin-top:10px;">
+GET    /users          # 获取用户列表
+GET    /users/123      # 获取ID为123的用户
+POST   /users          # 创建新用户
+PUT    /users/123      # 更新ID为123的用户
+DELETE /users/123      # 删除ID为123的用户
+                </pre>
+            </div>
+
+            <div class="bad-example">
+                <strong>错误示例：</strong>
+                <pre style="background:#f5f5f5;padding:10px;border-radius:5px;margin-top:10px;">
+GET /getUsers
+POST /createUser
+POST /deleteUser/123
+                </pre>
+            </div>
+
+            <h3>使用复数形式</h3>
+
+            <p>资源名称统一使用复数形式，保持一致性。</p>
+
+            <div class="code-block">
+# 推荐：复数形式
+/users
+/products
+/orders
+
+# 不推荐：单数形式
+/user
+/product
+/order
+            </div>
+
+            <h3>表达层级关系</h3>
+
+            <p>当资源之间存在从属关系时，通过嵌套URI表达。</p>
+
+            <div class="code-block">
+# 获取用户的所有订单
+GET /users/123/orders
+
+# 获取用户的特定订单
+GET /users/123/orders/456
+
+# 注意：嵌套层级一般不超过2-3层
+# 如果关系过于复杂，考虑使用查询参数
+GET /orders?userId=123
+            </div>
+
+            <h3>使用小写字母和连字符</h3>
+
+            <p>URI应使用小写字母，多个单词之间用连字符连接。</p>
+
+            <div class="example-box">
+                <strong>正确：</strong>
+                <pre style="background:#f5f5f5;padding:10px;border-radius:5px;">
+/user-profiles
+/order-items
+/product-categories
+                </pre>
+            </div>
+
+            <div class="bad-example">
+                <strong>错误：</strong>
+                <pre style="background:#f5f5f5;padding:10px;border-radius:5px;">
+/UserProfiles
+/orderItems
+/product_categories
+                </pre>
+            </div>
+
+            <h2>HTTP方法的正确使用</h2>
+
+            <p>HTTP方法定义了对资源的操作类型。正确使用HTTP方法是RESTful API的基础。</p>
+
+            <table>
+                <tr>
+                    <th>方法</th>
+                    <th>操作</th>
+                    <th>幂等性</th>
+                    <th>安全性</th>
+                </tr>
+                <tr>
+                    <td>GET</td>
+                    <td>获取资源</td>
+                    <td>是</td>
+                    <td>是</td>
+                </tr>
+                <tr>
+                    <td>POST</td>
+                    <td>创建资源</td>
+                    <td>否</td>
+                    <td>否</td>
+                </tr>
+                <tr>
+                    <td>PUT</td>
+                    <td>完整更新资源</td>
+                    <td>是</td>
+                    <td>否</td>
+                </tr>
+                <tr>
+                    <td>PATCH</td>
+                    <td>部分更新资源</td>
+                    <td>否</td>
+                    <td>否</td>
+                </tr>
+                <tr>
+                    <td>DELETE</td>
+                    <td>删除资源</td>
+                    <td>是</td>
+                    <td>否</td>
+                </tr>
+            </table>
+
+            <div class="highlight-box">
+                <strong>幂等性说明：</strong>幂等操作是指执行一次和执行多次效果相同。GET、PUT、DELETE是幂等的，POST和PATCH不是。这在重试机制设计中非常重要。
+            </div>
+
+            <h3>GET方法</h3>
+
+            <p>GET用于获取资源，应该是安全且幂等的。不应该通过GET修改资源状态。</p>
+
+            <div class="code-block">
+# 获取用户列表
+GET /users
+
+# 获取单个用户
+GET /users/123
+
+# 带查询参数的过滤
+GET /users?status=active&role=admin
+            </div>
+
+            <h3>POST方法</h3>
+
+            <p>POST用于创建新资源。请求体包含资源数据，响应应返回新创建资源的URI。</p>
+
+            <div class="code-block">
+# 创建新用户
+POST /users
+Content-Type: application/json
+
+{
+  "name": "张三",
+  "email": "zhangsan@example.com"
+}
+
+# 响应
+HTTP/1.1 201 Created
+Location: /users/124
+
+{
+  "id": 124,
+  "name": "张三",
+  "email": "zhangsan@example.com",
+  "createdAt": "2026-03-10T10:00:00Z"
+}
+            </div>
+
+            <h3>PUT vs PATCH</h3>
+
+            <p>PUT用于完整替换资源，PATCH用于部分更新。</p>
+
+            <div class="example-box">
+                <strong>PUT示例 - 完整更新：</strong>
+                <pre style="background:#f5f5f5;padding:10px;border-radius:5px;">
+PUT /users/123
+{
+  "name": "李四",        # 必须提供所有字段
+  "email": "lisi@example.com"
+}
+                </pre>
+            </div>
+
+            <div class="example-box">
+                <strong>PATCH示例 - 部分更新：</strong>
+                <pre style="background:#f5f5f5;padding:10px;border-radius:5px;">
+PATCH /users/123
+{
+  "email": "newemail@example.com"  # 只更新email字段
+}
+                </pre>
+            </div>
+
+            <h2>HTTP状态码规范</h2>
+
+            <p>正确使用HTTP状态码是API专业性的重要体现。状态码应该准确反映请求的处理结果。</p>
+
+            <h3>常用状态码分类</h3>
+
+            <table>
+                <tr>
+                    <th>范围</th>
+                    <th>类别</th>
+                    <th>说明</th>
+                </tr>
+                <tr>
+                    <td>1xx</td>
+                    <td>信息性</td>
+                    <td>请求已被接收，正在处理</td>
+                </tr>
+                <tr>
+                    <td>2xx</td>
+                    <td>成功</td>
+                    <td>请求已成功处理</td>
+                </tr>
+                <tr>
+                    <td>3xx</td>
+                    <td>重定向</td>
+                    <td>需要进一步操作</td>
+                </tr>
+                <tr>
+                    <td>4xx</td>
+                    <td>客户端错误</td>
+                    <td>请求有语法错误或无法完成</td>
+                </tr>
+                <tr>
+                    <td>5xx</td>
+                    <td>服务器错误</td>
+                    <td>服务器处理请求时出错</td>
+                </tr>
+            </table>
+
+            <h3>最常用的状态码</h3>
+
+            <h4>成功响应（2xx）</h4>
+
+            <div class="code-block">
+200 OK           # 请求成功（GET、PUT、PATCH）
+201 Created      # 资源创建成功（POST）
+204 No Content   # 成功但无返回内容（DELETE）
+            </div>
+
+            <h4>客户端错误（4xx）</h4>
+
+            <div class="code-block">
+400 Bad Request          # 请求格式错误或参数无效
+401 Unauthorized         # 未认证
+403 Forbidden            # 已认证但无权限
+404 Not Found            # 资源不存在
+409 Conflict             # 请求冲突（如重复创建）
+422 Unprocessable Entity # 语义错误（验证失败）
+429 Too Many Requests    # 请求过于频繁
+            </div>
+
+            <h4>服务器错误（5xx）</h4>
+
+            <div class="code-block">
+500 Internal Server Error  # 服务器内部错误
+502 Bad Gateway            # 网关错误
+503 Service Unavailable    # 服务暂时不可用
+            </div>
+
+            <div class="warning-box">
+                <strong>注意事项：</strong>不要将业务错误映射为5xx状态码。如果用户余额不足，应返回4xx状态码配合错误详情，而非500。
+            </div>
+
+            <h2>错误处理规范</h2>
+
+            <p>当API返回错误时，应提供一致的错误响应格式，帮助客户端开发者快速定位问题。</p>
+
+            <h3>推荐的错误响应格式</h3>
+
+            <div class="code-block">
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "请求参数验证失败",
+    "details": [
+      {
+        "field": "email",
+        "message": "邮箱格式不正确"
+      },
+      {
+        "field": "password",
+        "message": "密码长度至少8位"
+      }
+    ],
+    "requestId": "req-abc123",
+    "timestamp": "2026-03-10T10:30:00Z"
+  }
+}
+            </div>
+
+            <h3>错误码设计原则</h3>
+
+            <ul>
+                <li><strong>使用大写字母和下划线</strong>：VALIDATION_ERROR、RESOURCE_NOT_FOUND</li>
+                <li><strong>语义明确</strong>：错误码应能直接反映错误类型</li>
+                <li><strong>便于程序处理</strong>：客户端可以根据错误码进行分类处理</li>
+                <li><strong>提供调试信息</strong>：包含requestId便于日志追踪</li>
+            </ul>
+
+            <h2>版本控制</h2>
+
+            <p>API不可避免会发生变化，版本控制策略决定了变化的平滑程度。</p>
+
+            <h3>常见的版本控制方式</h3>
+
+            <h4>1. URI路径版本（推荐）</h4>
+
+            <div class="code-block">
+# 最常用的方式，直观明了
+GET /api/v1/users
+GET /api/v2/users
+            </div>
+
+            <h4>2. 查询参数版本</h4>
+
+            <div class="code-block">
+# 灵活但不够直观
+GET /api/users?version=1
+GET /api/users?version=2
+            </div>
+
+            <h4>3. 请求头版本</h4>
+
+            <div class="code-block">
+# 保持URI简洁，但不易发现
+GET /api/users
+Accept: application/vnd.myapi.v1+json
+            </div>
+
+            <div class="tip-box">
+                <strong>最佳实践：</strong>推荐使用URI路径版本，因为它直观、易于测试、便于缓存。同时支持至少两个主版本，给客户端足够的迁移时间。
+            </div>
+
+            <h2>分页与过滤</h2>
+
+            <p>当资源数量庞大时，分页和过滤是必不可少的API特性。</p>
+
+            <h3>分页设计</h3>
+
+            <div class="code-block">
+# 基于偏移量的分页
+GET /users?page=2&limit=20
+
+# 基于游标的分页（大数据量推荐）
+GET /users?cursor=eyJpZCI6MTAwfQ&limit=20
+            </div>
+
+            <h3>分页响应格式</h3>
+
+            <div class="code-block">
+{
+  "data": [...],
+  "pagination": {
+    "page": 2,
+    "limit": 20,
+    "total": 150,
+    "totalPages": 8,
+    "hasNext": true,
+    "hasPrev": true
+  }
+}
+            </div>
+
+            <h3>过滤与排序</h3>
+
+            <div class="code-block">
+# 过滤
+GET /users?status=active&role=admin
+
+# 搜索
+GET /users?search=zhang
+
+# 排序
+GET /users?sort=createdAt&order=desc
+
+# 字段选择
+GET /users?fields=id,name,email
+            </div>
+
+            <h2>认证与授权</h2>
+
+            <p>REST API通常需要认证来识别用户身份，授权来控制访问权限。</p>
+
+            <h3>常见的认证方式</h3>
+
+            <h4>Bearer Token（推荐）</h4>
+
+            <div class="code-block">
+# 请求头携带Token
+GET /api/v1/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
+            </div>
+
+            <h4>API Key</h4>
+
+            <div class="code-block">
+# 通过请求头
+X-API-Key: your-api-key
+
+# 或查询参数（不推荐，有安全风险）
+GET /api/v1/users?api_key=your-api-key
+            </div>
+
+            <div class="warning-box">
+                <strong>安全提醒：</strong>永远不要在URI中传递敏感信息（如Token、密码），因为URI会被记录在服务器日志、浏览器历史记录中。
+            </div>
+
+            <h2>HATEOAS：超媒体驱动</h2>
+
+            <p>HATEOAS（Hypermedia as the Engine of Application State）是REST成熟度模型中的最高级别，意味着API响应包含相关操作的链接。</p>
+
+            <div class="code-block">
+{
+  "id": 123,
+  "name": "张三",
+  "email": "zhangsan@example.com",
+  "_links": {
+    "self": { "href": "/users/123" },
+    "orders": { "href": "/users/123/orders" },
+    "update": { "href": "/users/123", "method": "PUT" },
+    "delete": { "href": "/users/123", "method": "DELETE" }
+  }
+}
+            </div>
+
+            <div class="tip-box">
+                <strong>实用性说明：</strong>HATEOAS在实际项目中使用较少，但对于需要高度动态性的公开API很有价值。大多数内部API可以简化这一层。
+            </div>
+
+            <h2>API设计检查清单</h2>
+
+            <p>完成API设计后，使用这个检查清单验证：</p>
+
+            <table>
+                <tr>
+                    <th>检查项</th>
+                    <th>标准</th>
+                </tr>
+                <tr>
+                    <td>URI命名</td>
+                    <td>使用名词复数、小写、连字符</td>
+                </tr>
+                <tr>
+                    <td>HTTP方法</td>
+                    <td>符合语义，GET不修改状态</td>
+                </tr>
+                <tr>
+                    <td>状态码</td>
+                    <td>准确反映处理结果</td>
+                </tr>
+                <tr>
+                    <td>错误响应</td>
+                    <td>格式统一，信息完整</td>
+                </tr>
+                <tr>
+                    <td>版本控制</td>
+                    <td>策略明确，向后兼容</td>
+                </tr>
+                <tr>
+                    <td>认证授权</td>
+                    <td>安全机制完善</td>
+                </tr>
+                <tr>
+                    <td>文档</td>
+                    <td>API文档完整可访问</td>
+                </tr>
+            </table>
+
+            <h2>总结</h2>
+
+            <p>RESTful API设计不仅仅是技术问题，更是关于如何用一致、可预测的方式暴露业务能力。核心原则可以总结为：</p>
+
+            <ul>
+                <li><strong>资源为中心</strong>：URI表示资源，HTTP方法表示操作</li>
+                <li><strong>语义清晰</strong>：正确使用HTTP方法和状态码</li>
+                <li><strong>一致性</strong>：命名、格式、错误处理保持统一</li>
+                <li><strong>可演进</strong>：通过版本控制支持API迭代</li>
+                <li><strong>开发者友好</strong>：文档完善，错误信息明确</li>
+            </ul>
+
+            <p>如果你需要专业的API设计服务，我们提供从架构设计到文档撰写的全流程支持。联系我们，让你的API成为开发者喜爱的产品。</p>
+
+            <p class="cta"><a href="../missed-call-recovery.html">Struggling with missed calls at your dental practice? Learn how we help clinics recover 30% of missed appointments.</a></p>
+
+            <div class="cta-box">
+                <h3>需要专业API设计服务？</h3>
+                <p>我们提供API架构设计、文档撰写、代码审查服务</p>
+                <p>API设计咨询 ¥500起 · API文档 ¥100/接口起</p>
+                <a href="../order.html">立即下单</a>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Claude天团. All rights reserved.</p>
+        <p><a href="index.html" style="color: #667eea;">返回博客</a></p>
+        <p><a href="../terms.html" style="color: #667eea;">服务条款</a> | <a href="../privacy.html" style="color: #667eea;">隐私政策</a></p>
+    </footer>
+</body>
+</html>
