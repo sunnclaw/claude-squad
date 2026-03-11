@@ -1,116 +1,80 @@
-# Claude天团 - Services Catalog
+# Services Catalog
 
-## AI Agent Services
+Last updated: 2026-03-10
+Owner: CTO
 
-### 1. Content Creation Service
+## Purpose
 
-**Description**: High-quality content creation using AI-powered research and writing.
+This catalog exists to keep the company selling fixed-scope offers instead of drifting into custom work.
 
-**Deliverables**:
-- Blog posts and articles
-- Marketing copy
-- Technical documentation
-- Social media content
-- Email templates
+Active offers are ready for immediate sales. Focus on dental missed-call recovery as primary revenue driver.
 
-**Pricing**:
-- Standard (1000 words): ¥100 / $15
-- Premium (3000 words): ¥250 / $40
-- Enterprise (custom): Quote
+## Active Offers
 
-**Turnaround**: 24-48 hours
+### Missed-Call Recovery (Primary)
 
-**Order Process**:
-1. Submit request via issue/email
-2. Receive confirmation and timeline
-3. Review draft
-4. Request revisions (up to 2)
-5. Final delivery
+- outcome: recover missed-call revenue without adding headcount
+- turnaround: setup in 48 hours, 30-day pilot
+- pricing: USD 297 pilot / USD 199 monthly (or CNY 2,100 / CNY 1,400)
+- pack: `company/offers/missed-call-recovery-offer.md`
+- delivery kit: `company/delivery-kits/missed-call-recovery-checklist.md`
+- pilot proposal: `company/offers/dental-missed-call-pilot-proposal.md`
+- ideal customer: single-location dental practices with phone-driven patient acquisition
 
----
+### Content Creation
 
-### 2. Code Review & Development
+- outcome: publishable content delivered fast
+- turnaround: 24 to 48 hours
+- pricing: CNY 100 to CNY 400 depending on scope
+- pack: `company/offers/content-creation-offer.md`
+- delivery kit: `company/delivery-kits/content-creation-checklist.md`
 
-**Description**: Professional code review and development assistance.
+### Code Review
 
-**Deliverables**:
-- Code review reports
-- Bug identification and fixes
-- Feature implementation
-- Architecture recommendations
-- Test coverage analysis
+- outcome: prioritized engineering findings and concrete fixes
+- turnaround: 24 to 72 hours
+- pricing: CNY 50 to CNY 800+
+- pack: `company/offers/code-review-offer.md`
+- delivery kit: `company/delivery-kits/code-review-checklist.md`
 
-**Pricing**:
-- Single file review: ¥50 / $8
-- Module review (up to 10 files): ¥300 / $50
-- Full project review: ¥1000 / $150
-- Custom development: Quote
+### Research Report
 
-**Turnaround**: 24-72 hours
+- outcome: decision-ready research brief with recommendations
+- turnaround: 48 hours to 5 days
+- pricing: CNY 200 to CNY 800+
+- pack: `company/offers/research-report-offer.md`
+- delivery kit: `company/delivery-kits/research-report-checklist.md`
 
----
+## Deferred Offer
 
-### 3. Research & Analysis
+### AI Agent Setup
 
-**Description**: Comprehensive research reports on any topic.
+This offer exists in the business plan but is not active in the current operating system.
 
-**Deliverables**:
-- Market research reports
-- Competitive analysis
-- Technical research
-- Data analysis
-- Feasibility studies
+Reason:
+- longer cycle time
+- more custom scope risk
+- less evidence of near-term demand
 
-**Pricing**:
-- Quick research (1 topic): ¥200 / $30
-- Deep dive report: ¥500 / $75
-- Comprehensive analysis: ¥1500 / $225
+It stays deferred until:
+- 2 paid orders exist
+- the four core offers have delivery proof
+- there is repeated inbound demand for setup work
 
-**Turnaround**: 48-72 hours
+## Offer Rules
 
----
+- prioritize missed-call recovery for dental clinic leads
+- do not invent a fifth active offer
+- do not add retainers before repeat demand exists
+- do not quote custom build work unless it can be reduced to a fixed-scope paid package
+- update the relevant offer pack after each sale
+- deliver from the relevant delivery kit, not from memory
 
-### 4. AI Agent Setup
+## Revenue Priority
 
-**Description**: Custom AI agent configuration for your workflows.
+1. Missed-Call Recovery (highest - active dental clinic outreach)
+2. Content Creation
+3. Research Report
+4. Code Review
 
-**Deliverables**:
-- Agent configuration
-- Workflow automation
-- Integration setup
-- Documentation
-- Training
-
-**Pricing**:
-- Basic agent setup: ¥500 / $75
-- Advanced orchestration: ¥2000 / $300
-- Enterprise solution: Quote
-
-**Turnaround**: 3-7 days
-
----
-
-## How to Order
-
-### Option 1: Paperclip Issue
-Create an issue in our system with your request details.
-
-### Option 2: Email
-Send request to: [contact@claudetianduan.com] (to be set up)
-
-### Option 3: Direct Message
-Contact via WeChat/Discord (details to be added)
-
-## Payment Methods
-
-- Alipay
-- WeChat Pay
-- PayPal
-- Bank Transfer
-
-## Terms
-
-- 50% deposit for new customers
-- Full payment before final delivery
-- Satisfaction guarantee or revision
-- Refund policy: 7 days for unused services
+If a lead can fit both a standard offer and a larger custom engagement, sell the standard offer first unless budget and urgency are already clear.

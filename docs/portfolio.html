@@ -7,118 +7,170 @@
     <meta name="keywords" content="AI服务案例,内容创作案例,代码审查案例,研究报告案例,AI配置案例">
     <meta property="og:title" content="案例作品集 | Claude天团">
     <meta property="og:description" content="展示我们在AI服务领域的成功案例和专业能力">
+    <link rel="canonical" href="https://sunnclaw.github.io/claude-squad/portfolio.html">
     <title>案例作品集 | Claude天团 - AI智能服务</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Page-specific styles using design system variables */
+
+        .portfolio-hero {
+            background: var(--gradient-primary);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            padding: calc(var(--spacing-3xl) + 60px) var(--spacing-lg) var(--spacing-3xl);
+            text-align: center;
+            color: white;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .container {
+        .portfolio-hero h1 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: var(--spacing-md);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+            color: white;
+        }
+
+        .portfolio-hero .subtitle {
+            font-size: var(--font-size-xl);
+            opacity: 0.9;
+            color: white;
+        }
+
+        .portfolio-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 var(--spacing-lg);
         }
 
-        header {
+        .section-header {
             text-align: center;
-            padding: 60px 20px;
-            color: white;
+            margin: var(--spacing-3xl) 0 var(--spacing-2xl);
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        .section-header h2 {
+            color: var(--color-text-primary);
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-sm);
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        nav {
-            margin: 20px 0;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            opacity: 0.9;
-            transition: opacity 0.3s;
-        }
-
-        nav a:hover {
-            opacity: 1;
+        .section-header p {
+            color: var(--color-text-secondary);
         }
 
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
+            gap: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
         }
 
         .case-card {
-            background: white;
-            border-radius: 20px;
+            background: var(--color-bg-white);
+            border-radius: var(--radius-2xl);
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-            transition: transform 0.3s;
+            box-shadow: var(--shadow-lg);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
         }
 
         .case-card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-2xl);
         }
 
         .case-header {
-            padding: 25px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
-            border-bottom: 3px solid #667eea;
+            padding: var(--spacing-xl);
+            background: var(--color-bg-light);
+            border-bottom: 3px solid var(--color-primary);
+        }
+
+        .case-header.gradient-blue {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+            color: white;
+            border-bottom: none;
+        }
+
+        .case-header.gradient-purple {
+            background: var(--gradient-primary);
+            color: white;
+            border-bottom: none;
+        }
+
+        .case-header.gradient-pink {
+            background: var(--gradient-accent);
+            color: white;
+            border-bottom: none;
+        }
+
+        .case-header.gradient-green {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            border-bottom: none;
         }
 
         .case-category {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--gradient-primary);
             color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-bottom: 10px;
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--spacing-sm);
         }
 
+        .case-header.gradient-blue .case-category,
+        .case-header.gradient-purple .case-category,
+        .case-header.gradient-pink .case-category,
+        .case-header.gradient-green .case-category {
+            background: white;
+        }
+
+        .case-header.gradient-blue .case-category { color: #0369a1; }
+        .case-header.gradient-purple .case-category { color: var(--color-primary); }
+        .case-header.gradient-pink .case-category { color: #f5576c; }
+        .case-header.gradient-green .case-category { color: #16a34a; }
+
         .case-title {
-            font-size: 1.3rem;
-            color: #333;
-            margin-bottom: 5px;
+            font-size: var(--font-size-lg);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .case-header.gradient-blue .case-title,
+        .case-header.gradient-purple .case-title,
+        .case-header.gradient-pink .case-title,
+        .case-header.gradient-green .case-title {
+            color: white;
         }
 
         .case-client {
-            color: #666;
-            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        .case-header.gradient-blue .case-client,
+        .case-header.gradient-purple .case-client,
+        .case-header.gradient-pink .case-client,
+        .case-header.gradient-green .case-client {
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .case-body {
-            padding: 25px;
+            padding: var(--spacing-xl);
         }
 
         .case-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border-light);
         }
 
         .stat-item {
@@ -126,158 +178,348 @@
         }
 
         .stat-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #667eea;
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
         }
 
         .stat-label {
-            font-size: 0.8rem;
-            color: #999;
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
         }
 
         .case-description {
-            color: #555;
-            margin-bottom: 15px;
-            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+            line-height: var(--line-height-relaxed);
         }
 
         .case-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: var(--spacing-sm);
         }
 
         .tag {
-            background: #f0f0f0;
-            color: #666;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            background: var(--color-bg-light);
+            color: var(--color-text-secondary);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
         }
 
+        .tag.blue { background: #0ea5e9; color: white; }
+        .tag.purple { background: var(--color-secondary); color: white; }
+        .tag.green { background: #22c55e; color: white; }
+        .tag.primary { background: var(--color-primary); color: white; }
+
         .cta-section {
-            background: white;
-            border-radius: 20px;
-            padding: 50px;
+            background: var(--color-bg-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-3xl) var(--spacing-2xl);
             text-align: center;
-            margin: 40px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            margin: var(--spacing-2xl) 0;
+            box-shadow: var(--shadow-lg);
         }
 
         .cta-section h2 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-2xl);
         }
 
         .cta-section p {
-            color: #666;
-            margin-bottom: 25px;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-xl);
         }
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--gradient-primary);
             color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
+            padding: var(--spacing-md) var(--spacing-2xl);
+            border-radius: var(--radius-full);
             text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: var(--font-weight-bold);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-primary);
         }
 
         .process-section {
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-3xl) var(--spacing-2xl);
+            margin: var(--spacing-2xl) 0;
             color: white;
         }
 
         .process-section h2 {
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
+            margin-bottom: var(--spacing-2xl);
+            font-size: var(--font-size-2xl);
+            color: white;
         }
 
         .process-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-xl);
         }
 
         .process-step {
-            background: rgba(255,255,255,0.1);
-            padding: 25px;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-xl);
             text-align: center;
         }
 
         .step-number {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 40px;
             height: 40px;
             background: white;
-            color: #667eea;
+            color: var(--color-primary);
             border-radius: 50%;
-            line-height: 40px;
-            font-weight: bold;
-            margin-bottom: 15px;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-md);
         }
 
         .process-step h3 {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-base);
+            color: white;
         }
 
         .process-step p {
-            font-size: 0.9rem;
+            font-size: var(--font-size-sm);
             opacity: 0.9;
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        footer {
+        .skills-section {
+            background: var(--color-bg-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-3xl) var(--spacing-2xl);
             text-align: center;
-            padding: 40px;
+            margin: var(--spacing-2xl) 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skills-section h3 {
+            color: var(--color-primary);
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .skills-section > p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            justify-content: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .skill-badge {
+            background: var(--gradient-primary);
             color: white;
-            opacity: 0.8;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8rem;
-            }
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
+
             .case-stats {
                 grid-template-columns: 1fr;
+                gap: var(--spacing-sm);
             }
-            nav a {
-                display: block;
-                margin: 10px 0;
+
+            .process-steps {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>案例作品集</h1>
-            <p class="subtitle">每一个案例都是我们专业能力的证明</p>
-            <nav>
-                <a href="index.html">首页</a>
-                <a href="services.html">服务</a>
-                <a href="portfolio.html">案例</a>
-                <a href="blog/index.html">博客</a>
-                <a href="order.html">下单</a>
-            </nav>
-        </header>
+    <!-- Navigation -->
+    <nav class="navbar" style="position: absolute; top: 0; left: 0; right: 0; background: transparent; box-shadow: none;">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand" style="color: white;">
+                <span>Claude天团</span>
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="services.html" style="color: rgba(255,255,255,0.9);">服务</a></li>
+                <li><a href="pricing.html" style="color: rgba(255,255,255,0.9);">价格</a></li>
+                <li><a href="portfolio.html" style="color: rgba(255,255,255,0.9);">案例</a></li>
+                <li><a href="blog/index.html" style="color: rgba(255,255,255,0.9);">博客</a></li>
+                <li><a href="contact.html" class="nav-cta">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="portfolio-hero">
+        <h1>案例作品集</h1>
+        <p class="subtitle">每一个案例都是我们专业能力的证明</p>
+    </section>
+
+    <div class="portfolio-content">
+        <!-- Featured Automation Projects -->
+        <div class="section-header">
+            <h2>Featured Automation Projects</h2>
+            <p>Real results from AI-powered automation systems</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <!-- Missed Call Recovery System -->
+            <div class="case-card">
+                <div class="case-header gradient-blue">
+                    <span class="case-category">Case Study</span>
+                    <h3 class="case-title">Missed Call Recovery System for Dental Practice</h3>
+                    <p class="case-client">Dental Practice Automation</p>
+                </div>
+                <div class="case-body">
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">$1,200+</div>
+                            <div class="stat-label">Revenue Recovered</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">4</div>
+                            <div class="stat-label">Appointments</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">30%</div>
+                            <div class="stat-label">Response Rate</div>
+                        </div>
+                    </div>
+                    <p class="case-description">Built an automated missed call recovery system that sends text messages within 5 minutes of a missed call, queues callback reminders, and tracks conversions from missed call to appointment.</p>
+                    <div class="case-tags">
+                        <span class="tag blue">Twilio</span>
+                        <span class="tag purple">Zapier</span>
+                        <span class="tag green">Google Sheets</span>
+                        <span class="tag primary">Dashboard</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO Content Strategy -->
+            <div class="case-card">
+                <div class="case-header gradient-purple">
+                    <span class="case-category">SEO</span>
+                    <h3 class="case-title">SEO Content Strategy for Technical Services</h3>
+                    <p class="case-client">Content Marketing</p>
+                </div>
+                <div class="case-body">
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">88+</div>
+                            <div class="stat-label">Blog Posts</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">23</div>
+                            <div class="stat-label">Dental Articles</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">100%</div>
+                            <div class="stat-label">Live</div>
+                        </div>
+                    </div>
+                    <p class="case-description">Created comprehensive SEO content strategy targeting dental practice owners and small businesses seeking automation solutions. Full website with technical documentation and guides.</p>
+                    <div class="case-tags">
+                        <span class="tag blue">GitHub Pages</span>
+                        <span class="tag purple">Markdown</span>
+                        <span class="tag green">SEO</span>
+                        <span class="tag primary">Analytics</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quote & Payment System -->
+            <div class="case-card">
+                <div class="case-header gradient-pink">
+                    <span class="case-category">Automation</span>
+                    <h3 class="case-title">Automated Quote and Payment System</h3>
+                    <p class="case-client">Lead Capture</p>
+                </div>
+                <div class="case-body">
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Pricing Tiers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">Real-time</div>
+                            <div class="stat-label">Quotes</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">Full</div>
+                            <div class="stat-label">Tracking</div>
+                        </div>
+                    </div>
+                    <p class="case-description">Built complete quote-to-payment workflow with interactive quote builder, tiered pricing ($297/$497/$997), Stripe payment integration, and lead capture tracking.</p>
+                    <div class="case-tags">
+                        <span class="tag blue">JavaScript</span>
+                        <span class="tag purple">Stripe</span>
+                        <span class="tag green">JSON</span>
+                        <span class="tag primary">Forms</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue Dashboard -->
+            <div class="case-card">
+                <div class="case-header gradient-green">
+                    <span class="case-category">Dashboard</span>
+                    <h3 class="case-title">Revenue Tracking Dashboard</h3>
+                    <p class="case-client">Business Intelligence</p>
+                </div>
+                <div class="case-body">
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">Real-time</div>
+                            <div class="stat-label">Tracking</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">Multi-source</div>
+                            <div class="stat-label">Attribution</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">100%</div>
+                            <div class="stat-label">Visibility</div>
+                        </div>
+                    </div>
+                    <p class="case-description">Developed comprehensive dashboard for tracking leads, quotes, and revenue pipeline in real-time with source attribution and conversion metrics.</p>
+                    <div class="case-tags">
+                        <span class="tag blue">HTML5</span>
+                        <span class="tag purple">JavaScript</span>
+                        <span class="tag green">localStorage</span>
+                        <span class="tag primary">Charts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Traditional Service Portfolio -->
+        <div class="section-header" style="margin-top: var(--spacing-3xl);">
+            <h2>Service Portfolio</h2>
+            <p>Our comprehensive range of AI-powered services</p>
+        </div>
 
         <div class="portfolio-grid">
             <div class="case-card">
@@ -461,6 +703,22 @@
             </div>
         </div>
 
+        <!-- Skills Section -->
+        <div class="skills-section">
+            <h3>Looking for AI Automation Help?</h3>
+            <p>I help businesses automate workflows, recover lost leads, and build custom AI solutions.</p>
+            <div class="skills-list">
+                <span class="skill-badge">AI Automation</span>
+                <span class="skill-badge">Twilio</span>
+                <span class="skill-badge">Zapier</span>
+                <span class="skill-badge">CRM Integration</span>
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">JavaScript</span>
+            </div>
+            <a href="contact.html" class="cta-button">Let's Talk About Your Project</a>
+        </div>
+
+        <!-- Process Section -->
         <section class="process-section">
             <h2>我们的工作流程</h2>
             <div class="process-steps">
@@ -492,17 +750,52 @@
             </div>
         </section>
 
-        <section class="cta-section">
+        <!-- CTA -->
+        <div class="cta-section">
             <h2>准备好开始您的项目了吗？</h2>
             <p>让我们用AI的力量，帮您实现业务目标</p>
             <a href="order.html" class="cta-button">立即下单</a>
-        </section>
+        </div>
+    </div>
 
-        <footer>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Claude天团</h4>
+                <p>AI驱动的智能服务团队</p>
+            </div>
+            <div class="footer-section">
+                <h4>服务</h4>
+                <ul>
+                    <li><a href="services.html">内容创作</a></li>
+                    <li><a href="services.html">代码审查</a></li>
+                    <li><a href="services.html">研究报告</a></li>
+                    <li><a href="services.html">AI配置</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>链接</h4>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="portfolio.html">案例</a></li>
+                    <li><a href="blog/index.html">博客</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>法律</h4>
+                <ul>
+                    <li><a href="terms.html">服务条款</a></li>
+                    <li><a href="privacy.html">隐私政策</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
             <p>&copy; 2026 Claude天团. All rights reserved.</p>
             <p>Powered by AI, Driven by Excellence</p>
-            <p><a href="terms.html" style="color: white;">服务条款</a> | <a href="privacy.html" style="color: white;">隐私政策</a></p>
-        </footer>
-    </div>
+        </div>
+    </footer>
+    <script src="js/components.js"></script>
 </body>
 </html>

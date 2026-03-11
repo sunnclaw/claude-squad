@@ -3,320 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Claude天团服务价格 - 透明的定价体系，按需付费，无隐藏费用。内容创作、代码审查、研究报告、AI配置服务。">
-    <meta name="keywords" content="AI服务价格,内容创作价格,代码审查费用,研究报告报价,AI配置服务">
-    <title>服务价格 | Claude天团 - AI智能服务</title>
+    <meta name="description" content="Claude天团服务价格 - Missed Call Recovery for Dental Practices ($297 pilot), plus AI services: content creation, code review, research reports, AI configuration. Transparent pricing.">
+    <meta name="keywords" content="AI服务价格,内容创作价格,代码审查费用,研究报告报价,AI配置服务,missed call recovery, dental practice, dental clinic services">
+    <meta property="og:title" content="服务价格 - Claude天团">
+    <meta property="og:description" content="透明的定价体系，按需付费，无隐藏费用">
+    <meta property="og:url" content="https://sunnclaw.github.io/claude-squad/pricing.html">
+    <link rel="canonical" href="https://sunnclaw.github.io/claude-squad/pricing.html">
+    <title>Pricing | Claude Squad - Missed Call Recovery for Dental Practices + AI Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "首页", "item": "https://sunnclaw.github.io/claude-squad/"},
+            {"@type": "ListItem", "position": 2, "name": "价格", "item": "https://sunnclaw.github.io/claude-squad/pricing.html"}
+        ]
+    }
+    </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Page-specific styles using design system variables */
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
+        .pricing-hero {
+            background: var(--gradient-primary);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 50vh;
+            padding: calc(var(--spacing-3xl) + 60px) var(--spacing-lg) var(--spacing-3xl);
             text-align: center;
-            padding: 40px 20px;
             color: white;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        nav {
-            margin: 20px 0;
-        }
-
-        nav a {
+        .pricing-hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: var(--spacing-md);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
             color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            opacity: 0.9;
         }
 
-        nav a:hover {
-            opacity: 1;
+        .pricing-hero .subtitle {
+            font-size: var(--font-size-xl);
+            opacity: 0.9;
+            color: white;
         }
 
         .pricing-section {
-            background: white;
-            border-radius: 20px;
-            padding: 50px 40px;
-            margin: 30px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            background: var(--color-bg-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-3xl) var(--spacing-2xl);
+            margin: calc(-1 * var(--spacing-3xl)) var(--spacing-lg) var(--spacing-2xl);
+            box-shadow: var(--shadow-2xl);
+            position: relative;
+            z-index: 1;
         }
 
         .pricing-section h2 {
             text-align: center;
-            color: #667eea;
-            margin-bottom: 40px;
-            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-2xl);
+            font-size: var(--font-size-2xl);
         }
 
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-2xl);
         }
 
         .pricing-card {
-            background: #f8f9fa;
-            border-radius: 20px;
-            padding: 35px;
+            background: var(--color-bg-light);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-xl);
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
             border: 2px solid transparent;
         }
 
         .pricing-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-xl);
         }
 
         .pricing-card.featured {
-            border-color: #667eea;
+            border-color: var(--color-primary);
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
         }
 
         .pricing-card.featured::before {
             content: "最受欢迎";
             display: block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--gradient-primary);
             color: white;
             padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-bottom: 15px;
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--spacing-md);
+            font-weight: var(--font-weight-semibold);
         }
 
         .pricing-card h3 {
-            color: #667eea;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            color: var(--color-primary);
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-sm);
         }
 
         .pricing-card .description {
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-lg);
+            font-size: var(--font-size-sm);
         }
 
         .pricing-card .price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-xs);
         }
 
         .pricing-card .price span {
-            font-size: 1rem;
-            color: #999;
-            font-weight: normal;
+            font-size: var(--font-size-base);
+            color: var(--color-text-muted);
+            font-weight: var(--font-weight-normal);
         }
 
         .pricing-card .unit {
-            color: #999;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
+            color: var(--color-text-muted);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--spacing-xl);
         }
 
         .pricing-card ul {
             list-style: none;
             text-align: left;
-            margin-bottom: 25px;
+            margin-bottom: var(--spacing-xl);
         }
 
         .pricing-card li {
-            padding: 8px 0;
-            padding-left: 25px;
+            padding: var(--spacing-sm) 0;
+            padding-left: var(--spacing-xl);
             position: relative;
-            color: #555;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
         }
 
         .pricing-card li::before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: #4ade80;
-            font-weight: bold;
+            color: var(--color-success);
+            font-weight: var(--font-weight-bold);
         }
 
         .pricing-card .cta {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--gradient-primary);
             color: white;
-            padding: 12px 35px;
-            border-radius: 25px;
+            padding: var(--spacing-sm) var(--spacing-xl);
+            border-radius: var(--radius-full);
             text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: var(--font-weight-semibold);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            box-shadow: var(--shadow-primary);
         }
 
         .pricing-card .cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            color: white;
         }
 
         .comparison-table {
             overflow-x: auto;
-            margin: 40px 0;
+            margin: var(--spacing-2xl) 0;
         }
 
-        table {
+        .comparison-table table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
-            border-radius: 15px;
+            background: var(--color-bg-white);
+            border-radius: var(--radius-xl);
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow-md);
         }
 
-        th, td {
-            padding: 15px 20px;
+        .comparison-table th,
+        .comparison-table td {
+            padding: var(--spacing-md) var(--spacing-lg);
             text-align: center;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--color-border-light);
         }
 
-        th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .comparison-table th {
+            background: var(--gradient-primary);
             color: white;
-            font-weight: 600;
+            font-weight: var(--font-weight-semibold);
         }
 
-        th:first-child, td:first-child {
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
             text-align: left;
+            font-weight: var(--font-weight-medium);
         }
 
-        tr:hover {
-            background: #f8f9fa;
+        .comparison-table tr:hover {
+            background: var(--color-bg-light);
         }
 
         .check {
-            color: #4ade80;
-            font-weight: bold;
+            color: var(--color-success);
+            font-weight: var(--font-weight-bold);
         }
 
         .cross {
-            color: #ccc;
+            color: var(--color-text-light);
         }
 
+        /* Addons Section */
         .addons {
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-2xl);
+            margin: var(--spacing-2xl) 0;
             color: white;
         }
 
         .addons h2 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: var(--spacing-xl);
+            color: white;
         }
 
         .addon-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            gap: var(--spacing-lg);
         }
 
         .addon-item {
             background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-lg);
+            backdrop-filter: blur(10px);
         }
 
         .addon-item h3 {
-            margin-bottom: 10px;
+            margin-bottom: var(--spacing-sm);
+            color: white;
         }
 
         .addon-item .addon-price {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-sm);
+            color: white;
         }
 
         .addon-item p {
             opacity: 0.9;
-            font-size: 0.95rem;
+            font-size: var(--font-size-sm);
+            margin-bottom: 0;
+            color: white;
         }
 
+        /* Guarantee Section */
         .guarantee {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
+            background: var(--color-bg-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-2xl);
+            margin: var(--spacing-2xl) 0;
             text-align: center;
+            box-shadow: var(--shadow-lg);
         }
 
         .guarantee h2 {
-            color: #667eea;
-            margin-bottom: 20px;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xl);
         }
 
         .guarantee-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
         }
 
         .guarantee-item {
-            padding: 20px;
+            padding: var(--spacing-md);
         }
 
         .guarantee-item .icon {
             font-size: 2.5rem;
-            margin-bottom: 15px;
+            margin-bottom: var(--spacing-md);
         }
 
         .guarantee-item h3 {
-            color: #333;
-            margin-bottom: 10px;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-sm);
         }
 
         .guarantee-item p {
-            color: #666;
-            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
         }
 
+        /* FAQ Section */
         .faq-section {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
+            background: var(--color-bg-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-2xl);
+            margin: var(--spacing-2xl) 0;
+            box-shadow: var(--shadow-lg);
         }
 
         .faq-section h2 {
-            color: #667eea;
-            margin-bottom: 30px;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xl);
             text-align: center;
         }
 
         .faq-item {
-            padding: 20px 0;
-            border-bottom: 1px solid #eee;
+            padding: var(--spacing-lg) 0;
+            border-bottom: 1px solid var(--color-border-light);
         }
 
         .faq-item:last-child {
@@ -324,258 +340,477 @@
         }
 
         .faq-item h3 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-lg);
         }
 
         .faq-item p {
-            color: #666;
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
         }
 
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: white;
-            opacity: 0.8;
-        }
-
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
             .pricing-section {
-                padding: 25px;
+                margin: calc(-1 * var(--spacing-2xl)) var(--spacing-md) var(--spacing-xl);
+                padding: var(--spacing-xl) var(--spacing-md);
             }
+
             .pricing-card {
-                padding: 25px;
+                padding: var(--spacing-lg);
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: var(--spacing-sm);
+                font-size: var(--font-size-sm);
+            }
+
+            /* Dental featured section responsive */
+            .pricing-section > div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>透明定价</h1>
-            <p class="subtitle">按需付费，无隐藏费用</p>
-            <nav>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="logo.svg" alt="Claude天团" height="36">
+            </a>
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="about.html" class="nav-link">关于</a>
+                <a href="services.html" class="nav-link">服务</a>
+                <a href="pricing.html" class="nav-link active">价格</a>
+                <a href="portfolio.html" class="nav-link">案例</a>
+                <a href="blog/index.html" class="nav-link">博客</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="contact.html" class="nav-link">联系</a>
+                <a href="order.html" class="nav-link nav-cta">下单</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="pricing-hero">
+        <h1>透明定价</h1>
+        <p class="subtitle">按需付费，无隐藏费用</p>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+
+            <!-- Digital Product - DIY Kit -->
+            <section class="pricing-section" style="border: 3px solid var(--color-primary); position: relative; overflow: visible; margin-bottom: var(--spacing-xl);">
+                <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 24px; border-radius: 30px; font-weight: bold; font-size: 0.9rem; white-space: nowrap; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); z-index: 10;">
+                    📦 INSTANT DOWNLOAD - Do It Yourself Kit
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); align-items: center; margin-top: var(--spacing-lg);">
+                    <div>
+                        <h2 style="color: var(--color-primary); text-align: left; margin-bottom: var(--spacing-md);">The Complete Missed Call Recovery System</h2>
+                        <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-lg); font-size: 1.1rem;">Everything you need to recover $1,200+/month in lost revenue. Templates, scripts, calculator, and implementation guide.</p>
+                        <ul style="list-style: none; padding: 0; margin-bottom: var(--spacing-xl);">
+                            <li style="padding: 8px 0; display: flex; align-items: center; gap: 12px;">
+                                <span style="color: var(--color-success); font-size: 1.2rem;">✓</span>
+                                <span><strong>ROI Calculator Template</strong> - See exactly how much you're losing</span>
+                            </li>
+                            <li style="padding: 8px 0; display: flex; align-items: center; gap: 12px;">
+                                <span style="color: var(--color-success); font-size: 1.2rem;">✓</span>
+                                <span><strong>10 Text-Back Scripts</strong> - Proven templates for every scenario</span>
+                            </li>
+                            <li style="padding: 8px 0; display: flex; align-items: center; gap: 12px;">
+                                <span style="color: var(--color-success); font-size: 1.2rem;">✓</span>
+                                <span><strong>Staff Training Checklist</strong> - Get your team up to speed</span>
+                            </li>
+                            <li style="padding: 8px 0; display: flex; align-items: center; gap: 12px;">
+                                <span style="color: var(--color-success); font-size: 1.2rem;">✓</span>
+                                <span><strong>Technology Comparison Guide</strong> - Find the right tools</span>
+                            </li>
+                            <li style="padding: 8px 0; display: flex; align-items: center; gap: 12px;">
+                                <span style="color: var(--color-success); font-size: 1.2rem;">✓</span>
+                                <span><strong>BONUS:</strong> 15-minute consultation included</span>
+                            </li>
+                        </ul>
+                        <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+                            <a href="missed-call-recovery-system.html" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 14px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); transition: all 0.3s;">
+                                Get Instant Access - $27
+                            </a>
+                            <a href="lead-magnet.html" style="display: inline-flex; align-items: center; gap: 8px; background: white; color: var(--color-primary); padding: 14px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; border: 2px solid var(--color-primary); transition: all 0.3s;">
+                                Try Free Calculator
+                            </a>
+                        </div>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-xl);">
+                        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; padding: var(--spacing-2xl); color: white;">
+                            <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 8px; text-decoration: line-through;">Regular Price: $67</p>
+                            <div style="font-size: 4rem; font-weight: bold; margin-bottom: 8px;">$27</div>
+                            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: var(--spacing-lg);">One-time payment • Lifetime access</p>
+                            <div style="background: rgba(255,255,255,0.15); border-radius: 12px; padding: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                                <p style="font-size: 0.85rem; margin-bottom: 4px;">30-Day Money-Back Guarantee</p>
+                                <p style="font-size: 1rem; font-weight: bold;">No questions asked</p>
+                            </div>
+                            <p style="font-size: 0.85rem; opacity: 0.85;">Instant download after purchase</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Digital Product - Communication Templates -->
+            <section class="pricing-section" style="border: 3px solid #8b5cf6; position: relative; overflow: visible; margin-bottom: var(--spacing-xl);">
+                <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white; padding: 8px 24px; border-radius: 30px; font-weight: bold; font-size: 0.9rem; white-space: nowrap; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4); z-index: 10;">
+                    📝 INSTANT DOWNLOAD - Communication Templates
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); align-items: center; margin-top: var(--spacing-lg);">
+                    <div>
+                        <h2 style="color: #6366f1; text-align: left; margin-bottom: var(--spacing-md);">Dental Patient Communication Templates</h2>
+                        <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-lg); font-size: 1.1rem;">50+ ready-to-use scripts for every patient touchpoint. Copy, paste, customize in seconds.</p>
+                        <ul style="list-style: none; padding: 0; margin-bottom: var(--spacing-xl);">
+                            <li style="padding: 8px 0; display: flex; align-items: center; gap: 12px;">
+                                <span style="color: #6366f1; font-size: 1.2rem;">✓</span>
+                                <span><strong>12 Appointment Templates</strong> - Confirmations & reminders</span>
+                            </li>
+                            <li style="padding: 8px 0; display: flex; align-items: center; gap: 12px;">
+                                <span style="color: #6366f1; font-size: 1.2rem;">✓</span>
+                                <span><strong>10 Missed Call Scripts</strong> - Recover lost patients</span>
+                            </li>
+                            <li style="padding: 8px 0; display: flex; align-items: center; gap: 12px;">
+                                <span style="color: #6366f1; font-size: 1.2rem;">✓</span>
+                                <span><strong>8 Emergency Scripts</strong> - After-hours protocols</span>
+                            </li>
+                            <li style="padding: 8px 0; display: flex; align-items: center; gap: 12px;">
+                                <span style="color: #6366f1; font-size: 1.2rem;">✓</span>
+                                <span><strong>Plus recalls, treatment & payment templates</strong></span>
+                            </li>
+                        </ul>
+                        <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+                            <a href="dental-communication-templates.html" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white; padding: 14px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4); transition: all 0.3s;">
+                                Get Instant Access - $19
+                            </a>
+                        </div>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-xl);">
+                        <div style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 20px; padding: var(--spacing-2xl); color: white;">
+                            <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 8px; text-decoration: line-through;">Regular Price: $29</p>
+                            <div style="font-size: 4rem; font-weight: bold; margin-bottom: 8px;">$19</div>
+                            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: var(--spacing-lg);">One-time payment • Lifetime access</p>
+                            <div style="background: rgba(255,255,255,0.15); border-radius: 12px; padding: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                                <p style="font-size: 0.85rem; margin-bottom: 4px;">30-Day Money-Back Guarantee</p>
+                                <p style="font-size: 1rem; font-weight: bold;">No questions asked</p>
+                            </div>
+                            <p style="font-size: 0.85rem; opacity: 0.85;">Instant download after purchase</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Service - Missed Call Recovery Done-For-You -->
+            <section class="pricing-section" style="border: 3px solid var(--color-success); position: relative; overflow: visible;">
+                <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); color: white; padding: 8px 24px; border-radius: 30px; font-weight: bold; font-size: 0.9rem; white-space: nowrap; box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);">
+                    🦷 DENTAL PRACTICES - Done-For-You Service
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); align-items: center; margin-top: var(--spacing-lg);">
+                    <div>
+                        <h2 style="color: #0284c7; text-align: left; margin-bottom: var(--spacing-md);">Missed Call Recovery for Dental Practices</h2>
+                        <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-lg); font-size: 1.1rem;">Stop losing patients to missed calls. Our AI-powered system automatically recovers missed calls and converts them into appointments.</p>
+                        <ul style="list-style: none; padding: 0; margin-bottom: var(--spacing-xl);">
+                            <li style="padding: 8px 0; display: flex; align-items: center; gap: 12px;">
+                                <span style="color: #48bb78; font-size: 1.2rem;">✓</span>
+                                <span>Recover 3-5 appointments per month</span>
+                            </li>
+                            <li style="padding: 8px 0; display: flex; align-items: center; gap: 12px;">
+                                <span style="color: #48bb78; font-size: 1.2rem;">✓</span>
+                                <span>Automated text-back within 5 minutes</span>
+                            </li>
+                            <li style="padding: 8px 0; display: flex; align-items: center; gap: 12px;">
+                                <span style="color: #48bb78; font-size: 1.2rem;">✓</span>
+                                <span>24/7 coverage - never miss another call</span>
+                            </li>
+                            <li style="padding: 8px 0; display: flex; align-items: center; gap: 12px;">
+                                <span style="color: #48bb78; font-size: 1.2rem;">✓</span>
+                                <span>Calendar integration & appointment scheduling</span>
+                            </li>
+                            <li style="padding: 8px 0; display: flex; align-items: center; gap: 12px;">
+                                <span style="color: #48bb78; font-size: 1.2rem;">✓</span>
+                                <span>Setup in 48 hours or less</span>
+                            </li>
+                        </ul>
+                        <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+                            <a href="missed-call-recovery.html" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: white; padding: 14px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); transition: all 0.3s;">
+                                Learn More →
+                            </a>
+                            <a href="dental-lead-form.html" style="display: inline-flex; align-items: center; gap: 8px; background: white; color: #0284c7; padding: 14px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; border: 2px solid #0ea5e9; transition: all 0.3s;">
+                                Get Free ROI Analysis
+                            </a>
+                        </div>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-xl);">
+                        <div style="background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); border-radius: 20px; padding: var(--spacing-2xl); color: white;">
+                            <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 8px;">Pilot Program</p>
+                            <div style="font-size: 3.5rem; font-weight: bold; margin-bottom: 8px;">$297</div>
+                            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: var(--spacing-lg);">30-day trial • Cancel anytime</p>
+                            <div style="background: rgba(255,255,255,0.15); border-radius: 12px; padding: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                                <p style="font-size: 0.85rem; margin-bottom: 4px;">Expected ROI</p>
+                                <p style="font-size: 1.5rem; font-weight: bold;">$1,200+/month</p>
+                            </div>
+                            <p style="font-size: 0.85rem; opacity: 0.85;">Based on recovering 4 appointments/month at $300/patient</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing Cards -->
+            <section class="pricing-section">
+                <h2>AI Services</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>内容创作</h3>
+                        <p class="description">高质量文章、营销文案、技术文档</p>
+                        <div class="price">¥100<span>起</span></div>
+                        <p class="unit">/ 千字</p>
+                        <ul>
+                            <li>原创内容，无抄袭</li>
+                            <li>SEO优化（可选）</li>
+                            <li>一次免费修改</li>
+                            <li>24-48小时交付</li>
+                        </ul>
+                        <a href="order.html" class="cta">立即下单</a>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>代码审查</h3>
+                        <p class="description">专业代码审查、Bug修复建议</p>
+                        <div class="price">¥50<span>起</span></div>
+                        <p class="unit">/ 文件</p>
+                        <ul>
+                            <li>代码质量评估</li>
+                            <li>安全漏洞检测</li>
+                            <li>性能优化建议</li>
+                            <li>24-72小时交付</li>
+                        </ul>
+                        <a href="order.html" class="cta">立即下单</a>
+                    </div>
+
+                    <div class="pricing-card featured">
+                        <h3>研究报告</h3>
+                        <p class="description">市场调研、竞品分析、技术研究</p>
+                        <div class="price">¥200<span>起</span></div>
+                        <p class="unit">/ 主题</p>
+                        <ul>
+                            <li>深度数据分析</li>
+                            <li>可视化图表</li>
+                            <li>行动建议</li>
+                            <li>48-72小时交付</li>
+                        </ul>
+                        <a href="order.html" class="cta">立即下单</a>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>AI代理配置</h3>
+                        <p class="description">定制AI工作流、自动化配置</p>
+                        <div class="price">¥500<span>起</span></div>
+                        <p class="unit">/ 配置</p>
+                        <ul>
+                            <li>需求分析</li>
+                            <li>定制开发</li>
+                            <li>文档与培训</li>
+                            <li>3-7天交付</li>
+                        </ul>
+                        <a href="order.html" class="cta">立即下单</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Service Comparison -->
+            <section class="pricing-section">
+                <h2>服务对比</h2>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>功能特性</th>
+                                <th>内容创作</th>
+                                <th>代码审查</th>
+                                <th>研究报告</th>
+                                <th>AI配置</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>原创保证</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td>免费修改</td>
+                                <td>1次</td>
+                                <td>1次</td>
+                                <td>1次</td>
+                                <td>2次</td>
+                            </tr>
+                            <tr>
+                                <td>加急服务</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="cross">—</td>
+                            </tr>
+                            <tr>
+                                <td>售后支持</td>
+                                <td>7天</td>
+                                <td>7天</td>
+                                <td>7天</td>
+                                <td>30天</td>
+                            </tr>
+                            <tr>
+                                <td>源文件交付</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td>保密协议</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Addons -->
+            <section class="addons">
+                <h2>增值服务</h2>
+                <div class="addon-grid">
+                    <div class="addon-item">
+                        <h3>加急交付</h3>
+                        <div class="addon-price">+50%</div>
+                        <p>24小时内完成交付，适合紧急需求</p>
+                    </div>
+                    <div class="addon-item">
+                        <h3>额外修改</h3>
+                        <div class="addon-price">+¥50/次</div>
+                        <p>超出免费修改次数后的每次修改</p>
+                    </div>
+                    <div class="addon-item">
+                        <h3>英文服务</h3>
+                        <div class="addon-price">+30%</div>
+                        <p>英文内容创作或双语交付</p>
+                    </div>
+                    <div class="addon-item">
+                        <h3>长期合作</h3>
+                        <div class="addon-price">-20%</div>
+                        <p>月度合作套餐，享受折扣价格</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Guarantee -->
+            <section class="guarantee">
+                <h2>我们的承诺</h2>
+                <div class="guarantee-grid">
+                    <div class="guarantee-item">
+                        <div class="icon">✨</div>
+                        <h3>质量保证</h3>
+                        <p>不满意免费修改，直至符合预期</p>
+                    </div>
+                    <div class="guarantee-item">
+                        <div class="icon">🔒</div>
+                        <h3>隐私保护</h3>
+                        <p>严格保密，签署保密协议</p>
+                    </div>
+                    <div class="guarantee-item">
+                        <div class="icon">⏰</div>
+                        <h3>准时交付</h3>
+                        <p>承诺时间内完成，超时可退款</p>
+                    </div>
+                    <div class="guarantee-item">
+                        <div class="icon">💰</div>
+                        <h3>透明定价</h3>
+                        <p>无隐藏费用，报价即最终价格</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="faq-section">
+                <h2>价格相关常见问题</h2>
+                <div class="faq-item">
+                    <h3>价格可以商量吗？</h3>
+                    <p>标准服务按定价执行。大型项目或长期合作可联系我们获取定制报价，享受折扣优惠。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>如何确定最终价格？</h3>
+                    <p>提交订单后，我们会在24小时内评估需求并给出最终报价。确认报价后付款开始工作。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>什么时候付款？</h3>
+                    <p>确认订单和报价后付款。大额订单（¥1000以上）可分阶段付款：50%预付，50%交付后支付。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>支持退款吗？</h3>
+                    <p>支持。如对交付物不满意且无法通过修改解决，可申请退款。工作开始前可全额退款。</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="logo.svg" alt="Claude天团" height="32">
+                <p>AI驱动的智能服务团队</p>
+            </div>
+            <div class="footer-links">
                 <a href="index.html">首页</a>
+                <a href="about.html">关于</a>
                 <a href="services.html">服务</a>
                 <a href="pricing.html">价格</a>
-                <a href="portfolio.html">案例</a>
-                <a href="blog/index.html">博客</a>
-                <a href="order.html">下单</a>
-            </nav>
-        </header>
-
-        <section class="pricing-section">
-            <h2>服务价格</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>内容创作</h3>
-                    <p class="description">高质量文章、营销文案、技术文档</p>
-                    <div class="price">¥100<span>起</span></div>
-                    <p class="unit">/ 千字</p>
-                    <ul>
-                        <li>原创内容，无抄袭</li>
-                        <li>SEO优化（可选）</li>
-                        <li>一次免费修改</li>
-                        <li>24-48小时交付</li>
-                    </ul>
-                    <a href="order.html" class="cta">立即下单</a>
-                </div>
-
-                <div class="pricing-card">
-                    <h3>代码审查</h3>
-                    <p class="description">专业代码审查、Bug修复建议</p>
-                    <div class="price">¥50<span>起</span></div>
-                    <p class="unit">/ 文件</p>
-                    <ul>
-                        <li>代码质量评估</li>
-                        <li>安全漏洞检测</li>
-                        <li>性能优化建议</li>
-                        <li>24-72小时交付</li>
-                    </ul>
-                    <a href="order.html" class="cta">立即下单</a>
-                </div>
-
-                <div class="pricing-card featured">
-                    <h3>研究报告</h3>
-                    <p class="description">市场调研、竞品分析、技术研究</p>
-                    <div class="price">¥200<span>起</span></div>
-                    <p class="unit">/ 主题</p>
-                    <ul>
-                        <li>深度数据分析</li>
-                        <li>可视化图表</li>
-                        <li>行动建议</li>
-                        <li>48-72小时交付</li>
-                    </ul>
-                    <a href="order.html" class="cta">立即下单</a>
-                </div>
-
-                <div class="pricing-card">
-                    <h3>AI代理配置</h3>
-                    <p class="description">定制AI工作流、自动化配置</p>
-                    <div class="price">¥500<span>起</span></div>
-                    <p class="unit">/ 配置</p>
-                    <ul>
-                        <li>需求分析</li>
-                        <li>定制开发</li>
-                        <li>文档与培训</li>
-                        <li>3-7天交付</li>
-                    </ul>
-                    <a href="order.html" class="cta">立即下单</a>
-                </div>
+                <a href="contact.html">联系</a>
             </div>
-        </section>
+            <div class="footer-legal">
+                <a href="terms.html">服务条款</a>
+                <a href="privacy.html">隐私政策</a>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2026 Claude天团. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-        <section class="pricing-section">
-            <h2>服务对比</h2>
-            <div class="comparison-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>功能特性</th>
-                            <th>内容创作</th>
-                            <th>代码审查</th>
-                            <th>研究报告</th>
-                            <th>AI配置</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>原创保证</td>
-                            <td class="check">✓</td>
-                            <td class="check">✓</td>
-                            <td class="check">✓</td>
-                            <td class="check">✓</td>
-                        </tr>
-                        <tr>
-                            <td>免费修改</td>
-                            <td>1次</td>
-                            <td>1次</td>
-                            <td>1次</td>
-                            <td>2次</td>
-                        </tr>
-                        <tr>
-                            <td>加急服务</td>
-                            <td class="check">✓</td>
-                            <td class="check">✓</td>
-                            <td class="check">✓</td>
-                            <td class="cross">—</td>
-                        </tr>
-                        <tr>
-                            <td>售后支持</td>
-                            <td>7天</td>
-                            <td>7天</td>
-                            <td>7天</td>
-                            <td>30天</td>
-                        </tr>
-                        <tr>
-                            <td>源文件交付</td>
-                            <td class="check">✓</td>
-                            <td class="check">✓</td>
-                            <td class="check">✓</td>
-                            <td class="check">✓</td>
-                        </tr>
-                        <tr>
-                            <td>保密协议</td>
-                            <td class="check">✓</td>
-                            <td class="check">✓</td>
-                            <td class="check">✓</td>
-                            <td class="check">✓</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+    <script>
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
 
-        <section class="addons">
-            <h2>增值服务</h2>
-            <div class="addon-grid">
-                <div class="addon-item">
-                    <h3>加急交付</h3>
-                    <div class="addon-price">+50%</div>
-                    <p>24小时内完成交付，适合紧急需求</p>
-                </div>
-                <div class="addon-item">
-                    <h3>额外修改</h3>
-                    <div class="addon-price">+¥50/次</div>
-                    <p>超出免费修改次数后的每次修改</p>
-                </div>
-                <div class="addon-item">
-                    <h3>英文服务</h3>
-                    <div class="addon-price">+30%</div>
-                    <p>英文内容创作或双语交付</p>
-                </div>
-                <div class="addon-item">
-                    <h3>长期合作</h3>
-                    <div class="addon-price">-20%</div>
-                    <p>月度合作套餐，享受折扣价格</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="guarantee">
-            <h2>我们的承诺</h2>
-            <div class="guarantee-grid">
-                <div class="guarantee-item">
-                    <div class="icon">✨</div>
-                    <h3>质量保证</h3>
-                    <p>不满意免费修改，直至符合预期</p>
-                </div>
-                <div class="guarantee-item">
-                    <div class="icon">🔒</div>
-                    <h3>隐私保护</h3>
-                    <p>严格保密，签署保密协议</p>
-                </div>
-                <div class="guarantee-item">
-                    <div class="icon">⏰</div>
-                    <h3>准时交付</h3>
-                    <p>承诺时间内完成，超时可退款</p>
-                </div>
-                <div class="guarantee-item">
-                    <div class="icon">💰</div>
-                    <h3>透明定价</h3>
-                    <p>无隐藏费用，报价即最终价格</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="faq-section">
-            <h2>价格相关常见问题</h2>
-            <div class="faq-item">
-                <h3>价格可以商量吗？</h3>
-                <p>标准服务按定价执行。大型项目或长期合作可联系我们获取定制报价，享受折扣优惠。</p>
-            </div>
-            <div class="faq-item">
-                <h3>如何确定最终价格？</h3>
-                <p>提交订单后，我们会在24小时内评估需求并给出最终报价。确认报价后付款开始工作。</p>
-            </div>
-            <div class="faq-item">
-                <h3>什么时候付款？</h3>
-                <p>确认订单和报价后付款。大额订单（¥1000以上）可分阶段付款：50%预付，50%交付后支付。</p>
-            </div>
-            <div class="faq-item">
-                <h3>支持退款吗？</h3>
-                <p>支持。如对交付物不满意且无法通过修改解决，可申请退款。工作开始前可全额退款。</p>
-            </div>
-        </section>
-
-        <footer>
-            <p>
-                <a href="about.html" style="color: white; margin: 0 10px; text-decoration: none; opacity: 0.8;">关于我们</a>
-                <a href="services.html" style="color: white; margin: 0 10px; text-decoration: none; opacity: 0.8;">服务</a>
-                <a href="pricing.html" style="color: white; margin: 0 10px; text-decoration: none; opacity: 0.8;">价格</a>
-                <a href="portfolio.html" style="color: white; margin: 0 10px; text-decoration: none; opacity: 0.8;">案例</a>
-                <a href="blog/index.html" style="color: white; margin: 0 10px; text-decoration: none; opacity: 0.8;">博客</a>
-            </p>
-            <p style="margin-top: 15px;">&copy; 2026 Claude天团. All rights reserved.</p>
-            <p>
-                <a href="terms.html" style="color: white; margin: 0 10px; text-decoration: none; opacity: 0.8;">服务条款</a>
-                <a href="privacy.html" style="color: white; margin: 0 10px; text-decoration: none; opacity: 0.8;">隐私政策</a>
-            </p>
-        </footer>
-    </div>
+        // Mobile menu toggle
+        const toggle = document.querySelector('.navbar-toggle');
+        const menu = document.querySelector('.navbar-menu');
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            toggle.classList.toggle('active');
+        });
+    </script>
+    <script src="js/components.js"></script>
 </body>
 </html>

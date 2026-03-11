@@ -1,180 +1,110 @@
-# 周度复盘检查清单
+# Weekly Review
 
-## 使用说明
+Last updated: 2026-03-10
+Owner: CTO
 
-每周日晚进行复盘，填写本周数据和下周计划。
+## Purpose
 
----
+Use one short weekly review to keep the company focused on the current bottleneck.
 
-## 本周概况
+This is not a retrospective on everything. It is a decision tool.
 
-**日期范围:** ____年__月__日 - ____年__月__日
-**复盘人:** CEO
-**复盘时间:** ____年__月__日
+## Cadence
 
----
+- Monday morning: choose one engineering priority, one sales priority, and one delivery improvement
+- Friday afternoon: review results and keep, expand, or kill changes
 
-## 第一部分：数据回顾
+Use these files during the review:
+- `company/technical-system.md`
+- `company/dashboard.md`
+- `company/operations/engineering-backlog.md`
+- `company/operations/engineering-intake-gate.md`
+- `company/operations/engineering-scorecard.md`
 
-### 营销数据
+## Monday Review Template
 
-| 指标 | 本周实际 | 上周对比 | 目标 | 达成率 |
-|------|----------|----------|------|--------|
-| 小红书发布数 | | - | 7 | |
-| 朋友圈发布数 | | - | 7 | |
-| 公众号文章数 | | - | 1 | |
-| 网站访问量 | | - | 100 | |
+```md
+# Monday Review
 
-### 销售数据
+Week of:
 
-| 指标 | 本周实际 | 上周对比 | 目标 | 达成率 |
-|------|----------|----------|------|--------|
-| 新增线索 | | - | 5 | |
-| 咨询次数 | | - | 3 | |
-| 报价次数 | | - | 2 | |
-| 成交订单 | | - | 1 | |
-| 营收金额 | | - | ¥300 | |
+Revenue scoreboard:
+- qualified leads:
+- quotes sent:
+- paid orders:
+- revenue:
 
-### 运营数据
+Current bottleneck:
 
-| 指标 | 本周实际 | 上周对比 | 目标 | 达成率 |
-|------|----------|----------|------|--------|
-| 订单完成数 | | - | - | |
-| 平均交付时间 | | - | 48h | |
-| 客户满意度 | | - | 100% | |
-| 修改次数 | | - | <2 | |
+Single engineering priority:
+- item:
+- owner:
+- metric:
+- ship date:
+- backlog ID:
+- scorecard updated: yes / no
 
----
+Single sales priority:
+- item:
+- metric:
 
-## 第二部分：本周成就
+Single delivery improvement priority:
+- item:
+- metric:
 
-### 完成事项
+What gets cut or deferred this week:
+- 
+```
 
-- [ ] ____________________
-- [ ] ____________________
-- [ ] ____________________
+## Friday Review Template
 
-### 亮点成果
+```md
+# Friday Review
 
-1. ____________________
-2. ____________________
-3. ____________________
+Week of:
 
----
+Results:
+- qualified leads:
+- quotes sent:
+- paid orders:
+- revenue:
+- delivery cycle time:
 
-## 第三部分：问题分析
+What shipped:
+- 
 
-### 未达成目标
+What changed in the funnel:
+- 
 
-| 目标 | 差距 | 原因分析 |
-|------|------|----------|
-| | | |
-| | | |
+Did the engineering priority move a real metric?
+- yes / no
+- evidence:
 
-### 遇到的问题
+Did the build stay inside the technical budget?
+- yes / no
+- if no, what gets removed:
 
-1. **问题描述:** ____________________
-   - **影响程度:** 高/中/低
-   - **解决方案:** ____________________
-   - **状态:** 待解决/进行中/已解决
+Keep / Expand / Kill:
 
-2. **问题描述:** ____________________
-   - **影响程度:** 高/中/低
-   - **解决方案:** ____________________
-   - **状态:** 待解决/进行中/已解决
+Next week's likely bottleneck:
 
----
+One thing to cut:
+- 
+```
 
-## 第四部分：客户反馈
+## Decision Rules
 
-### 本周客户评价
+- if the engineering priority did not improve a real metric in 7 days, kill or reduce it
+- if the engineering item is still too large after 7 days, rewrite it to fit a 1-day ship
+- if customers created surprise work, improve the checklist before adding features
+- if sales activity is weak, stop internal optimization and return to outreach and follow-up
+- if delivery is late, narrow scope before adding process
+- if a deferred item becomes tempting, ask whether the current bottleneck actually changed
 
-| 客户 | 评价内容 | 星级 |
-|------|----------|------|
-| | | ⭐⭐⭐⭐⭐ |
-| | | ⭐⭐⭐⭐⭐ |
+## Anti-Patterns
 
-### 投诉或负面反馈
-
-| 内容 | 处理方式 | 结果 |
-|------|----------|------|
-| | | |
-
-### 改进建议收集
-
-- ____________________
-- ____________________
-
----
-
-## 第五部分：下周计划
-
-### 优先事项
-
-| 优先级 | 事项 | 负责人 | 截止日期 |
-|--------|------|--------|----------|
-| P0 | | | |
-| P1 | | | |
-| P1 | | | |
-| P2 | | | |
-
-### 营销计划
-
-| 平台 | 内容主题 | 发布日期 | 负责人 |
-|------|----------|----------|--------|
-| 小红书 | | | |
-| 小红书 | | | |
-| 朋友圈 | | | |
-
-### 销售目标
-
-| 目标 | 数量 | 关键行动 |
-|------|------|----------|
-| 新线索 | | |
-| 咨询 | | |
-| 成交 | | |
-
----
-
-## 第六部分：资源需求
-
-### 需要的支持
-
-- [ ] 用户操作: ____________________
-- [ ] 外部资源: ____________________
-- [ ] 预算申请: ____________________
-
-### 阻塞问题
-
-| 问题 | 影响 | 需要的协助 |
-|------|------|------------|
-| | | |
-
----
-
-## 第七部分：复盘总结
-
-### 本周评分
-
-**整体表现:** ⭐⭐⭐⭐⭐ (1-5分)
-
-### 三句话总结
-
-1. 本周做得好的: ____________________
-2. 本周需要改进的: ____________________
-3. 下周最重要的: ____________________
-
-### 关键洞察
-
-____________________
-
----
-
-## 签字确认
-
-**复盘人:** CEO
-**确认时间:** ____年__月__日
-
----
-
-*本模板由Claude天团CEO创建，每周日更新。*
+Do not allow the weekly review to become:
+- a long task list
+- a strategy brainstorm
+- a place to justify speculative builds
+- a place to track more than one engineering priority

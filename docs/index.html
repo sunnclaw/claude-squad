@@ -10,6 +10,16 @@
     <meta property="og:description" content="AI驱动的智能服务团队，提供内容创作、代码审查、研究报告、AI配置服务">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sunnclaw.github.io/claude-squad/">
+    <meta property="og:image" content="https://sunnclaw.github.io/claude-squad/images/claude-squad-og.svg">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude天团 - AI智能服务">
+    <meta name="twitter:description" content="AI驱动的智能服务团队，提供内容创作、代码审查、研究报告、AI配置服务">
+    <meta name="twitter:image" content="https://sunnclaw.github.io/claude-squad/images/claude-squad-og.svg">
+    <!-- Performance Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="canonical" href="https://sunnclaw.github.io/claude-squad/">
     <title>Claude天团 - AI智能服务 | 内容创作·代码审查·研究报告·AI配置</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -537,6 +547,24 @@
     </style>
 </head>
 <body>
+    <!-- Urgency Banner - Limited Pilot Spots -->
+    <div class="urgency-banner" id="urgencyBanner" style="background: linear-gradient(90deg, #dc2626 0%, #b91c1c 100%); color: white; padding: 10px 20px; text-align: center; font-size: 0.95rem; position: relative; z-index: 1001;">
+        <span class="urgency-pulse" style="display: inline-block; width: 8px; height: 8px; background: #fbbf24; border-radius: 50%; margin-right: 8px; animation: urgencyPulse 1.5s ease-in-out infinite;"></span>
+        <strong>LIMITED OFFER:</strong> Only <span id="pilotSpotsLeft" style="font-weight: bold; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px;">5</span> pilot spots remaining for Dental Missed Call Recovery
+        <a href="dental-lead-form.html" style="color: #fbbf24; font-weight: bold; margin-left: 15px; text-decoration: underline;">Claim Your Spot →</a>
+        <button onclick="document.getElementById('urgencyBanner').style.display='none'" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem; opacity: 0.7;">×</button>
+    </div>
+    <style>
+        @keyframes urgencyPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        @media (max-width: 768px) {
+            .urgency-banner { font-size: 0.8rem; padding: 8px 30px 8px 10px; }
+            .urgency-banner a { display: block; margin: 5px 0 0 0; }
+        }
+    </style>
+
     <!-- Sticky Navigation -->
     <nav class="navbar" id="mainNav">
         <div class="navbar-container">
@@ -553,6 +581,7 @@
                 <li><a href="about.html">关于我们</a></li>
                 <li><a href="services.html">服务详情</a></li>
                 <li><a href="pricing.html">价格</a></li>
+                <li><a href="products.html">数字产品</a></li>
                 <li><a href="portfolio.html">案例</a></li>
                 <li><a href="blog/index.html">博客</a></li>
                 <li><a href="faq.html">常见问题</a></li>
@@ -575,6 +604,7 @@
                     <a href="about.html">关于我们</a>
                     <a href="services.html">服务详情</a>
                     <a href="pricing.html">价格</a>
+                    <a href="products.html" class="highlight">数字产品</a>
                     <a href="portfolio.html">案例</a>
                     <a href="blog/index.html">博客</a>
                     <a href="faq.html">常见问题</a>
@@ -587,6 +617,49 @@
                     <a href="dental-lead-form.html" class="cta-secondary">Dental Clinics - Free Consultation</a>
                 </div>
             </header>
+
+            <!-- Trust Signals Banner -->
+            <div class="trust-signals-banner" style="background: white; border-radius: var(--radius-xl); padding: var(--spacing-lg) var(--spacing-xl); margin-bottom: var(--spacing-xl); display: flex; justify-content: center; gap: var(--spacing-2xl); flex-wrap: wrap; box-shadow: var(--shadow-lg);">
+                <div class="trust-signal-item" style="display: flex; align-items: center; gap: var(--spacing-sm);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                    <div>
+                        <strong style="color: #1e293b; display: block; font-size: 0.95rem;">100% Satisfaction</strong>
+                        <span style="color: #64748b; font-size: 0.8rem;">Guaranteed</span>
+                    </div>
+                </div>
+                <div class="trust-signal-item" style="display: flex; align-items: center; gap: var(--spacing-sm);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <div>
+                        <strong style="color: #1e293b; display: block; font-size: 0.95rem;">24-72h Delivery</strong>
+                        <span style="color: #64748b; font-size: 0.8rem;">Fast turnaround</span>
+                    </div>
+                </div>
+                <div class="trust-signal-item" style="display: flex; align-items: center; gap: var(--spacing-sm);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    <div>
+                        <strong style="color: #1e293b; display: block; font-size: 0.95rem;">Free Revisions</strong>
+                        <span style="color: #64748b; font-size: 0.8rem;">Until satisfied</span>
+                    </div>
+                </div>
+                <div class="trust-signal-item" style="display: flex; align-items: center; gap: var(--spacing-sm);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    <div>
+                        <strong style="color: #1e293b; display: block; font-size: 0.95rem;">24/7 Support</strong>
+                        <span style="color: #64748b; font-size: 0.8rem;">AI-powered</span>
+                    </div>
+                </div>
+            </div>
 
             <section class="services card">
                 <h2 class="text-center" style="color: var(--color-primary); margin-bottom: var(--spacing-2xl); font-size: var(--font-size-3xl);">我们的服务</h2>
@@ -675,16 +748,69 @@
             </section>
 
         <section class="lead-magnet">
-            <h2>免费领取：AI效率提升指南</h2>
-            <p style="margin-bottom: 20px; font-size: 1.1rem;">掌握AI协作的核心方法论，将工作效率提升300%</p>
+            <h2>🎁 免费工具：漏接电话损失计算器</h2>
+            <p style="margin-bottom: 20px; font-size: 1.1rem;">立即计算您的诊所每月因漏接电话损失的潜在收入</p>
             <ul class="lead-magnet-list">
-                <li>多AI协作的黄金法则</li>
-                <li>日常工作AI化实战技巧</li>
-                <li>提示词工程CRISP框架</li>
-                <li>实用AI工具推荐清单</li>
-                <li>常见误区与避坑指南</li>
+                <li>实时计算潜在损失</li>
+                <li>个性化恢复方案</li>
+                <li>投资回报预测</li>
+                <li>15个减少漏接电话的策略</li>
+                <li>完全免费 - 无需信用卡</li>
             </ul>
-            <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">📧 发送邮件至 contact@claudetianduan.com，标题"领取AI指南"，即可免费获取</p>
+            <div style="margin-top: 25px;">
+                <a href="lead-magnet.html" class="cta-primary" style="display: inline-block; background: white; color: #667eea; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1.1rem;">
+                    立即获取免费报告 →
+                </a>
+            </div>
+            <p style="margin-top: 20px; opacity: 0.9; font-size: 0.9rem;">已有 2,847+ 诊所使用此工具 | 平均每月挽回 $1,200+</p>
+        </section>
+
+        <!-- Digital Product Banner with Countdown -->
+        <section class="digital-product-banner" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: var(--radius-xl); padding: var(--spacing-2xl); margin-bottom: var(--spacing-2xl); color: white; text-align: center; position: relative; overflow: hidden;">
+            <!-- Animated background particles -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.1; background-image: radial-gradient(circle at 20% 80%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+            <div style="position: relative; z-index: 1;">
+                <!-- Launch Badge -->
+                <div style="display: inline-block; background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; margin-bottom: var(--spacing-md); backdrop-filter: blur(10px);">
+                    🚀 LIMITED LAUNCH OFFER
+                </div>
+
+                <h3 style="font-size: 1.75rem; margin-bottom: var(--spacing-md);">📦 DIY Missed Call Recovery System</h3>
+                <p style="font-size: 1.1rem; opacity: 0.95; margin-bottom: var(--spacing-lg); max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Complete system to recover <strong>$1,200+/month</strong> in lost revenue. Templates, scripts, calculator, and implementation guide.
+                </p>
+
+                <!-- Countdown Timer -->
+                <div class="countdown-container" style="display: flex; justify-content: center; gap: 15px; margin-bottom: var(--spacing-lg);">
+                    <div class="countdown-item" style="background: rgba(255,255,255,0.15); padding: 12px 18px; border-radius: 12px; backdrop-filter: blur(10px);">
+                        <span id="countdownHours" style="font-size: 1.75rem; font-weight: bold; display: block;">47</span>
+                        <span style="font-size: 0.75rem; opacity: 0.8;">HOURS</span>
+                    </div>
+                    <div class="countdown-item" style="background: rgba(255,255,255,0.15); padding: 12px 18px; border-radius: 12px; backdrop-filter: blur(10px);">
+                        <span id="countdownMinutes" style="font-size: 1.75rem; font-weight: bold; display: block;">59</span>
+                        <span style="font-size: 0.75rem; opacity: 0.8;">MINS</span>
+                    </div>
+                    <div class="countdown-item" style="background: rgba(255,255,255,0.15); padding: 12px 18px; border-radius: 12px; backdrop-filter: blur(10px);">
+                        <span id="countdownSeconds" style="font-size: 1.75rem; font-weight: bold; display: block;">59</span>
+                        <span style="font-size: 0.75rem; opacity: 0.8;">SECS</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: var(--spacing-lg); flex-wrap: wrap; align-items: center; margin-bottom: var(--spacing-lg);">
+                    <span style="text-decoration: line-through; opacity: 0.7;">$67</span>
+                    <span style="font-size: 2rem; font-weight: bold;">$27</span>
+                    <span style="background: #fbbf24; color: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: bold;">60% OFF</span>
+                </div>
+
+                <a href="missed-call-recovery-system.html" style="display: inline-block; background: white; color: #059669; padding: 16px 45px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    Get Instant Access →
+                </a>
+
+                <p style="margin-top: var(--spacing-md); font-size: 0.85rem; opacity: 0.9;">
+                    <span style="color: #fbbf24;">⚡</span> 50+ clinics already purchased
+                </p>
+            </div>
         </section>
 
             <section class="testimonials card">
@@ -767,6 +893,35 @@
                 <p style="color: var(--color-text-muted); font-size: var(--font-size-sm); margin-top: var(--spacing-lg);">我们尊重您的隐私，绝不发送垃圾邮件</p>
             </section>
 
+            <!-- Credibility Stats Section -->
+            <section class="credibility-stats" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: var(--radius-2xl); padding: var(--spacing-2xl); margin: var(--spacing-2xl) 0; color: white; text-align: center;">
+                <h2 style="color: white; margin-bottom: var(--spacing-xl); font-size: var(--font-size-2xl);">Trusted by Businesses Worldwide</h2>
+                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--spacing-xl);">
+                    <div class="stat-item">
+                        <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; margin-bottom: var(--spacing-xs);">92+</div>
+                        <div class="stat-label" style="font-size: 0.9rem; opacity: 0.9;">Blog Articles</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; margin-bottom: var(--spacing-xs);">100+</div>
+                        <div class="stat-label" style="font-size: 0.9rem; opacity: 0.9;">Clinics Researched</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; margin-bottom: var(--spacing-xs);">24/7</div>
+                        <div class="stat-label" style="font-size: 0.9rem; opacity: 0.9;">AI Support</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; margin-bottom: var(--spacing-xs);">48h</div>
+                        <div class="stat-label" style="font-size: 0.9rem; opacity: 0.9;">Setup Time</div>
+                    </div>
+                </div>
+                <div class="trust-logos" style="margin-top: var(--spacing-xl); padding-top: var(--spacing-lg); border-top: 1px solid rgba(255,255,255,0.2); display: flex; justify-content: center; gap: var(--spacing-lg); flex-wrap: wrap; opacity: 0.9;">
+                    <span style="font-size: 0.85rem;">🛡️ Secure Payment</span>
+                    <span style="font-size: 0.85rem;">✅ Quality Guaranteed</span>
+                    <span style="font-size: 0.85rem;">⚡ Fast Delivery</span>
+                    <span style="font-size: 0.85rem;">🌍 Global Service</span>
+                </div>
+            </section>
+
             <section class="contact card" id="contact">
                 <h2 class="text-center" style="color: var(--color-primary); margin-bottom: var(--spacing-md);">联系我们</h2>
                 <p class="text-center" style="color: var(--color-text-secondary);">选择最适合您的联系方式</p>
@@ -796,6 +951,8 @@
                     <a href="about.html">关于我们</a>
                     <a href="services.html">服务</a>
                     <a href="pricing.html">价格</a>
+                    <a href="products.html">数字产品</a>
+                    <a href="recommended-tools.html">推荐工具</a>
                     <a href="portfolio.html">案例</a>
                     <a href="blog/index.html">博客</a>
                     <a href="faq.html">FAQ</a>
@@ -810,8 +967,52 @@
             </footer>
         </div>
     </div>
+    <!-- Floating Action Button (FAB) for instant contact -->
+    <div class="fab-container" id="fabContainer">
+        <button class="fab-button cta-glow" aria-label="Get started" onclick="toggleFab()">
+            💬
+        </button>
+        <div class="fab-expanded" id="fabExpanded">
+            <a href="order.html" class="fab-expanded-item">
+                <span class="icon">📝</span>
+                <div>
+                    <strong>立即下单</strong>
+                    <p style="font-size: 0.8rem; color: #666; margin: 0;">快速获取报价</p>
+                </div>
+            </a>
+            <a href="contact.html" class="fab-expanded-item">
+                <span class="icon">📧</span>
+                <div>
+                    <strong>联系我们</strong>
+                    <p style="font-size: 0.8rem; color: #666; margin: 0;">24小时内回复</p>
+                </div>
+            </a>
+            <a href="dental-lead-form.html" class="fab-expanded-item">
+                <span class="icon">🦷</span>
+                <div>
+                    <strong>牙科诊所咨询</strong>
+                    <p style="font-size: 0.8rem; color: #666; margin: 0;">免费评估</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
     <script src="js/components.js"></script>
     <script>
+        // FAB toggle
+        function toggleFab() {
+            const container = document.getElementById('fabContainer');
+            container.classList.toggle('active');
+        }
+
+        // Close FAB when clicking outside
+        document.addEventListener('click', function(e) {
+            const container = document.getElementById('fabContainer');
+            if (container && !container.contains(e.target)) {
+                container.classList.remove('active');
+            }
+        });
+
         // Mobile menu toggle
         function toggleMobileMenu() {
             const nav = document.getElementById('mobileNav');
@@ -905,6 +1106,221 @@
                     toggle.classList.remove('active');
                 }
             }
+        });
+    </script>
+
+    <!-- Exit Intent Popup -->
+    <div class="exit-popup-overlay" id="exitPopup" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 10000; align-items: center; justify-content: center;">
+        <div class="exit-popup-content" style="background: white; border-radius: 20px; padding: 40px; max-width: 500px; margin: 20px; text-align: center; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.3);">
+            <button onclick="closeExitPopup()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #666;">×</button>
+            <div style="font-size: 3rem; margin-bottom: 20px;">🎁</div>
+            <h3 style="font-size: 1.75rem; color: #1e293b; margin-bottom: 15px;">Wait! Don't Miss Out</h3>
+            <p style="color: #64748b; margin-bottom: 25px; line-height: 1.6;">Get our FREE <strong>Missed Call Revenue Calculator</strong> and discover how much revenue your clinic is losing to missed calls.</p>
+            <ul style="text-align: left; margin-bottom: 25px; padding-left: 20px; color: #475569;">
+                <li style="margin-bottom: 8px;">✓ Instant personalized report</li>
+                <li style="margin-bottom: 8px;">✓ 15 recovery strategies included</li>
+                <li style="margin-bottom: 8px;">✓ No credit card required</li>
+            </ul>
+            <a href="lead-magnet.html" onclick="closeExitPopup()" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1.1rem;">
+                Get Free Calculator →
+            </a>
+            <p style="margin-top: 20px; font-size: 0.85rem; color: #94a3b8;">Used by 2,847+ dental clinics</p>
+        </div>
+    </div>
+
+    <!-- Social Proof Toast Notifications -->
+    <div id="toastContainer" style="position: fixed; bottom: 100px; left: 20px; z-index: 9999;"></div>
+
+    <script>
+        // Exit Intent Detection
+        let exitShown = false;
+        let exitTimeout = null;
+
+        document.addEventListener('mouseout', function(e) {
+            if (exitShown) return;
+
+            // Check if mouse left from top of viewport
+            if (e.clientY < 10 && e.relatedTarget === null) {
+                exitTimeout = setTimeout(function() {
+                    showExitPopup();
+                }, 500);
+            }
+        });
+
+        document.addEventListener('mouseover', function(e) {
+            if (exitTimeout) {
+                clearTimeout(exitTimeout);
+                exitTimeout = null;
+            }
+        });
+
+        function showExitPopup() {
+            if (exitShown) return;
+            exitShown = true;
+            const popup = document.getElementById('exitPopup');
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeExitPopup() {
+            const popup = document.getElementById('exitPopup');
+            popup.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // Close on click outside
+        document.getElementById('exitPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeExitPopup();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeExitPopup();
+            }
+        });
+
+        // Social Proof Toasts
+        const socialProofMessages = [
+            { type: 'view', text: 'Someone in Austin, TX is viewing the Dental Service', time: 'Just now' },
+            { type: 'signup', text: 'A dental clinic just claimed their pilot spot', time: '2 min ago' },
+            { type: 'download', text: 'Someone downloaded the Revenue Calculator', time: '5 min ago' },
+            { type: 'view', text: 'Dr. Smith is exploring our missed call recovery', time: '8 min ago' },
+            { type: 'signup', text: 'New dental clinic joined the pilot program', time: '12 min ago' },
+            { type: 'download', text: 'Practice manager downloaded the ROI guide', time: '15 min ago' }
+        ];
+
+        let toastIndex = 0;
+
+        function createToast() {
+            const container = document.getElementById('toastContainer');
+            const msg = socialProofMessages[toastIndex % socialProofMessages.length];
+
+            const toast = document.createElement('div');
+            toast.className = 'social-proof-toast';
+            toast.style.cssText = 'background: white; border-radius: 12px; padding: 15px 20px; margin-bottom: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 12px; max-width: 320px; transform: translateX(-120%); transition: transform 0.4s ease;';
+
+            const icon = msg.type === 'signup' ? '🎉' : msg.type === 'download' ? '📥' : '👁️';
+
+            toast.innerHTML = `
+                <span style="font-size: 1.5rem;">${icon}</span>
+                <div style="flex: 1;">
+                    <p style="margin: 0; font-size: 0.85rem; color: #1e293b; font-weight: 500;">${msg.text}</p>
+                    <p style="margin: 2px 0 0 0; font-size: 0.75rem; color: #94a3b8;">${msg.time}</p>
+                </div>
+            `;
+
+            container.appendChild(toast);
+
+            // Animate in
+            setTimeout(() => toast.style.transform = 'translateX(0)', 50);
+
+            // Animate out and remove
+            setTimeout(() => {
+                toast.style.transform = 'translateX(-120%)';
+                setTimeout(() => toast.remove(), 400);
+            }, 5000);
+
+            toastIndex++;
+        }
+
+        // Show first toast after 8 seconds, then every 15-25 seconds
+        setTimeout(() => {
+            createToast();
+            setInterval(createToast, 15000 + Math.random() * 10000);
+        }, 8000);
+
+        // Pilot spots counter (simulated scarcity)
+        function updatePilotSpots() {
+            const spotsEl = document.getElementById('pilotSpotsLeft');
+            if (spotsEl) {
+                // Randomly decrease every few minutes (simulated)
+                const currentSpots = parseInt(spotsEl.textContent);
+                if (currentSpots > 2 && Math.random() > 0.8) {
+                    spotsEl.textContent = currentSpots - 1;
+                }
+            }
+        }
+        setInterval(updatePilotSpots, 180000); // Every 3 minutes
+
+        // Countdown Timer for Launch Offer
+        function initCountdown() {
+            // Set deadline to 48 hours from now (stored in localStorage for persistence)
+            let deadline = localStorage.getItem('launchDeadline');
+            if (!deadline) {
+                deadline = new Date().getTime() + (48 * 60 * 60 * 1000);
+                localStorage.setItem('launchDeadline', deadline);
+            } else {
+                deadline = parseInt(deadline);
+            }
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = deadline - now;
+
+                if (distance < 0) {
+                    // Reset countdown when it reaches 0
+                    deadline = new Date().getTime() + (48 * 60 * 60 * 1000);
+                    localStorage.setItem('launchDeadline', deadline);
+                    return;
+                }
+
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                const hoursEl = document.getElementById('countdownHours');
+                const minutesEl = document.getElementById('countdownMinutes');
+                const secondsEl = document.getElementById('countdownSeconds');
+
+                if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+                if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+                if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+        initCountdown();
+
+        // Sticky Mobile CTA
+        let lastScrollY = 0;
+        const stickyCta = document.createElement('div');
+        stickyCta.id = 'stickyMobileCta';
+        stickyCta.innerHTML = `
+            <a href="dental-lead-form.html" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; color: white;">
+                <span style="font-size: 1.2rem;">🦷</span>
+                <span style="font-weight: 600;">Free Consultation</span>
+            </a>
+        `;
+        stickyCta.style.cssText = 'position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: white; padding: 16px 20px; z-index: 9998; transform: translateY(100%); transition: transform 0.3s ease; box-shadow: 0 -4px 20px rgba(0,0,0,0.2);';
+        document.body.appendChild(stickyCta);
+
+        // Show sticky CTA after scrolling past hero, hide when near bottom
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const footerTop = docHeight - windowHeight - 200;
+
+            // Show after scrolling past 500px, hide near footer
+            if (scrollY > 500 && scrollY < footerTop) {
+                stickyCta.style.transform = 'translateY(0)';
+            } else {
+                stickyCta.style.transform = 'translateY(100%)';
+            }
+
+            lastScrollY = scrollY;
+        });
+
+        // Only show on mobile
+        if (window.innerWidth > 768) {
+            stickyCta.style.display = 'none';
+        }
+        window.addEventListener('resize', function() {
+            stickyCta.style.display = window.innerWidth <= 768 ? 'block' : 'none';
         });
     </script>
 </body>

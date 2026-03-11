@@ -1,149 +1,86 @@
-# 销售追踪系统
+# Sales Tracking System
 
-## 销售漏斗阶段
+Last updated: 2026-03-10
+Owner: CTO
 
-| 阶段 | 定义 | 行动 |
+## Purpose
+
+Track only the sales information that changes revenue decisions.
+
+This file supports the dashboard. It is not a second CRM.
+
+## Rules
+
+- every real lead is logged the same day
+- every lead has one next action and one due date
+- every quote has a clear owner, amount, and payment trigger
+- if a lead has no next action, it is stale
+- if a quote sits without follow-up for 24 hours, it is at risk
+
+## Funnel Definitions
+
+| Stage | Definition | Required action |
 |------|------|------|
-| 潜在客户 | 表达兴趣或符合目标画像 | 主动触达 |
-| 咨询 | 已询问服务详情 | 回答问题，发送案例 |
-| 报价 | 已发送报价单 | 跟进确认 |
-| 成交 | 已付款或签署协议 | 开始执行 |
-| 完成 | 已交付并确认满意 | 请求评价，转介绍 |
+| New | Contact exists but fit is unconfirmed | qualify within 24 hours |
+| Qualified | Standard offer likely fits | send quote or one clarifying message |
+| Quoted | Price and scope were sent | follow up within 24 hours |
+| Awaiting payment | Customer is interested but payment is pending | send payment reminder |
+| Paid | Payment or deposit confirmed | move to delivery immediately |
+| Closed lost | No sale after follow-up or low fit | record reason and move on |
+| Completed | Delivery accepted | request proof asset |
 
----
+## Daily Sales Block
 
-## 潜在客户追踪表
+Run in this order:
+1. review all leads due today
+2. respond to every new conversation
+3. send pending quotes
+4. follow up all outstanding quotes and payment requests
+5. update the dashboard before stopping
 
-### 活跃线索
+## Lead Log Template
 
-| ID | 来源 | 联系方式 | 需求 | 状态 | 下一步行动 | 预计成交 |
-|----|------|----------|------|------|------------|----------|
-| L-001 | | | | 潜在 | | |
-| L-002 | | | | 潜在 | | |
-| L-003 | | | | 咨询 | | |
+Copy rows from this structure into the dashboard:
 
-### 线索来源分类
+| Lead ID | Name | Source | Offer | Stage | Need | Next action | Due date | Blocker | Notes |
+|------|------|------|------|------|------|------|------|------|------|
+| L-XXX |  |  |  | New |  |  |  |  |  |
 
-| 来源 | 数量 | 转化率 | 备注 |
-|------|------|--------|------|
-| 熟人推荐 | | | |
-| 小红书 | | | |
-| 朋友圈 | | | |
-| 公众号 | | | |
-| 网站 | | | |
-| 其他 | | | |
+## Quote Log Template
 
----
+| Quote ID | Lead ID | Offer | Package | Value | Sent date | Expiry | Status | Next action |
+|------|------|------|------|------|------|------|------|------|
+| Q-XXX |  |  |  |  |  |  | Draft |  |
 
-## 销售活动日志
+Status options:
+- Draft
+- Sent
+- Follow-up sent
+- Awaiting payment
+- Won
+- Lost
 
-### 本周活动
+## Lost Reason Codes
 
-| 日期 | 活动 | 对象 | 结果 |
-|------|------|------|------|
-| | | | |
-| | | | |
-| | | | |
+Use one short label:
+- no urgency
+- no budget
+- unclear fit
+- custom scope too large
+- no response
+- chose alternative
 
-### 跟进计划
+## Weekly Review Questions
 
-| 日期 | 客户 | 跟进内容 | 状态 |
-|------|------|----------|------|
-| | | | [ ] |
-| | | | [ ] |
-| | | | [ ] |
+Every Friday, answer:
+- which offer got the most qualified conversations?
+- where did quotes stall?
+- what objection repeated most?
+- which source produced the best conversations?
+- what should be removed from the sales process next week?
 
----
+## Escalation Rules
 
-## 成交记录
-
-| 订单ID | 客户 | 服务 | 金额 | 成交日期 | 来源 |
-|--------|------|------|------|----------|------|
-| CLA-3 | 示例客户 | 技术文档 | ¥200 | 2026-03-10 | 内部示例 |
-
----
-
-## 销售指标
-
-### 本周统计
-
-| 指标 | 数值 | 目标 | 差距 |
-|------|------|------|------|
-| 新增线索 | | 5 | |
-| 咨询量 | | 3 | |
-| 报价数 | | 2 | |
-| 成交数 | | 1 | |
-| 成交金额 | | ¥300 | |
-
-### 累计统计
-
-| 指标 | 本月 | 总计 |
-|------|------|------|
-| 线索数 | | |
-| 成交数 | 1* | 1* |
-| 营收 | ¥0* | ¥0* |
-
-*注: CLA-3为示例订单，未实际收款
-
----
-
-## 转化率分析
-
-```
-线索 → 咨询: [  ]%
-咨询 → 报价: [  ]%
-报价 → 成交: [  ]%
-整体转化率: [  ]%
-```
-
-### 优化方向
-
-1. **提高线索量**: [待填写]
-2. **提高咨询率**: [待填写]
-3. **提高成交率**: [待填写]
-
----
-
-## 跟进话术库
-
-### 首次跟进（咨询后24小时）
-
-> 您好，感谢您咨询Claude天团的服务。关于您提到的[需求]，我们建议[方案]。如果您有任何问题，随时可以联系我。如果确定合作，我可以为您发送正式报价单。
-
-### 二次跟进（首次后3天）
-
-> 您好，想了解一下您对之前讨论的服务方案是否还有疑问？如果时间方便，我们可以约个电话详细沟通。
-
-### 成交跟进（报价后）
-
-> 您好，关于之前发送的报价单，请问您是否需要进一步说明？我们目前有首单8折优惠，如果您本周确认合作，可以享受优惠价格。
-
-### 沉睡客户唤醒（30天未联系）
-
-> 您好，好久不见！我们最近推出了新服务[服务名]，可能对您有帮助。如果您有任何新的需求，欢迎随时联系。
-
----
-
-## 销售目标追踪
-
-### 月度目标
-
-| 目标 | 进度 | 状态 |
-|------|------|------|
-| 线索: 10个 | 0/10 | 🔴 |
-| 咨询: 5次 | 0/5 | 🔴 |
-| 成交: 3单 | 0/3 | 🔴 |
-| 营收: ¥1,000 | ¥0 | 🔴 |
-
-### 季度目标
-
-| 目标 | 进度 | 状态 |
-|------|------|------|
-| 营收: ¥10,000 | ¥0 | 🔴 |
-| 客户: 15个 | 0 | 🔴 |
-| 好评: 5条 | 0 | 🔴 |
-
----
-
-*本模板由Claude天团CEO创建，用于追踪销售进展。*
-*更新频率: 每日更新活动日志，每周更新指标统计*
+- If leads are not being logged: stop all non-customer work and fix operating discipline first.
+- If quote speed is slipping: simplify offer packs before building tooling.
+- If payment conversion is weak: tighten package clarity and payment instructions before discounting.

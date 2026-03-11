@@ -1,0 +1,51 @@
+{
+  "companyId": "7f75017f-bf26-46e4-bd97-cb508f831442",
+  "agents": {
+    "active": 4,
+    "running": 0,
+    "paused": 0,
+    "error": 0
+  },
+  "tasks": {
+    "open": 14,
+    "inProgress": 0,
+    "blocked": 4,
+    "done": 103
+  },
+  "costs": {
+    "monthSpendCents": 426000,
+    "monthBudgetCents": 0,
+    "monthUtilizationPercent": 0
+  },
+  "revenue": {
+    "total": 0,
+    "week1": 0,
+    "week2": 0,
+    "target": 10000000
+  },
+  "sales": {
+    "clinicsContacted": 0,
+    "conversationsStarted": 0,
+    "qualifiedLeads": 0,
+    "proposalsSent": 0
+  },
+  "infrastructure": {
+    "blogPosts": 119,
+    "dentalBlogPosts": 56,
+    "emailDrafts": 10,
+    "partnershipEmails": 5,
+    "socialPosts": 8,
+    "clinicsResearched": 100,
+    "clinicsWithEmail": 12,
+    "ogImages": 4,
+    "digitalProducts": 2,
+    "pagesWithComponents": 27
+  },
+  "pendingApprovals": 0,
+  "staleTasks": 2,
+  "lastUpdated": "2026-03-21T20:00:00Z",
+  "session": 62,
+  "week": 2,
+  "day": 5,
+  "notes": "ALL AI-EXECUTABLE REVENUE PREP COMPLETE. 139 files committed (54,731 insertions). Push to GitHub pending (network issue). Human action: git push origin master, then Gumroad upload."
+}

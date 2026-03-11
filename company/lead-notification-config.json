@@ -1,0 +1,10 @@
+{
+  "notificationEmail": "contact@claudetianduan.com",
+  "emailProvider": "resend",
+  "webhookUrl": null,
+  "notifyOnNewLead": true,
+  "notificationTemplate": {
+    "subject": "New Lead from Claude天团 Website",
+    "body": "A new lead has been captured from the website.\n\n**Lead Details:**\n- Name: {name}\n- Email: {email}\n- Phone: {phone}\n- Company: {company}\n- Interest: {interest}\n- Source: {source}\n- Time: {timestamp}\n\n**Message:**\n{message}\n\n---\nThis is an automated notification from Claude天团 Lead System."
+  }
+}

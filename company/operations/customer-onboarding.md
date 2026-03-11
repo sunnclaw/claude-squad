@@ -1,200 +1,193 @@
-# 客户入职流程
+# Customer Onboarding
 
-## 概述
+Last updated: 2026-03-10
+Owner: CTO
 
-本文档定义了新客户入职的标准流程，确保每位客户获得一致、专业的服务体验。
+## Purpose
+
+Start paid work cleanly so delivery can run from a checklist instead of memory.
+
+## Definition Of Ready
+
+An order can start only when all five are true:
+- scope is written
+- price is written
+- payment state is confirmed
+- due date is confirmed
+- required customer inputs are received or explicitly pending
+
+## Onboarding Flow
+
+### 1. Confirm the order
+
+Send:
+- order ID
+- deliverables
+- deadline
+- revision limit
+- payment state
+
+### 2. Confirm inputs
+
+Request only the minimum needed to start:
+- source files or repo access
+- references, links, or examples
+- target audience or business goal
+- constraints or must-not-do items
+
+### 3. Set delivery expectations
+
+State:
+- when work starts
+- when the next update happens
+- what counts as a revision
+- what might cause delay
+
+### 4. Open the delivery file
+
+Create or update:
+- order row in the dashboard
+- delivery checklist
+- proof asset reminder
+
+## Order Confirmation Template
+
+```md
+Subject: Order confirmed - [Order ID]
+
+Hi [Name],
+
+Your order is confirmed.
+
+Order ID:
+Deliverables:
+Timeline:
+Revision limit:
+Payment state:
+
+To begin, please send:
+- 
+- 
+
+Once the remaining inputs are in place, work starts immediately.
+```
+
+## Progress Update Rule
+
+- standard jobs under 3 days: no progress update unless blocked
+- larger jobs: one midpoint update with risk flag if needed
+
+## Customer Risk Flags
+
+Watch for:
+- slow input handoff
+- changing scope after payment
+- unclear approver
+- urgency that exceeds package scope
+
+If any appear, update the dashboard and tighten scope before continuing.
 
 ---
 
-## 入职流程步骤
+## Dental Clinic Pilot Onboarding
 
-### Step 1: 订单确认 (收到订单后1小时内)
+Specialized onboarding flow for the Missed-Call Recovery pilot. Use this when a dental clinic has committed to a 30-day pilot.
 
-**动作清单:**
-- [ ] 确认收到订单文件
-- [ ] 检查订单信息完整性
-- [ ] 分配订单编号 (CLA-XXXXXXXX)
-- [ ] 创建订单跟踪文件
+### Phase 1: Information Collection (Before Setup)
 
-**邮件模板:**
-```
-主题: [Claude天团] 订单确认 - {订单编号}
+Send the intake request within 1 hour of commitment:
 
-您好 {客户名称}，
+**Required from clinic:**
+- [ ] Practice name and physical address
+- [ ] Decision maker name, role, phone, email
+- [ ] Point person for callbacks (if different from decision maker)
+- [ ] Current phone system or call-tracking tool
+- [ ] Average weekly call volume (estimate is fine)
+- [ ] Peak missed-call times (lunch, after-hours, Monday morning, etc.)
+- [ ] Current new patient value (average revenue per new patient)
+- [ ] Pilot start date preference
 
-感谢您选择Claude天团！
+**Optional but helpful:**
+- [ ] Current missed-call volume (if known)
+- [ ] Existing text-back or callback process (if any)
+- [ ] Practice management software (Dentrix, Eaglesoft, Open Dental, etc.)
+- [ ] Business hours
 
-我们已收到您的订单，详情如下：
+### Phase 2: Access and Configuration (Day 1-2)
 
-订单编号: {订单编号}
-服务类型: {服务类型}
-预估费用: ¥{金额}
-预计交付: {日期}
+**Access requirements:**
+- [ ] Call log access confirmed (method documented)
+- [ ] Text-back automation access confirmed
+- [ ] Point person contact verified
 
-请在24小时内完成付款，付款后我们将立即开始执行。
+**Configuration steps:**
+- [ ] Document baseline missed-call volume
+- [ ] Set up text-back template with practice name
+- [ ] Configure missed-call detection window
+- [ ] Test with intentional missed call
+- [ ] Brief point person on callback queue ownership
 
-付款方式:
-- 微信支付: [二维码]
-- 支付宝: [二维码]
+### Phase 3: Success Metrics Baseline (Day 1)
 
-如有任何问题，请回复此邮件。
+Before pilot starts, record:
 
-祝好，
-Claude天团
-```
+| Metric | Baseline Value | Target |
+|--------|---------------|--------|
+| Weekly missed calls | ___ | Track only |
+| Weekly recovered appointments | ___ | 3+ during pilot |
+| Revenue per new patient | $___ | Track only |
+| Callback completion rate | ___% | 80%+ |
 
-### Step 2: 付款确认 (收到付款后30分钟内)
+### Phase 4: Check-in Schedule (Set at Setup)
 
-**动作清单:**
-- [ ] 确认付款金额
-- [ ] 更新订单状态为"已付款"
-- [ ] 分配执行代理
-- [ ] 发送付款确认邮件
+**Week 1:**
+- Day 3: Quick email check (no issues?)
+- Day 5: 5-minute call or email (first results?)
 
-**邮件模板:**
-```
-主题: [Claude天团] 付款确认 - {订单编号}
+**Week 2:**
+- Day 10: Weekly recovery report + quick check
 
-您好 {客户名称}，
+**Week 3:**
+- Day 17: Weekly recovery report + quick check
 
-我们已收到您的付款 ¥{金额}。
+**Week 4:**
+- Day 24: Final recovery report preparation
+- Day 30: ROI summary + next-step call (15 minutes)
 
-您的订单已开始执行，预计交付时间: {日期}
+### Dental Pilot Confirmation Template
 
-执行过程中如有问题，我们会及时与您沟通。
+```md
+Subject: Pilot confirmed - [Practice Name] Missed-Call Recovery
 
-祝好，
-Claude天团
-```
+Hi [Name],
 
-### Step 3: 执行阶段
+Your missed-call recovery pilot is confirmed.
 
-**动作清单:**
-- [ ] 执行代理开始工作
-- [ ] 定期更新进度(复杂订单)
-- [ ] 完成后提交质量检查
+Pilot ID: [ID]
+Practice: [Name]
+Start date: [Date]
+Duration: 30 days
+Investment: $297 (pilot) / $199 monthly after
 
-**进度更新模板 (如需要):**
-```
-主题: [Claude天团] 订单进度更新 - {订单编号}
+To begin setup, please reply with:
 
-您好 {客户名称}，
+1. Your phone system name (e.g., Weave, Patient Prism, generic VoIP)
+2. Best callback point person name and phone
+3. Average new patient value ($)
+4. Your business hours
 
-您的订单进度更新:
+I'll send a 30-minute setup call invite once we have these details.
 
-当前状态: {状态}
-完成进度: {百分比}%
-预计交付: {日期}
-
-如有问题请随时联系。
-
-祝好，
-Claude天团
-```
-
-### Step 4: 质量检查
-
-**检查清单:**
-- [ ] 交付物符合订单要求
-- [ ] 质量标准达标
-- [ ] 格式规范
-- [ ] 无明显错误
-
-### Step 5: 交付 (交付时)
-
-**动作清单:**
-- [ ] 发送交付物
-- [ ] 发送交付确认邮件
-- [ ] 请求客户反馈
-
-**邮件模板:**
-```
-主题: [Claude天团] 交付完成 - {订单编号}
-
-您好 {客户名称}，
-
-您的订单已完成交付！
-
-附件中是您的交付物。如有任何需要修改的地方，请在3天内回复，我们提供免费修改服务。
-
-如果您对我们的服务满意，欢迎:
-1. 在小红书/朋友圈分享您的体验
-2. 推荐给有需要的朋友
-3. 给我们一个好评
-
-感谢您的信任！
-
-祝好，
-Claude天团
+Setup takes 48 hours. Your first recovered appointment could happen this week.
 ```
 
-### Step 6: 订单关闭 (交付后3天)
+### Dental Pilot Risk Flags
 
-**动作清单:**
-- [ ] 确认客户满意
-- [ ] 归档订单文件
-- [ ] 更新客户数据库
-- [ ] 记录案例(如适用)
+Watch for:
+- Phone system incompatibility (check early)
+- Point person not responding to callbacks (flag by Week 2)
+- No recovered appointments by Week 2 (review workflow)
+- Decision maker not engaged (escalate or pause)
+- Text template approval delays (offer defaults)
 
----
-
-## 异常处理
-
-### 客户要求修改
-
-**流程:**
-1. 确认修改需求
-2. 评估修改范围
-3. 小修改: 24小时内完成
-4. 大修改: 协商新交付时间
-5. 完成后重新交付
-
-### 客户不满意要求退款
-
-**流程:**
-1. 了解不满意原因
-2. 尝试提供修改方案
-3. 如仍不满意，按以下规则处理:
-   - 未开始执行: 全额退款
-   - 执行中: 退还50%
-   - 已交付: 协商处理
-
-### 交付延期
-
-**流程:**
-1. 尽早通知客户
-2. 说明延期原因
-3. 提供新的交付时间
-4. 考虑提供折扣补偿
-
----
-
-## 客户信息记录
-
-每位客户需记录以下信息:
-
-```
-客户ID: CUST-XXXXXXXX
-姓名:
-联系方式:
-邮箱:
-首次订单日期:
-订单历史:
-  - CLA-XXX: {服务类型}, ¥{金额}, {日期}
-总消费金额:
-客户来源:
-备注:
-```
-
----
-
-## 首单优惠规则
-
-- 首单享受8折优惠
-- 优惠码: FIRST20
-- 每位客户仅限使用一次
-- 不与其他优惠叠加
-
----
-
-*本流程由Claude天团CEO制定，将持续优化。*
+If any appear, refer to `company/delivery-kits/missed-call-recovery-checklist.md` for objection handlers.

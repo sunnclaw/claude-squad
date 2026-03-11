@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="使用Paperclip构建AI代理团队 - 完整教程指南，从概念到实践的AI代理开发方法论。">
+    <meta name="keywords" content="Paperclip,AI代理,代理开发,多代理协作,技术教程">
+    <meta property="og:title" content="使用Paperclip构建AI代理团队 - Claude天团">
+    <meta property="og:description" content="完整的AI代理开发教程，教你如何使用Paperclip框架构建专业的AI代理团队。">
+    <meta property="og:type" content="article">
+    <title>使用Paperclip构建AI代理团队 - Claude天团</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        header .meta {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #6366f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        article {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #6366f1;
+            margin: 30px 0 15px;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #8b5cf6;
+            margin: 25px 0 12px;
+            font-size: 1.2rem;
+        }
+
+        h4 {
+            color: #6b7280;
+            margin: 20px 0 10px;
+            font-size: 1rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .code-block {
+            background: #1e1e2e;
+            color: #cdd6f4;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .code-block .comment {
+            color: #6c7086;
+        }
+
+        .code-block .keyword {
+            color: #cba6f7;
+        }
+
+        .code-block .string {
+            color: #a6e3a1;
+        }
+
+        .code-block .type {
+            color: #89b4fa;
+        }
+
+        .code-block .function {
+            color: #f9e2af;
+        }
+
+        .step-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            border-left: 4px solid #0ea5e9;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .step-box h4 {
+            color: #0369a1;
+            margin-top: 0;
+        }
+
+        .tip-box {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .warning-box {
+            background: #fefce8;
+            border-left: 4px solid #eab308;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .example-box {
+            background: #faf5ff;
+            border-left: 4px solid #a855f7;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .architecture-diagram {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        .toc {
+            background: #f8fafc;
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .toc h3 {
+            color: #1f2937;
+            margin-top: 0;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 5px;
+        }
+
+        .toc a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .prerequisite-box {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .prerequisite-box h4 {
+            color: #c2410c;
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            article {
+                padding: 25px;
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>使用Paperclip构建AI代理团队</h1>
+        <div class="meta">技术教程 · 2026-03-10 · 阅读时间：20分钟</div>
+    </header>
+
+    <nav>
+        <a href="index.html">首页</a>
+        <a href="about.html">关于</a>
+        <a href="services.html">服务</a>
+        <a href="pricing.html">价格</a>
+        <a href="portfolio.html">案例</a>
+        <a href="blog/index.html">博客</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">联系</a>
+    </nav>
+
+    <div class="container">
+        <article>
+            <div class="toc">
+                <h3>目录</h3>
+                <ul>
+                    <li><a href="#introduction">1. 简介：为什么需要AI代理团队</a></li>
+                    <li><a href="#prerequisites">2. 准备工作</a></li>
+                    <li><a href="#architecture">3. 理解Paperclip架构</a></li>
+                    <li><a href="#first-agent">4. 创建第一个代理</a></li>
+                    <li><a href="#agent-roles">5. 设计代理角色</a></li>
+                    <li><a href="#task-flow">6. 任务流转机制</a></li>
+                    <li><a href="#advanced">7. 高级技巧</a></li>
+                    <li><a href="#best-practices">8. 最佳实践</a></li>
+                    <li><a href="#conclusion">9. 总结</a></li>
+                </ul>
+            </div>
+
+            <h2 id="introduction">1. 简介：为什么需要AI代理团队</h2>
+
+            <p>单一AI模型虽然强大，但在复杂业务场景下往往力不从心。想象一下，你需要同时处理客户咨询、内容创作、代码审查、数据分析——让一个AI同时做好所有这些事情几乎不可能。</p>
+
+            <p>这就是<strong>AI代理团队</strong>的价值：每个代理专注于自己擅长的领域，通过协作完成复杂任务。就像现实中的公司有CEO、工程师、设计师、客服一样，AI代理团队也是这样组织的。</p>
+
+            <h3>Paperclip是什么？</h3>
+
+            <p>Paperclip是一个AI代理协作管理框架，它提供了：</p>
+
+            <ul>
+                <li><strong>代理管理</strong>：注册、配置、监控AI代理</li>
+                <li><strong>任务分配</strong>：基于Issue的任务流转机制</li>
+                <li><strong>状态追踪</strong>：实时了解每个代理的工作状态</li>
+                <li><strong>API接口</strong>：标准化的REST API，易于集成</li>
+            </ul>
+
+            <h2 id="prerequisites">2. 准备工作</h2>
+
+            <div class="prerequisite-box">
+                <h4>前提条件</h4>
+                <ul>
+                    <li>Node.js 18+ 环境</li>
+                    <li>基础的命令行操作能力</li>
+                    <li>对AI和LLM的基本了解</li>
+                    <li>一个AI运行时（Claude Code、Codex、或Gemini CLI）</li>
+                </ul>
+            </div>
+
+            <h3>环境配置</h3>
+
+            <p>首先，确保你的系统已安装Node.js和npm：</p>
+
+            <div class="code-block">
+<span class="comment"># 检查Node.js版本</span>
+node --version  <span class="comment"># 应该 >= 18.0.0</span>
+
+<span class="comment"># 检查npm版本</span>
+npm --version
+            </div>
+
+            <h3>项目结构</h3>
+
+            <p>一个典型的Paperclip项目结构如下：</p>
+
+            <div class="code-block">
+your-company/
+├── agents/
+│   ├── ceo/
+│   │   └── AGENTS.md        <span class="comment"># CEO代理配置</span>
+│   ├── engineer/
+│   │   └── AGENTS.md        <span class="comment"># 工程师代理配置</span>
+│   └── analyst/
+│       └── AGENTS.md        <span class="comment"># 分析师代理配置</span>
+├── company/
+│   ├── dashboard.md         <span class="comment"># 公司仪表盘</span>
+│   ├── services/            <span class="comment"># 服务定义</span>
+│   └── operations/          <span class="comment"># 运营流程</span>
+├── docs/                    <span class="comment"># 文档输出目录</span>
+└── .env                     <span class="comment"># 环境变量</span>
+            </div>
+
+            <h2 id="architecture">3. 理解Paperclip架构</h2>
+
+            <h3>核心概念</h3>
+
+            <table>
+                <tr>
+                    <th>概念</th>
+                    <th>说明</th>
+                </tr>
+                <tr>
+                    <td>Control Plane</td>
+                    <td>控制中心，处理代理注册、任务分配、状态管理</td>
+                </tr>
+                <tr>
+                    <td>Agent</td>
+                    <td>AI代理，有特定角色和能力，执行具体任务</td>
+                </tr>
+                <tr>
+                    <td>Issue</td>
+                    <td>任务单元，包含描述、状态、分配信息</td>
+                </tr>
+                <tr>
+                    <td>Company</td>
+                    <td>组织单位，一个公司可以有多个代理</td>
+                </tr>
+            </table>
+
+            <h3>系统架构图</h3>
+
+            <div class="architecture-diagram">
+┌─────────────────────────────────────────────────────────────────┐
+│                     Paperclip Control Plane                      │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐              │
+│  │    Agent    │  │    Issue    │  │   Company   │              │
+│  │   Service   │  │   Service   │  │   Service   │              │
+│  └─────────────┘  └─────────────┘  └─────────────┘              │
+│                         │                                        │
+│                    REST API                                      │
+└─────────────────────────┬───────────────────────────────────────┘
+                          │
+         ┌────────────────┼────────────────┐
+         │                │                │
+         ▼                ▼                ▼
+   ┌──────────┐     ┌──────────┐     ┌──────────┐
+   │   CEO    │     │ Engineer │     │ Analyst  │
+   │  Agent   │     │  Agent   │     │  Agent   │
+   └──────────┘     └──────────┘     └──────────┘
+            </div>
+
+            <h3>数据流</h3>
+
+            <ol>
+                <li><strong>任务创建</strong>：CEO代理或外部系统创建Issue</li>
+                <li><strong>任务分配</strong>：Issue被分配给特定代理</li>
+                <li><strong>代理认领</strong>：代理调用checkout API认领任务</li>
+                <li><strong>执行任务</strong>：代理根据Issue描述执行工作</li>
+                <li><strong>状态更新</strong>：完成后更新Issue状态为done</li>
+            </ol>
+
+            <h2 id="first-agent">4. 创建第一个代理</h2>
+
+            <h3>步骤1：创建配置文件</h3>
+
+            <p>每个代理都需要一个<code>AGENTS.md</code>配置文件。让我们创建一个工程师代理：</p>
+
+            <div class="step-box">
+                <h4>文件：agents/engineer/AGENTS.md</h4>
+                <div class="code-block">
+<span class="comment"># 工程师代理 - Claude天团</span>
+
+你是 Claude天团 的工程师，负责技术实现和代码开发。
+
+## ⚠️ 强制规则 - 必须遵守
+
+### 规则 1: 只做分配的任务
+你**只能**做分配给你的 Issue 任务。**禁止**做任何其他工作。
+
+### 规则 2: 必须遵循 Paperclip 流程
+每次心跳必须执行以下步骤：
+
+1. 调用 paperclip skill
+2. GET /api/agents/me 获取身份
+3. GET /api/companies/{companyId}/issues?assigneeAgentId={yourId}
+4. 如果有任务，POST /api/issues/{issueId}/checkout 认领
+5. 执行任务
+6. PATCH /api/issues/{issueId} 更新状态
+
+## 工作流程
+
+### 技术实现任务
+1. 阅读Issue描述，理解需求
+2. Checkout这个Issue
+3. 编写代码/文档
+4. 测试验证
+5. 更新Issue状态为done
+
+## 环境变量（自动注入）
+
+- PAPERCLIP_AGENT_ID: your-agent-id
+- PAPERCLIP_COMPANY_ID: your-company-id
+- PAPERCLIP_API_URL: http://127.0.0.1:3100/api
+
+## 公司信息
+
+- 公司名称: Claude天团
+- 工作目录: /path/to/work
+                </div>
+            </div>
+
+            <h3>步骤2：注册代理</h3>
+
+            <p>向Control Plane注册你的代理：</p>
+
+            <div class="code-block">
+<span class="comment"># 使用API注册代理</span>
+curl -X POST http://127.0.0.1:3100/api/agents \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Founding Engineer",
+    "type": "engineer",
+    "companyId": "7f75017f-bf26-46e4-bd97-cb508f831442",
+    "config": {
+      "model": "claude-sonnet-4-6",
+      "maxTokens": 8192
+    }
+  }'
+
+<span class="comment"># 响应示例</span>
+{
+  "id": "27344c6d-cd4a-4fc6-b80c-eb18047eb3f7",
+  "name": "Founding Engineer",
+  "type": "engineer",
+  "status": "idle"
+}
+                </div>
+
+            <div class="tip-box">
+                <strong>提示：</strong>保存返回的<code>id</code>，这是代理的身份标识，后续所有操作都需要使用。
+            </div>
+
+            <h3>步骤3：启动代理</h3>
+
+            <p>使用AI运行时启动你的代理：</p>
+
+            <div class="code-block">
+<span class="comment"># 设置环境变量</span>
+export PAPERCLIP_AGENT_ID=27344c6d-cd4a-4fc6-b80c-eb18047eb3f7
+export PAPERCLIP_COMPANY_ID=7f75017f-bf26-46e4-bd97-cb508f831442
+export PAPERCLIP_API_URL=http://127.0.0.1:3100/api
+
+<span class="comment"># 启动Claude Code</span>
+claude-code --agent-file agents/engineer/AGENTS.md
+                </div>
+
+            <h2 id="agent-roles">5. 设计代理角色</h2>
+
+            <h3>常见代理类型</h3>
+
+            <table>
+                <tr>
+                    <th>类型</th>
+                    <th>职责</th>
+                    <th>适合任务</th>
+                </tr>
+                <tr>
+                    <td>CEO</td>
+                    <td>决策、协调、质量把控</td>
+                    <td>订单确认、任务分配、最终审核</td>
+                </tr>
+                <tr>
+                    <td>Engineer</td>
+                    <td>技术实现</td>
+                    <td>代码开发、Bug修复、技术文档</td>
+                </tr>
+                <tr>
+                    <td>Analyst</td>
+                    <td>分析研究</td>
+                    <td>市场调研、数据分析、研究报告</td>
+                </tr>
+                <tr>
+                    <td>Writer</td>
+                    <td>内容创作</td>
+                    <td>博客文章、营销文案、用户手册</td>
+                </tr>
+            </table>
+
+            <h3>提示词设计原则</h3>
+
+            <div class="example-box">
+                <strong>好的提示词应该：</strong>
+                <ul>
+                    <li><strong>明确边界</strong>：清楚定义代理能做什么、不能做什么</li>
+                    <li><strong>结构化指令</strong>：使用编号步骤而非模糊描述</li>
+                    <li><strong>提供示例</strong>：在配置中包含典型工作流程示例</li>
+                    <li><strong>强制规则优先</strong>：关键规则放在最前面</li>
+                </ul>
+            </div>
+
+            <h3>CEO代理示例</h3>
+
+            <div class="code-block">
+<span class="comment"># CEO代理 - Claude天团</span>
+
+你是 Claude天团 的CEO，负责公司整体运营。
+
+## ⚠️ 强制规则
+
+### 规则 1: 订单确认
+收到新订单后，必须：
+1. 审核订单内容是否完整
+2. 确认报价是否合理
+3. 分配给合适的代理
+
+### 规则 2: 质量把控
+所有交付物必须经过你的审核才能发送给客户。
+
+## 工作流程
+
+### 订单处理
+1. 接收订单通知
+2. 评估工作量和报价
+3. 创建Issue分配给相应代理
+4. 跟踪进度
+5. 审核交付物
+6. 发送给客户
+
+## 决策框架
+
+### 报价策略
+- 内容创作：¥100/千字
+- 代码审查：¥50/文件
+- 研究报告：¥200/主题
+- 加急服务：+50%
+                </div>
+
+            <h2 id="task-flow">6. 任务流转机制</h2>
+
+            <h3>Issue状态流转</h3>
+
+            <div class="architecture-diagram">
+        ┌─────────┐
+        │   todo  │  ← 新创建的任务
+        └────┬────┘
+             │ checkout
+             ▼
+     ┌───────────────┐
+     │  in_progress  │  ← 代理正在处理
+     └───────┬───────┘
+        ┌────┴────┐
+        │         │
+        ▼         ▼
+  ┌─────────┐ ┌──────────┐
+  │  done   │ │ blocked  │
+  └─────────┘ └────┬─────┘
+                   │ unblock
+                   ▼
+           ┌───────────────┐
+           │  in_progress  │
+           └───────────────┘
+            </div>
+
+            <h3>API调用流程</h3>
+
+            <div class="code-block">
+<span class="comment">// 1. 获取身份验证</span>
+GET /api/agents/me
+Headers: { "x-agent-id": "your-agent-id" }
+
+<span class="comment">// 2. 查询待处理任务</span>
+GET /api/companies/{companyId}/issues?assigneeAgentId={myId}&status=todo
+
+<span class="comment">// 3. 认领任务</span>
+POST /api/issues/{issueId}/checkout
+
+<span class="comment">// 4. 执行任务...</span>
+<span class="comment">// (实际工作代码)</span>
+
+<span class="comment">// 5. 标记完成</span>
+PATCH /api/issues/{issueId}
+Body: { "status": "done", "comment": "任务完成说明..." }
+                </div>
+
+            <h3>处理阻塞情况</h3>
+
+            <p>当代理遇到无法独立解决的问题时，可以将任务标记为<code>blocked</code>：</p>
+
+            <div class="code-block">
+PATCH /api/issues/{issueId}
+{
+  "status": "blocked",
+  "comment": "需要CEO确认技术方案后才能继续。等待中..."
+}
+                </div>
+
+            <div class="warning-box">
+                <strong>注意：</strong>标记为blocked的任务会在控制台显示警告，CEO代理会收到通知。记得在问题解决后将状态改回<code>in_progress</code>。
+            </div>
+
+            <h2 id="advanced">7. 高级技巧</h2>
+
+            <h3>多代理协作</h3>
+
+            <p>对于复杂任务，可以让多个代理协作完成：</p>
+
+            <div class="example-box">
+                <strong>示例：完整内容项目</strong>
+                <ol>
+                    <li><strong>CEO</strong>：接收订单，拆分为多个Issue</li>
+                    <li><strong>Analyst</strong>：研究主题，输出大纲</li>
+                    <li><strong>Writer</strong>：根据大纲撰写内容</li>
+                    <li><strong>Editor</strong>：审核修改，确保质量</li>
+                    <li><strong>CEO</strong>：最终审核，发送客户</li>
+                </ol>
+            </div>
+
+            <h3>心跳机制</h3>
+
+            <p>代理应定期发送心跳以保持在线状态：</p>
+
+            <div class="code-block">
+<span class="comment">// 每30-60秒更新一次状态</span>
+setInterval(async () => {
+  await fetch(`${API_URL}/agents/${AGENT_ID}`, {
+    method: 'PATCH',
+    headers: {
+      'x-agent-id': AGENT_ID,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      status: currentStatus,  <span class="comment">// 'idle' or 'working'</span>
+      lastHeartbeat: new Date().toISOString()
+    })
+  });
+}, 30000);  <span class="comment">// 30秒</span>
+                </div>
+
+            <h3>错误处理</h3>
+
+            <table>
+                <tr>
+                    <th>错误码</th>
+                    <th>原因</th>
+                    <th>处理方式</th>
+                </tr>
+                <tr>
+                    <td>401</td>
+                    <td>Agent ID无效</td>
+                    <td>检查环境变量配置</td>
+                </tr>
+                <tr>
+                    <td>404</td>
+                    <td>Issue不存在</td>
+                    <td>重新查询Issue列表</td>
+                </tr>
+                <tr>
+                    <td>409</td>
+                    <td>Issue已被认领</td>
+                    <td>查询下一个可用Issue</td>
+                </tr>
+                <tr>
+                    <td>429</td>
+                    <td>请求频率过高</td>
+                    <td>实现指数退避重试</td>
+                </tr>
+            </table>
+
+            <h2 id="best-practices">8. 最佳实践</h2>
+
+            <h3>提示词优化</h3>
+
+            <ul>
+                <li>使用<strong>具体的指令</strong>而非模糊描述</li>
+                <li>提供<strong>工作示例</strong>帮助代理理解预期输出</li>
+                <li>设置<strong>边界条件</strong>，明确什么情况下应该寻求帮助</li>
+                <li>定期<strong>更新提示词</strong>，基于实际运行效果优化</li>
+            </ul>
+
+            <h3>监控和调试</h3>
+
+            <ul>
+                <li>使用Dashboard查看代理状态和任务进度</li>
+                <li>检查Issue的comment历史了解工作过程</li>
+                <li>设置告警监控代理离线或任务超时</li>
+                <li>保留执行日志便于问题追溯</li>
+            </ul>
+
+            <h3>安全考虑</h3>
+
+            <div class="warning-box">
+                <strong>安全要点：</strong>
+                <ul>
+                    <li>Agent ID通过环境变量注入，不要硬编码</li>
+                    <li>限制代理的文件访问权限</li>
+                    <li>敏感操作需要额外授权</li>
+                    <li>定期轮换凭证</li>
+                </ul>
+            </div>
+
+            <h2 id="conclusion">9. 总结</h2>
+
+            <p>Paperclip提供了一套完整的框架来构建和管理AI代理团队。通过本文，你学会了：</p>
+
+            <ul>
+                <li>理解Paperclip的架构和核心概念</li>
+                <li>创建和配置AI代理</li>
+                <li>设计代理角色和提示词</li>
+                <li>实现任务流转和协作机制</li>
+                <li>处理常见问题和错误</li>
+            </ul>
+
+            <h3>下一步</h3>
+
+            <ul>
+                <li>阅读 <a href="paperclip-api-endpoints.html" style="color:#6366f1;">API端点参考</a> 了解完整的API文档</li>
+                <li>查看 <a href="paperclip-agent-reference.html" style="color:#6366f1;">代理系统技术参考</a> 深入理解架构</li>
+                <li>探索 <a href="blog/index.html" style="color:#6366f1;">博客</a> 获取更多AI实践案例</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>需要帮助？</strong>如果你在构建AI代理团队过程中遇到问题，欢迎 <a href="contact.html" style="color:#22c55e;">联系我们</a> 获取技术支持。
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Claude天团. All rights reserved.</p>
+        <p><a href="index.html" style="color: #6366f1;">返回首页</a></p>
+        <p><a href="terms.html" style="color: #6366f1;">服务条款</a> | <a href="privacy.html" style="color: #6366f1;">隐私政策</a></p>
+    </footer>
+    <script src="js/components.js"></script>
+</body>
+</html>

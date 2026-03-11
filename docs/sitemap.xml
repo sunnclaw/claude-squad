@@ -27,9 +27,19 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://sunnclaw.github.io/claude-squad/products.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://sunnclaw.github.io/claude-squad/portfolio.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/recommended-tools.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://sunnclaw.github.io/claude-squad/faq.html</loc>
@@ -57,6 +67,27 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/lead-magnet.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/missed-call-recovery-system.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/dental-communication-templates.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- Sitemap Page -->
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/sitemap-page.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <!-- Blog Index -->
   <url>
     <loc>https://sunnclaw.github.io/claude-squad/blog/index.html</loc>
@@ -64,6 +95,36 @@
     <priority>0.9</priority>
   </url>
   <!-- Blog Posts - Dental Focus (Higher Priority) -->
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/announcing-missed-call-recovery-toolkit.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-insurance-verification-workflow-automation.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/reducing-dental-claim-denials-patient-data.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-billing-best-practices-small-practices.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/patient-financing-options-dental-practices.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/insurance-coordination-front-desk-efficiency.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
   <url>
     <loc>https://sunnclaw.github.io/claude-squad/blog/missed-call-revenue-loss-dental-practices.html</loc>
     <changefreq>weekly</changefreq>
@@ -81,6 +142,56 @@
   </url>
   <url>
     <loc>https://sunnclaw.github.io/claude-squad/blog/dental-practices-lose-patients.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-phone-script-emergencies.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-patient-retention-phone-strategies.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-office-communication-workflow.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-front-desk-phone-scripts.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/reducing-patient-phone-wait-times.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-scheduling-software-comparison.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-patient-intake-automation.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-recall-system-best-practices.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-practice-call-tracking-metrics.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/calculate-missed-call-revenue-loss.html</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -111,6 +222,205 @@
   </url>
   <url>
     <loc>https://sunnclaw.github.io/claude-squad/blog/building-patient-trust-communication.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/train-front-desk-phone-handling.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-appointment-scheduling-best-practices.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/patient-communication-lunch-hours.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/handling-after-hours-dental-emergencies.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/best-phone-systems-dental-practices.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- Additional Dental Blog Posts -->
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/after-hours-dental-emergencies.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/automating-patient-follow-up-dental.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/case-study-missed-appointments-recovery.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/converting-phone-inquiries-dental-appointments.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-front-office-efficiency-guide.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-front-office-phone-etiquette.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-new-patient-conversion-guide.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/hidden-cost-lunch-breaks-dental.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/patient-callback-system-roi.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/patient-communication-best-practices-dental.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/patient-retention-strategies-dental.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/signs-losing-patients-voicemail.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- New Dental Blog Posts - March 12, 2026 -->
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/first-call-resolution-dental-practice.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-emergency-decision-tree.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/compete-with-corporate-dental-chains.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-phone-scripts-difficult-situations.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-staff-training-onboarding.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- New Dental Blog Posts - March 17, 2026 -->
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-appointment-confirmation-system.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-new-patient-phone-experience.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-phone-answering-service-comparison.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-practice-growth-strategies.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-voicemail-alternatives.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- New Dental Blog Posts - Session 34 -->
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-phone-tag-patient-frustration.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-patient-no-show-prevention.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-appointment-reminder-systems.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-front-desk-efficiency-tips.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-new-patient-intake-process.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-practice-phone-etiquette-guide.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-emergency-scheduling.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-patient-follow-up-best-practices.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-practice-communication-software.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-staff-training-phone-skills.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-patient-retention-calculations.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-practice-kpi-tracking.html</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -326,6 +636,124 @@
     <loc>https://sunnclaw.github.io/claude-squad/paperclip-api-endpoints.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <!-- Missing Dental Blog Posts - Session 37 -->
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-office-phone-answering-statistics.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-patient-retention-phone-strategies.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-phone-script-emergencies.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-practice-communication-metrics.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-practice-phone-productivity.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/new-patient-phone-experience-dental.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/small-dental-practice-growth-strategies.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-practice-management-software-integration.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-patient-response-time-impact.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-automation-roi-calculator.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- New Dental Blog Posts - Session 43 (March 19, 2026 Night) -->
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-practice-phone-tree-optimimization.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-office-staffing-phone-coverage.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-practice-new-patient-phone-conversion.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-patient-no-show-impact-revenue.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-practice-phone-etiquette-training.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-practice-online-scheduling-benefits.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- New Dental Blog Posts - Session 50+ (March 20, 2026) -->
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-billing-best-practices-small-practices.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/dental-insurance-verification-workflow-automation.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/reducing-dental-claim-denials-patient-data.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/patient-financing-options-dental-practices.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/insurance-coordination-front-desk-efficiency.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/announcing-missed-call-recovery-toolkit.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sunnclaw.github.io/claude-squad/blog/missed-call-recovery-solution.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   <!-- Legal Pages -->
   <url>

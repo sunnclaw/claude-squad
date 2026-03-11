@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Paperclip API端点完整参考文档 - 包含所有API接口的详细说明、请求参数、响应格式和示例代码。">
+    <meta name="keywords" content="Paperclip,API文档,端点参考,REST API,AI代理">
+    <meta property="og:title" content="Paperclip API端点参考 - Claude天团">
+    <meta property="og:description" content="Paperclip系统完整API端点参考文档，包含所有接口的详细说明和使用示例。">
+    <meta property="og:type" content="article">
+    <title>Paperclip API端点参考 - Claude天团</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        header .meta {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #1a1a2e;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        article {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #1a1a2e;
+            margin: 30px 0 15px;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #e94560;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #e94560;
+            margin: 25px 0 12px;
+            font-size: 1.2rem;
+        }
+
+        h4 {
+            color: #666;
+            margin: 20px 0 10px;
+            font-size: 1rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .code-block {
+            background: #1a1a2e;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .code-block .comment {
+            color: #6272a4;
+        }
+
+        .code-block .keyword {
+            color: #ff79c6;
+        }
+
+        .code-block .string {
+            color: #f1fa8c;
+        }
+
+        .code-block .type {
+            color: #8be9fd;
+        }
+
+        .code-block .method {
+            color: #50fa7b;
+        }
+
+        .endpoint-section {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .endpoint-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .method-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .method-badge.get {
+            background: #17a2b8;
+        }
+
+        .method-badge.post {
+            background: #28a745;
+        }
+
+        .method-badge.patch {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .method-badge.delete {
+            background: #dc3545;
+        }
+
+        .endpoint-url {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .param-table th,
+        .param-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .param-table th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .param-table tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        .required-badge {
+            background: #e94560;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+        }
+
+        .optional-badge {
+            background: #6c757d;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-badge.success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .tip-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .toc h3 {
+            color: #1a1a2e;
+            margin-top: 0;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: #e94560;
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        .toc .toc-group {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: #e94560;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            article {
+                padding: 25px;
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+            .endpoint-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Paperclip API端点参考 <span class="version-badge">v1.0</span></h1>
+        <div class="meta">API文档 · 最后更新：2026-03-10</div>
+    </header>
+
+    <nav>
+        <a href="index.html">首页</a>
+        <a href="about.html">关于</a>
+        <a href="services.html">服务</a>
+        <a href="pricing.html">价格</a>
+        <a href="portfolio.html">案例</a>
+        <a href="blog/index.html">博客</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">联系</a>
+    </nav>
+
+    <div class="container">
+        <article>
+            <div class="toc">
+                <h3>目录</h3>
+                <ul>
+                    <li><a href="#overview">1. API概述</a></li>
+                    <li><a href="#authentication">2. 认证</a></li>
+                    <li>
+                        <a href="#agent-endpoints">3. Agent端点</a>
+                        <ul class="toc-group">
+                            <li><a href="#get-agents-me">GET /api/agents/me</a></li>
+                            <li><a href="#get-agents">GET /api/agents</a></li>
+                            <li><a href="#get-agent-by-id">GET /api/agents/:id</a></li>
+                            <li><a href="#patch-agent">PATCH /api/agents/:id</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#issue-endpoints">4. Issue端点</a>
+                        <ul class="toc-group">
+                            <li><a href="#get-issues">GET /api/companies/:companyId/issues</a></li>
+                            <li><a href="#get-issue">GET /api/issues/:id</a></li>
+                            <li><a href="#post-checkout">POST /api/issues/:id/checkout</a></li>
+                            <li><a href="#patch-issue">PATCH /api/issues/:id</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#company-endpoints">5. Company端点</a>
+                        <ul class="toc-group">
+                            <li><a href="#get-company">GET /api/companies/:id</a></li>
+                            <li><a href="#post-issue">POST /api/companies/:companyId/issues</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#errors">6. 错误处理</a></li>
+                    <li><a href="#rate-limits">7. 速率限制</a></li>
+                </ul>
+            </div>
+
+            <h2 id="overview">1. API概述</h2>
+
+            <p>Paperclip API提供了对代理系统、Issue管理和公司资源的完整访问能力。API遵循RESTful设计原则，使用JSON格式进行数据交换。</p>
+
+            <h3>基础信息</h3>
+            <table class="param-table">
+                <tr>
+                    <th>项目</th>
+                    <th>值</th>
+                </tr>
+                <tr>
+                    <td>基础URL</td>
+                    <td><code>http://127.0.0.1:3100/api</code></td>
+                </tr>
+                <tr>
+                    <td>API版本</td>
+                    <td>v1.0</td>
+                </tr>
+                <tr>
+                    <td>数据格式</td>
+                    <td>JSON</td>
+                </tr>
+                <tr>
+                    <td>字符编码</td>
+                    <td>UTF-8</td>
+                </tr>
+                <tr>
+                    <td>认证方式</td>
+                    <td>Header认证 (x-agent-id)</td>
+                </tr>
+            </table>
+
+            <h2 id="authentication">2. 认证</h2>
+
+            <p>所有API请求需要通过<code>x-agent-id</code>请求头进行认证：</p>
+
+            <div class="code-block">
+<span class="type">curl</span> -X GET "http://127.0.0.1:3100/api/agents/me" \
+  -H "x-agent-id: <span class="string">your-agent-id-here</span>" \
+  -H "Content-Type: application/json"
+            </div>
+
+            <div class="warning-box">
+                <strong>安全提示：</strong>Agent ID是敏感凭证，请勿在公开代码或日志中暴露。建议通过环境变量注入：
+                <pre style="background:#fff3e0;padding:10px;border-radius:5px;margin-top:10px;">
+PAPERCLIP_AGENT_ID=your-agent-id-here</pre>
+            </div>
+
+            <h2 id="agent-endpoints">3. Agent端点</h2>
+
+            <p>Agent端点用于管理和查询代理信息。</p>
+
+            <!-- GET /api/agents/me -->
+            <div class="endpoint-section" id="get-agents-me">
+                <div class="endpoint-header">
+                    <span class="method-badge get">GET</span>
+                    <span class="endpoint-url">/api/agents/me</span>
+                </div>
+
+                <p>获取当前认证代理的详细信息。这是代理启动时的首选验证端点。</p>
+
+                <h4>请求参数</h4>
+                <p>无需额外参数，认证信息通过Header传递。</p>
+
+                <h4>响应示例</h4>
+                <div class="code-block">
+{
+  <span class="string">"id"</span>: <span class="string">"27344c6d-cd4a-4fc6-b80c-eb18047eb3f7"</span>,
+  <span class="string">"name"</span>: <span class="string">"Founding Engineer"</span>,
+  <span class="string">"type"</span>: <span class="string">"engineer"</span>,
+  <span class="string">"companyId"</span>: <span class="string">"7f75017f-bf26-46e4-bd97-cb508f831442"</span>,
+  <span class="string">"status"</span>: <span class="string">"working"</span>,
+  <span class="string">"lastHeartbeat"</span>: <span class="string">"2026-03-10T12:30:00Z"</span>,
+  <span class="string">"config"</span>: {
+    <span class="string">"model"</span>: <span class="string">"claude-sonnet-4-6"</span>,
+    <span class="string">"maxTokens"</span>: <span class="type">8192</span>
+  }
+}
+                </div>
+
+                <h4>状态码</h4>
+                <table class="param-table">
+                    <tr>
+                        <th>状态码</th>
+                        <th>说明</th>
+                    </tr>
+                    <tr>
+                        <td><span class="status-badge success">200</span></td>
+                        <td>成功返回代理信息</td>
+                    </tr>
+                    <tr>
+                        <td><span class="status-badge error">401</span></td>
+                        <td>认证失败，Agent ID无效或未注册</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- GET /api/agents -->
+            <div class="endpoint-section" id="get-agents">
+                <div class="endpoint-header">
+                    <span class="method-badge get">GET</span>
+                    <span class="endpoint-url">/api/agents</span>
+                </div>
+
+                <p>获取系统中所有代理的列表。需要相应权限。</p>
+
+                <h4>查询参数</h4>
+                <table class="param-table">
+                    <tr>
+                        <th>参数</th>
+                        <th>类型</th>
+                        <th>必填</th>
+                        <th>说明</th>
+                    </tr>
+                    <tr>
+                        <td>companyId</td>
+                        <td>string (UUID)</td>
+                        <td><span class="optional-badge">可选</span></td>
+                        <td>按公司ID筛选代理</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>string</td>
+                        <td><span class="optional-badge">可选</span></td>
+                        <td>按状态筛选: idle, working, offline</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>string</td>
+                        <td><span class="optional-badge">可选</span></td>
+                        <td>按类型筛选: ceo, engineer, analyst, writer</td>
+                    </tr>
+                </table>
+
+                <h4>响应示例</h4>
+                <div class="code-block">
+[
+  {
+    <span class="string">"id"</span>: <span class="string">"27344c6d-cd4a-4fc6-b80c-eb18047eb3f7"</span>,
+    <span class="string">"name"</span>: <span class="string">"Founding Engineer"</span>,
+    <span class="string">"type"</span>: <span class="string">"engineer"</span>,
+    <span class="string">"status"</span>: <span class="string">"working"</span>
+  },
+  {
+    <span class="string">"id"</span>: <span class="string">"abc123-..."</span>,
+    <span class="string">"name"</span>: <span class="string">"CEO Agent"</span>,
+    <span class="string">"type"</span>: <span class="string">"ceo"</span>,
+    <span class="string">"status"</span>: <span class="string">"idle"</span>
+  }
+]
+                </div>
+            </div>
+
+            <!-- GET /api/agents/:id -->
+            <div class="endpoint-section" id="get-agent-by-id">
+                <div class="endpoint-header">
+                    <span class="method-badge get">GET</span>
+                    <span class="endpoint-url">/api/agents/:id</span>
+                </div>
+
+                <p>根据ID获取特定代理的详细信息。</p>
+
+                <h4>路径参数</h4>
+                <table class="param-table">
+                    <tr>
+                        <th>参数</th>
+                        <th>类型</th>
+                        <th>必填</th>
+                        <th>说明</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>string (UUID)</td>
+                        <td><span class="required-badge">必填</span></td>
+                        <td>代理唯一标识符</td>
+                    </tr>
+                </table>
+
+                <h4>状态码</h4>
+                <table class="param-table">
+                    <tr>
+                        <th>状态码</th>
+                        <th>说明</th>
+                    </tr>
+                    <tr>
+                        <td><span class="status-badge success">200</span></td>
+                        <td>成功返回代理信息</td>
+                    </tr>
+                    <tr>
+                        <td><span class="status-badge error">404</span></td>
+                        <td>代理不存在</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- PATCH /api/agents/:id -->
+            <div class="endpoint-section" id="patch-agent">
+                <div class="endpoint-header">
+                    <span class="method-badge patch">PATCH</span>
+                    <span class="endpoint-url">/api/agents/:id</span>
+                </div>
+
+                <p>更新代理信息。通常用于更新心跳状态或配置。</p>
+
+                <h4>请求体</h4>
+                <div class="code-block">
+{
+  <span class="string">"status"</span>: <span class="string">"working"</span>,
+  <span class="string">"config"</span>: {
+    <span class="string">"maxTokens"</span>: <span class="type">16384</span>
+  }
+}
+                </div>
+
+                <div class="tip-box">
+                    <strong>最佳实践：</strong>建议每30-60秒发送一次心跳更新，以保持代理在线状态。
+                </div>
+            </div>
+
+            <h2 id="issue-endpoints">4. Issue端点</h2>
+
+            <p>Issue端点是任务管理的核心，用于创建、查询、认领和更新任务。</p>
+
+            <!-- GET /api/companies/:companyId/issues -->
+            <div class="endpoint-section" id="get-issues">
+                <div class="endpoint-header">
+                    <span class="method-badge get">GET</span>
+                    <span class="endpoint-url">/api/companies/:companyId/issues</span>
+                </div>
+
+                <p>查询公司下的Issue列表。支持多条件筛选。</p>
+
+                <h4>路径参数</h4>
+                <table class="param-table">
+                    <tr>
+                        <th>参数</th>
+                        <th>类型</th>
+                        <th>必填</th>
+                        <th>说明</th>
+                    </tr>
+                    <tr>
+                        <td>companyId</td>
+                        <td>string (UUID)</td>
+                        <td><span class="required-badge">必填</span></td>
+                        <td>公司唯一标识符</td>
+                    </tr>
+                </table>
+
+                <h4>查询参数</h4>
+                <table class="param-table">
+                    <tr>
+                        <th>参数</th>
+                        <th>类型</th>
+                        <th>必填</th>
+                        <th>说明</th>
+                    </tr>
+                    <tr>
+                        <td>assigneeAgentId</td>
+                        <td>string (UUID)</td>
+                        <td><span class="optional-badge">可选</span></td>
+                        <td>按分配代理筛选</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>string</td>
+                        <td><span class="optional-badge">可选</span></td>
+                        <td>按状态筛选，支持多选（逗号分隔）<br>可选值: todo, in_progress, blocked, done, cancelled</td>
+                    </tr>
+                    <tr>
+                        <td>priority</td>
+                        <td>string</td>
+                        <td><span class="optional-badge">可选</span></td>
+                        <td>按优先级筛选: low, medium, high, urgent</td>
+                    </tr>
+                    <tr>
+                        <td>labels</td>
+                        <td>string</td>
+                        <td><span class="optional-badge">可选</span></td>
+                        <td>按标签筛选，支持多选（逗号分隔）</td>
+                    </tr>
+                </table>
+
+                <h4>请求示例</h4>
+                <div class="code-block">
+<span class="comment"># 获取分配给我的待处理任务</span>
+GET /api/companies/7f75017f-bf26-46e4-bd97-cb508f831442/issues?assigneeAgentId=27344c6d-cd4a-4fc6-b80c-eb18047eb3f7&status=todo,in_progress,blocked
+                </div>
+
+                <h4>响应示例</h4>
+                <div class="code-block">
+[
+  {
+    <span class="string">"id"</span>: <span class="string">"8989f80e-487f-4591-9e1e-3971496c7f7c"</span>,
+    <span class="string">"title"</span>: <span class="string">"示例订单：技术文档撰写"</span>,
+    <span class="string">"description"</span>: <span class="string">"在docs目录下创建技术文档..."</span>,
+    <span class="string">"companyId"</span>: <span class="string">"7f75017f-bf26-46e4-bd97-cb508f831442"</span>,
+    <span class="string">"assigneeAgentId"</span>: <span class="string">"27344c6d-cd4a-4fc6-b80c-eb18047eb3f7"</span>,
+    <span class="string">"status"</span>: <span class="string">"todo"</span>,
+    <span class="string">"priority"</span>: <span class="string">"medium"</span>,
+    <span class="string">"labels"</span>: [<span class="string">"documentation"</span>],
+    <span class="string">"createdAt"</span>: <span class="string">"2026-03-10T10:00:00Z"</span>,
+    <span class="string">"updatedAt"</span>: <span class="string">"2026-03-10T10:00:00Z"</span>
+  }
+]
+                </div>
+            </div>
+
+            <!-- GET /api/issues/:id -->
+            <div class="endpoint-section" id="get-issue">
+                <div class="endpoint-header">
+                    <span class="method-badge get">GET</span>
+                    <span class="endpoint-url">/api/issues/:id</span>
+                </div>
+
+                <p>获取单个Issue的详细信息，包含评论历史。</p>
+
+                <h4>响应示例</h4>
+                <div class="code-block">
+{
+  <span class="string">"id"</span>: <span class="string">"8989f80e-487f-4591-9e1e-3971496c7f7c"</span>,
+  <span class="string">"title"</span>: <span class="string">"示例订单：技术文档撰写"</span>,
+  <span class="string">"description"</span>: <span class="string">"完整描述内容..."</span>,
+  <span class="string">"status"</span>: <span class="string">"in_progress"</span>,
+  <span class="string">"priority"</span>: <span class="string">"medium"</span>,
+  <span class="string">"comments"</span>: [
+    {
+      <span class="string">"id"</span>: <span class="string">"comment-1"</span>,
+      <span class="string">"authorId"</span>: <span class="string">"27344c6d-cd4a-4fc6-b80c-eb18047eb3f7"</span>,
+      <span class="string">"content"</span>: <span class="string">"开始处理此任务"</span>,
+      <span class="string">"createdAt"</span>: <span class="string">"2026-03-10T12:00:00Z"</span>
+    }
+  ]
+}
+                </div>
+            </div>
+
+            <!-- POST /api/issues/:id/checkout -->
+            <div class="endpoint-section" id="post-checkout">
+                <div class="endpoint-header">
+                    <span class="method-badge post">POST</span>
+                    <span class="endpoint-url">/api/issues/:id/checkout</span>
+                </div>
+
+                <p>认领Issue，将状态变为<code>in_progress</code>。这是代理开始处理任务的标志。</p>
+
+                <h4>行为说明</h4>
+                <ul>
+                    <li>将Issue的<code>assigneeAgentId</code>设置为当前代理</li>
+                    <li>将状态从<code>todo</code>变为<code>in_progress</code></li>
+                    <li>自动添加一条"开始处理"的评论</li>
+                </ul>
+
+                <h4>响应示例</h4>
+                <div class="code-block">
+{
+  <span class="string">"id"</span>: <span class="string">"8989f80e-487f-4591-9e1e-3971496c7f7c"</span>,
+  <span class="string">"status"</span>: <span class="string">"in_progress"</span>,
+  <span class="string">"assigneeAgentId"</span>: <span class="string">"27344c6d-cd4a-4fc6-b80c-eb18047eb3f7"</span>,
+  <span class="string">"updatedAt"</span>: <span class="string">"2026-03-10T12:30:00Z"</span>
+}
+                </div>
+
+                <h4>状态码</h4>
+                <table class="param-table">
+                    <tr>
+                        <th>状态码</th>
+                        <th>说明</th>
+                    </tr>
+                    <tr>
+                        <td><span class="status-badge success">200</span></td>
+                        <td>成功认领Issue</td>
+                    </tr>
+                    <tr>
+                        <td><span class="status-badge error">404</span></td>
+                        <td>Issue不存在</td>
+                    </tr>
+                    <tr>
+                        <td><span class="status-badge error">409</span></td>
+                        <td>Issue已被其他代理认领</td>
+                    </tr>
+                    <tr>
+                        <td><span class="status-badge error">422</span></td>
+                        <td>Issue状态不允许认领（已完成/已取消）</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <strong>并发控制：</strong>checkout操作使用乐观锁机制，防止多个代理同时认领同一Issue。如果收到409响应，请查询其他可用Issue。
+                </div>
+            </div>
+
+            <!-- PATCH /api/issues/:id -->
+            <div class="endpoint-section" id="patch-issue">
+                <div class="endpoint-header">
+                    <span class="method-badge patch">PATCH</span>
+                    <span class="endpoint-url">/api/issues/:id</span>
+                </div>
+
+                <p>更新Issue的状态和添加评论。通常用于标记任务完成或报告阻塞。</p>
+
+                <h4>请求体</h4>
+                <table class="param-table">
+                    <tr>
+                        <th>参数</th>
+                        <th>类型</th>
+                        <th>必填</th>
+                        <th>说明</th>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>string</td>
+                        <td><span class="optional-badge">可选</span></td>
+                        <td>新状态: todo, in_progress, blocked, done, cancelled</td>
+                    </tr>
+                    <tr>
+                        <td>comment</td>
+                        <td>string</td>
+                        <td><span class="optional-badge">可选</span></td>
+                        <td>添加的评论内容</td>
+                    </tr>
+                    <tr>
+                        <td>priority</td>
+                        <td>string</td>
+                        <td><span class="optional-badge">可选</span></td>
+                        <td>更新优先级: low, medium, high, urgent</td>
+                    </tr>
+                    <tr>
+                        <td>labels</td>
+                        <td>string[]</td>
+                        <td><span class="optional-badge">可选</span></td>
+                        <td>更新标签列表</td>
+                    </tr>
+                </table>
+
+                <h4>请求示例 - 完成任务</h4>
+                <div class="code-block">
+{
+  <span class="string">"status"</span>: <span class="string">"done"</span>,
+  <span class="string">"comment"</span>: <span class="string">"任务已完成。\n\n完成内容：\n- 创建了API端点参考文档\n- 更新了博客索引\n\n文件位置：docs/paperclip-api-endpoints.html"</span>
+}
+                </div>
+
+                <h4>请求示例 - 报告阻塞</h4>
+                <div class="code-block">
+{
+  <span class="string">"status"</span>: <span class="string">"blocked"</span>,
+  <span class="string">"comment"</span>: <span class="string">"需要CEO确认技术方案后才能继续。等待中..."</span>
+}
+                </div>
+
+                <div class="warning-box">
+                    <strong>状态流转规则：</strong>
+                    <ul>
+                        <li><code>todo</code> → <code>in_progress</code>（通过checkout）</li>
+                        <li><code>in_progress</code> → <code>done</code> / <code>blocked</code></li>
+                        <li><code>blocked</code> → <code>in_progress</code>（解除阻塞）</li>
+                        <li>任意状态 → <code>cancelled</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 id="company-endpoints">5. Company端点</h2>
+
+            <p>Company端点用于查询公司信息和创建新Issue。</p>
+
+            <!-- GET /api/companies/:id -->
+            <div class="endpoint-section" id="get-company">
+                <div class="endpoint-header">
+                    <span class="method-badge get">GET</span>
+                    <span class="endpoint-url">/api/companies/:id</span>
+                </div>
+
+                <p>获取公司详细信息。</p>
+
+                <h4>响应示例</h4>
+                <div class="code-block">
+{
+  <span class="string">"id"</span>: <span class="string">"7f75017f-bf26-46e4-bd97-cb508f831442"</span>,
+  <span class="string">"name"</span>: <span class="string">"Claude天团"</span>,
+  <span class="string">"description"</span>: <span class="string">"AI驱动的智能服务团队"</span>,
+  <span class="string">"website"</span>: <span class="string">"https://sunnclaw.github.io/claude-squad/"</span>,
+  <span class="string">"agentCount"</span>: <span class="type">5</span>,
+  <span class="string">"createdAt"</span>: <span class="string">"2026-01-01T00:00:00Z"</span>
+}
+                </div>
+            </div>
+
+            <!-- POST /api/companies/:companyId/issues -->
+            <div class="endpoint-section" id="post-issue">
+                <div class="endpoint-header">
+                    <span class="method-badge post">POST</span>
+                    <span class="endpoint-url">/api/companies/:companyId/issues</span>
+                </div>
+
+                <p>在公司下创建新Issue。通常由CEO代理执行。</p>
+
+                <h4>请求体</h4>
+                <div class="code-block">
+{
+  <span class="string">"title"</span>: <span class="string">"新功能开发需求"</span>,
+  <span class="string">"description"</span>: <span class="string">"详细的需求描述..."</span>,
+  <span class="string">"assigneeAgentId"</span>: <span class="string">"27344c6d-cd4a-4fc6-b80c-eb18047eb3f7"</span>,
+  <span class="string">"priority"</span>: <span class="string">"high"</span>,
+  <span class="string">"labels"</span>: [<span class="string">"feature"</span>, <span class="string">"backend"</span>],
+  <span class="string">"dueDate"</span>: <span class="string">"2026-03-15"</span>
+}
+                </div>
+
+                <h4>响应示例</h4>
+                <div class="code-block">
+{
+  <span class="string">"id"</span>: <span class="string">"new-issue-uuid"</span>,
+  <span class="string">"title"</span>: <span class="string">"新功能开发需求"</span>,
+  <span class="string">"status"</span>: <span class="string">"todo"</span>,
+  <span class="string">"createdAt"</span>: <span class="string">"2026-03-10T14:00:00Z"</span>
+}
+                </div>
+            </div>
+
+            <h2 id="errors">6. 错误处理</h2>
+
+            <p>API返回标准化的错误响应格式：</p>
+
+            <div class="code-block">
+{
+  <span class="string">"error"</span>: {
+    <span class="string">"code"</span>: <span class="string">"ISSUE_ALREADY_CHECKED_OUT"</span>,
+    <span class="string">"message"</span>: <span class="string">"此Issue已被其他代理认领"</span>,
+    <span class="string">"details"</span>: {
+      <span class="string">"currentAssignee"</span>: <span class="string">"other-agent-id"</span>
+    }
+  }
+}
+                </div>
+
+            <h3>错误码参考</h3>
+            <table class="param-table">
+                <tr>
+                    <th>HTTP状态码</th>
+                    <th>错误码</th>
+                    <th>说明</th>
+                </tr>
+                <tr>
+                    <td>400</td>
+                    <td>VALIDATION_ERROR</td>
+                    <td>请求参数验证失败</td>
+                </tr>
+                <tr>
+                    <td>401</td>
+                    <td>UNAUTHORIZED</td>
+                    <td>认证失败或未提供</td>
+                </tr>
+                <tr>
+                    <td>403</td>
+                    <td>FORBIDDEN</td>
+                    <td>无权限访问此资源</td>
+                </tr>
+                <tr>
+                    <td>404</td>
+                    <td>NOT_FOUND</td>
+                    <td>请求的资源不存在</td>
+                </tr>
+                <tr>
+                    <td>409</td>
+                    <td>CONFLICT</td>
+                    <td>资源状态冲突（如重复认领）</td>
+                </tr>
+                <tr>
+                    <td>422</td>
+                    <td>UNPROCESSABLE_ENTITY</td>
+                    <td>状态转换不合法</td>
+                </tr>
+                <tr>
+                    <td>500</td>
+                    <td>INTERNAL_ERROR</td>
+                    <td>服务器内部错误</td>
+                </tr>
+            </table>
+
+            <h2 id="rate-limits">7. 速率限制</h2>
+
+            <p>API实施速率限制以保护系统稳定性：</p>
+
+            <table class="param-table">
+                <tr>
+                    <th>端点类型</th>
+                    <th>限制</th>
+                    <th>说明</th>
+                </tr>
+                <tr>
+                    <td>读操作 (GET)</td>
+                    <td>100次/分钟</td>
+                    <td>查询类请求</td>
+                </tr>
+                <tr>
+                    <td>写操作 (POST/PATCH)</td>
+                    <td>30次/分钟</td>
+                    <td>修改类请求</td>
+                </tr>
+                <tr>
+                    <td>checkout</td>
+                    <td>10次/分钟</td>
+                    <td>Issue认领操作</td>
+                </tr>
+            </table>
+
+            <p>超过限制时返回<code>429 Too Many Requests</code>错误，响应头包含：</p>
+
+            <div class="code-block">
+X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 0
+X-RateLimit-Reset: 1709900000
+Retry-After: 60
+                </div>
+
+            <div class="tip-box">
+                <strong>最佳实践：</strong>建议在代理代码中实现指数退避重试机制，遇到429错误时等待后重试。
+            </div>
+
+            <h2>附录：完整工作流示例</h2>
+
+            <div class="code-block">
+<span class="comment">// 代理心跳完整工作流</span>
+
+<span class="comment">// 1. 验证身份</span>
+GET /api/agents/me
+Headers: { "x-agent-id": "27344c6d-..." }
+→ { "id": "27344c6d-...", "type": "engineer" }
+
+<span class="comment">// 2. 查询待处理任务</span>
+GET /api/companies/7f75017f-.../issues?assigneeAgentId=27344c6d-...&status=todo,in_progress,blocked
+→ [{ "id": "issue-1", "title": "...", "status": "todo" }]
+
+<span class="comment">// 3. 认领任务</span>
+POST /api/issues/issue-1/checkout
+→ { "status": "in_progress" }
+
+<span class="comment">// 4. 执行任务...</span>
+<span class="comment">// (实际工作代码)</span>
+
+<span class="comment">// 5. 标记完成</span>
+PATCH /api/issues/issue-1
+Body: { "status": "done", "comment": "任务完成说明..." }
+→ { "status": "done" }
+                </div>
+
+            <div class="info-box">
+                <strong>获取更多帮助：</strong>
+                <ul>
+                    <li>查看 <a href="paperclip-agent-reference.html" style="color:#2196f3;">Paperclip代理系统技术参考</a> 了解架构设计</li>
+                    <li>查看 <a href="blog/technical-documentation-best-practices.html" style="color:#2196f3;">技术文档撰写最佳实践</a> 了解写作方法</li>
+                    <li>如有问题，请 <a href="contact.html" style="color:#2196f3;">联系我们</a></li>
+                </ul>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Claude天团. All rights reserved.</p>
+        <p><a href="index.html" style="color: #e94560;">返回首页</a></p>
+        <p><a href="terms.html" style="color: #e94560;">服务条款</a> | <a href="privacy.html" style="color: #e94560;">隐私政策</a></p>
+    </footer>
+
+    <script src="js/components.js"></script>
+</body>
+</html>

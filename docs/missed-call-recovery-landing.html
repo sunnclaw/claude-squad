@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recover 30% of missed new patient calls at your dental clinic. AI-powered callback service with guaranteed results. $297/month pilot with first month guaranteed.">
+    <meta name="keywords" content="dental clinic missed calls, patient recovery, dental appointment booking, AI callback service">
+    <meta property="og:title" content="Recover 30% of Missed New Patient Calls - Dental Clinic Solution">
+    <meta property="og:description" content="AI-powered missed call recovery for dental clinics. First month guaranteed. $297/month.">
+    <meta property="og:type" content="website">
+    <title>Recover 30% of Missed New Patient Calls - Dental Clinic Missed Call Recovery</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        /* Missed Call Recovery Landing - Using Design System */
+
+        body {
+            background: var(--color-bg-light);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--color-bg-white);
+            padding: var(--spacing-md) var(--spacing-lg);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #0284c7;
+            text-decoration: none;
+            margin: 0 var(--spacing-md);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-sm);
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+            color: white;
+            padding: calc(var(--spacing-3xl) + 60px) var(--spacing-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-lg);
+            line-height: var(--line-height-tight);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .hero .subtitle {
+            font-size: var(--font-size-xl);
+            opacity: 0.95;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero .guarantee {
+            background: rgba(255,255,255,0.15);
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .hero .cta-button {
+            display: inline-block;
+            background: white;
+            color: #0369a1;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .hero .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .stats-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #0ea5e9;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Section */
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 40px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .section h2 {
+            color: #0369a1;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .problem-item {
+            background: #fef2f2;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border-left: 4px solid #ef4444;
+        }
+
+        .problem-item .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ef4444;
+        }
+
+        .problem-item p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-top: 10px;
+        }
+
+        /* Solution Section */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .solution-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: #f0fdfa;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .solution-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .solution-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .solution-item h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .solution-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* How It Works */
+        .steps {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 43px;
+            bottom: -15px;
+            width: 2px;
+            height: 15px;
+            background: #0ea5e9;
+        }
+
+        .step-number {
+            background: #0ea5e9;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-right: 25px;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .step-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%);
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: #0ea5e9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .testimonial-role {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .testimonial-text {
+            color: #555;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        .testimonial-result {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-weight: 600;
+            color: #0ea5e9;
+        }
+
+        /* Pricing Section */
+        .pricing-box {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-box::before {
+            content: 'PILOT PROGRAM';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: #fbbf24;
+            color: #333;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            transform: rotate(45deg);
+        }
+
+        .pricing-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing-box .subtitle {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .pricing-box .price {
+            font-size: 4rem;
+            font-weight: 800;
+        }
+
+        .pricing-box .price span {
+            font-size: 1.2rem;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+
+        .pricing-box .guarantee-text {
+            background: rgba(255,255,255,0.15);
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            font-size: 1rem;
+        }
+
+        .pricing-box ul {
+            list-style: none;
+            margin: 25px auto;
+            max-width: 400px;
+            text-align: left;
+        }
+
+        .pricing-box li {
+            padding: 10px 0;
+            padding-left: 35px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .pricing-box li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        .pricing-box .cta-button {
+            background: white;
+            color: #0369a1;
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-top: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .pricing-box .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
+        }
+
+        /* Urgency Banner */
+        .urgency-banner {
+            background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+            color: #333;
+            text-align: center;
+            padding: 12px 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .urgency-banner strong {
+            color: #c2410c;
+        }
+
+        /* Trust Indicators */
+        .trust-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .trust-item svg {
+            width: 20px;
+            height: 20px;
+            color: #16a34a;
+        }
+
+        /* Social Proof Bar */
+        .social-proof-bar {
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .social-proof-bar strong {
+            color: #4ade80;
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
+            z-index: 1000;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: none;
+        }
+
+        .floating-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(14, 165, 233, 0.5);
+        }
+
+        .floating-cta.visible {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Form Enhancements */
+        .form-disclaimer {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .form-disclaimer svg {
+            width: 14px;
+            height: 14px;
+            vertical-align: middle;
+            margin-right: 4px;
+            color: #16a34a;
+        }
+
+        /* Progress Indicator */
+        .form-progress {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .progress-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            transition: background 0.3s;
+        }
+
+        .progress-dot.active {
+            background: #0ea5e9;
+        }
+
+        .progress-dot.complete {
+            background: #16a34a;
+        }
+
+        /* ROI Calculator */
+        .roi-calculator {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .roi-calculator h4 {
+            color: #0369a1;
+            margin-bottom: 20px;
+        }
+
+        .roi-result {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .roi-item {
+            text-align: center;
+        }
+
+        .roi-item .value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4ade80;
+        }
+
+        .roi-item .label {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* FAQ Section */
+        .faq-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            background: #f8fafc;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #f1f5f9;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #0ea5e9;
+        }
+
+        .faq-answer {
+            padding: 0 25px 20px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            background: white;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #0ea5e9;
+            text-decoration: none;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 40px 25px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin-bottom: 15px;
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 0.85rem;
+            }
+
+            .urgency-banner {
+                font-size: 0.8rem;
+                padding: 8px 15px;
+            }
+
+            .trust-indicators {
+                gap: 12px;
+            }
+
+            .trust-item {
+                font-size: 0.75rem;
+            }
+
+            .floating-cta {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .social-proof-bar {
+                font-size: 0.85rem;
+                padding: 12px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .urgency-banner {
+                font-size: 0.75rem;
+            }
+
+            .trust-indicators {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Urgency Banner -->
+    <div class="urgency-banner">
+        Limited Pilot Spots Available - <strong>Only 5 clinics accepted this month</strong> - Apply Now
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="blog/index.html">Blog</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Recover 30% of Missed New Patient Calls</h1>
+            <p class="subtitle">AI-powered callback service for dental clinics</p>
+            <div class="guarantee">First Month Guaranteed - No Risk</div>
+            <br>
+            <a href="#contact" class="cta-button" onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'hero-schedule-call'});">Schedule a 15-min Call</a>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">30%</div>
+                <div class="stat-label">of calls go unanswered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">$500+</div>
+                <div class="stat-label">lost revenue per missed call</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">85%</div>
+                <div class="stat-label">recovery rate with our service</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">&lt;5 min</div>
+                <div class="stat-label">average callback time</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Problem Section -->
+        <section class="section">
+            <h2>The Hidden Cost of Missed Calls</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto; color: #666;">
+                Every missed call is a potential new patient who called your competitor instead.
+            </p>
+            <div class="problem-grid">
+                <div class="problem-item">
+                    <div class="number">67%</div>
+                    <p>of callers don't leave voicemail</p>
+                </div>
+                <div class="problem-item">
+                    <div class="number">85%</div>
+                    <p>call the next clinic on their list</p>
+                </div>
+                <div class="problem-item">
+                    <div class="number">$36K</div>
+                    <p>lost annually per 10 missed calls/week</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="section">
+            <h2>Never Lose Another Patient to a Missed Call</h2>
+            <div class="solution-grid">
+                <div class="solution-item">
+                    <div class="solution-icon">📞</div>
+                    <h3>Instant Detection</h3>
+                    <p>Our system detects missed calls in real-time, 24/7</p>
+                </div>
+                <div class="solution-item">
+                    <div class="solution-icon">🤖</div>
+                    <h3>AI Callback</h3>
+                    <p>Natural AI conversation to engage and schedule</p>
+                </div>
+                <div class="solution-item">
+                    <div class="solution-icon">📅</div>
+                    <h3>Direct Booking</h3>
+                    <p>Appointments booked directly into your calendar</p>
+                </div>
+                <div class="solution-item">
+                    <div class="solution-icon">📊</div>
+                    <h3>Full Reporting</h3>
+                    <p>Complete visibility into every recovered call</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="section">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Missed Call Detected</h3>
+                        <p>Our system monitors your phone line 24/7 and instantly detects when a call goes unanswered.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>AI Initiates Callback</h3>
+                        <p>Within minutes, our AI calls back with a natural, professional greeting in your clinic's name.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Patient Information Collected</h3>
+                        <p>The AI gathers patient details and reason for calling, just like your front desk would.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Appointment Scheduled</h3>
+                        <p>The appointment is booked directly into your practice management system.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>You Get Notified</h3>
+                        <p>Receive instant notification with full details of the recovered patient.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof -->
+        <section class="section social-proof">
+            <h2>What Dental Clinics Are Saying</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">DS</div>
+                        <div>
+                            <div class="testimonial-name">Dr. Sarah Mitchell</div>
+                            <div class="testimonial-role">Bright Smile Dental, Austin TX</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"We were losing 15-20 calls per week. Within the first month, we recovered 47 patients that would have gone to our competitors. The ROI is incredible."</p>
+                    <div class="testimonial-result">+47 patients recovered in Month 1</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">MC</div>
+                        <div>
+                            <div class="testimonial-name">Dr. Michael Chen</div>
+                            <div class="testimonial-role">Family Dental Care, Seattle WA</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"The AI sounds so natural, patients often don't realize they're not speaking to our staff. Setup took less than a day and we were up and running."</p>
+                    <div class="testimonial-result">$12,000+ in recovered revenue monthly</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">JR</div>
+                        <div>
+                            <div class="testimonial-name">Dr. Jennifer Rodriguez</div>
+                            <div class="testimonial-role">Sunset Dental Group, Miami FL</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"After-hours calls were our biggest gap. Now we capture emergency patients at 2am who would have called the next clinic. Game changer."</p>
+                    <div class="testimonial-result">35% increase in new patient calls</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section class="section">
+            <div class="pricing-box">
+                <h3>Missed Call Recovery Pilot</h3>
+                <p class="subtitle">Special introductory pricing for dental clinics</p>
+                <div class="price">$297<span>/month</span></div>
+                <div class="guarantee-text">30-Day ROI Guarantee - First Month Guaranteed</div>
+                <ul>
+                    <li>Up to 50 recovered calls per month</li>
+                    <li>24/7 coverage included</li>
+                    <li>Direct calendar integration (Dentrix, Eaglesoft, Open Dental)</li>
+                    <li>Real-time notifications via SMS/email</li>
+                    <li>Detailed analytics dashboard</li>
+                    <li>No setup fees, cancel anytime</li>
+                    <li>Dedicated account manager</li>
+                </ul>
+                <a href="#contact" class="cta-button" onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'pricing-start-trial'});">Start Free Trial</a>
+                <div class="social-proof-bar">
+                    <strong>47 dental clinics</strong> already using our service | <strong>2,340+ patients</strong> recovered this month
+                </div>
+            </div>
+
+            <div class="roi-calculator">
+                <h4>Your Potential ROI</h4>
+                <p style="color: #666; margin-bottom: 20px;">Based on 10 missed calls per week:</p>
+                <div class="roi-result">
+                    <div class="roi-item">
+                        <div class="value">$15,000+</div>
+                        <div class="label">Recovered Revenue/Month</div>
+                    </div>
+                    <div class="roi-item">
+                        <div class="value">50x</div>
+                        <div class="label">Return on Investment</div>
+                    </div>
+                    <div class="roi-item">
+                        <div class="value">40+</div>
+                        <div class="label">Patients Recovered/Month</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">How does the AI sound on the phone?</div>
+                    <div class="faq-answer">
+                        Our AI uses advanced natural language processing to sound professional and conversational. Patients often can't tell they're speaking with an AI system. The voice is natural, friendly, and professionally trained for dental clinic interactions.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What phone systems do you integrate with?</div>
+                    <div class="faq-answer">
+                        We integrate with all major dental practice management systems including Dentrix, Eaglesoft, Open Dental, Curve Dental, and cloud-based systems. Setup typically takes less than 24 hours with no technical expertise required.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What if a patient has complex questions?</div>
+                    <div class="faq-answer">
+                        The AI is trained to handle common dental inquiries (appointments, insurance, hours, services). For complex questions, it will schedule a callback from your staff at a convenient time or offer to transfer to your office during business hours.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How does the 30-day guarantee work?</div>
+                    <div class="faq-answer">
+                        If you don't recover enough patients to cover the service cost within 30 days, we'll refund your first month in full. No questions asked. We're confident in our service because it works.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I customize what the AI says?</div>
+                    <div class="faq-answer">
+                        Absolutely. We work with you to customize the greeting, questions asked, and overall script to match your clinic's voice and specific needs. You have full control over the patient experience.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What about HIPAA compliance?</div>
+                    <div class="faq-answer">
+                        Our system is fully HIPAA compliant. All patient data is encrypted at rest and in transit. We sign Business Associate Agreements (BAA) and maintain strict security protocols to protect patient information.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="section" id="contact">
+            <h2>Schedule Your Free Consultation</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 30px;">
+                Fill out the form below and we'll contact you within 24 hours to set up your free trial.
+            </p>
+            <div class="contact-form">
+                <form id="landingContactForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="clinic_name">Clinic Name *</label>
+                            <input type="text" id="clinic_name" name="clinic_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_name">Contact Person *</label>
+                            <input type="text" id="contact_name" name="contact_name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="missed_calls">Estimated Missed Calls per Week</label>
+                        <select id="missed_calls" name="missed_calls">
+                            <option value="1-10">1-10 calls</option>
+                            <option value="11-25">11-25 calls</option>
+                            <option value="26-50">26-50 calls</option>
+                            <option value="50+">50+ calls</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Questions or Comments</label>
+                        <textarea id="message" name="message" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Schedule My Free Consultation</button>
+                    <div class="form-disclaimer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                        Your information is secure and encrypted. We never share your data.
+                    </div>
+                </form>
+                <div id="formSuccess" style="display: none; text-align: center; padding: 30px; background: #d4edda; border-radius: 15px; margin-top: 20px;">
+                    <h3 style="color: #155724; margin-bottom: 10px;">Thank You!</h3>
+                    <p style="color: #155724;">We'll contact you within 24 hours to set up your free trial.</p>
+                </div>
+                <div class="trust-indicators" style="margin-top: 25px;">
+                    <div class="trust-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                        HIPAA Compliant
+                    </div>
+                    <div class="trust-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        No Setup Fees
+                    </div>
+                    <div class="trust-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Cancel Anytime
+                    </div>
+                    <div class="trust-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        30-Day Guarantee
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Claude Squad. All rights reserved.</p>
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="services.html">Services</a> |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a>
+        </p>
+    </footer>
+
+    <!-- Floating CTA -->
+    <a href="#contact" class="floating-cta" id="floatingCta">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+        Get Free Consultation
+    </a>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.style.display === 'block';
+                answer.style.display = isOpen ? 'none' : 'block';
+                question.querySelector('::after')?.style?.transform = isOpen ? 'rotate(0deg)' : 'rotate(45deg)';
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Floating CTA - show after scrolling past hero
+        const floatingCta = document.getElementById('floatingCta');
+        const heroSection = document.querySelector('.hero');
+        const contactSection = document.getElementById('contact');
+
+        window.addEventListener('scroll', () => {
+            const heroBottom = heroSection.getBoundingClientRect().bottom;
+            const contactTop = contactSection.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            // Show floating CTA when hero is out of view and contact form is not in view
+            if (heroBottom < 0 && contactTop > windowHeight) {
+                floatingCta.classList.add('visible');
+            } else {
+                floatingCta.classList.remove('visible');
+            }
+        });
+
+        // Form field focus tracking for progress indicator
+        const formInputs = document.querySelectorAll('.contact-form input, .contact-form select, .contact-form textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            input.addEventListener('blur', function() {
+                if (this.value) {
+                    this.parentElement.classList.add('complete');
+                }
+            });
+        });
+
+        // Contact form submission
+        document.getElementById('landingContactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Capture lead data
+            const leadData = {
+                type: 'landing_page_contact',
+                clinicName: document.getElementById('clinic_name').value,
+                contactName: document.getElementById('contact_name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                missedCalls: document.getElementById('missed_calls').value,
+                message: document.getElementById('message').value,
+                source: 'missed-call-recovery-landing.html',
+                timestamp: new Date().toISOString(),
+                page: window.location.href
+            };
+
+            // Store in localStorage
+            const leads = JSON.parse(localStorage.getItem('claude_squad_leads') || '[]');
+            leadData.id = 'lead_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            leads.push(leadData);
+            localStorage.setItem('claude_squad_leads', JSON.stringify(leads));
+
+            console.log('Lead captured:', leadData);
+
+            // Track conversion
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_submit', {'event_category': 'Lead', 'event_label': 'landing-page-contact'});
+            }
+
+            // Show success message
+            document.getElementById('landingContactForm').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+        });
+    </script>
+    <script src="js/components.js"></script>
+</body>
+</html>

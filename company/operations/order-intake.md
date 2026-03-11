@@ -1,105 +1,101 @@
-# Claude天团 - 订单处理流程
+# Order Intake
 
-## 订单接收流程
+Last updated: 2026-03-10
+Owner: CTO
 
-### 1. 订单创建
-客户通过以下方式提交订单：
-- Paperclip Issue (内部)
-- 邮件
-- 在线表单
+## Purpose
 
-### 2. 订单确认
-CEO或指定代理确认订单：
-- 确认服务类型
-- 确认价格和时间线
-- 发送确认通知
+Move from inbound request to clear quote with minimum delay and minimum custom scoping.
 
-### 3. 执行阶段
-根据服务类型分配执行：
-- 内容创作 → 内容专员代理
-- 代码审查 → 工程师代理
-- 研究报告 → 分析师代理
-- AI配置 → 技术代理
+## Intake Rules
 
-### 4. 质量检查
-CEO或指定代理审核：
-- 检查质量标准
-- 确认满足需求
-- 必要时要求修改
+- standard offers first
+- one clarifying round maximum before quoting
+- if the request does not fit a standard offer, either re-scope or decline
+- no execution starts before payment policy is clear
 
-### 5. 交付与收款
-- 发送最终交付物
-- 确认付款
-- 关闭订单
+## Intake Flow
 
----
+### 1. Log the lead
 
-## 订单模板
+Record in the dashboard:
+- lead ID
+- name
+- source
+- likely offer
+- next action
+- due date
 
-### 服务订单
+### 2. Qualify the request
 
+Capture only what affects price and delivery:
+- desired outcome
+- deliverable type
+- deadline
+- scope variable
+- language or technical complexity
+
+### 3. Match to an offer
+
+Choose one:
+- content creation
+- code review
+- research report
+
+If none fit, ask:
+- can this be reduced to a paid discovery or a smaller fixed-scope job?
+
+### 4. Prepare the quote
+
+Every quote must specify:
+- deliverables
+- turnaround
+- revision limit
+- price
+- payment trigger
+- what the customer must provide
+
+### 5. Ask for payment
+
+Use the payment runbook immediately after the quote is accepted or when the quote itself includes the payment ask.
+
+## Intake Form
+
+```md
+# Intake Summary
+
+Lead ID:
+Date:
+Source:
+
+Customer:
+Offer:
+
+Outcome requested:
+
+Scope driver:
+
+Deadline:
+
+Best-fit package:
+
+Risks or unknowns:
+
+Recommended quote:
+
+Payment policy:
 ```
-订单编号: ORD-YYYYMMDD-XXX
-客户信息:
-  - 名称:
-  - 联系方式:
-  - 邮箱:
 
-服务详情:
-  - 服务类型: [内容创作/代码审查/研究报告/AI配置]
-  - 具体需求:
-  - 字数/文件数/复杂度:
-  - 特殊要求:
+## Standard Decline Rule
 
-时间要求:
-  - 期望交付日期:
-  - 是否加急:
+Decline or re-scope if the request has any of these traits:
+- open-ended consulting with no deliverable
+- unclear decision maker
+- delivery depends on unpaid discovery work
+- customer requests platform building without proof of budget
 
-费用:
-  - 基础费用: ¥
-  - 加急费用: ¥
-  - 总计: ¥
+## SLA
 
-状态: [待确认/已确认/执行中/审核中/已完成]
-
-付款状态: [待支付/已付定金/已付全款]
-```
-
----
-
-## 定价表
-
-| 服务 | 基础价格 | 加急费(24h) | 复杂度系数 |
-|------|----------|-------------|------------|
-| 内容创作(千字) | ¥100 | +50% | 1.0-2.0 |
-| 代码审查(文件) | ¥50 | +50% | 1.0-2.0 |
-| 研究报告(主题) | ¥200 | +100% | 1.0-3.0 |
-| AI配置(套) | ¥500 | N/A | 1.0-5.0 |
-
----
-
-## 质量标准
-
-### 内容创作
-- [ ] 语法正确，无错别字
-- [ ] 结构清晰，逻辑连贯
-- [ ] 符合客户需求
-- [ ] 原创性检查通过
-
-### 代码审查
-- [ ] 安全漏洞检查
-- [ ] 性能问题识别
-- [ ] 代码规范建议
-- [ ] 测试覆盖建议
-
-### 研究报告
-- [ ] 数据来源可靠
-- [ ] 分析逻辑清晰
-- [ ] 结论有据可依
-- [ ] 建议可执行
-
-### AI配置
-- [ ] 功能正常运行
-- [ ] 文档完整
-- [ ] 测试通过
-- [ ] 用户培训完成
+- lead logged within 24 hours
+- qualification completed within 24 hours
+- standard-offer quote sent within 30 minutes after qualification
