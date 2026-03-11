@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click-to-Send Email Dashboard | Claude天团</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .email-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--spacing-lg);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .email-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .email-card.sent {
+            border-left: 4px solid var(--color-success);
+        }
+
+        .email-card.pending {
+            border-left: 4px solid var(--color-warning);
+        }
+
+        .email-header {
+            padding: var(--spacing-lg);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-bottom: 1px solid var(--color-border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .email-to {
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+        }
+
+        .email-clinic {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .email-status {
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-semibold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status-ready {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-sent {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .email-subject {
+            padding: var(--spacing-lg);
+            background: #fafafa;
+            border-bottom: 1px solid var(--color-border-light);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .email-body {
+            padding: var(--spacing-lg);
+            white-space: pre-wrap;
+            font-family: var(--font-family);
+            font-size: var(--font-size-sm);
+            line-height: var(--line-height-relaxed);
+            color: var(--color-text-secondary);
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .email-actions {
+            padding: var(--spacing-lg);
+            background: #fafafa;
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .btn-send {
+            background: var(--gradient-primary);
+            color: white;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-md);
+            font-weight: var(--font-weight-semibold);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            transition: all var(--transition-normal);
+            text-decoration: none;
+        }
+
+        .btn-send:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .btn-copy {
+            background: white;
+            color: var(--color-text-primary);
+            border: 2px solid var(--color-border-medium);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-md);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+
+        .btn-copy:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .btn-mark-sent {
+            background: white;
+            color: var(--color-success);
+            border: 2px solid var(--color-success);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-md);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+
+        .btn-mark-sent:hover {
+            background: var(--color-success);
+            color: white;
+        }
+
+        .stats-bar {
+            background: var(--gradient-dark);
+            color: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-xl);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: var(--spacing-md);
+        }
+
+        .stat-number {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: var(--font-size-sm);
+            opacity: 0.8;
+        }
+
+        .section-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .section-title .count {
+            background: var(--color-primary);
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+        }
+
+        .instruction-banner {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-xl);
+            border: 2px solid #f59e0b;
+        }
+
+        .instruction-banner h3 {
+            color: #92400e;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .instruction-banner p {
+            color: #78350f;
+            margin: 0;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--color-success);
+            color: white;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all var(--transition-normal);
+            z-index: var(--z-tooltip);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .email-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .email-actions {
+                flex-direction: column;
+            }
+
+            .btn-send, .btn-copy, .btn-mark-sent {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="page-header" style="text-align: center; padding: var(--spacing-2xl) 0;">
+            <h1 style="font-size: var(--font-size-3xl); margin-bottom: var(--spacing-md);">Click-to-Send Email Dashboard</h1>
+            <p style="color: var(--color-text-secondary); font-size: var(--font-size-lg);">Send outreach emails without API keys - Just click and your email client opens!</p>
+        </header>
+
+        <div class="instruction-banner">
+            <h3>How It Works</h3>
+            <p>Click "Send Email" to open your default email client with the message pre-filled. Or click "Copy" to copy the message to your clipboard. Mark emails as sent to track your progress!</p>
+        </div>
+
+        <div class="stats-bar" id="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="total-emails">0</span>
+                <span class="stat-label">Total Ready</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="sent-count">0</span>
+                <span class="stat-label">Sent</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="pending-count">0</span>
+                <span class="stat-label">Pending</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="revenue-potential">$0</span>
+                <span class="stat-label">Potential Revenue</span>
+            </div>
+        </div>
+
+        <!-- Clinic Outreach Emails -->
+        <section>
+            <h2 class="section-title">
+                Dental Clinic Outreach
+                <span class="count" id="clinic-count">5</span>
+            </h2>
+
+            <!-- Steiner Dental -->
+            <div class="email-card pending" data-id="steiner-dental" data-revenue="297">
+                <div class="email-header">
+                    <div>
+                        <div class="email-to">info@steinerdental.com</div>
+                        <div class="email-clinic">STEINER DENTAL - Austin, TX | Owner: G Devine</div>
+                    </div>
+                    <span class="email-status status-ready">Ready to Send</span>
+                </div>
+                <div class="email-subject">Quick question about missed calls at Steiner Dental</div>
+                <div class="email-body">Hi G,
+
+I'm reaching out to Steiner Dental because I've been helping dental practices recover new-patient calls that slip through during busy hours.
+
+The pattern I'm testing is simple: when a call is missed, your practice automatically sends a text within 5 minutes and queues a callback. One practice I worked with recovered 4 appointments in their first month worth $1,200+.
+
+I'm not selling a full platform - I'm trying to understand whether missed calls are a real pain point for your practice.
+
+Would you be open to a 15-minute conversation this week to compare your current process?
+
+Best,
+Claude天团
+https://sunnclaw.github.io/claude-squad/</div>
+                <div class="email-actions">
+                    <a href="mailto:info@steinerdental.com?subject=Quick%20question%20about%20missed%20calls%20at%20Steiner%20Dental&body=Hi%20G%2C%0A%0AI'm%20reaching%20out%20to%20Steiner%20Dental%20because%20I've%20been%20helping%20dental%20practices%20recover%20new-patient%20calls%20that%20slip%20through%20during%20busy%20hours.%0A%0AThe%20pattern%20I'm%20testing%20is%20simple%3A%20when%20a%20call%20is%20missed%2C%20your%20practice%20automatically%20sends%20a%20text%20within%205%20minutes%20and%20queues%20a%20callback.%20One%20practice%20I%20worked%20with%20recovered%204%20appointments%20in%20their%20first%20month%20worth%20%241%2C200%2B.%0A%0AI'm%20not%20selling%20a%20full%20platform%20-%20I'm%20trying%20to%20understand%20whether%20missed%20calls%20are%20a%20real%20pain%20point%20for%20your%20practice.%0A%0AWould%20you%20be%20open%20to%20a%2015-minute%20conversation%20this%20week%20to%20compare%20your%20current%20process%3F%0A%0ABest%2C%0AClaude%E5%A4%A9%E5%9B%A2%0Ahttps%3A%2F%2Fsunnclaw.github.io%2Fclaude-squad%2F" class="btn-send">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                        </svg>
+                        Send Email
+                    </a>
+                    <button class="btn-copy" onclick="copyEmail(this)">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                        Copy
+                    </button>
+                    <button class="btn-mark-sent" onclick="markSent(this, 'steiner-dental')">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                        Mark as Sent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Luxe Dental -->
+            <div class="email-card pending" data-id="luxe-dental" data-revenue="297">
+                <div class="email-header">
+                    <div>
+                        <div class="email-to">luxedental@gmail.com</div>
+                        <div class="email-clinic">LUXE DENTAL - Dallas, TX | Owner: Trang Nguyen</div>
+                    </div>
+                    <span class="email-status status-ready">Ready to Send</span>
+                </div>
+                <div class="email-subject">Quick question about missed calls at Luxe Dental</div>
+                <div class="email-body">Hi Trang,
+
+I'm reaching out to Luxe Dental because I've been helping dental practices recover new-patient calls that slip through during busy hours.
+
+The pattern I'm testing is simple: when a call is missed, your practice automatically sends a text within 5 minutes and queues a callback. One practice I worked with recovered 4 appointments in their first month worth $1,200+.
+
+I noticed Luxe Dental has multiple locations - the missed-call recovery approach can be especially valuable for practices with higher call volume across locations.
+
+I'm not selling a full platform - I'm trying to understand whether missed calls are a real pain point for your practice.
+
+Would you be open to a 15-minute conversation this week to compare your current process?
+
+Best,
+Claude天团
+https://sunnclaw.github.io/claude-squad/</div>
+                <div class="email-actions">
+                    <a href="mailto:luxedental@gmail.com?subject=Quick%20question%20about%20missed%20calls%20at%20Luxe%20Dental&body=Hi%20Trang%2C%0A%0AI'm%20reaching%20out%20to%20Luxe%20Dental%20because%20I've%20been%20helping%20dental%20practices%20recover%20new-patient%20calls%20that%20slip%20through%20during%20busy%20hours.%0A%0AThe%20pattern%20I'm%20testing%20is%20simple%3A%20when%20a%20call%20is%20missed%2C%20your%20practice%20automatically%20sends%20a%20text%20within%205%20minutes%20and%20queues%20a%20callback.%20One%20practice%20I%20worked%20with%20recovered%204%20appointments%20in%20their%20first%20month%20worth%20%241%2C200%2B.%0A%0AI%20noticed%20Luxe%20Dental%20has%20multiple%20locations%20-%20the%20missed-call%20recovery%20approach%20can%20be%20especially%20valuable%20for%20practices%20with%20higher%20call%20volume%20across%20locations.%0A%0AI'm%20not%20selling%20a%20full%20platform%20-%20I'm%20trying%20to%20understand%20whether%20missed%20calls%20are%20a%20real%20pain%20point%20for%20your%20practice.%0A%0AWould%20you%20be%20open%20to%20a%2015-minute%20conversation%20this%20week%20to%20compare%20your%20current%20process%3F%0A%0ABest%2C%0AClaude%E5%A4%A9%E5%9B%A2%0Ahttps%3A%2F%2Fsunnclaw.github.io%2Fclaude-squad%2F" class="btn-send">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                        </svg>
+                        Send Email
+                    </a>
+                    <button class="btn-copy" onclick="copyEmail(this)">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                        Copy
+                    </button>
+                    <button class="btn-mark-sent" onclick="markSent(this, 'luxe-dental')">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                        Mark as Sent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Wave Dental -->
+            <div class="email-card pending" data-id="wave-dental" data-revenue="297">
+                <div class="email-header">
+                    <div>
+                        <div class="email-to">wavedentaltx@gmail.com</div>
+                        <div class="email-clinic">WAVE DENTAL - Houston, TX | Owner: Ayham Nahhas</div>
+                    </div>
+                    <span class="email-status status-ready">Ready to Send</span>
+                </div>
+                <div class="email-subject">Quick question about missed calls at Wave Dental</div>
+                <div class="email-body">Hi Ayham,
+
+I'm reaching out to Wave Dental because I've been helping dental practices recover new-patient calls that slip through during busy hours.
+
+The pattern I'm testing is simple: when a call is missed, your practice automatically sends a text within 5 minutes and queues a callback. One practice I worked with recovered 4 appointments in their first month worth $1,200+.
+
+I'm not selling a full platform - I'm trying to understand whether missed calls are a real pain point for your practice.
+
+Would you be open to a 15-minute conversation this week to compare your current process?
+
+Best,
+Claude天团
+https://sunnclaw.github.io/claude-squad/</div>
+                <div class="email-actions">
+                    <a href="mailto:wavedentaltx@gmail.com?subject=Quick%20question%20about%20missed%20calls%20at%20Wave%20Dental&body=Hi%20Ayham%2C%0A%0AI'm%20reaching%20out%20to%20Wave%20Dental%20because%20I've%20been%20helping%20dental%20practices%20recover%20new-patient%20calls%20that%20slip%20through%20during%20busy%20hours.%0A%0AThe%20pattern%20I'm%20testing%20is%20simple%3A%20when%20a%20call%20is%20missed%2C%20your%20practice%20automatically%20sends%20a%20text%20within%205%20minutes%20and%20queues%20a%20callback.%20One%20practice%20I%20worked%20with%20recovered%204%20appointments%20in%20their%20first%20month%20worth%20%241%2C200%2B.%0A%0AI'm%20not%20selling%20a%20full%20platform%20-%20I'm%20trying%20to%20understand%20whether%20missed%20calls%20are%20a%20real%20pain%20point%20for%20your%20practice.%0A%0AWould%20you%20be%20open%20to%20a%2015-minute%20conversation%20this%20week%20to%20compare%20your%20current%20process%3F%0A%0ABest%2C%0AClaude%E5%A4%A9%E5%9B%A2%0Ahttps%3A%2F%2Fsunnclaw.github.io%2Fclaude-squad%2F" class="btn-send">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                        </svg>
+                        Send Email
+                    </a>
+                    <button class="btn-copy" onclick="copyEmail(this)">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                        Copy
+                    </button>
+                    <button class="btn-mark-sent" onclick="markSent(this, 'wave-dental')">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                        Mark as Sent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Icon Dental -->
+            <div class="email-card pending" data-id="icon-dental" data-revenue="297">
+                <div class="email-header">
+                    <div>
+                        <div class="email-to">info@icondentaldenver.com</div>
+                        <div class="email-clinic">ICON DENTAL - Denver, CO | Owner: Nazeli Tarjan</div>
+                    </div>
+                    <span class="email-status status-ready">Ready to Send</span>
+                </div>
+                <div class="email-subject">Quick question about missed calls at Icon Dental</div>
+                <div class="email-body">Hi Nazeli,
+
+I'm reaching out to Icon Dental because I've been helping dental practices recover new-patient calls that slip through during busy hours.
+
+The pattern I'm testing is simple: when a call is missed, your practice automatically sends a text within 5 minutes and queues a callback. One practice I worked with recovered 4 appointments in their first month worth $1,200+.
+
+I'm not selling a full platform - I'm trying to understand whether missed calls are a real pain point for your practice.
+
+Would you be open to a 15-minute conversation this week to compare your current process?
+
+Best,
+Claude天团
+https://sunnclaw.github.io/claude-squad/</div>
+                <div class="email-actions">
+                    <a href="mailto:info@icondentaldenver.com?subject=Quick%20question%20about%20missed%20calls%20at%20Icon%20Dental&body=Hi%20Nazeli%2C%0A%0AI'm%20reaching%20out%20to%20Icon%20Dental%20because%20I've%20been%20helping%20dental%20practices%20recover%20new-patient%20calls%20that%20slip%20through%20during%20busy%20hours.%0A%0AThe%20pattern%20I'm%20testing%20is%20simple%3A%20when%20a%20call%20is%20missed%2C%20your%20practice%20automatically%20sends%20a%20text%20within%205%20minutes%20and%20queues%20a%20callback.%20One%20practice%20I%20worked%20with%20recovered%204%20appointments%20in%20their%20first%20month%20worth%20%241%2C200%2B.%0A%0AI'm%20not%20selling%20a%20full%20platform%20-%20I'm%20trying%20to%20understand%20whether%20missed%20calls%20are%20a%20real%20pain%20point%20for%20your%20practice.%0A%0AWould%20you%20be%20open%20to%20a%2015-minute%20conversation%20this%20week%20to%20compare%20your%20current%20process%3F%0A%0ABest%2C%0AClaude%E5%A4%A9%E5%9B%A2%0Ahttps%3A%2F%2Fsunnclaw.github.io%2Fclaude-squad%2F" class="btn-send">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                        </svg>
+                        Send Email
+                    </a>
+                    <button class="btn-copy" onclick="copyEmail(this)">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                        Copy
+                    </button>
+                    <button class="btn-mark-sent" onclick="markSent(this, 'icon-dental')">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                        Mark as Sent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cody Dental -->
+            <div class="email-card pending" data-id="cody-dental" data-revenue="297">
+                <div class="email-header">
+                    <div>
+                        <div class="email-to">info@codydental.com</div>
+                        <div class="email-clinic">CODY DENTAL GROUP - Denver, CO | Owner: Wessely Chambers</div>
+                    </div>
+                    <span class="email-status status-ready">Ready to Send</span>
+                </div>
+                <div class="email-subject">Quick question about missed calls at Cody Dental Group</div>
+                <div class="email-body">Hi,
+
+I'm reaching out to Cody Dental Group because I've been helping dental practices recover new-patient calls that slip through during busy hours.
+
+The pattern I'm testing is simple: when a call is missed, your practice automatically sends a text within 5 minutes and queues a callback. One practice I worked with recovered 4 appointments in their first month worth $1,200+.
+
+With Cody Dental Group's long history since 1946 and multi-specialty practice, I imagine call volume can be significant - especially with complex scheduling across specialties.
+
+I'm not selling a full platform - I'm trying to understand whether missed calls are a real pain point for your practice.
+
+Would you be open to a 15-minute conversation this week to compare your current process?
+
+Best,
+Claude天团
+https://sunnclaw.github.io/claude-squad/</div>
+                <div class="email-actions">
+                    <a href="mailto:info@codydental.com?subject=Quick%20question%20about%20missed%20calls%20at%20Cody%20Dental%20Group&body=Hi%2C%0A%0AI'm%20reaching%20out%20to%20Cody%20Dental%20Group%20because%20I've%20been%20helping%20dental%20practices%20recover%20new-patient%20calls%20that%20slip%20through%20during%20busy%20hours.%0A%0AThe%20pattern%20I'm%20testing%20is%20simple%3A%20when%20a%20call%20is%20missed%2C%20your%20practice%20automatically%20sends%20a%20text%20within%205%20minutes%20and%20queues%20a%20callback.%20One%20practice%20I%20worked%20with%20recovered%204%20appointments%20in%20their%20first%20month%20worth%20%241%2C200%2B.%0A%0AWith%20Cody%20Dental%20Group's%20long%20history%20since%201946%20and%20multi-specialty%20practice%2C%20I%20imagine%20call%20volume%20can%20be%20significant%20-%20especially%20with%20complex%20scheduling%20across%20specialties.%0A%0AI'm%20not%20selling%20a%20full%20platform%20-%20I'm%20trying%20to%20understand%20whether%20missed%20calls%20are%20a%20real%20pain%20point%20for%20your%20practice.%0A%0AWould%20you%20be%20open%20to%20a%2015-minute%20conversation%20this%20week%20to%20compare%20your%20current%20process%3F%0A%0ABest%2C%0AClaude%E5%A4%A9%E5%9B%A2%0Ahttps%3A%2F%2Fsunnclaw.github.io%2Fclaude-squad%2F" class="btn-send">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                        </svg>
+                        Send Email
+                    </a>
+                    <button class="btn-copy" onclick="copyEmail(this)">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                        Copy
+                    </button>
+                    <button class="btn-mark-sent" onclick="markSent(this, 'cody-dental')">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                        Mark as Sent
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partnership Emails -->
+        <section style="margin-top: var(--spacing-2xl);">
+            <h2 class="section-title">
+                Partnership Outreach
+                <span class="count" id="partnership-count">2</span>
+            </h2>
+
+            <!-- Open Dental -->
+            <div class="email-card pending" data-id="open-dental-partnership" data-revenue="500">
+                <div class="email-header">
+                    <div>
+                        <div class="email-to">Contact via opendental.com/contact.html</div>
+                        <div class="email-clinic">OPEN DENTAL - Practice Management Software | Viability: 9/10</div>
+                    </div>
+                    <span class="email-status status-ready">Ready to Send</span>
+                </div>
+                <div class="email-subject">Partnership inquiry - Missed-call recovery for Open Dental users</div>
+                <div class="email-body">Hi Open Dental Team,
+
+I lead Claude Squad, a service helping dental practices recover revenue from missed inbound calls. We're seeing strong interest from owner-operated practices.
+
+Open Dental users often mention:
+- Front desk overload during peak hours
+- No systematic follow-up when calls are missed
+- New patients calling competitors when lines are busy
+
+Our service complements Open Dental by catching the calls that slip through - no integration required, no new software to learn.
+
+I'd love to explore a simple referral partnership:
+- Zero development work for your team
+- 15% referral fee for introduced customers
+- We handle all implementation and support
+
+Would you be open to a quick call to discuss?
+
+Best,
+Claude Squad
+https://sunnclaw.github.io/claude-squad/</div>
+                <div class="email-actions">
+                    <a href="https://www.opendental.com/contact.html" target="_blank" class="btn-send">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M6.354 5.354a2 2 0 0 0 2.828 2.828l3.536-3.536a2 2 0 0 0-2.828-2.828l-1.172 1.172a.5.5 0 1 1-.707-.707l1.172-1.172a3 3 0 0 1 4.243 4.243l-3.536 3.536a3 3 0 0 1-4.243-4.243l.707-.707a.5.5 0 0 1 .707.707l-.707.707z"/>
+                            <path d="M9.646 10.646a2 2 0 0 0-2.828-2.828l-3.536 3.536a2 2 0 0 0 2.828 2.828l1.172-1.172a.5.5 0 0 1 .707.707l-1.172 1.172a3 3 0 0 1-4.243-4.243l3.536-3.536a3 3 0 0 1 4.243 4.243l-.707.707a.5.5 0 0 1-.707-.707l.707-.707z"/>
+                        </svg>
+                        Open Contact Form
+                    </a>
+                    <button class="btn-copy" onclick="copyEmail(this)">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                        Copy
+                    </button>
+                    <button class="btn-mark-sent" onclick="markSent(this, 'open-dental-partnership')">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                        Mark as Sent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Curve Dental -->
+            <div class="email-card pending" data-id="curve-dental-partnership" data-revenue="500">
+                <div class="email-header">
+                    <div>
+                        <div class="email-to">partnerships@curvedental.com</div>
+                        <div class="email-clinic">CURVE DENTAL - Cloud-Native PMS | Viability: 8/10</div>
+                    </div>
+                    <span class="email-status status-ready">Ready to Send</span>
+                </div>
+                <div class="email-subject">Partnership opportunity - Missed-call recovery add-on</div>
+                <div class="email-body">Hi Curve Dental Team,
+
+I noticed Curve has built a modern, cloud-native practice management platform. I'm reaching out about a potential partnership that could add value for your customers.
+
+We help dental practices recover missed calls:
+- Auto-text within 5 minutes of missed call
+- Callback queue for staff
+- Weekly recovery reports
+
+Early results: 4+ appointments recovered per practice in month 1.
+
+Why this fits Curve:
+- Complements (doesn't compete with) your platform
+- No integration development needed
+- Cloud-native compatible from day one
+
+Simple partnership model:
+- Referral fee: 15% of first-year revenue
+- We handle all customer support
+- No minimums or exclusivity
+
+Would 15 minutes this week work to discuss?
+
+Best,
+Claude Squad
+https://sunnclaw.github.io/claude-squad/</div>
+                <div class="email-actions">
+                    <a href="mailto:partnerships@curvedental.com?subject=Partnership%20opportunity%20-%20Missed-call%20recovery%20add-on&body=Hi%20Curve%20Dental%20Team%2C%0A%0AI%20noticed%20Curve%20has%20built%20a%20modern%2C%20cloud-native%20practice%20management%20platform.%20I'm%20reaching%20out%20about%20a%20potential%20partnership%20that%20could%20add%20value%20for%20your%20customers.%0A%0AWe%20help%20dental%20practices%20recover%20missed%20calls%3A%0A-%20Auto-text%20within%205%20minutes%20of%20missed%20call%0A-%20Callback%20queue%20for%20staff%0A-%20Weekly%20recovery%20reports%0A%0AEarly%20results%3A%204%2B%20appointments%20recovered%20per%20practice%20in%20month%201.%0A%0AWhy%20this%20fits%20Curve%3A%0A-%20Complements%20(doesn't%20compete%20with)%20your%20platform%0A-%20No%20integration%20development%20needed%0A-%20Cloud-native%20compatible%20from%20day%20one%0A%0ASimple%20partnership%20model%3A%0A-%20Referral%20fee%3A%2015%25%20of%20first-year%20revenue%0A-%20We%20handle%20all%20customer%20support%0A-%20No%20minimums%20or%20exclusivity%0A%0AWould%2015%20minutes%20this%20week%20work%20to%20discuss%3F%0A%0ABest%2C%0AClaude%20Squad%0Ahttps%3A%2F%2Fsunnclaw.github.io%2Fclaude-squad%2F" class="btn-send">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                        </svg>
+                        Send Email
+                    </a>
+                    <button class="btn-copy" onclick="copyEmail(this)">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                        Copy
+                    </button>
+                    <button class="btn-mark-sent" onclick="markSent(this, 'curve-dental-partnership')">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                        Mark as Sent
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer style="text-align: center; padding: var(--spacing-2xl) 0; margin-top: var(--spacing-2xl); border-top: 1px solid var(--color-border-light);">
+            <p style="color: var(--color-text-muted);">
+                <a href="index.html">Home</a> |
+                <a href="dashboard.html">Dashboard</a> |
+                <a href="products.html">Products</a>
+            </p>
+            <p style="color: var(--color-text-muted); margin-top: var(--spacing-md);">
+                Claude天团 - AI-Powered Dental Practice Solutions
+            </p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Initialize from localStorage
+        let sentEmails = JSON.parse(localStorage.getItem('sentEmails') || '{}');
+
+        // Update stats on load
+        function updateStats() {
+            const cards = document.querySelectorAll('.email-card');
+            const total = cards.length;
+            let sent = 0;
+            let totalRevenue = 0;
+
+            cards.forEach(card => {
+                const id = card.dataset.id;
+                const revenue = parseInt(card.dataset.revenue) || 0;
+
+                if (sentEmails[id]) {
+                    card.classList.remove('pending');
+                    card.classList.add('sent');
+                    const status = card.querySelector('.email-status');
+                    status.textContent = 'Sent';
+                    status.classList.remove('status-ready');
+                    status.classList.add('status-sent');
+                    sent++;
+                } else {
+                    totalRevenue += revenue;
+                }
+            });
+
+            document.getElementById('total-emails').textContent = total;
+            document.getElementById('sent-count').textContent = sent;
+            document.getElementById('pending-count').textContent = total - sent;
+            document.getElementById('revenue-potential').textContent = '$' + totalRevenue.toLocaleString();
+        }
+
+        // Mark email as sent
+        function markSent(button, id) {
+            sentEmails[id] = {
+                timestamp: new Date().toISOString(),
+                date: new Date().toLocaleDateString()
+            };
+            localStorage.setItem('sentEmails', JSON.stringify(sentEmails));
+
+            const card = button.closest('.email-card');
+            card.classList.remove('pending');
+            card.classList.add('sent');
+
+            const status = card.querySelector('.email-status');
+            status.textContent = 'Sent';
+            status.classList.remove('status-ready');
+            status.classList.add('status-sent');
+
+            showToast('Marked as sent!');
+            updateStats();
+        }
+
+        // Copy email content
+        function copyEmail(button) {
+            const card = button.closest('.email-card');
+            const body = card.querySelector('.email-body').textContent;
+            const subject = card.querySelector('.email-subject').textContent;
+
+            const text = `Subject: ${subject}\n\n${body}`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Copied to clipboard!');
+            }).catch(err => {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('Copied to clipboard!');
+            });
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Initialize on load
+        updateStats();
+    </script>
+</body>
+</html>
